@@ -1,13 +1,13 @@
-# Orchestrating Spatially Resolved Transcriptomics Analysis with Bioconductor
+# Best Practices for Spatial Transcriptomics Analysis with Bioconductor
 
-[![R build status](https://github.com/lmweber/OSTA-book/workflows/R-CMD-bioc/badge.svg)](https://github.com/lmweber/OSTA-book/actions)
+[![R build status](https://github.com/lmweber/BestPracticesST/workflows/R-CMD-bioc/badge.svg)](https://github.com/lmweber/BestPracticesST/actions)
 
-Repository containing source files for OSTA online book.
+Repository containing source files for 'Best Practices for Spatial Transcriptomics Analysis with Bioconductor' online book.
 
 
 ## Website
 
-The website for the compiled version of the book is at: https://lmweber.org/OSTA-book/
+The website for the compiled version of the book is at: https://lmweber.org/BestPracticesST/
 
 
 ## Source files

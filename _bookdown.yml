@@ -1,4 +1,4 @@
-book_filename: "OSTA-book.Rmd"
+book_filename: "BestPracticesST.Rmd"
 delete_merged_file: true
 language:
   ui:

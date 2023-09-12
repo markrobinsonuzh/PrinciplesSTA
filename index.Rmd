@@ -1,5 +1,5 @@
 ---
-title: "Orchestrating Spatially-Resolved Transcriptomics Analysis with Bioconductor"
+title: "Best Practices for Spatial Transcriptomics Analysis with Bioconductor"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: "book"
@@ -7,7 +7,7 @@ bibliography: "book.bib"
 biblio-style: "apalike"
 csl-entry-spacing: 1em
 link-citations: yes
-description: "Online book 'Orchestrating Spatially-Resolved Transcriptomics Analysis with Bioconductor'"
+description: "Online book 'Best Practices for Spatial Transcriptomics Analysis with Bioconductor'"
 ---
 
 
@@ -15,11 +15,11 @@ description: "Online book 'Orchestrating Spatially-Resolved Transcriptomics Anal
 
 <a href="https://bioconductor.org"><img src="https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/Bioconductor/Bioconductor-rh.png" width="150" alt="Bioconductor Sticker" align="right" style="margin: 0 1em 0 1em" /></a>
 
-This is the website for the online book **"Orchestrating Spatially-Resolved Transcriptomics Analysis with Bioconductor" (OSTA)**.
+This is the website for the online book **'Best Practices for Spatial Transcriptomics Analysis with Bioconductor'**.
 
-This book provides several examples of computational analysis workflows for **spatially resolved-transcriptomics (SRT)** data, using the [Bioconductor](http://bioconductor.org/) framework within the R programming language. The chapters contain details on individual analysis steps as well as complete workflows, with example datasets and R code that can be run on your own laptop.
+This book provides several examples of computational analysis workflows for spatially resolved-transcriptomics (SRT) data, using the [Bioconductor](http://bioconductor.org/) framework within the R programming language. The chapters contain details on individual analysis steps as well as complete workflows, with example datasets and R code that can be run on your own laptop.
 
-The book is organized into several parts, including background, preprocessing steps, analysis steps, and complete workflows.
+The book is organized into several parts, including background, individual analysis steps, and example workflows.
 
-Additional introductory material on R and Bioconductor can also be found in the related book [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://osca.bioconductor.org/).
+Additional details on single-cell analysis workflows as well as introductory material on R and Bioconductor can be found in the related book [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://osca.bioconductor.org/).
 
