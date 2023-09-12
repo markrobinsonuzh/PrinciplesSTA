@@ -50,7 +50,7 @@ This modular and open development approach allows data analysts to build analysi
 
 ## Contributions
 
-We welcome suggestions for updates to the analysis and workflow chapters. Suggestions may be provided as [GitHub issues](https://github.com/lmweber/OSTA-book/issues).
+We welcome suggestions for updates to the analysis and workflow chapters. Suggestions may be provided as [GitHub issues](https://github.com/lmweber/BestPracticesST/issues).
 
 All methods included in the code examples must be available as R packages from either [Bioconductor](http://bioconductor.org/) or [CRAN](https://cran.r-project.org/). This ensures compatibility with the existing workflows and provides users with guarantees regarding ease of installation, long-term availability, stability, and maintenance through the Bioconductor or CRAN systems. By following this strategy, we aim to showcase key methods for individual analysis steps and demonstrate flexible analysis workflows at a sufficient level of detail to enable readers to adapt or extend these workflows to their own datasets.
 
