@@ -4,6 +4,9 @@
 .Ruserdata
 .Rbuildignore
 .DS_Store
-*_files
-*.rds
 _book
+*.html
+.quarto
+/.quarto/
+/_book/
+/_freeze/

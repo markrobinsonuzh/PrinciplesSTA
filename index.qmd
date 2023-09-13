@@ -1,19 +1,4 @@
----
-title: "Best Practices for Spatial Transcriptomics Analysis with Bioconductor"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-documentclass: "book"
-bibliography: "book.bib"
-biblio-style: "apalike"
-csl-entry-spacing: 1em
-link-citations: yes
-description: "Online book 'Best Practices for Spatial Transcriptomics Analysis with Bioconductor'"
----
-
-
-# Welcome {-}
-
-<a href="https://bioconductor.org"><img src="https://raw.githubusercontent.com/Bioconductor/BiocStickers/devel/Bioconductor/Bioconductor-rh.png" width="150" alt="Bioconductor Sticker" align="right" style="margin: 0 1em 0 1em" /></a>
+# Welcome {.unnumbered}
 
 This is the website for the online book **'Best Practices for Spatial Transcriptomics Analysis with Bioconductor'**.
 

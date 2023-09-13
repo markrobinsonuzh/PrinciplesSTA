@@ -1,11 +1,3 @@
-# (PART) Appendix {-}
-
-```{r, echo=FALSE}
-# clear workspace from previous chapters
-rm(list = ls(all = TRUE))
-```
-
-
 # Related resources
 
 In this chapter, we highlight several related resources from the Bioconductor and other communities.

@@ -1,5 +1,3 @@
-# (PART) Introduction {-}
-
 # Introduction
 
 This book provides interactive examples of computational analysis workflows for spatially-resolved transcriptomics data using the [Bioconductor](http://bioconductor.org/) framework within the R programming language.

@@ -1,7 +1,0 @@
-book_filename: "BestPracticesST.Rmd"
-delete_merged_file: true
-language:
-  ui:
-    chapter_name: "Chapter "
-site: "bookdown::bookdown_site"
-rmd_subdir: "chapters"

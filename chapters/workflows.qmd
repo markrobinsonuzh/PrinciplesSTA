@@ -1,5 +1,3 @@
-# (PART) Workflows {-}
-
 # Workflows
 
 This part contains several longer chapters describing complete workflows or comparisons of methods for individual analysis steps.

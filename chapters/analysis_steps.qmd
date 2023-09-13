@@ -1,5 +1,3 @@
-# (PART) Analysis steps {-}
-
 # Analysis steps
 
 This part consists of several chapters for steps in a computational analysis pipeline for spatially-resolved transcriptomics (SRT) data. This includes quality control (QC), normalization, feature selection, dimensionality reduction, clustering, identifying marker genes, and spot-level deconvolution.

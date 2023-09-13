@@ -1,0 +1,46 @@
+project:
+  type: book
+
+book:
+  title: "Best Practices for Spatial Transcriptomics Analysis with Bioconductor"
+  date: today
+  sidebar:
+    style: docked
+  search: true
+  repo-url: https://github.com/lmweber/BestPracticesST
+  cover-image: Bioconductor-rh.png
+  chapters:
+    - index.qmd
+    - part: chapters/introduction.qmd
+      chapters:
+        - chapters/spatially_resolved_transcriptomics.qmd
+        - chapters/bioconductor-data-classes.qmd
+    - part: chapters/analysis_steps.qmd
+      chapters:
+        - chapters/quality_control.qmd
+        - chapters/normalization.qmd
+        - chapters/feature_selection.qmd
+        - chapters/dimensionality_reduction.qmd
+        - chapters/clustering.qmd
+        - chapters/marker_genes.qmd
+        - chapters/deconvolution.qmd
+    - part: chapters/workflows.qmd
+      chapters:
+        - chapters/workflow_Visium_humanDLPFC.qmd
+        - chapters/workflow_Visium_mouseCoronal.qmd
+        - chapters/workflow_Visium_spatialLIBD.qmd
+  appendices:
+    - chapters/related_resources.qmd
+    - chapters/contributors_acknowledgments.qmd
+    - chapters/references.qmd
+
+bibliography: references.bib
+
+execute:
+  freeze: auto
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
