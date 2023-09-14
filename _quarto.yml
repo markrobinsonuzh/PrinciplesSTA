@@ -26,6 +26,7 @@ book:
         - chapters/dimensionality_reduction.qmd
         - chapters/clustering.qmd
         - chapters/spot_deconvolution.qmd
+        - chapters/spatial_registration.qmd
         - chapters/differential_expression.qmd
     - part: "Workflows"
       chapters:
