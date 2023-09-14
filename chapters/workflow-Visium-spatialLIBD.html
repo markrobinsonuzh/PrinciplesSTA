@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Best Practices for Spatial Transcriptomics Analysis with Bioconductor - 16&nbsp; spatialLIBD workflow</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/related-resources.html" rel="next">
+<link href="../chapters/workflow-Visium-mouseCoronal.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/workflows.html">Workflows</a></li><li class="breadcrumb-item"><a href="../chapters/workflow-Visium-spatialLIBD.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Best Practices ST</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/lmweber/BestPracticesST" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/spatial-transcriptomics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Spatial transcriptomics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/bioconductor-data-classes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bioconductor data classes</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Analysis steps</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/analysis-steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Analysis steps</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/quality-control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Quality control</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/normalization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Normalization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/feature-selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Feature selection</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/dimensionality-reduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Dimensionality reduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Clustering</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/spot-deconvolution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Spot deconvolution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/spatial-registration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Spatial registration</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/differential-expression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Differential expression</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Workflows</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/workflow-Visium-humanDLPFC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Human DLPFC workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/workflow-Visium-mouseCoronal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Mouse coronal workflow</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/workflow-Visium-spatialLIBD.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/related-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Related resources</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/contributors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Contributors</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">16.1</span> Overview</a></li>
+  <li><a href="#spatiallibd" id="toc-spatiallibd" class="nav-link" data-scroll-target="#spatiallibd"><span class="header-section-number">16.2</span> spatialLIBD</a>
+  <ul class="collapse">
+  <li><a href="#why-use-spatiallibd" id="toc-why-use-spatiallibd" class="nav-link" data-scroll-target="#why-use-spatiallibd"><span class="header-section-number">16.2.1</span> Why use spatialLIBD?</a></li>
+  <li><a href="#want-to-learn-more-about-spatiallibd" id="toc-want-to-learn-more-about-spatiallibd" class="nav-link" data-scroll-target="#want-to-learn-more-about-spatiallibd"><span class="header-section-number">16.2.2</span> Want to learn more about spatialLIBD?</a></li>
+  </ul></li>
+  <li><a href="#code-prerequisites" id="toc-code-prerequisites" class="nav-link" data-scroll-target="#code-prerequisites"><span class="header-section-number">16.3</span> Code prerequisites</a></li>
+  <li><a href="#prepare-for-spatiallibd" id="toc-prepare-for-spatiallibd" class="nav-link" data-scroll-target="#prepare-for-spatiallibd"><span class="header-section-number">16.4</span> Prepare for spatialLIBD</a>
+  <ul class="collapse">
+  <li><a href="#basic-information" id="toc-basic-information" class="nav-link" data-scroll-target="#basic-information"><span class="header-section-number">16.4.1</span> Basic information</a></li>
+  <li><a href="#gene-annotation" id="toc-gene-annotation" class="nav-link" data-scroll-target="#gene-annotation"><span class="header-section-number">16.4.2</span> Gene annotation</a></li>
+  <li><a href="#extra-information-and-filtering" id="toc-extra-information-and-filtering" class="nav-link" data-scroll-target="#extra-information-and-filtering"><span class="header-section-number">16.4.3</span> Extra information and filtering</a></li>
+  </ul></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data"><span class="header-section-number">16.5</span> Explore the data</a></li>
+  <li><a href="#sharing-your-website" id="toc-sharing-your-website" class="nav-link" data-scroll-target="#sharing-your-website"><span class="header-section-number">16.6</span> Sharing your website</a></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up"><span class="header-section-number">16.7</span> Wrapping up</a></li>
+  <li><a href="#r-session-information" id="toc-r-session-information" class="nav-link" data-scroll-target="#r-session-information">R session information</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-workflow-spatiallibd" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="overview" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">16.1</span> Overview</h2>
+<p>In the previous workflow, <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;14</span></a>, you practiced some of the basics with a portion of the postmortem human brain dataset <span class="citation" data-cites="Maynard2021">Maynard et al. (<a href="references.html#ref-Maynard2021" role="doc-biblioref">2021</a>)</span>. The goal of this workflow is to learn what steps you need to carry out in order to create an interactive website to visualize this type of data. For this, we’ll use the <a href="http://bioconductor.org/packages/spatialLIBD"><code>spatialLIBD</code></a> Bioconductor package <span class="citation" data-cites="Pardo2022">Pardo et al. (<a href="references.html#ref-Pardo2022" role="doc-biblioref">2022</a>)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_Figure1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption"><code>spatialLIBD</code> overview. Source: <span class="citation" data-cites="Pardo2022">Pardo et al. (<a href="references.html#ref-Pardo2022" role="doc-biblioref">2022</a>)</span>.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="spatiallibd" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="spatiallibd"><span class="header-section-number">16.2</span> spatialLIBD</h2>
+<section id="why-use-spatiallibd" class="level3" data-number="16.2.1">
+<h3 data-number="16.2.1" class="anchored" data-anchor-id="why-use-spatiallibd"><span class="header-section-number">16.2.1</span> Why use spatialLIBD?</h3>
+<p>Before we dive into the R code, let’s first revisit why you might want to use <code>spatialLIBD</code>. This package has a function, <code>spatialLIBD::run_app(spe)</code>, which will create an interactive website using a <code>SpatialExperiment</code> object (<code>spe</code>). The interactive website it creates has several features that were initially designed for a specific dataset <span class="citation" data-cites="Maynard2021">Maynard et al. (<a href="references.html#ref-Maynard2021" role="doc-biblioref">2021</a>)</span> and later made flexible for any dataset <span class="citation" data-cites="Pardo2022">Pardo et al. (<a href="references.html#ref-Pardo2022" role="doc-biblioref">2022</a>)</span>. These features include panels to visualize spots from the Visium platform by 10x Genomics:</p>
+<ul>
+<li>for one tissue section at a time, either with interactive or static versions</li>
+<li>multiple tissue sections at a time, either interactively or statically</li>
+</ul>
+<p>Both options work with continuous and discrete variables such as the gene expression and clusters, respectively. The interactive version for discrete variables such as clusters is useful if you want to manually annotate Visium spots, as it was done in the initial project <span class="citation" data-cites="Maynard2021">Maynard et al. (<a href="references.html#ref-Maynard2021" role="doc-biblioref">2021</a>)</span>. <code>spatialLIBD</code> allows users to download the annotated spots and resume your spot annotation work later.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_interactive_cluster.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Screenshot of the ‘clusters (interactive)’ section of the ‘spot-level data’ panel created with the full spatialLIBD dataset. The website was created with <code>spatialLIBD::run_app(spatialLIBD::fetch_data('spe'))</code> version 1.4.0 and then using the lasso selection, we selected a set of spots in the UMAP interactive plot colored by the estimated number of cells per spot (<code>cell_count</code>) on the bottom left, which automatically updated the other three plots.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Visualizing genes or clusters across multiple tissue sections can be quite useful. For example, here we show the expression levels of <em>PCP4</em> across two sets of spatially adjacent replicates. <em>PCP4</em> is a marker gene for layer 5 in the grey matter of the dorsolateral prefrontal cortex (DLPFC) in the human brain. Spatially adjacent replicates are about 10 microns apart from each other and visualizations like the one below help assess the technical variability in the Visium technology.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_gene_grid.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Screenshot of the ‘gene grid (static)’ section of the ‘spot-level data’ panel created with the full spatialLIBD dataset. The website was created with <code>spatialLIBD::run_app(spatialLIBD::fetch_data('spe'))</code> version 1.4.0, selecting the <em>PCP4</em> gene, selecting the <em>paper</em> gene color scale, changing the number of rows and columns in the grid 2, selecting two pairs of spatially adjacent replicate samples (151507, 151508, 151673, and 151674), and clicking on the <em>upgrade grid plot</em> button. Note that the default <em>viridis</em> gene color scale is color-blind friendly.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>You can try out a <code>spatialLIBD</code>-powered website yourself by opening <a href="http://spatial.libd.org/spatialLIBD">it on your browser</a> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+</section>
+<section id="want-to-learn-more-about-spatiallibd" class="level3" data-number="16.2.2">
+<h3 data-number="16.2.2" class="anchored" data-anchor-id="want-to-learn-more-about-spatiallibd"><span class="header-section-number">16.2.2</span> Want to learn more about spatialLIBD?</h3>
+<p>If you are interested in learning more about <code>spatialLIBD</code>, please check the <a href="http://bioconductor.org/packages/spatialLIBD"><code>spatialLIBD</code> Bioconductor landing page</a> or the <a href="http://lieberinstitute.github.io/spatialLIBD/"><code>pkgdown</code> documentation website</a>. In particular, we have two vignettes documents:</p>
+<ul>
+<li><a href="http://research.libd.org/spatialLIBD/articles/spatialLIBD.html">Introduction to spatialLIBD</a></li>
+<li><a href="http://research.libd.org/spatialLIBD/articles/TenX_data_download.html">Using spatialLIBD with 10x Genomics public datasets</a></li>
+</ul>
+<p>You can also read more about <code>spatialLIBD</code> in the associated publication.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="st">"spatialLIBD"</span>)[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Pardo B, Spangler A, Weber LM, Hicks SC, Jaffe AE, Martinowich K,
+Maynard KR, Collado-Torres L (2022). "spatialLIBD: an R/Bioconductor
+package to visualize spatially-resolved transcriptomics data." _BMC
+Genomics_. doi:10.1186/s12864-022-08601-w
+&lt;https://doi.org/10.1186/s12864-022-08601-w&gt;,
+&lt;https://doi.org/10.1186/s12864-022-08601-w&gt;.
+
+A BibTeX entry for LaTeX users is
+
+  @Article{,
+    title = {spatialLIBD: an R/Bioconductor package to visualize spatially-resolved transcriptomics data},
+    author = {Brenda Pardo and Abby Spangler and Lukas M. Weber and Stephanie C. Hicks and Andrew E. Jaffe and Keri Martinowich and Kristen R. Maynard and Leonardo Collado-Torres},
+    year = {2022},
+    journal = {BMC Genomics},
+    doi = {10.1186/s12864-022-08601-w},
+    url = {https://doi.org/10.1186/s12864-022-08601-w},
+  }</code></pre>
+</div>
+</div>
+<section id="recordings" class="level4" data-number="16.2.2.1">
+<h4 data-number="16.2.2.1" class="anchored" data-anchor-id="recordings"><span class="header-section-number">16.2.2.1</span> Recordings</h4>
+<p>If you prefer to watch recordings of presentations related to the dataset <span class="citation" data-cites="Maynard2021">Maynard et al. (<a href="references.html#ref-Maynard2021" role="doc-biblioref">2021</a>)</span> or <code>spatialLIBD</code> <span class="citation" data-cites="Pardo2022">Pardo et al. (<a href="references.html#ref-Pardo2022" role="doc-biblioref">2022</a>)</span>, check the following <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/dde92cd6dfc04f9589770e074915658f" title="BioTuring_spatialLIBD" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 420;" data-ratio="1.3333333333333333">
+</iframe>
+<p>These slides were part of our 2021-04-27 webinar for BioTuring that you can watch on YouTube:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/S8884Kde-1U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+<p>A recording of an earlier version of this talk is also available on YouTube.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aD2JU-vUv54" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+<p>You might also be interested in this video demonstration of <code>spatialLIBD</code> for the <a href="http://research.libd.org/rstatsclub/">LIBD rstats club</a>.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LZ2kvCiRVdM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+</section>
+</section>
+</section>
+<section id="code-prerequisites" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="code-prerequisites"><span class="header-section-number">16.3</span> Code prerequisites</h2>
+<p>Ok, let’s get started! First we need to re-create the <code>spe</code> object from the <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;14</span></a> in the previous chapter. That chapter included code for visualizing results along the way, which we’ll skip here. Thus, we’ll use the following packages in addition to <code>spatialLIBD</code>:</p>
+<ul>
+<li><a href="http://bioconductor.org/packages/SpatialExperiment"><code>SpatialExperiment</code></a>: for storing our data in a common object</li>
+<li><a href="http://bioconductor.org/packages/STexampleData"><code>STexampleData</code></a>: for accessing the example data</li>
+<li><a href="http://bioconductor.org/packages/scater"><code>scater</code></a>: for quality control checks</li>
+<li><a href="http://bioconductor.org/packages/scran"><code>scran</code></a>: for normalization, dimension reduction, and clustering</li>
+<li><a href="https://cran.r-project.org/package=igraph"><code>igraph</code></a>: for clustering algorithms</li>
+<li><a href="http://bioconductor.org/packages/BiocFileCache"><code>BiocFileCache</code></a>: for downloading and storing data</li>
+<li><a href="http://bioconductor.org/packages/rtracklayer"><code>rtracklayer</code></a>: for importing gene annotation files</li>
+<li><a href="https://cran.r-project.org/package=igraph"><code>lobstr</code></a>: for checking object memory usage</li>
+</ul>
+<p>You’ll need to have the R version compatible with <code>bioc-release</code> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> installed in your computer, as <a href="http://bioconductor.org/install/">documented by Bioconductor</a>. Alternatively, you can use the <a href="http://bioconductor.org/help/docker/">Bioconductor docker images</a>. Next, if you haven’t installed these packages, please do so with the following R code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Check that you have a valid installation</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">valid</span>()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Install the required R packages for this workflow</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="fu">c</span>(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SpatialExperiment"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"STexampleData"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"scater"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"scran"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"igraph"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"BiocFileCache"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rtracklayer"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lobstr"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"spatialLIBD"</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now run the following R code to re-make the <code>spe</code> object from the <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;14</span></a>. This will take a bit of time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Load packages required for the</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## "Visium human DLPFC workflow"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"SpatialExperiment"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"STexampleData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Could not check database for updates.
+  Database source currently unreachable.
+  This should only be a temporary interruption. 
+  Using previously cached version.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"scater"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"scran"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"igraph"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"BiocFileCache"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"rtracklayer"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"lobstr"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"spatialLIBD"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Start tracking time</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>time_start <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># load object</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">Visium_humanDLPFC</span>()</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># subset to keep only spots over tissue</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> spe[, <span class="fu">colData</span>(spe)<span class="sc">$</span>in_tissue <span class="sc">==</span> <span class="dv">1</span>]</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># identify mitochondrial genes</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>is_mito <span class="ot">&lt;-</span> <span class="fu">grepl</span>(<span class="st">"(^MT-)|(^mt-)"</span>, <span class="fu">rowData</span>(spe)<span class="sc">$</span>gene_name)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate per-spot QC metrics and store in colData</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">addPerCellQC</span>(spe, <span class="at">subsets =</span> <span class="fu">list</span>(<span class="at">mito =</span> is_mito))</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># select QC thresholds</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>qc_lib_size <span class="ot">&lt;-</span> <span class="fu">colData</span>(spe)<span class="sc">$</span>sum <span class="sc">&lt;</span> <span class="dv">600</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>qc_detected <span class="ot">&lt;-</span> <span class="fu">colData</span>(spe)<span class="sc">$</span>detected <span class="sc">&lt;</span> <span class="dv">400</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>qc_mito <span class="ot">&lt;-</span> <span class="fu">colData</span>(spe)<span class="sc">$</span>subsets_mito_percent <span class="sc">&gt;</span> <span class="dv">28</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>qc_cell_count <span class="ot">&lt;-</span> <span class="fu">colData</span>(spe)<span class="sc">$</span>cell_count <span class="sc">&gt;</span> <span class="dv">10</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co"># combined set of discarded spots</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>discard <span class="ot">&lt;-</span> qc_lib_size <span class="sc">|</span> qc_detected <span class="sc">|</span> qc_mito <span class="sc">|</span> qc_cell_count</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co"># store in object</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="fu">colData</span>(spe)<span class="sc">$</span>discard <span class="ot">&lt;-</span> discard</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="co"># filter low-quality spots</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> spe[, <span class="sc">!</span><span class="fu">colData</span>(spe)<span class="sc">$</span>discard]</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate logcounts using library size factors</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">logNormCounts</span>(spe)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co"># remove mitochondrial genes</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> spe[<span class="sc">!</span>is_mito, ]</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="co"># fit mean-variance relationship</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>dec <span class="ot">&lt;-</span> <span class="fu">modelGeneVar</span>(spe)</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co"># select top HVGs</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>top_hvgs <span class="ot">&lt;-</span> <span class="fu">getTopHVGs</span>(dec, <span class="at">prop =</span> <span class="fl">0.1</span>)</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co"># compute PCA</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(spe, <span class="at">subset_row =</span> top_hvgs)</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="co"># compute UMAP on top 50 PCs</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(spe, <span class="at">dimred =</span> <span class="st">"PCA"</span>)</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="co"># update column names for easier plotting</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(<span class="fu">reducedDim</span>(spe, <span class="st">"UMAP"</span>)) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"UMAP"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="co"># graph-based clustering</span></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">buildSNNGraph</span>(spe, <span class="at">k =</span> k, <span class="at">use.dimred =</span> <span class="st">"PCA"</span>)</span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>g_walk <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">cluster_walktrap</span>(g)</span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>clus <span class="ot">&lt;-</span> g_walk<span class="sc">$</span>membership</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="co"># store cluster labels in column 'label' in colData</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="fu">colLabels</span>(spe) <span class="ot">&lt;-</span> <span class="fu">factor</span>(clus)</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="co"># set gene names as row names for easier plotting</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(spe) <span class="ot">&lt;-</span> <span class="fu">rowData</span>(spe)<span class="sc">$</span>gene_name</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="co"># test for marker genes</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>markers <span class="ot">&lt;-</span> <span class="fu">findMarkers</span>(spe, <span class="at">test =</span> <span class="st">"binom"</span>, <span class="at">direction =</span> <span class="st">"up"</span>)</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a><span class="do">## Find the interesting markers for each cluster</span></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>interesting <span class="ot">&lt;-</span> <span class="fu">sapply</span>(markers, <span class="cf">function</span>(x) x<span class="sc">$</span>Top <span class="sc">&lt;=</span> <span class="dv">5</span>)</span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(interesting) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"gene_interest_"</span>, <span class="fu">seq_len</span>(<span class="fu">length</span>(markers)))</span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="fu">rowData</span>(spe) <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">rowData</span>(spe), interesting)</span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a><span class="do">## How long this code took to run</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>time_prereqs <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>time_prereqs <span class="sc">-</span> time_start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time difference of 1.318645 mins</code></pre>
+</div>
+</div>
+</section>
+<section id="prepare-for-spatiallibd" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="prepare-for-spatiallibd"><span class="header-section-number">16.4</span> Prepare for spatialLIBD</h2>
+<p>Now that we have a <code>spe</code> object with quality control information, dimension reduction results, clustering data, among other things, we can proceed to visualize the object using <code>spatialLIBD</code>. Well, almost. First we need to modify the <code>spe</code> object, similar to steps we need to carry out when <a href="http://research.libd.org/spatialLIBD/articles/TenX_data_download.html#modify-spe-for-spatiallibd-1">using spatialLIBD with 10x Genomics public datasets</a></p>
+<section id="basic-information" class="level3" data-number="16.4.1">
+<h3 data-number="16.4.1" class="anchored" data-anchor-id="basic-information"><span class="header-section-number">16.4.1</span> Basic information</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Add some information used by spatialLIBD</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>spe<span class="sc">$</span>key <span class="ot">&lt;-</span> <span class="fu">paste0</span>(spe<span class="sc">$</span>sample_id, <span class="st">"_"</span>, <span class="fu">colnames</span>(spe))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>spe<span class="sc">$</span>sum_umi <span class="ot">&lt;-</span> <span class="fu">colSums</span>(<span class="fu">counts</span>(spe))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>spe<span class="sc">$</span>sum_gene <span class="ot">&lt;-</span> <span class="fu">colSums</span>(<span class="fu">counts</span>(spe) <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="gene-annotation" class="level3" data-number="16.4.2">
+<h3 data-number="16.4.2" class="anchored" data-anchor-id="gene-annotation"><span class="header-section-number">16.4.2</span> Gene annotation</h3>
+<p>Since the gene information is missing, we’ll <a href="http://research.libd.org/spatialLIBD/articles/TenX_data_download.html#add-gene-annotation-information-1">add the gene annotation data from Gencode</a> although you would ideally add this information from the same gene annotation you used for running <code>spaceranger</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Download the Gencode v32 GTF file and cache it</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>bfc <span class="ot">&lt;-</span> BiocFileCache<span class="sc">::</span><span class="fu">BiocFileCache</span>()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>gtf_cache <span class="ot">&lt;-</span> BiocFileCache<span class="sc">::</span><span class="fu">bfcrpath</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    bfc,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"release_32/gencode.v32.annotation.gtf.gz"</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Show the GTF cache location</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>gtf_cache</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                                   BFC11 
+"/Users/lukas/Library/Caches/org.R-project.R/R/BiocFileCache/693465337611_gencode.v32.annotation.gtf.gz" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Import into R (takes ~1 min)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>gtf <span class="ot">&lt;-</span> rtracklayer<span class="sc">::</span><span class="fu">import</span>(gtf_cache)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Subset to genes only</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>gtf <span class="ot">&lt;-</span> gtf[gtf<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"gene"</span>]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove the .x part of the gene IDs</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>gtf<span class="sc">$</span>gene_id <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">..*"</span>, <span class="st">""</span>, gtf<span class="sc">$</span>gene_id)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Set the names to be the gene IDs</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(gtf) <span class="ot">&lt;-</span> gtf<span class="sc">$</span>gene_id</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Match the genes</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>match_genes <span class="ot">&lt;-</span> <span class="fu">match</span>(<span class="fu">rowData</span>(spe)<span class="sc">$</span>gene_id, gtf<span class="sc">$</span>gene_id)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(match_genes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+FALSE  TRUE 
+33267   258 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Drop the few genes for which we don't have information</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> spe[<span class="sc">!</span><span class="fu">is.na</span>(match_genes), ]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>match_genes <span class="ot">&lt;-</span> match_genes[<span class="sc">!</span><span class="fu">is.na</span>(match_genes)]</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Keep only some columns from the gtf</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mcols</span>(gtf) <span class="ot">&lt;-</span> <span class="fu">mcols</span>(gtf)[, <span class="fu">c</span>(<span class="st">"source"</span>, <span class="st">"type"</span>, <span class="st">"gene_id"</span>, <span class="st">"gene_name"</span>, <span class="st">"gene_type"</span>)]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Save the "interest"ing columns from our original spe object</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>interesting <span class="ot">&lt;-</span> <span class="fu">rowData</span>(spe)[, <span class="fu">grepl</span>(<span class="st">"interest"</span>, <span class="fu">colnames</span>(<span class="fu">rowData</span>(spe)))]</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Add the gene info to our SPE object</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rowRanges</span>(spe) <span class="ot">&lt;-</span> gtf[match_genes]</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Add back the "interest" coolumns</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rowData</span>(spe) <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">rowData</span>(spe), interesting)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Inspect the gene annotation data we added</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">rowRanges</span>(spe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>GRanges object with 33267 ranges and 12 metadata columns:
+                  seqnames            ranges strand |   source     type
+                     &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;factor&gt; &lt;factor&gt;
+  ENSG00000243485     chr1       29554-31109      + |   HAVANA     gene
+  ENSG00000237613     chr1       34554-36081      - |   HAVANA     gene
+  ENSG00000186092     chr1       65419-71585      + |   HAVANA     gene
+  ENSG00000238009     chr1      89295-133723      - |   HAVANA     gene
+  ENSG00000239945     chr1       89551-91105      - |   HAVANA     gene
+              ...      ...               ...    ... .      ...      ...
+  ENSG00000160298    chr21 46300181-46323875      - |   HAVANA     gene
+  ENSG00000160299    chr21 46324141-46445769      + |   HAVANA     gene
+  ENSG00000160305    chr21 46458891-46570015      + |   HAVANA     gene
+  ENSG00000160307    chr21 46598604-46605208      - |   HAVANA     gene
+  ENSG00000160310    chr21 46635595-46665124      + |   HAVANA     gene
+                          gene_id   gene_name      gene_type gene_interest_1
+                      &lt;character&gt; &lt;character&gt;    &lt;character&gt;       &lt;logical&gt;
+  ENSG00000243485 ENSG00000243485 MIR1302-2HG         lncRNA            TRUE
+  ENSG00000237613 ENSG00000237613     FAM138A         lncRNA            TRUE
+  ENSG00000186092 ENSG00000186092       OR4F5 protein_coding            TRUE
+  ENSG00000238009 ENSG00000238009  AL627309.1         lncRNA            TRUE
+  ENSG00000239945 ENSG00000239945  AL627309.3         lncRNA            TRUE
+              ...             ...         ...            ...             ...
+  ENSG00000160298 ENSG00000160298    C21orf58 protein_coding           FALSE
+  ENSG00000160299 ENSG00000160299        PCNT protein_coding           FALSE
+  ENSG00000160305 ENSG00000160305       DIP2A protein_coding           FALSE
+  ENSG00000160307 ENSG00000160307       S100B protein_coding           FALSE
+  ENSG00000160310 ENSG00000160310       PRMT2 protein_coding           FALSE
+                  gene_interest_2 gene_interest_3 gene_interest_4
+                        &lt;logical&gt;       &lt;logical&gt;       &lt;logical&gt;
+  ENSG00000243485            TRUE            TRUE            TRUE
+  ENSG00000237613            TRUE            TRUE            TRUE
+  ENSG00000186092            TRUE            TRUE            TRUE
+  ENSG00000238009            TRUE            TRUE            TRUE
+  ENSG00000239945            TRUE            TRUE            TRUE
+              ...             ...             ...             ...
+  ENSG00000160298           FALSE           FALSE           FALSE
+  ENSG00000160299           FALSE           FALSE           FALSE
+  ENSG00000160305           FALSE           FALSE           FALSE
+  ENSG00000160307           FALSE           FALSE           FALSE
+  ENSG00000160310           FALSE           FALSE           FALSE
+                  gene_interest_5 gene_interest_6 gene_interest_7
+                        &lt;logical&gt;       &lt;logical&gt;       &lt;logical&gt;
+  ENSG00000243485            TRUE            TRUE            TRUE
+  ENSG00000237613            TRUE            TRUE            TRUE
+  ENSG00000186092            TRUE            TRUE            TRUE
+  ENSG00000238009            TRUE            TRUE            TRUE
+  ENSG00000239945            TRUE            TRUE            TRUE
+              ...             ...             ...             ...
+  ENSG00000160298           FALSE           FALSE           FALSE
+  ENSG00000160299           FALSE           FALSE           FALSE
+  ENSG00000160305           FALSE           FALSE           FALSE
+  ENSG00000160307           FALSE           FALSE           FALSE
+  ENSG00000160310           FALSE           FALSE           FALSE
+  -------
+  seqinfo: 25 sequences from an unspecified genome; no seqlengths</code></pre>
+</div>
+</div>
+<p>Now that we have the gene annotation information, we can use it to add a few more pieces to our <code>spe</code> object that <code>spatialLIBD</code> will use. For example, we want to enable users to search genes by either their gene symbol or their Ensembl ID. We also like to visualize the amount and percent of the mitochondrial gene expression.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Add information used by spatialLIBD</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowData</span>(spe)<span class="sc">$</span>gene_search <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowData</span>(spe)<span class="sc">$</span>gene_name, <span class="st">"; "</span>, <span class="fu">rowData</span>(spe)<span class="sc">$</span>gene_id</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Compute chrM expression and chrM expression ratio</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>is_mito <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">seqnames</span>(spe) <span class="sc">==</span> <span class="st">"chrM"</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>spe<span class="sc">$</span>expr_chrM <span class="ot">&lt;-</span> <span class="fu">colSums</span>(<span class="fu">counts</span>(spe)[is_mito, , <span class="at">drop =</span> <span class="cn">FALSE</span>])</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>spe<span class="sc">$</span>expr_chrM_ratio <span class="ot">&lt;-</span> spe<span class="sc">$</span>expr_chrM <span class="sc">/</span> spe<span class="sc">$</span>sum_umi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="extra-information-and-filtering" class="level3" data-number="16.4.3">
+<h3 data-number="16.4.3" class="anchored" data-anchor-id="extra-information-and-filtering"><span class="header-section-number">16.4.3</span> Extra information and filtering</h3>
+<p>Now that we have the full gene annotation information we need, we can proceed to add some last touches as well as <a href="http://research.libd.org/spatialLIBD/articles/TenX_data_download.html#filter-the-spe-object-1">filter the object</a> to reduce the memory required for visualizing the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Add a variable for saving the manual annotations</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>spe<span class="sc">$</span>ManualAnnotation <span class="ot">&lt;-</span> <span class="st">"NA"</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove genes with no data</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>no_expr <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">rowSums</span>(<span class="fu">counts</span>(spe)) <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of genes with no counts</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(no_expr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11596</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Compute the percent of genes with no counts</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(no_expr) <span class="sc">/</span> <span class="fu">nrow</span>(spe) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 34.85737</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> spe[<span class="sc">-</span>no_expr, , drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove spots without counts</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(spe<span class="sc">$</span>sum_umi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    537    2414    3466    3870    4938   15862 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## If we had spots with no counts, we would remove them</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(spe<span class="sc">$</span>sum_umi <span class="sc">==</span> <span class="dv">0</span>)) {</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    spots_no_counts <span class="ot">&lt;-</span> <span class="fu">which</span>(spe<span class="sc">$</span>sum_umi <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Number of spots with no counts</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">length</span>(spots_no_counts))</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Percent of spots with no counts</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">length</span>(spots_no_counts) <span class="sc">/</span> <span class="fu">ncol</span>(spe) <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    spe <span class="ot">&lt;-</span> spe[, <span class="sc">-</span>spots_no_counts, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We <em>think</em> that we are ready to proceed to making our interactive website. Let’s use the <code>spatialLIBD::check_spe()</code> function, just to verify that we are right. If we aren’t, then it’ll try to tell us what we missed.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Run check_spe() function</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>spatialLIBD<span class="sc">::</span><span class="fu">check_spe</span>(spe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class: SpatialExperiment 
+dim: 21671 3524 
+metadata(0):
+assays(2): counts logcounts
+rownames(21671): ENSG00000243485 ENSG00000238009 ... ENSG00000160307
+  ENSG00000160310
+rowData names(13): source type ... gene_interest_7 gene_search
+colnames(3524): AAACAAGTATCTCCCA-1 AAACACCAATAACTGC-1 ...
+  TTGTTTCCATACAACT-1 TTGTTTGTGTAAATTC-1
+colData names(22): barcode_id sample_id ... expr_chrM_ratio
+  ManualAnnotation
+reducedDimNames(2): PCA UMAP
+mainExpName: NULL
+altExpNames(0):
+spatialCoords names(2) : pxl_col_in_fullres pxl_row_in_fullres
+imgData names(4): sample_id image_id data scaleFactor</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="do">## End tracking time</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>time_end <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="do">## How long this code took to run</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>time_end <span class="sc">-</span> time_prereqs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time difference of 39.79588 secs</code></pre>
+</div>
+</div>
+<p>Creating our final <code>spe</code> object took 1.98190988302231 to run. So you might want to save this object for later use.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(spe, <span class="at">file =</span> <span class="st">"spe_workflow_Visium_spatialLIBD.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can then re-load it with the following code on a later session.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"spe_workflow_Visium_spatialLIBD.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="explore-the-data" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="explore-the-data"><span class="header-section-number">16.5</span> Explore the data</h2>
+<p>In order to visualize the data, we can then use <code>spatialLIBD::vis_gene()</code>. Note that we didn’t need to do all that hard work just for that. But well, this is a nice quick check before we try launching our interactive website.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sum of UMI</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>spatialLIBD<span class="sc">::</span><span class="fu">vis_gene</span>(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">spe =</span> spe,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sampleid =</span> <span class="st">"sample_151673"</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">geneid =</span> <span class="st">"sum_umi"</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="workflow-Visium-spatialLIBD_files/figure-html/spatialLIBD_vis_gene-1.png" class="img-fluid" width="768"></p>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="do">## PCP4, a layer 5 marker gene</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>spatialLIBD<span class="sc">::</span><span class="fu">vis_gene</span>(</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">spe =</span> spe,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sampleid =</span> <span class="st">"sample_151673"</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">geneid =</span> <span class="fu">rowData</span>(spe)<span class="sc">$</span>gene_search[<span class="fu">which</span>(<span class="fu">rowData</span>(spe)<span class="sc">$</span>gene_name <span class="sc">==</span> <span class="st">"PCP4"</span>)]</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="workflow-Visium-spatialLIBD_files/figure-html/spatialLIBD_vis_gene-2.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p>As we wanted let’s proceed to <a href="http://research.libd.org/spatialLIBD/articles/TenX_data_download.html#run-the-interactive-website-1">visualize the data interactively</a> with a <code>spatialLIBD</code>-powered website. We have lots of variables to choose from. We’ll specify which are our continuous and discrete variables in our <code>spatialLIBD::run_app()</code> call.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Explore all the variables we can use</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colData</span>(spe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>DataFrame with 3524 rows and 22 columns
+                           barcode_id     sample_id in_tissue array_row
+                          &lt;character&gt;   &lt;character&gt; &lt;integer&gt; &lt;integer&gt;
+AAACAAGTATCTCCCA-1 AAACAAGTATCTCCCA-1 sample_151673         1        50
+AAACACCAATAACTGC-1 AAACACCAATAACTGC-1 sample_151673         1        59
+AAACAGAGCGACTCCT-1 AAACAGAGCGACTCCT-1 sample_151673         1        14
+AAACAGCTTTCAGAAG-1 AAACAGCTTTCAGAAG-1 sample_151673         1        43
+AAACAGGGTCTATATT-1 AAACAGGGTCTATATT-1 sample_151673         1        47
+...                               ...           ...       ...       ...
+TTGTTGTGTGTCAAGA-1 TTGTTGTGTGTCAAGA-1 sample_151673         1        31
+TTGTTTCACATCCAGG-1 TTGTTTCACATCCAGG-1 sample_151673         1        58
+TTGTTTCATTAGTCTA-1 TTGTTTCATTAGTCTA-1 sample_151673         1        60
+TTGTTTCCATACAACT-1 TTGTTTCCATACAACT-1 sample_151673         1        45
+TTGTTTGTGTAAATTC-1 TTGTTTGTGTAAATTC-1 sample_151673         1         7
+                   array_col ground_truth cell_count       sum  detected
+                   &lt;integer&gt;  &lt;character&gt;  &lt;integer&gt; &lt;numeric&gt; &lt;numeric&gt;
+AAACAAGTATCTCCCA-1       102       Layer3          6      8458      3586
+AAACACCAATAACTGC-1        19           WM          5      3769      1960
+AAACAGAGCGACTCCT-1        94       Layer3          2      5433      2424
+AAACAGCTTTCAGAAG-1         9       Layer5          4      4278      2264
+AAACAGGGTCTATATT-1        13       Layer6          6      4004      2178
+...                      ...          ...        ...       ...       ...
+TTGTTGTGTGTCAAGA-1        77       Layer5          3      3966      1982
+TTGTTTCACATCCAGG-1        42           WM          3      4324      2170
+TTGTTTCATTAGTCTA-1        30           WM          4      2761      1560
+TTGTTTCCATACAACT-1        27       Layer6          3      2322      1343
+TTGTTTGTGTAAATTC-1        51       Layer2          5      6281      2927
+                   subsets_mito_sum subsets_mito_detected subsets_mito_percent
+                          &lt;numeric&gt;             &lt;numeric&gt;            &lt;numeric&gt;
+AAACAAGTATCTCCCA-1             1407                    13              16.6351
+AAACACCAATAACTGC-1              430                    13              11.4089
+AAACAGAGCGACTCCT-1             1316                    13              24.2223
+AAACAGCTTTCAGAAG-1              651                    12              15.2174
+AAACAGGGTCTATATT-1              621                    13              15.5095
+...                             ...                   ...                  ...
+TTGTTGTGTGTCAAGA-1              789                    13             19.89410
+TTGTTTCACATCCAGG-1              370                    12              8.55689
+TTGTTTCATTAGTCTA-1              314                    12             11.37269
+TTGTTTCCATACAACT-1              476                    13             20.49957
+TTGTTTGTGTAAATTC-1              991                    13             15.77774
+                       total   discard sizeFactor    label
+                   &lt;numeric&gt; &lt;logical&gt;  &lt;numeric&gt; &lt;factor&gt;
+AAACAAGTATCTCCCA-1      8458     FALSE   1.822839        3
+AAACACCAATAACTGC-1      3769     FALSE   0.812282        1
+AAACAGAGCGACTCCT-1      5433     FALSE   1.170902        3
+AAACAGCTTTCAGAAG-1      4278     FALSE   0.921980        3
+AAACAGGGTCTATATT-1      4004     FALSE   0.862928        6
+...                      ...       ...        ...      ...
+TTGTTGTGTGTCAAGA-1      3966     FALSE   0.854739        4
+TTGTTTCACATCCAGG-1      4324     FALSE   0.931894        1
+TTGTTTCATTAGTCTA-1      2761     FALSE   0.595041        1
+TTGTTTCCATACAACT-1      2322     FALSE   0.500429        2
+TTGTTTGTGTAAATTC-1      6281     FALSE   1.353660        7
+                                      key   sum_umi  sum_gene expr_chrM
+                              &lt;character&gt; &lt;numeric&gt; &lt;integer&gt; &lt;numeric&gt;
+AAACAAGTATCTCCCA-1 sample_151673_AAACAA..      7051      3573         0
+AAACACCAATAACTGC-1 sample_151673_AAACAC..      3339      1947         0
+AAACAGAGCGACTCCT-1 sample_151673_AAACAG..      4117      2411         0
+AAACAGCTTTCAGAAG-1 sample_151673_AAACAG..      3627      2252         0
+AAACAGGGTCTATATT-1 sample_151673_AAACAG..      3383      2165         0
+...                                   ...       ...       ...       ...
+TTGTTGTGTGTCAAGA-1 sample_151673_TTGTTG..      3177      1969         0
+TTGTTTCACATCCAGG-1 sample_151673_TTGTTT..      3954      2158         0
+TTGTTTCATTAGTCTA-1 sample_151673_TTGTTT..      2447      1548         0
+TTGTTTCCATACAACT-1 sample_151673_TTGTTT..      1846      1330         0
+TTGTTTGTGTAAATTC-1 sample_151673_TTGTTT..      5290      2914         0
+                   expr_chrM_ratio ManualAnnotation
+                         &lt;numeric&gt;      &lt;character&gt;
+AAACAAGTATCTCCCA-1               0               NA
+AAACACCAATAACTGC-1               0               NA
+AAACAGAGCGACTCCT-1               0               NA
+AAACAGCTTTCAGAAG-1               0               NA
+AAACAGGGTCTATATT-1               0               NA
+...                            ...              ...
+TTGTTGTGTGTCAAGA-1               0               NA
+TTGTTTCACATCCAGG-1               0               NA
+TTGTTTCATTAGTCTA-1               0               NA
+TTGTTTCCATACAACT-1               0               NA
+TTGTTTGTGTAAATTC-1               0               NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Run our shiny app</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">interactive</span>()) {</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    spatialLIBD<span class="sc">::</span><span class="fu">run_app</span>(</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>        spe,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">sce_layer =</span> <span class="cn">NULL</span>,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">modeling_results =</span> <span class="cn">NULL</span>,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">sig_genes =</span> <span class="cn">NULL</span>,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"OSTA spatialLIBD workflow example"</span>,</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">spe_discrete_vars =</span> <span class="fu">c</span>(<span class="st">"ground_truth"</span>, <span class="st">"label"</span>, <span class="st">"ManualAnnotation"</span>),</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">spe_continuous_vars =</span> <span class="fu">c</span>(</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">"cell_count"</span>,</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"sum_umi"</span>,</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"sum_gene"</span>,</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">"expr_chrM"</span>,</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">"expr_chrM_ratio"</span>,</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">"sum"</span>,</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"detected"</span>,</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">"subsets_mito_sum"</span>,</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">"subsets_mito_detected"</span>,</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">"subsets_mito_percent"</span>,</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">"total"</span>,</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">"sizeFactor"</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">default_cluster =</span> <span class="st">"label"</span></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_demo_result.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption class="figure-caption">Screenshot of the ‘clusters (interactive)’ section of the ‘spot-level data’ panel created with with the data from this workflow.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sharing-your-website" class="level2" data-number="16.6">
+<h2 data-number="16.6" class="anchored" data-anchor-id="sharing-your-website"><span class="header-section-number">16.6</span> Sharing your website</h2>
+<p>Now that you have created a <code>spatialLIBD</code>-powered website, you might be interested in sharing it. To do so, it’ll be useful to have saved a small <code>spe</code> object using <code>saveRDS()</code> like we did earlier. The smaller the object, the better in terms of performance. For example, you might want to remove the lowly expressed genes to save space. One function you can use to measure how big your object is is <code>lobstr::obj_size()</code> as shown below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Object size</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>lobstr<span class="sc">::</span><span class="fu">obj_size</span>(spe) <span class="sc">/</span> <span class="dv">1024</span><span class="sc">^</span><span class="dv">2</span> <span class="do">## Convert to MB</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>293.12 B</code></pre>
+</div>
+</div>
+<p>If your data is small enough, you might want to share your website by hosting on <a href="https://www.shinyapps.io/">shinyapps.io</a> by RStudio, which you can try for free. Once you have created your account, you’ll want to create an <code>app.R</code> file like the one we have <a href="https://github.com/lmweber/BestPracticesST-resources/tree/main/spatialLIBD_demo">on the <code>spatialLIBD_demo</code> directory</a>.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>library("spatialLIBD")
+ library("markdown") # for shinyapps.io
+ 
+ ## spatialLIBD uses golem
+ options("golem.app.prod" = TRUE)
+ 
+ ## You need this to enable shinyapps to install Bioconductor packages
+ options(repos = BiocManager::repositories())
+ 
+ ## Load the data
+ spe &lt;- readRDS("spe_workflow_Visium_spatialLIBD.rds")
+ 
+ ## Deploy the website
+ spatialLIBD::run_app(
+     spe,
+     sce_layer = NULL,
+     modeling_results = NULL,
+     sig_genes = NULL,
+     title = "OSTA spatialLIBD workflow example",
+     spe_discrete_vars = c("ground_truth", "label", "ManualAnnotation"),
+     spe_continuous_vars = c(
+         "cell_count",
+         "sum_umi",
+         "sum_gene",
+         "expr_chrM",
+         "expr_chrM_ratio",
+         "sum",
+         "detected",
+         "subsets_mito_sum",
+         "subsets_mito_detected",
+         "subsets_mito_percent",
+         "total",
+         "sizeFactor"
+     ),
+     default_cluster = "label",
+     docs_path = "www"
+ )</code></pre>
+</div>
+</div>
+<p>You can then open R in a new session in the same directory where you saved the <code>app.R</code> file, run the code and click on the “publish” blue button at the top right of your RStudio window. You’ll then need to upload the <code>app.R</code> file, your <code>spe_workflow_Visium_spatialLIBD.rds</code> file and the files under the <code>www</code> directory which enable you to customize your <code>spatialLIDB</code> website.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_publish.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">Screenshot of the RStudio window for publishing your spatialLIBD-powered website to shinyapps.io</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The RStudio prompts will guide you along the process for authenticating to your shinyapps.io account, which will involve copy pasting some code that starts with <code>rsconnect::setAccountInfo()</code>. Alternatively, you can create a <code>deploy.R</code> script and write the code for uploading your files to shinyapps.io as shown below.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>library('rsconnect')
+ 
+ ## Or you can go to your shinyapps.io account and copy this
+ ## Here we do this to keep our information hidden.
+ load(".deploy_info.Rdata")
+ rsconnect::setAccountInfo(
+     name = deploy_info$name,
+     token = deploy_info$token,
+     secret = deploy_info$secret
+ )
+ 
+ ## You need this to enable shinyapps to install Bioconductor packages
+ options(repos = BiocManager::repositories())
+ 
+ ## Deploy the app, that is, upload it to shinyapps.io
+ rsconnect::deployApp(
+     appFiles = c(
+         "app.R",
+         "spe_workflow_Visium_spatialLIBD.rds",
+         dir("www", full.names = TRUE)
+     ),
+     appName = 'OSTA_spatialLIBD_demo',
+     account = 'libd',
+     server = 'shinyapps.io'
+ )</code></pre>
+</div>
+</div>
+<p>Note that we have copied the default <a href="https://github.com/LieberInstitute/spatialLIBD/tree/master/inst/app/www"><code>www</code> directory files from the <code>spatialLIBD</code> repository</a> and <a href="https://github.com/lmweber/BestPracticesST-resources/tree/main/spatialLIBD_demo/www">adapted them to our liking</a>. We then use these files with <code>spatialLIBD::run_app(docs_path)</code> in our <code>app.R</code> script. These files help us control portions of our <code>spatialLIBD</code>-powered website and customize it to our liking.</p>
+<p>If you follow this workflow, you’ll end up with a website <a href="https://libd.shinyapps.io/OSTA_spatialLIBD_demo/">just like this one</a>. In our case, we further configured our website through the shinyapps.io dashboard. We selected the following options:</p>
+<ul>
+<li><em>General</em> <code>Instance Size</code>: 3X-Large (8GB)</li>
+<li><em>Advanced</em> <code>Max Worker Processes</code>: 1</li>
+<li><em>Advanced</em> <code>Max Connections</code>: 15</li>
+</ul>
+<p>The <code>Max Worker Processes</code> determines how many R sessions are open per instance. Then <code>Max Connections</code> specifies the number of connections to each R session. The <code>Instance Size</code> determines the memory available. In this case, 8000 / 300 is approximately 27, but we decided to be conservative and set the total number of users per instance to be 15. This is why it can be important to reduce the size of your <code>spe</code> object before sharing the website. Alternatively, you can rent an AWS Instance and deploy your app there, which is how http://spatial.libd.org/spatialLIBD is hosted along with these <a href="https://github.com/LieberInstitute/spatialLIBD/tree/master/dev/shiny-server-files">error configuration files</a>.</p>
+</section>
+<section id="wrapping-up" class="level2" data-number="16.7">
+<h2 data-number="16.7" class="anchored" data-anchor-id="wrapping-up"><span class="header-section-number">16.7</span> Wrapping up</h2>
+<p>Thank you for reading this far! In this workflow we showed you:</p>
+<ul>
+<li>why you might be interested in using <code>spatialLIBD</code>,</li>
+<li>we re-used the <code>spe</code> object from the <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;14</span></a> chapter,</li>
+<li>we adapted the <code>spe</code> object to make it compatible with <code>spatialLIBD</code>,</li>
+<li>we created an interactive website in our laptops,</li>
+<li>we shared the website with others using shinyapps.io.</li>
+</ul>
+<p>Overall, we hope that you found this information useful and we wish you the best luck with exploring and annotating your own Visium data!</p>
+</section>
+<section id="r-session-information" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="r-session-information">R session information</h2>
+<p>Here’s the R session information for this workflow.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">120</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>sessioninfo<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.3.1 (2023-06-16)
+ os       macOS Monterey 12.6.7
+ system   x86_64, darwin20
+ ui       X11
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       Australia/Perth
+ date     2023-09-14
+ pandoc   3.1.1 @ /Applications/quarto/bin/tools/ (via rmarkdown)
+
+─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+ package                * version   date (UTC) lib source
+ abind                    1.4-5     2016-07-21 [1] CRAN (R 4.3.0)
+ AnnotationDbi            1.62.2    2023-07-02 [1] Bioconductor
+ AnnotationHub          * 3.8.0     2023-04-25 [1] Bioconductor
+ attempt                  0.3.1     2020-05-03 [1] CRAN (R 4.3.0)
+ beachmat                 2.16.0    2023-04-25 [1] Bioconductor
+ beeswarm                 0.4.0     2021-06-01 [1] CRAN (R 4.3.0)
+ benchmarkme              1.0.8     2022-06-12 [1] CRAN (R 4.3.0)
+ benchmarkmeData          1.0.4     2020-04-23 [1] CRAN (R 4.3.0)
+ Biobase                * 2.60.0    2023-04-25 [1] Bioconductor
+ BiocFileCache          * 2.8.0     2023-04-26 [1] Bioconductor
+ BiocGenerics           * 0.46.0    2023-04-25 [1] Bioconductor
+ BiocIO                   1.10.0    2023-05-11 [1] Bioconductor
+ BiocManager              1.30.22   2023-08-08 [1] CRAN (R 4.3.0)
+ BiocNeighbors            1.18.0    2023-04-25 [1] Bioconductor
+ BiocParallel             1.34.2    2023-05-22 [1] Bioconductor
+ BiocSingular             1.16.0    2023-04-25 [1] Bioconductor
+ BiocVersion              3.17.1    2022-11-15 [1] Bioconductor
+ Biostrings               2.68.1    2023-05-16 [1] Bioconductor
+ bit                      4.0.5     2022-11-15 [1] CRAN (R 4.3.0)
+ bit64                    4.0.5     2020-08-30 [1] CRAN (R 4.3.0)
+ bitops                   1.0-7     2021-04-24 [1] CRAN (R 4.3.0)
+ blob                     1.2.4     2023-03-17 [1] CRAN (R 4.3.0)
+ bluster                  1.10.0    2023-04-25 [1] Bioconductor
+ bslib                    0.5.1     2023-08-11 [1] CRAN (R 4.3.0)
+ cachem                   1.0.8     2023-05-01 [1] CRAN (R 4.3.0)
+ cli                      3.6.1     2023-03-23 [1] CRAN (R 4.3.0)
+ cluster                  2.1.4     2022-08-22 [1] CRAN (R 4.3.1)
+ codetools                0.2-19    2023-02-01 [1] CRAN (R 4.3.1)
+ colorspace               2.1-0     2023-01-23 [1] CRAN (R 4.3.0)
+ config                   0.3.2     2023-08-30 [1] CRAN (R 4.3.0)
+ cowplot                  1.1.1     2020-12-30 [1] CRAN (R 4.3.0)
+ crayon                   1.5.2     2022-09-29 [1] CRAN (R 4.3.0)
+ curl                     5.0.2     2023-08-14 [1] CRAN (R 4.3.0)
+ data.table               1.14.8    2023-02-17 [1] CRAN (R 4.3.0)
+ DBI                      1.1.3     2022-06-18 [1] CRAN (R 4.3.0)
+ dbplyr                 * 2.3.3     2023-07-07 [1] CRAN (R 4.3.0)
+ DelayedArray             0.26.7    2023-07-28 [1] Bioconductor
+ DelayedMatrixStats       1.22.6    2023-08-28 [1] Bioconductor
+ digest                   0.6.33    2023-07-07 [1] CRAN (R 4.3.0)
+ doParallel               1.0.17    2022-02-07 [1] CRAN (R 4.3.0)
+ dotCall64                1.0-2     2022-10-03 [1] CRAN (R 4.3.0)
+ dplyr                    1.1.3     2023-09-03 [1] CRAN (R 4.3.0)
+ dqrng                    0.3.1     2023-08-30 [1] CRAN (R 4.3.0)
+ DT                       0.28      2023-05-18 [1] CRAN (R 4.3.0)
+ edgeR                    3.42.4    2023-06-01 [1] Bioconductor
+ ellipsis                 0.3.2     2021-04-29 [1] CRAN (R 4.3.0)
+ evaluate                 0.21      2023-05-05 [1] CRAN (R 4.3.0)
+ ExperimentHub          * 2.8.1     2023-07-12 [1] Bioconductor
+ fansi                    1.0.4     2023-01-22 [1] CRAN (R 4.3.0)
+ farver                   2.1.1     2022-07-06 [1] CRAN (R 4.3.0)
+ fastmap                  1.1.1     2023-02-24 [1] CRAN (R 4.3.0)
+ fields                   15.2      2023-08-17 [1] CRAN (R 4.3.0)
+ filelock                 1.0.2     2018-10-05 [1] CRAN (R 4.3.0)
+ FNN                      1.1.3.2   2023-03-20 [1] CRAN (R 4.3.0)
+ foreach                  1.5.2     2022-02-02 [1] CRAN (R 4.3.0)
+ generics                 0.1.3     2022-07-05 [1] CRAN (R 4.3.0)
+ GenomeInfoDb           * 1.36.2    2023-08-25 [1] Bioconductor
+ GenomeInfoDbData         1.2.10    2023-05-10 [1] Bioconductor
+ GenomicAlignments        1.36.0    2023-05-11 [1] Bioconductor
+ GenomicRanges          * 1.52.0    2023-04-25 [1] Bioconductor
+ ggbeeswarm               0.7.2     2023-04-29 [1] CRAN (R 4.3.0)
+ ggplot2                * 3.4.3     2023-08-14 [1] CRAN (R 4.3.0)
+ ggrepel                  0.9.3     2023-02-03 [1] CRAN (R 4.3.0)
+ glue                     1.6.2     2022-02-24 [1] CRAN (R 4.3.0)
+ golem                    0.4.1     2023-06-05 [1] CRAN (R 4.3.0)
+ gridExtra                2.3       2017-09-09 [1] CRAN (R 4.3.0)
+ gtable                   0.3.4     2023-08-21 [1] CRAN (R 4.3.0)
+ htmltools                0.5.6     2023-08-10 [1] CRAN (R 4.3.0)
+ htmlwidgets              1.6.2     2023-03-17 [1] CRAN (R 4.3.0)
+ httpuv                   1.6.11    2023-05-11 [1] CRAN (R 4.3.0)
+ httr                     1.4.7     2023-08-15 [1] CRAN (R 4.3.0)
+ igraph                 * 1.5.1     2023-08-10 [1] CRAN (R 4.3.0)
+ interactiveDisplayBase   1.38.0    2023-04-25 [1] Bioconductor
+ IRanges                * 2.34.1    2023-06-22 [1] Bioconductor
+ irlba                    2.3.5.1   2022-10-03 [1] CRAN (R 4.3.0)
+ iterators                1.0.14    2022-02-05 [1] CRAN (R 4.3.0)
+ jquerylib                0.1.4     2021-04-26 [1] CRAN (R 4.3.0)
+ jsonlite                 1.8.7     2023-06-29 [1] CRAN (R 4.3.0)
+ KEGGREST                 1.40.0    2023-04-25 [1] Bioconductor
+ knitr                    1.43      2023-05-25 [1] CRAN (R 4.3.0)
+ labeling                 0.4.3     2023-08-29 [1] CRAN (R 4.3.0)
+ later                    1.3.1     2023-05-02 [1] CRAN (R 4.3.0)
+ lattice                  0.21-8    2023-04-05 [1] CRAN (R 4.3.1)
+ lazyeval                 0.2.2     2019-03-15 [1] CRAN (R 4.3.0)
+ lifecycle                1.0.3     2022-10-07 [1] CRAN (R 4.3.0)
+ limma                    3.56.2    2023-06-06 [1] Bioconductor
+ lobstr                 * 1.1.2     2022-06-22 [1] CRAN (R 4.3.0)
+ locfit                   1.5-9.8   2023-06-11 [1] CRAN (R 4.3.0)
+ magick                   2.7.5     2023-08-07 [1] CRAN (R 4.3.0)
+ magrittr                 2.0.3     2022-03-30 [1] CRAN (R 4.3.0)
+ maps                     3.4.1     2022-10-30 [1] CRAN (R 4.3.0)
+ Matrix                   1.6-1     2023-08-14 [1] CRAN (R 4.3.0)
+ MatrixGenerics         * 1.12.3    2023-07-31 [1] Bioconductor
+ matrixStats            * 1.0.0     2023-06-02 [1] CRAN (R 4.3.0)
+ memoise                  2.0.1     2021-11-26 [1] CRAN (R 4.3.0)
+ metapod                  1.8.0     2023-04-25 [1] Bioconductor
+ mime                     0.12      2021-09-28 [1] CRAN (R 4.3.0)
+ munsell                  0.5.0     2018-06-12 [1] CRAN (R 4.3.0)
+ paletteer                1.5.0     2022-10-19 [1] CRAN (R 4.3.0)
+ pillar                   1.9.0     2023-03-22 [1] CRAN (R 4.3.0)
+ pkgconfig                2.0.3     2019-09-22 [1] CRAN (R 4.3.0)
+ plotly                   4.10.2    2023-06-03 [1] CRAN (R 4.3.0)
+ png                      0.1-8     2022-11-29 [1] CRAN (R 4.3.0)
+ prettyunits              1.1.1     2020-01-24 [1] CRAN (R 4.3.0)
+ promises                 1.2.1     2023-08-10 [1] CRAN (R 4.3.0)
+ purrr                    1.0.2     2023-08-10 [1] CRAN (R 4.3.0)
+ R6                       2.5.1     2021-08-19 [1] CRAN (R 4.3.0)
+ rappdirs                 0.3.3     2021-01-31 [1] CRAN (R 4.3.0)
+ RColorBrewer             1.1-3     2022-04-03 [1] CRAN (R 4.3.0)
+ Rcpp                     1.0.11    2023-07-06 [1] CRAN (R 4.3.0)
+ RCurl                    1.98-1.12 2023-03-27 [1] CRAN (R 4.3.0)
+ rematch2                 2.1.2     2020-05-01 [1] CRAN (R 4.3.0)
+ restfulr                 0.0.15    2022-06-16 [1] CRAN (R 4.3.0)
+ rjson                    0.2.21    2022-01-09 [1] CRAN (R 4.3.0)
+ rlang                    1.1.1     2023-04-28 [1] CRAN (R 4.3.0)
+ rmarkdown                2.24      2023-08-14 [1] CRAN (R 4.3.0)
+ Rsamtools                2.16.0    2023-05-11 [1] Bioconductor
+ RSQLite                  2.3.1     2023-04-03 [1] CRAN (R 4.3.0)
+ rstudioapi               0.15.0    2023-07-07 [1] CRAN (R 4.3.0)
+ rsvd                     1.0.5     2021-04-16 [1] CRAN (R 4.3.0)
+ rtracklayer            * 1.60.1    2023-08-15 [1] Bioconductor
+ S4Arrays                 1.0.6     2023-08-30 [1] Bioconductor
+ S4Vectors              * 0.38.1    2023-05-02 [1] Bioconductor
+ sass                     0.4.7     2023-07-15 [1] CRAN (R 4.3.0)
+ ScaledMatrix             1.8.1     2023-05-03 [1] Bioconductor
+ scales                   1.2.1     2022-08-20 [1] CRAN (R 4.3.0)
+ scater                 * 1.28.0    2023-04-25 [1] Bioconductor
+ scran                  * 1.28.2    2023-07-23 [1] Bioconductor
+ scuttle                * 1.10.2    2023-08-04 [1] Bioconductor
+ sessioninfo              1.2.2     2021-12-06 [1] CRAN (R 4.3.0)
+ shiny                    1.7.5     2023-08-12 [1] CRAN (R 4.3.0)
+ shinyWidgets             0.7.6     2023-01-08 [1] CRAN (R 4.3.0)
+ SingleCellExperiment   * 1.22.0    2023-04-25 [1] Bioconductor
+ spam                     2.9-1     2022-08-07 [1] CRAN (R 4.3.0)
+ sparseMatrixStats        1.12.2    2023-07-02 [1] Bioconductor
+ SpatialExperiment      * 1.11.2    2023-09-02 [1] Bioconductor
+ spatialLIBD            * 1.12.0    2023-04-27 [1] Bioconductor
+ statmod                  1.5.0     2023-01-06 [1] CRAN (R 4.3.0)
+ STexampleData          * 1.8.0     2023-04-27 [1] Bioconductor
+ SummarizedExperiment   * 1.30.2    2023-06-06 [1] Bioconductor
+ tibble                   3.2.1     2023-03-20 [1] CRAN (R 4.3.0)
+ tidyr                    1.3.0     2023-01-24 [1] CRAN (R 4.3.0)
+ tidyselect               1.2.0     2022-10-10 [1] CRAN (R 4.3.0)
+ utf8                     1.2.3     2023-01-31 [1] CRAN (R 4.3.0)
+ uwot                     0.1.16    2023-06-29 [1] CRAN (R 4.3.0)
+ vctrs                    0.6.3     2023-06-14 [1] CRAN (R 4.3.0)
+ vipor                    0.4.5     2017-03-22 [1] CRAN (R 4.3.0)
+ viridis                  0.6.4     2023-07-22 [1] CRAN (R 4.3.0)
+ viridisLite              0.4.2     2023-05-02 [1] CRAN (R 4.3.0)
+ withr                    2.5.0     2022-03-03 [1] CRAN (R 4.3.0)
+ xfun                     0.40      2023-08-09 [1] CRAN (R 4.3.0)
+ XML                      3.99-0.14 2023-03-19 [1] CRAN (R 4.3.0)
+ xtable                   1.8-4     2019-04-21 [1] CRAN (R 4.3.0)
+ XVector                  0.40.0    2023-04-25 [1] Bioconductor
+ yaml                     2.3.7     2023-01-23 [1] CRAN (R 4.3.0)
+ zlibbioc                 1.46.0    2023-04-25 [1] Bioconductor
+
+ [1] /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/library
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Maynard2021" class="csl-entry" role="listitem">
+Maynard, Kristen R., Leonardo Collado-Torres, Lukas M. Weber, Cedric Uytingco, Brianna K. Barry, Stephen R. Williams, Joseph L. Catallini II, et al. 2021. <span>“Transcriptome-Scale Spatial Gene Expression in the Human Dorsolateral Prefrontal Cortex.”</span> <em>Nature Neuroscience</em> 24: 425–36. https://doi.org/<a href="https://doi.org/10.1038/s41593-020-00787-0">https://doi.org/10.1038/s41593-020-00787-0</a>.
+</div>
+<div id="ref-Pardo2022" class="csl-entry" role="listitem">
+Pardo, Brenda, Abby Spangler, Lukas M. Weber, Stephanie C. Page, Stephanie C. Hicks, Andrew E. Jaffe, Keri Martinowich, Kristen R. Maynard, and Leonardo Collado-Torres. 2022. <span>“<span class="nocase">spatialLIBD</span>: An <span>R/Bioconductor</span> Package to Visualize Spatially-Resolved Transcriptomics Data.”</span> <em>BMC Genomics</em>, no. 23: 434. https://doi.org/<a href="https://doi.org/10.1186/s12864-022-08601-w">https://doi.org/10.1186/s12864-022-08601-w</a>.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Check https://github.com/LieberInstitute/spatialLIBD#shiny-website-mirrors in case you need to use a mirror. <code>shiny</code>-powered websites work best on browsers such as Google Chrome and Mozilla Firefox, among others.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Originally available at https://github.com/LieberInstitute/spatialLIBD/blob/master/inst/app/www/documentation_spe.md#slides-and-videos.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>This book is under development, so right now you actually need to use <code>bioc-devel</code>. Once this book is submitted to Bioconductor, then it’ll work with <code>bioc-release</code>. TODO: remove this comment when the book is available on <code>bioc-release</code>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/workflow-Visium-mouseCoronal.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Mouse coronal workflow</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/related-resources.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Related resources</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
