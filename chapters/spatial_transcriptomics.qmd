@@ -10,7 +10,7 @@ For recent reviews of available platforms, computational analysis methods, and o
 In this book, we concentrate on commercially available platforms, since these are most widely used and available. Here, we provide a short overview and introductory details on the platforms used to generate the datasets discussed in this book.
 
 ```{r, echo=FALSE, out.width = "100%", fig.align="center", fig.cap="Illustration of potential uses of spatially-resolved transcriptomics data and how it can be combined with single cell/nucleus RNA-seq to study tissues of interest such as the human brain. Source: @Maynard2020a."}
-knitr::include_graphics("../images/Maynard2020_spatial.png")
+knitr::include_graphics("https://github.com/lmweber/BestPracticesST-resources/blob/427dc1b8c1f5cffc0bc089f738bd43b5ab1bc073/images/Maynard2020_spatial.png")
 ```
 
 
@@ -32,7 +32,7 @@ Histology images generated from hematoxylin and eosin (H&E) staining can be used
 
 
 ```{r Visium-schematic, echo=FALSE, fig.wide=TRUE, fig.align="center", fig.cap="Schematic of 10x Genomics Visium platform. Source: [10x Genomics Visium website](https://www.10xgenomics.com/spatial-transcriptomics/)"}
-knitr::include_graphics("../images/Visium.png")
+knitr::include_graphics("https://github.com/lmweber/BestPracticesST-resources/blob/427dc1b8c1f5cffc0bc089f738bd43b5ab1bc073/images/Visium.png")
 ```
 
 
