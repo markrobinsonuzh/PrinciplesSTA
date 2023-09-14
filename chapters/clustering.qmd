@@ -2,11 +2,13 @@
 
 ## Overview
 
-Clustering is used in single-cell and spatial analysis to identify cell types.
+In ST data, we can apply clustering algorithms to identify 'spatial domains', which represent spatially defined regions consisting of consistent gene expression profiles. In many (but not all) cases, spatial domains consist of regions with a single cell type or a consistent mixture of cell types.
 
-Cell types and subtypes can be defined at various resolutions, depending on biological context. For the purposes of clustering, this means that the desired number of clusters also depends on biological context.
+If we apply clustering algorithms from single-cell workflows to ST data (without including any spatial information), then this is the same as applying clustering to identify cell types in single-cell data (although each spot may contain one or more cells, depending on the platform and tissue cell density).
 
-In the spatial context, we may be interested in e.g. (i) identifying cell types or subtypes that occur in biologically interesting spatial patterns, or (ii) identifying major cell types and performing subsequent analyses within these cell types.
+It is important to keep in mind that cell types and states can be defined at various resolutions (or on a continuum). For the purposes of clustering, this means that the optimal number of clusters depends on the biological context. There is no "true" number of clusters -- this depends on the biological context (e.g. major cell populations vs. rare subtypes).
+
+Once we have identified spatial domains by clustering or manual analyses, these can then be further investigated by differential expression testing to identify representative genes.
 
 
 ## Previous steps
@@ -70,7 +72,7 @@ colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 
 ## Non-spatial clustering on HVGs
 
-We can perform clustering by applying standard clustering methods developed for single-cell RNA sequencing data, using molecular features (gene expression). Here, we apply graph-based clustering using the Walktrap method implemented in `scran` [@Lun2016], applied to the top 50 PCs calculated on the set of top HVGs.
+Here, we perform clustering by applying standard clustering methods developed for single-cell RNA sequencing data, using molecular features (gene expression) only. We apply graph-based clustering using the Walktrap method implemented in `scran` [@Lun2016], applied to the top 50 PCs calculated on the set of top HVGs.
 
 In the context of spatial data, this means we assume that biologically informative spatial distribution patterns of cell types can be detected from the molecular features (gene expression).
 
@@ -121,7 +123,7 @@ plotDimRed(spe, type = "UMAP",
 
 ## Spatially-aware clustering
 
-In SRT data, we can also perform clustering that takes spatial information into account, for example to identify spatially compact or spatially connected clusters.
+In ST data, we can also perform clustering that takes spatial information into account, for example to identify spatially compact or spatially connected clusters.
 
 A simple strategy is to perform graph-based clustering on a set of features (columns) that includes both molecular features (gene expression) and spatial features (x-y coordinates). In this case, a crucial tuning parameter is the relative amount of scaling between the two data modalities -- if the scaling is chosen poorly, either the molecular or spatial features will dominate the clustering. Depending on data availability, further modalities could also be included. In this section, we will include some examples on this clustering approach.
 
