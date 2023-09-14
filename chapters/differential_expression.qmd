@@ -2,7 +2,7 @@
 
 ## Background
 
-In this chapter, we identify marker genes for each cluster by testing for differential expression between clusters.
+In this chapter, we perform differential expression testing between clusters or spatial domains to identify representative marker genes for each cluster or spatial domain.
 
 
 ## Previous steps
@@ -74,11 +74,11 @@ colLabels(spe) <- factor(clus)
 ```
 
 
-## Marker genes
+## Differential expression testing
 
-Identify marker genes by testing for differential gene expression between clusters.
+Identify representative marker genes for each cluster or spatial domain by testing for differential gene expression between clusters.
 
-We use the `findMarkers` implementation in `scran` [@Lun2016], using a binomial test, which tests for genes that differ in the proportion expressed vs. not expressed between clusters. This is a more stringent test than the default t-tests, and tends to select genes that are easier to interpret and validate experimentally.
+Here, we use the `findMarkers` implementation in `scran` [@Lun2016], using a binomial test, which tests for genes that differ in the proportion expressed vs. not expressed between clusters. This is a more stringent test than the default t-tests, and tends to select genes that are easier to interpret and validate experimentally.
 
 ```{r, message=FALSE}
 library(scran)
@@ -113,4 +113,9 @@ top_genes <- head(rownames(interesting))
 
 plotExpression(spe, x = "label", features = top_genes)
 ```
+
+
+## Pseudobulking
+
+Alternatively, we can proceed by manually aggregating the counts per cluster or spatial domain, which is referred to as 'pseudobulking'. Then, we can perform differential expression testing between the pseudobulked clusters or spatial domains.
 
