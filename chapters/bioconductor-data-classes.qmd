@@ -31,7 +31,7 @@ Note that these classes extend `SpatialExperiment` and are compatible with `Spat
 
 ### MoleculeExperiment
 
-`MoleculeExperiment` is available as a [Bioconductor package](https://bioconductor.org/packages/MoleculeExperiment) and described in detail in a paper by @CoutoPeters2023.
+`MoleculeExperiment` is available as a [Bioconductor package](https://bioconductor.org/packages/MoleculeExperiment) and described in detail in a paper by @PetersCouto2023.
 
 
 ### SpatialFeatureExperiment
