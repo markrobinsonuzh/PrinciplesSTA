@@ -12,12 +12,14 @@ book:
   cover-image: Bioconductor-rh.png
   chapters:
     - index.qmd
-    - part: chapters/introduction.qmd
+    - part: "Introduction"
       chapters:
+        - chapters/introduction.qmd
         - chapters/spatial_transcriptomics.qmd
         - chapters/bioconductor-data-classes.qmd
-    - part: chapters/analysis_steps.qmd
+    - part: "Analysis steps"
       chapters:
+        - chapters/analysis_steps.qmd
         - chapters/quality_control.qmd
         - chapters/normalization.qmd
         - chapters/feature_selection.qmd
@@ -25,8 +27,9 @@ book:
         - chapters/clustering.qmd
         - chapters/spot_deconvolution.qmd
         - chapters/differential_expression.qmd
-    - part: chapters/workflows.qmd
+    - part: "Workflows"
       chapters:
+        - chapters/workflows.qmd
         - chapters/workflow_Visium_humanDLPFC.qmd
         - chapters/workflow_Visium_mouseCoronal.qmd
         - chapters/workflow_Visium_spatialLIBD.qmd
