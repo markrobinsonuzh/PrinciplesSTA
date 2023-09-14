@@ -1,26 +1,19 @@
-# Contributors and acknowledgments
+# Contributors {#sec-contributors}
 
-## Best Practices for Spatial Transcriptomics Analysis with Bioconductor
+## 'Best Practices for Spatial Transcriptomics Analysis with Bioconductor' book
 
 - [Lukas M. Weber](https://lmweber.org/), *Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA*
-- [Abby Spangler](https://twitter.com/abspangler), *Lieber Institute for Brain Development, Baltimore, MD, USA*
-- [Madhavi Tippani](https://twitter.com/MadhaviTippani), *Lieber Institute for Brain Development, Baltimore, MD, USA*
 - [Leonardo Collado-Torres](https://lcolladotor.github.io/), *Lieber Institute for Brain Development, Baltimore, MD, USA*
 - [Stephanie C. Hicks](https://www.stephaniehicks.com/), *Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA*
 
-As well as [GitHub contributors](https://github.com/lmweber/BestPracticesST/graphs/contributors) who have helped us improve this book over time. Thank you for your contributions!
+As well as additional [GitHub contributors](https://github.com/lmweber/BestPracticesST/graphs/contributors)
 
 
-## SpatialExperiment
+## SpatialExperiment data class
 
 - Dario Righelli, *Department of Statistical Sciences, University of Padova, Padova, Italy*
 - Helena L. Crowell, *Department of Molecular Life Sciences, University of Zurich, Zurich, Switzerland*
 - Aaron Lun, *Genentech, South San Francisco, CA, USA*
 - Stephanie C. Hicks, *Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA*
 - Davide Risso, *Department of Statistical Sciences, University of Padova, Padova, Italy*
-
-
-## GitHub Actions workflow
-
-The GitHub Actions workflow used to build the online version of the book is based on [`biocthis`](https://bioconductor.org/packages/biocthis) and uses the [Bioconductor Docker images](http://bioconductor.org/help/docker/).
 

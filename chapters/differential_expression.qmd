@@ -1,4 +1,4 @@
-# Marker genes
+# Differential expression {#sec-differential-expression}
 
 ## Background
 

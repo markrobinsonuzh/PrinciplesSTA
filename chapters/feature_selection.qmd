@@ -1,4 +1,4 @@
-# Feature selection
+# Feature selection {#sec-feature-selection}
 
 ## Background
 

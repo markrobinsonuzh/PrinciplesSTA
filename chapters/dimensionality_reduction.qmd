@@ -1,4 +1,4 @@
-# Dimensionality reduction
+# Dimensionality reduction {#sec-dimensionality-reduction}
 
 ## Background
 

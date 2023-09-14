@@ -1,4 +1,4 @@
-# Introduction
+# Introduction {#sec-introduction}
 
 This book provides interactive examples of computational analysis workflows for spatially-resolved transcriptomics data using the [Bioconductor](http://bioconductor.org/) framework within the R programming language.
 
@@ -24,7 +24,7 @@ This book is intended for readers who have some experience with R, but does not 
 
 For readers who are new to R and Bioconductor, additional useful resources include:
 
-- The [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://osca.bioconductor.org/) book ([Amezquita et al. 2019](https://doi.org/10.1038/s41592-019-0654-x)), which contains comprehensive resources on analysis workflows for single-cell data, as well as additional introductory material on R and Bioconductor.
+- The [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://osca.bioconductor.org/) book [@Amezquita2020], which contains comprehensive resources on analysis workflows for single-cell data, as well as additional introductory material on R and Bioconductor.
 
 - The [R for Data Science](https://r4ds.had.co.nz/) online book provides an excellent introduction to R.
 
@@ -39,7 +39,7 @@ Additional details on data preprocessing procedures for spatially-resolved trans
 
 ## Bioconductor
 
-[Bioconductor](http://bioconductor.org/) is an *open source* and *open development* project, providing a cohesive and flexible framework for analyzing high-throughput genomic data in R ([Huber et al. 2015](https://doi.org/10.1038/nmeth.3252)). The Bioconductor project consists of more than 2,000 contributed R packages, as well as core infrastructure maintained by the Bioconductor Core Team, providing a rich analysis environment for users.
+[Bioconductor](http://bioconductor.org/) is an *open source* and *open development* project, providing a cohesive and flexible framework for analyzing high-throughput genomic data in R [@Huber2015]. The Bioconductor project consists of more than 2,000 contributed R packages, as well as core infrastructure maintained by the Bioconductor Core Team, providing a rich analysis environment for users.
 
 One of the main advantages of Bioconductor is the modularity and open development philosophy. R packages are contributed by numerous research groups, with the Bioconductor Core Team coordinating the overall project and maintaining core infrastructure, build testing, and development guidelines. A key feature is that contributed packages use consistent data structures, enabling users to integrate packages into analysis workflows. Bioconductor packages also include comprehensive documentation, including long-form tutorials or vignettes.
 

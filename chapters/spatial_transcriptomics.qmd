@@ -1,4 +1,4 @@
-# Spatially-resolved transcriptomics
+# Spatial transcriptomics {#sec-spatial-transcriptomics}
 
 Spatially-resolved transcriptomics (SRT) refers to high-throughput genomic technologies that enable the measurement of large sets of genes at a large number of spatial locations (e.g. up to thousands of genes at thousands of measurement locations), usually on two-dimensional tissue sections. A number of technological platforms have been developed, each with their unique advantages. SRT was named the [Method of the Year 2020](https://doi.org/10.1038/s41592-020-01042-x) by Nature Methods, and has found widespread application in numerous biological systems.
 

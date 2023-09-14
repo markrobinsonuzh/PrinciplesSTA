@@ -1,8 +1,8 @@
-# Spot-level deconvolution
+# Spot deconvolution {#sec-spot-deconvolution}
 
 ## Background
 
-Spot-level SRT data can contain zero, one, or multiple cells per spot, depending on the tissue density and technological platform used. This characteristic of the data influences several steps in analysis pipelines, especially [Quality control] and [Clustering].
+Spot-level SRT data can contain zero, one, or multiple cells per spot, depending on the tissue density and technological platform used. This characteristic of the data influences several steps in analysis pipelines, especially @sec-quality-control and @sec-clustering.
 
 This is also a unique characteristic of SRT data, which is distinct from single-cell data, so here we cannot easily apply existing methods from single-cell pipelines.
 

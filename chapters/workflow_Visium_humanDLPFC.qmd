@@ -1,4 +1,4 @@
-# Human DLPFC workflow
+# Human DLPFC workflow {#sec-workflow-human-dlpfc}
 
 This workflow analyzes one sample of human brain from the dorsolateral prefrontal cortex (DLPFC) region, measured using the 10x Genomics Visium platform. This is a condensed version of the analyses shown in the individual analysis chapters in the previous part. For more details on the individual steps, see the previous chapters.
 
@@ -54,7 +54,7 @@ spe <- spe[, colData(spe)$in_tissue == 1]
 dim(spe)
 ```
 
-Next, calculate spot-level QC metrics using the `scater` package [@McCarthy2017], and store the QC metrics in `colData`. See [Quality control] for more details, including explanations of the QC metrics.
+Next, calculate spot-level QC metrics using the `scater` package [@McCarthy2017], and store the QC metrics in `colData`. See @sec-quality-control for more details, including explanations of the QC metrics.
 
 ```{r, message=FALSE}
 library(scater)
@@ -71,7 +71,7 @@ spe <- addPerCellQC(spe, subsets = list(mito = is_mito))
 head(colData(spe), 3)
 ```
 
-Select filtering thresholds for the QC metrics by examining distributions using histograms. For additional details, including further exploratory visualizations to select the thresholds, see [Quality control]. Here, we use relatively relaxed thresholds, since the additional exploratory visualizations showed that more stringent thresholds tended to remove groups of spots corresponding to biologically meaningful regions.
+Select filtering thresholds for the QC metrics by examining distributions using histograms. For additional details, including further exploratory visualizations to select the thresholds, see @sec-quality-control. Here, we use relatively relaxed thresholds, since the additional exploratory visualizations showed that more stringent thresholds tended to remove groups of spots corresponding to biologically meaningful regions.
 
 ```{r, fig.width=7, fig.height=3}
 # histograms of QC metrics
@@ -119,7 +119,7 @@ dim(spe)
 
 ## Normalization
 
-Calculate log-transformed normalized counts (logcounts) with the library size factors methodology, using methods from `scater` [@McCarthy2017] and `scran` [@Lun2016], making the assumption that spots can be treated as equivalent to cells. For more details, see [Normalization].
+Calculate log-transformed normalized counts (logcounts) with the library size factors methodology, using methods from `scater` [@McCarthy2017] and `scran` [@Lun2016], making the assumption that spots can be treated as equivalent to cells. For more details, see @sec-normalization.
 
 ```{r, message=FALSE}
 library(scran)
@@ -141,7 +141,7 @@ assayNames(spe)
 
 ## Feature selection
 
-Identify a set of top highly variable genes (HVGs), which will be used to define cell types. We use methods from `scran` [@Lun2016], treating spots as equivalent to single cells, and considering only molecular features (gene expression) as described in [Feature selection]. We also first filter out mitochondrial genes, since these are very highly expressed and not of main biological interest here.
+Identify a set of top highly variable genes (HVGs), which will be used to define cell types. We use methods from `scran` [@Lun2016], treating spots as equivalent to single cells, and considering only molecular features (gene expression) as described in @sec-feature-selection. We also first filter out mitochondrial genes, since these are very highly expressed and not of main biological interest here.
 
 ```{r}
 # remove mitochondrial genes
@@ -167,7 +167,7 @@ length(top_hvgs)
 
 ## Spatially-aware feature selection
 
-Alternatively, run [nnSVG](https://bioconductor.org/packages/nnSVG) to identify a set of top spatially variable genes (SVGs) instead of HVGs.
+Alternatively, run [nnSVG](https://bioconductor.org/packages/nnSVG) [@Weber2023] to identify a set of top spatially variable genes (SVGs) instead of HVGs.
 
 Here, we run nnSVG using a small subset of the dataset for faster runtime. We select a subset of the data by subsampling on the set of spots and including stringent filtering for low-expressed genes. For a full analysis, we recommend running `nnSVG` on all spots and using default filtering parameters (for Visium data from human brain tissue), which takes around 45 minutes for one Visium slide on a standard laptop using multiple cores.
 
@@ -246,7 +246,7 @@ colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 
 ## Clustering
 
-Next, we perform clustering to define cell types. Here, we use molecular features (gene expression) only, as described in [Clustering]. We apply graph-based clustering using the Walktrap method implemented in `scran` [@Lun2016], applied to the top 50 PCs calculated on the set of top HVGs.
+Next, we perform clustering to define cell types. Here, we use molecular features (gene expression) only, as described in @sec-clustering. We apply graph-based clustering using the Walktrap method implemented in `scran` [@Lun2016], applied to the top 50 PCs calculated on the set of top HVGs.
 
 ```{r}
 # graph-based clustering

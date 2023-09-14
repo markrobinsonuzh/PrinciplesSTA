@@ -1,4 +1,4 @@
-# Normalization
+# Normalization {#sec-normalization}
 
 ## Background
 

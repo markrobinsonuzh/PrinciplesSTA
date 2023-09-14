@@ -13,7 +13,7 @@ book:
     - index.qmd
     - part: chapters/introduction.qmd
       chapters:
-        - chapters/spatially_resolved_transcriptomics.qmd
+        - chapters/spatial_transcriptomics.qmd
         - chapters/bioconductor-data-classes.qmd
     - part: chapters/analysis_steps.qmd
       chapters:
@@ -22,8 +22,8 @@ book:
         - chapters/feature_selection.qmd
         - chapters/dimensionality_reduction.qmd
         - chapters/clustering.qmd
-        - chapters/marker_genes.qmd
-        - chapters/deconvolution.qmd
+        - chapters/spot_deconvolution.qmd
+        - chapters/differential_expression.qmd
     - part: chapters/workflows.qmd
       chapters:
         - chapters/workflow_Visium_humanDLPFC.qmd
@@ -31,8 +31,10 @@ book:
         - chapters/workflow_Visium_spatialLIBD.qmd
   appendices:
     - chapters/related_resources.qmd
-    - chapters/contributors_acknowledgments.qmd
+    - chapters/contributors.qmd
     - chapters/references.qmd
+
+number-sections: true
 
 bibliography: references.bib
 

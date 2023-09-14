@@ -1,4 +1,4 @@
-# Bioconductor data classes
+# Bioconductor data classes {#sec-bioconductor-data-classes}
 
 Bioconductor provides several data classes for storing and manipulating SRT datasets. By relying on these standardized data classes, we can build analysis workflows that can easily connect methods and packages developed by different groups.
 
