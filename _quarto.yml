@@ -15,27 +15,27 @@ book:
     - part: "Introduction"
       chapters:
         - chapters/introduction.qmd
-        - chapters/spatial_transcriptomics.qmd
+        - chapters/spatial-transcriptomics.qmd
         - chapters/bioconductor-data-classes.qmd
     - part: "Analysis steps"
       chapters:
-        - chapters/analysis_steps.qmd
-        - chapters/quality_control.qmd
+        - chapters/analysis-steps.qmd
+        - chapters/quality-control.qmd
         - chapters/normalization.qmd
-        - chapters/feature_selection.qmd
-        - chapters/dimensionality_reduction.qmd
+        - chapters/feature-selection.qmd
+        - chapters/dimensionality-reduction.qmd
         - chapters/clustering.qmd
-        - chapters/spot_deconvolution.qmd
-        - chapters/spatial_registration.qmd
-        - chapters/differential_expression.qmd
+        - chapters/spot-deconvolution.qmd
+        - chapters/spatial-registration.qmd
+        - chapters/differential-expression.qmd
     - part: "Workflows"
       chapters:
         - chapters/workflows.qmd
-        - chapters/workflow_Visium_humanDLPFC.qmd
-        - chapters/workflow_Visium_mouseCoronal.qmd
-        - chapters/workflow_Visium_spatialLIBD.qmd
+        - chapters/workflow-Visium-humanDLPFC.qmd
+        - chapters/workflow-Visium-mouseCoronal.qmd
+        - chapters/workflow-Visium-spatialLIBD.qmd
   appendices:
-    - chapters/related_resources.qmd
+    - chapters/related-resources.qmd
     - chapters/contributors.qmd
     - chapters/references.qmd
 
