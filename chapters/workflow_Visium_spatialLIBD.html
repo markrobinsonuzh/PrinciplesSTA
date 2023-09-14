@@ -566,7 +566,7 @@ A BibTeX entry for LaTeX users is
 <span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>time_prereqs <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
 <span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>time_prereqs <span class="sc">-</span> time_start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 1.343112 mins</code></pre>
+<pre><code>Time difference of 1.419435 mins</code></pre>
 </div>
 </div>
 </section>
@@ -777,10 +777,10 @@ imgData names(4): sample_id image_id data scaleFactor</code></pre>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="do">## How long this code took to run</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>time_end <span class="sc">-</span> time_prereqs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 40.19933 secs</code></pre>
+<pre><code>Time difference of 40.41972 secs</code></pre>
 </div>
 </div>
-<p>Creating our final <code>spe</code> object took 2.01310046513875 to run. So you might want to save this object for later use.</p>
+<p>Creating our final <code>spe</code> object took 2.09309718211492 to run. So you might want to save this object for later use.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(spe, <span class="at">file =</span> <span class="st">"spe_workflow_Visium_spatialLIBD.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1029,7 +1029,7 @@ TTGTTTGTGTAAATTC-1               0               NA</code></pre>
  )</code></pre>
 </div>
 </div>
-<p>Note that we have copied the default <a href="https://github.com/LieberInstitute/spatialLIBD/tree/master/inst/app/www"><code>www</code> directory files from the <code>spatialLIBD</code> repository</a> and <a href="(https://github.com/lmweber/BestPracticesST-resources/tree/main/spatialLIBD_demo/www)">adapted them to our liking</a>. We then use these files with <code>spatialLIBD::run_app(docs_path)</code> in our <code>app.R</code> script. These files help us control portions of our <code>spatialLIBD</code>-powered website and customize it to our liking.</p>
+<p>Note that we have copied the default <a href="https://github.com/LieberInstitute/spatialLIBD/tree/master/inst/app/www"><code>www</code> directory files from the <code>spatialLIBD</code> repository</a> and <a href="https://github.com/lmweber/BestPracticesST-resources/tree/main/spatialLIBD_demo/www">adapted them to our liking</a>. We then use these files with <code>spatialLIBD::run_app(docs_path)</code> in our <code>app.R</code> script. These files help us control portions of our <code>spatialLIBD</code>-powered website and customize it to our liking.</p>
 <p>If you follow this workflow, you’ll end up with a website <a href="https://libd.shinyapps.io/OSTA_spatialLIBD_demo/">just like this one</a>. In our case, we further configured our website through the shinyapps.io dashboard. We selected the following options:</p>
 <ul>
 <li><em>General</em> <code>Instance Size</code>: 3X-Large (8GB)</li>
