@@ -5,7 +5,7 @@ book:
   title: "Best Practices for Spatial Transcriptomics Analysis with Bioconductor"
   date: today
   sidebar:
-    title: "Best Practices ST Bioconductor"
+    title: "Best Practices ST"
     style: docked
   search: true
   repo-url: https://github.com/lmweber/BestPracticesST
