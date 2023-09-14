@@ -70,7 +70,7 @@ colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 
 ## Non-spatial clustering on HVGs
 
-We can perform clustering by applying standard clustering methods developed for single-cell RNA sequencing data, using molecular features (gene expression). Here, we apply graph-based clustering using the Walktrap method implemented in `scran` ([Lun et al. 2016](https://doi.org/10.12688/f1000research.9501.2)), applied to the top 50 PCs calculated on the set of top HVGs.
+We can perform clustering by applying standard clustering methods developed for single-cell RNA sequencing data, using molecular features (gene expression). Here, we apply graph-based clustering using the Walktrap method implemented in `scran` [@Lun2016], applied to the top 50 PCs calculated on the set of top HVGs.
 
 In the context of spatial data, this means we assume that biologically informative spatial distribution patterns of cell types can be detected from the molecular features (gene expression).
 
@@ -127,9 +127,9 @@ A simple strategy is to perform graph-based clustering on a set of features (col
 
 More sophisticated approaches for spatially-aware clustering include the following:
 
-- **BayesSpace**: available as an R package from [Bioconductor](https://bioconductor.org/packages/BayesSpace) and described by [Zhao et al. (2021)](https://doi.org/10.1038/s41587-021-00935-2)
+- **BayesSpace**: available as an R package from [Bioconductor](https://bioconductor.org/packages/BayesSpace) and described by @Zhao2021
 
-- **SpaGCN**: available as a Python package from [GitHub](https://github.com/jianhuupenn/SpaGCN) and described by [Hu et al. (2021)](https://doi.org/10.1038/s41592-021-01255-8)
+- **SpaGCN**: available as a Python package from [GitHub](https://github.com/jianhuupenn/SpaGCN) and described by @Hu2021
 
-- **PRECAST**: available as an R package from [CRAN](https://cran.r-project.org/package=PRECAST) and described by [Liu and Liao et al. (2023)](https://doi.org/10.1038/s41467-023-35947-w)
+- **PRECAST**: available as an R package from [CRAN](https://cran.r-project.org/package=PRECAST) and described by @Liu2023
 

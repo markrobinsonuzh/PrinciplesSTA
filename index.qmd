@@ -2,9 +2,9 @@
 
 This is the website for the online book **'Best Practices for Spatial Transcriptomics Analysis with Bioconductor'**.
 
-This book provides several examples of computational analysis workflows for spatially resolved-transcriptomics (SRT) data, using the [Bioconductor](http://bioconductor.org/) framework within the R programming language. The chapters contain details on individual analysis steps as well as complete workflows, with example datasets and R code that can be run on your own laptop.
+This book provides examples of computational analysis workflows for spatially resolved-transcriptomics data, using the [Bioconductor](http://bioconductor.org/) framework within the R programming language. The chapters contain details on individual analysis steps as well as complete workflows, with example datasets and R code that can be run on your own laptop.
 
-The book is organized into several parts, including background, individual analysis steps, and example workflows.
+The book is organized into several parts, including background, analysis steps, and example workflows.
 
-Additional details on single-cell analysis workflows as well as introductory material on R and Bioconductor can be found in the related book [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://osca.bioconductor.org/).
+Additional details on analysis workflows for non-spatial single-cell data as well as introductory material on R and Bioconductor can be found in the related book [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://osca.bioconductor.org/).
 

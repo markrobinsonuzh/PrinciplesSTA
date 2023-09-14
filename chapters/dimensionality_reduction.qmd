@@ -73,7 +73,7 @@ dim(reducedDim(spe, "PCA"))
 
 ## Uniform Manifold Approximation and Projection (UMAP)
 
-We also run UMAP [@McInnes2018] on the set of top 50 PCs and retain the top 2 UMAP components, which will be used for visualization purposes.
+We also run UMAP on the set of top 50 PCs and retain the top 2 UMAP components, which will be used for visualization purposes.
 
 ```{r}
 # compute UMAP on top 50 PCs

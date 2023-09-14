@@ -46,7 +46,7 @@ spe <- logNormCounts(spe)
 
 ## Highly variable genes (HVGs)
 
-We use methods from `scran` ([Lun et al. 2016](https://doi.org/10.12688/f1000research.9501.2)) to identify a set of top highly variable genes (HVGs), which can be used to define major cell types. These methods were originally developed for single-cell RNA sequencing (scRNA-seq) data, so here we are making the assumption that spots can be treated as equivalent to cells.
+We use methods from `scran` [@Lun2016] to identify a set of top highly variable genes (HVGs), which can be used to define major cell types. These methods were originally developed for single-cell RNA sequencing (scRNA-seq) data, so here we are making the assumption that spots can be treated as equivalent to cells.
 
 Note that HVGs are defined based only on molecular features (i.e. gene expression), and do not take any spatial information into account. If the biologically meaningful spatial information in this dataset mainly reflects spatial distributions of major cell types, then relying on HVGs for downstream analyses may be sufficient. But if there are additional important spatial features in the dataset, then it may be more meaningful to investigate spatially variable genes (SVGs).
 
@@ -87,11 +87,11 @@ Simple approaches to identify SVGs include standard statistical measures such as
 
 Sophisticated statistical methods to identify SVGs adapted to the properties of SRT data have also been developed, including the following:
 
-- **nnSVG**: available as an R package from [Bioconductor](https://bioconductor.org/packages/nnSVG) and described by [Weber et al. (2023)](https://doi.org/10.1038/s41467-023-39748-z)
+- **nnSVG**: available as an R package from [Bioconductor](https://bioconductor.org/packages/nnSVG) and described by @Weber2023
 
-- **SPARK-X**: available as an R package from [GitHub](https://xzhoulab.github.io/SPARK/) and described by [Zhou et al. (2021)](https://doi.org/10.1186/s13059-021-02404-0)
+- **SPARK-X**: available as an R package from [GitHub](https://xzhoulab.github.io/SPARK/) and described by @Zhu2021
 
-- **SPARK**: available as an R package from [GitHub](https://xzhoulab.github.io/SPARK/) and described by [Sun et al. (2020)](https://doi.org/10.1038/s41592-019-0701-7)
+- **SPARK**: available as an R package from [GitHub](https://xzhoulab.github.io/SPARK/) and described by @Sun2020
 
-- **SpatialDE**: available as a Python package from [GitHub](https://github.com/Teichlab/SpatialDE) and described by [Svensson et al. (2018)](https://doi.org/10.1038/nmeth.4636)
+- **SpatialDE**: available as a Python package from [GitHub](https://github.com/Teichlab/SpatialDE) and described by @Svensson2018
 

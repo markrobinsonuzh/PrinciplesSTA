@@ -2,9 +2,9 @@
 
 ## Overview
 
-In the previous workflow, [Human DLPFC workflow], you practiced some of the basics with a portion of the postmortem human brain dataset @Maynard2021. The goal of this workflow is to learn what steps you need to carry out in order to create an interactive website to visualize this type of data. For this, we'll use the [`spatialLIBD`](http://bioconductor.org/packages/spatialLIBD) Bioconductor package @Pardo2021.
+In the previous workflow, [Human DLPFC workflow], you practiced some of the basics with a portion of the postmortem human brain dataset @Maynard2021. The goal of this workflow is to learn what steps you need to carry out in order to create an interactive website to visualize this type of data. For this, we'll use the [`spatialLIBD`](http://bioconductor.org/packages/spatialLIBD) Bioconductor package @Pardo2022.
 
-```{r, echo=FALSE, out.width = "100%", fig.align="center", fig.cap="`spatialLIBD` overview. Source: [Pardo et al, _bioRxiv_, 2021](https://doi.org/10.1101/2021.04.29.440149)."}
+```{r, echo=FALSE, out.width = "100%", fig.align="center", fig.cap="`spatialLIBD` overview. Source: @Pardo2022."}
 knitr::include_graphics("../images/spatialLIBD_Figure1.png")
 ```
 
@@ -12,7 +12,7 @@ knitr::include_graphics("../images/spatialLIBD_Figure1.png")
 
 ### Why use spatialLIBD?
 
-Before we dive into the R code, let's first revisit why you might want to use `spatialLIBD`. This package has a function, `spatialLIBD::run_app(spe)`, which will create an interactive website using a `SpatialExperiment` object (`spe`). The interactive website it creates has several features that were initially designed for a specific dataset @Maynard2021 and later made flexible for any dataset @Pardo2021. These features include panels to visualize spots from the Visium platform by 10x Genomics:
+Before we dive into the R code, let's first revisit why you might want to use `spatialLIBD`. This package has a function, `spatialLIBD::run_app(spe)`, which will create an interactive website using a `SpatialExperiment` object (`spe`). The interactive website it creates has several features that were initially designed for a specific dataset @Maynard2021 and later made flexible for any dataset @Pardo2022. These features include panels to visualize spots from the Visium platform by 10x Genomics:
 
 * for one tissue section at a time, either with interactive or static versions 
 * multiple tissue sections at a time, either interactively or statically
@@ -47,7 +47,7 @@ citation("spatialLIBD")[1]
 
 #### Recordings
 
-If you prefer to watch recordings of presentations related to the dataset @Maynard2021 or `spatialLIBD` @Pardo2021, check the following ^[Originally available at https://github.com/LieberInstitute/spatialLIBD/blob/master/inst/app/www/documentation_spe.md#slides-and-videos.]:
+If you prefer to watch recordings of presentations related to the dataset @Maynard2021 or `spatialLIBD` @Pardo2022, check the following ^[Originally available at https://github.com/LieberInstitute/spatialLIBD/blob/master/inst/app/www/documentation_spe.md#slides-and-videos.]:
 
 <iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/dde92cd6dfc04f9589770e074915658f" title="BioTuring_spatialLIBD" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 420;" data-ratio="1.3333333333333333"></iframe>
 
