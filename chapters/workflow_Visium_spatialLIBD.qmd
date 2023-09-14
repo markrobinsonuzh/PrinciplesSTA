@@ -418,7 +418,7 @@ The RStudio prompts will guide you along the process for authenticating to your 
 cat(paste0(readLines("https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/spatialLIBD_demo/deploy.R"), "\n"))
 ```
 
-Note that we have copied the default [`www` directory files from the `spatialLIBD` repository](https://github.com/LieberInstitute/spatialLIBD/tree/master/inst/app/www) and [adapted them to our liking]((https://github.com/lmweber/BestPracticesST-resources/tree/main/spatialLIBD_demo/www)). We then use these files with `spatialLIBD::run_app(docs_path)` in our `app.R` script. These files help us control portions of our `spatialLIBD`-powered website and customize it to our liking.
+Note that we have copied the default [`www` directory files from the `spatialLIBD` repository](https://github.com/LieberInstitute/spatialLIBD/tree/master/inst/app/www) and [adapted them to our liking](https://github.com/lmweber/BestPracticesST-resources/tree/main/spatialLIBD_demo/www). We then use these files with `spatialLIBD::run_app(docs_path)` in our `app.R` script. These files help us control portions of our `spatialLIBD`-powered website and customize it to our liking.
 
 If you follow this workflow, you'll end up with a website [just like this one](https://libd.shinyapps.io/OSTA_spatialLIBD_demo/). In our case, we further configured our website through the shinyapps.io dashboard. We selected the following options:
 
