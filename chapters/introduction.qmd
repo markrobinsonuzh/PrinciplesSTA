@@ -1,19 +1,19 @@
 # Introduction {#sec-introduction}
 
-This book provides interactive examples of computational analysis workflows for spatially-resolved transcriptomics data using the [Bioconductor](http://bioconductor.org/) framework within the R programming language.
+This book provides examples and discussion on best practices for computational analysis workflows for spatial transcriptomics data, using the [Bioconductor](http://bioconductor.org/) framework within R.
 
 
 ## Contents
 
-Chapters are organized into several parts:
+The chapters are organized into several parts:
 
-- **Introduction:** introduction, background, and R/Bioconductor data classes
+- **Introduction:** introduction, background on spatial transcriptomics, and R/Bioconductor data classes
 
-- **Analysis steps:** chapters on individual analysis steps
+- **Analysis steps:** individual analysis steps
 
-- **Workflows:** complete workflows for several example datasets
+- **Workflows:** complete analysis workflows for several example datasets
 
-- **Appendix:** related resources, contributors and acknowledgments, and references
+- **Appendix:** related resources, contributors, and references
 
 
 ## Who this book is for
