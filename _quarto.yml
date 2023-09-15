@@ -28,6 +28,7 @@ book:
         - chapters/spot-deconvolution.qmd
         - chapters/spatial-registration.qmd
         - chapters/differential-expression.qmd
+        - chapters/multiple-samples.qmd
     - part: "Workflows"
       chapters:
         - chapters/workflows.qmd
