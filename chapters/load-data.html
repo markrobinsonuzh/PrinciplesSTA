@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Best Practices for Spatial Transcriptomics Analysis with Bioconductor - Appendix A — Related resources</title>
+<title>Best Practices for Spatial Transcriptomics Analysis with Bioconductor - 5&nbsp; Load data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -49,8 +83,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/contributors.html" rel="next">
-<link href="../chapters/workflow-Visium-spatialLIBD.html" rel="prev">
+<link href="../chapters/quality-control.html" rel="next">
+<link href="../chapters/analysis-steps.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -93,7 +127,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/related-resources.html">Appendices</a></li><li class="breadcrumb-item"><a href="../chapters/related-resources.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Related resources</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/analysis-steps.html">Analysis steps</a></li><li class="breadcrumb-item"><a href="../chapters/load-data.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Load data</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -173,7 +207,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/load-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/load-data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Load data</span></span></a>
   </div>
 </li>
@@ -279,7 +313,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/related-resources.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/related-resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Related resources</span></span></a>
   </div>
 </li>
@@ -307,10 +341,9 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-preprocessing-procedures-for-visium" id="toc-data-preprocessing-procedures-for-visium" class="nav-link active" data-scroll-target="#data-preprocessing-procedures-for-visium"><span class="header-section-number">A.1</span> Data preprocessing procedures for Visium</a></li>
-  <li><a href="#resources-for-other-spatial-platforms" id="toc-resources-for-other-spatial-platforms" class="nav-link" data-scroll-target="#resources-for-other-spatial-platforms"><span class="header-section-number">A.2</span> Resources for other spatial platforms</a></li>
-  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures"><span class="header-section-number">A.3</span> Data structures</a></li>
-  <li><a href="#statistical-concepts" id="toc-statistical-concepts" class="nav-link" data-scroll-target="#statistical-concepts"><span class="header-section-number">A.4</span> Statistical concepts</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">5.1</span> Overview</a></li>
+  <li><a href="#load-data" id="toc-load-data" class="nav-link" data-scroll-target="#load-data"><span class="header-section-number">5.2</span> Load data</a></li>
+  <li><a href="#spatialexperiment-object" id="toc-spatialexperiment-object" class="nav-link" data-scroll-target="#spatialexperiment-object"><span class="header-section-number">5.3</span> SpatialExperiment object</a></li>
   </ul>
 </nav>
     </div>
@@ -319,7 +352,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-related-resources" class="quarto-section-identifier">Appendix A — Related resources</span></h1>
+<h1 class="title"><span id="sec-load-data" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Load data</span></span></h1>
 </div>
 
 
@@ -334,67 +367,115 @@ div.csl-indent {
 
 </header>
 
-<p>In this chapter, we highlight several related resources from the Bioconductor and other communities.</p>
-<section id="data-preprocessing-procedures-for-visium" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="data-preprocessing-procedures-for-visium"><span class="header-section-number">A.1</span> Data preprocessing procedures for Visium</h2>
-<p><a href="https://lmweber.org/Visium-data-preprocessing/"><strong>Visium data preprocessing</strong></a></p>
-<ul>
-<li>Online book containing details on data preprocessing procedures for spatially-resolved transcriptomics data from the 10x Genomics Visium platform (using tools outside R and Bioconductor).</li>
-</ul>
+<section id="overview" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">5.1</span> Overview</h2>
+<p>In the following analysis chapters, we use a pre-prepared dataset where we have previously applied data preprocessing procedures (using tools outside R and Bioconductor) and saved the object in the <code>SpatialExperiment</code> format. This is available from the <a href="https://bioconductor.org/packages/STexampleData">STexampleData</a> package.</p>
+<p>The dataset consists of a single sample of human brain from the dorsolateral prefrontal cortex (DLPFC) region, measured using the 10x Genomics Visium platform, sourced from <span class="citation" data-cites="Maynard2021">Maynard et al. (<a href="references.html#ref-Maynard2021" role="doc-biblioref">2021</a>)</span>. The dataset is also described in more detail in <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;16</span></a>.</p>
 </section>
-<section id="resources-for-other-spatial-platforms" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="resources-for-other-spatial-platforms"><span class="header-section-number">A.2</span> Resources for other spatial platforms</h2>
-<p>Workflows and other resources for other spatially-resolved platforms:</p>
-<p><a href="https://bodenmillergroup.github.io/IMCDataAnalysis/"><strong>Analysis workflow for IMC data</strong></a></p>
-<ul>
-<li>Online book providing a workflow highlighting the use of common R/Bioconductor packages to analyze single-cell data obtained from segmented imaging mass cytometry (IMC) images. Examples focus on IMC data and can also be applied to images obtained by other highly-multiplexed imaging technologies, e.g.&nbsp;CODEX, MIBI, and mIF.</li>
-</ul>
-<p><a href="https://bioconductor.org/packages/VectraPolarisData"><strong>VectraPolarisData</strong></a></p>
-<ul>
-<li>Bioconductor data package providing two multiplex single-cell imaging datasets collected on Vectra Polaris and Vectra 3 instruments.</li>
-</ul>
+<section id="load-data" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="load-data"><span class="header-section-number">5.2</span> Load data</h2>
+<p>Here, we show how to load the data from the <code>STexampleData</code> package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpatialExperiment)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(STexampleData)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load object</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">Visium_humanDLPFC</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="data-structures" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="data-structures"><span class="header-section-number">A.3</span> Data structures</h2>
-<p>Data structures for storing spatially-resolved transcriptomics (SRT) data.</p>
-<p><a href="https://bioconductor.org/packages/SpatialExperiment"><strong>SpatialExperiment</strong></a></p>
-<ul>
-<li>Class for storing SRT data, which is used as the basis for the examples in this book <span class="citation" data-cites="Righelli2022">(<a href="references.html#ref-Righelli2022" role="doc-biblioref">Righelli et al. 2022</a>)</span>. See <a href="bioconductor-data-classes.html"><span>Chapter&nbsp;3</span></a>.</li>
-</ul>
-<p><a href="https://bioconductor.org/packages/MoleculeExperiment"><strong>MoleculeExperiment</strong></a></p>
-<ul>
-<li>Class extending <code>SpatialExperiment</code> to store molecule-based SRT data within the R/Bioconductor framework <span class="citation" data-cites="PetersCouto2023">(<a href="references.html#ref-PetersCouto2023" role="doc-biblioref">Peters Couto et al. 2023</a>)</span>. See <a href="bioconductor-data-classes.html"><span>Chapter&nbsp;3</span></a>.</li>
-</ul>
-<p><a href="https://bioconductor.org/packages/SpatialFeatureExperiment"><strong>SpatialFeatureExperiment</strong></a></p>
-<ul>
-<li>Class extending <code>SpatialExperiment</code> to store molecule-based SRT data within the R/Bioconductor framework <span class="citation" data-cites="Moses2023">(<a href="references.html#ref-Moses2023" role="doc-biblioref">Moses et al. 2023</a>)</span>. See <a href="bioconductor-data-classes.html"><span>Chapter&nbsp;3</span></a>.</li>
-</ul>
-<p><a href="https://anndata.readthedocs.io/en/latest/"><strong>AnnData</strong></a></p>
-<ul>
-<li>Python class for storing single-cell and spatial data within the <a href="https://scverse.org/">scverse</a> framework.</li>
-</ul>
-<p><a href="https://spatialdata.scverse.org/en/latest/"><strong>SpatialData</strong></a></p>
-<ul>
-<li>Python class for storing spatial data from SRT and other platforms.</li>
-</ul>
-</section>
-<section id="statistical-concepts" class="level2" data-number="A.4">
-<h2 data-number="A.4" class="anchored" data-anchor-id="statistical-concepts"><span class="header-section-number">A.4</span> Statistical concepts</h2>
-<p><a href="https://www.huber.embl.de//msmb/index.html"><strong>Modern Statistics for Modern Biology</strong></a></p>
-<ul>
-<li>Online textbook on concepts in modern statistics for high-throughput and high-dimensional biology, including <a href="https://www.huber.embl.de//msmb/Chap-Images.html">chapter on image data and spatial statistics</a>.</li>
-</ul>
+<section id="spatialexperiment-object" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="spatialexperiment-object"><span class="header-section-number">5.3</span> SpatialExperiment object</h2>
+<p>Next, we inspect the <code>SpatialExperiment</code> object. For more details, see <a href="bioconductor-data-classes.html"><span>Chapter&nbsp;3</span></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check object</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>spe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class: SpatialExperiment 
+dim: 33538 4992 
+metadata(0):
+assays(1): counts
+rownames(33538): ENSG00000243485 ENSG00000237613 ... ENSG00000277475
+  ENSG00000268674
+rowData names(3): gene_id gene_name feature_type
+colnames(4992): AAACAACGAATAGTTC-1 AAACAAGTATCTCCCA-1 ...
+  TTGTTTGTATTACACG-1 TTGTTTGTGTAAATTC-1
+colData names(7): barcode_id sample_id ... ground_truth cell_count
+reducedDimNames(0):
+mainExpName: NULL
+altExpNames(0):
+spatialCoords names(2) : pxl_col_in_fullres pxl_row_in_fullres
+imgData names(4): sample_id image_id data scaleFactor</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of features (rows) and spots (columns)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(spe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33538  4992</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names of 'assay' tables</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">assayNames</span>(spe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "counts"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># features metadata</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">rowData</span>(spe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>DataFrame with 6 rows and 3 columns
+                        gene_id   gene_name    feature_type
+                    &lt;character&gt; &lt;character&gt;     &lt;character&gt;
+ENSG00000243485 ENSG00000243485 MIR1302-2HG Gene Expression
+ENSG00000237613 ENSG00000237613     FAM138A Gene Expression
+ENSG00000186092 ENSG00000186092       OR4F5 Gene Expression
+ENSG00000238009 ENSG00000238009  AL627309.1 Gene Expression
+ENSG00000239945 ENSG00000239945  AL627309.3 Gene Expression
+ENSG00000239906 ENSG00000239906  AL627309.2 Gene Expression</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># spot-level metadata</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">colData</span>(spe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>DataFrame with 6 rows and 7 columns
+                           barcode_id     sample_id in_tissue array_row
+                          &lt;character&gt;   &lt;character&gt; &lt;integer&gt; &lt;integer&gt;
+AAACAACGAATAGTTC-1 AAACAACGAATAGTTC-1 sample_151673         0         0
+AAACAAGTATCTCCCA-1 AAACAAGTATCTCCCA-1 sample_151673         1        50
+AAACAATCTACTAGCA-1 AAACAATCTACTAGCA-1 sample_151673         1         3
+AAACACCAATAACTGC-1 AAACACCAATAACTGC-1 sample_151673         1        59
+AAACAGAGCGACTCCT-1 AAACAGAGCGACTCCT-1 sample_151673         1        14
+AAACAGCTTTCAGAAG-1 AAACAGCTTTCAGAAG-1 sample_151673         1        43
+                   array_col ground_truth cell_count
+                   &lt;integer&gt;  &lt;character&gt;  &lt;integer&gt;
+AAACAACGAATAGTTC-1        16           NA         NA
+AAACAAGTATCTCCCA-1       102       Layer3          6
+AAACAATCTACTAGCA-1        43       Layer1         16
+AAACACCAATAACTGC-1        19           WM          5
+AAACAGAGCGACTCCT-1        94       Layer3          2
+AAACAGCTTTCAGAAG-1         9       Layer5          4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># spatial coordinates</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">spatialCoords</span>(spe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   pxl_col_in_fullres pxl_row_in_fullres
+AAACAACGAATAGTTC-1               3913               2435
+AAACAAGTATCTCCCA-1               9791               8468
+AAACAATCTACTAGCA-1               5769               2807
+AAACACCAATAACTGC-1               4068               9505
+AAACAGAGCGACTCCT-1               9271               4151
+AAACAGCTTTCAGAAG-1               3393               7583</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># image metadata</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">imgData</span>(spe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>DataFrame with 2 rows and 4 columns
+      sample_id    image_id   data scaleFactor
+    &lt;character&gt; &lt;character&gt; &lt;list&gt;   &lt;numeric&gt;
+1 sample_151673      lowres   ####   0.0450045
+2 sample_151673       hires   ####   0.1500150</code></pre>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-Moses2023" class="csl-entry" role="listitem">
-Moses, Lambda, Pétur Helgi Einarsson, Kayla Jackson, Laura Luebbert, A. Sina Booeshaghi, Sindri Antonsson, Nicolas Bray, Páll Melsted, and Lior Pachter. 2023. <span>“<span>Voyager</span>: Exploratory Single-Cell Genomics Data Analysis with Geospatial Statistics.”</span> <em>bioRxiv</em>. https://doi.org/<a href="https://doi.org/10.1101/2023.07.20.549945">https://doi.org/10.1101/2023.07.20.549945</a>.
-</div>
-<div id="ref-PetersCouto2023" class="csl-entry" role="listitem">
-Peters Couto, Bárbara Zita, Nicholas Robertson, Ellis Patrick, and Shila Ghazanfar. 2023. <span>“<span>MoleculeExperiment</span> Enables Consistent Infrastructure for Molecule-Resolved Spatial Transcriptomics Data in <span>Bioconductor</span>.”</span> <em>bioRxiv</em>. https://doi.org/<a href="https://doi.org/10.1101/2023.05.16.541040">https://doi.org/10.1101/2023.05.16.541040</a>.
-</div>
-<div id="ref-Righelli2022" class="csl-entry" role="listitem">
-Righelli, Dario, Lukas M. Weber, Helena L. Crowell, Brenda Pardo, Leonardo Collado-Torres, Shila Ghazanfar, Aaron T. L. Lun, Stephanie C. Hicks, and Davide Risso. 2022. <span>“<span>SpatialExperiment</span>: Infrastructure for Spatially-Resolved Transcriptomics Data in <span>R</span> Using <span>Bioconductor</span>.”</span> <em>Bioinformatics</em> 38 (11): 3128–31. https://doi.org/<a href="https://doi.org/10.1093/bioinformatics/btac299">https://doi.org/10.1093/bioinformatics/btac299</a>.
+<div id="ref-Maynard2021" class="csl-entry" role="listitem">
+Maynard, Kristen R., Leonardo Collado-Torres, Lukas M. Weber, Cedric Uytingco, Brianna K. Barry, Stephen R. Williams, Joseph L. Catallini II, et al. 2021. <span>“Transcriptome-Scale Spatial Gene Expression in the Human Dorsolateral Prefrontal Cortex.”</span> <em>Nature Neuroscience</em> 24: 425–36. https://doi.org/<a href="https://doi.org/10.1038/s41593-020-00787-0">https://doi.org/10.1038/s41593-020-00787-0</a>.
 </div>
 </div>
 </section>
@@ -635,13 +716,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/workflow-Visium-spatialLIBD.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></span>
+      <a href="../chapters/analysis-steps.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Analysis steps</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/contributors.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Contributors</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/quality-control.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Quality control</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
