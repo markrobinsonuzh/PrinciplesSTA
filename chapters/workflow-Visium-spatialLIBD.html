@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Best Practices for Spatial Transcriptomics Analysis with Bioconductor - 16&nbsp; spatialLIBD workflow</title>
+<title>Best Practices for Spatial Transcriptomics Analysis with Bioconductor - 17&nbsp; spatialLIBD workflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,7 +127,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/workflows.html">Workflows</a></li><li class="breadcrumb-item"><a href="../chapters/workflow-Visium-spatialLIBD.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/workflows.html">Workflows</a></li><li class="breadcrumb-item"><a href="../chapters/workflow-Visium-spatialLIBD.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -253,6 +253,12 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Differential expression</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/multiple-samples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple samples</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -267,25 +273,25 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/workflow-Visium-humanDLPFC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Human DLPFC workflow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Human DLPFC workflow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/workflow-Visium-mouseCoronal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Mouse coronal workflow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Mouse coronal workflow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/workflow-Visium-spatialLIBD.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></span></a>
   </div>
 </li>
       </ul>
@@ -329,22 +335,22 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">16.1</span> Overview</a></li>
-  <li><a href="#spatiallibd" id="toc-spatiallibd" class="nav-link" data-scroll-target="#spatiallibd"><span class="header-section-number">16.2</span> spatialLIBD</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">17.1</span> Overview</a></li>
+  <li><a href="#spatiallibd" id="toc-spatiallibd" class="nav-link" data-scroll-target="#spatiallibd"><span class="header-section-number">17.2</span> spatialLIBD</a>
   <ul class="collapse">
-  <li><a href="#why-use-spatiallibd" id="toc-why-use-spatiallibd" class="nav-link" data-scroll-target="#why-use-spatiallibd"><span class="header-section-number">16.2.1</span> Why use spatialLIBD?</a></li>
-  <li><a href="#want-to-learn-more-about-spatiallibd" id="toc-want-to-learn-more-about-spatiallibd" class="nav-link" data-scroll-target="#want-to-learn-more-about-spatiallibd"><span class="header-section-number">16.2.2</span> Want to learn more about spatialLIBD?</a></li>
+  <li><a href="#why-use-spatiallibd" id="toc-why-use-spatiallibd" class="nav-link" data-scroll-target="#why-use-spatiallibd"><span class="header-section-number">17.2.1</span> Why use spatialLIBD?</a></li>
+  <li><a href="#want-to-learn-more-about-spatiallibd" id="toc-want-to-learn-more-about-spatiallibd" class="nav-link" data-scroll-target="#want-to-learn-more-about-spatiallibd"><span class="header-section-number">17.2.2</span> Want to learn more about spatialLIBD?</a></li>
   </ul></li>
-  <li><a href="#code-prerequisites" id="toc-code-prerequisites" class="nav-link" data-scroll-target="#code-prerequisites"><span class="header-section-number">16.3</span> Code prerequisites</a></li>
-  <li><a href="#prepare-for-spatiallibd" id="toc-prepare-for-spatiallibd" class="nav-link" data-scroll-target="#prepare-for-spatiallibd"><span class="header-section-number">16.4</span> Prepare for spatialLIBD</a>
+  <li><a href="#code-prerequisites" id="toc-code-prerequisites" class="nav-link" data-scroll-target="#code-prerequisites"><span class="header-section-number">17.3</span> Code prerequisites</a></li>
+  <li><a href="#prepare-for-spatiallibd" id="toc-prepare-for-spatiallibd" class="nav-link" data-scroll-target="#prepare-for-spatiallibd"><span class="header-section-number">17.4</span> Prepare for spatialLIBD</a>
   <ul class="collapse">
-  <li><a href="#basic-information" id="toc-basic-information" class="nav-link" data-scroll-target="#basic-information"><span class="header-section-number">16.4.1</span> Basic information</a></li>
-  <li><a href="#gene-annotation" id="toc-gene-annotation" class="nav-link" data-scroll-target="#gene-annotation"><span class="header-section-number">16.4.2</span> Gene annotation</a></li>
-  <li><a href="#extra-information-and-filtering" id="toc-extra-information-and-filtering" class="nav-link" data-scroll-target="#extra-information-and-filtering"><span class="header-section-number">16.4.3</span> Extra information and filtering</a></li>
+  <li><a href="#basic-information" id="toc-basic-information" class="nav-link" data-scroll-target="#basic-information"><span class="header-section-number">17.4.1</span> Basic information</a></li>
+  <li><a href="#gene-annotation" id="toc-gene-annotation" class="nav-link" data-scroll-target="#gene-annotation"><span class="header-section-number">17.4.2</span> Gene annotation</a></li>
+  <li><a href="#extra-information-and-filtering" id="toc-extra-information-and-filtering" class="nav-link" data-scroll-target="#extra-information-and-filtering"><span class="header-section-number">17.4.3</span> Extra information and filtering</a></li>
   </ul></li>
-  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data"><span class="header-section-number">16.5</span> Explore the data</a></li>
-  <li><a href="#sharing-your-website" id="toc-sharing-your-website" class="nav-link" data-scroll-target="#sharing-your-website"><span class="header-section-number">16.6</span> Sharing your website</a></li>
-  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up"><span class="header-section-number">16.7</span> Wrapping up</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data"><span class="header-section-number">17.5</span> Explore the data</a></li>
+  <li><a href="#sharing-your-website" id="toc-sharing-your-website" class="nav-link" data-scroll-target="#sharing-your-website"><span class="header-section-number">17.6</span> Sharing your website</a></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up"><span class="header-section-number">17.7</span> Wrapping up</a></li>
   <li><a href="#r-session-information" id="toc-r-session-information" class="nav-link" data-scroll-target="#r-session-information">R session information</a></li>
   </ul>
 </nav>
@@ -354,7 +360,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-workflow-spatiallibd" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></span></h1>
+<h1 class="title"><span id="sec-workflow-spatiallibd" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></span></h1>
 </div>
 
 
@@ -369,9 +375,9 @@ div.csl-indent {
 
 </header>
 
-<section id="overview" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">16.1</span> Overview</h2>
-<p>In the previous workflow, <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;14</span></a>, you practiced some of the basics with a portion of the postmortem human brain dataset <span class="citation" data-cites="Maynard2021">Maynard et al. (<a href="references.html#ref-Maynard2021" role="doc-biblioref">2021</a>)</span>. The goal of this workflow is to learn what steps you need to carry out in order to create an interactive website to visualize this type of data. For this, we’ll use the <a href="http://bioconductor.org/packages/spatialLIBD"><code>spatialLIBD</code></a> Bioconductor package <span class="citation" data-cites="Pardo2022">Pardo et al. (<a href="references.html#ref-Pardo2022" role="doc-biblioref">2022</a>)</span>.</p>
+<section id="overview" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">17.1</span> Overview</h2>
+<p>In the previous workflow, <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;15</span></a>, you practiced some of the basics with a portion of the postmortem human brain dataset <span class="citation" data-cites="Maynard2021">Maynard et al. (<a href="references.html#ref-Maynard2021" role="doc-biblioref">2021</a>)</span>. The goal of this workflow is to learn what steps you need to carry out in order to create an interactive website to visualize this type of data. For this, we’ll use the <a href="http://bioconductor.org/packages/spatialLIBD"><code>spatialLIBD</code></a> Bioconductor package <span class="citation" data-cites="Pardo2022">Pardo et al. (<a href="references.html#ref-Pardo2022" role="doc-biblioref">2022</a>)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -383,10 +389,10 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="spatiallibd" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="spatiallibd"><span class="header-section-number">16.2</span> spatialLIBD</h2>
-<section id="why-use-spatiallibd" class="level3" data-number="16.2.1">
-<h3 data-number="16.2.1" class="anchored" data-anchor-id="why-use-spatiallibd"><span class="header-section-number">16.2.1</span> Why use spatialLIBD?</h3>
+<section id="spatiallibd" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="spatiallibd"><span class="header-section-number">17.2</span> spatialLIBD</h2>
+<section id="why-use-spatiallibd" class="level3" data-number="17.2.1">
+<h3 data-number="17.2.1" class="anchored" data-anchor-id="why-use-spatiallibd"><span class="header-section-number">17.2.1</span> Why use spatialLIBD?</h3>
 <p>Before we dive into the R code, let’s first revisit why you might want to use <code>spatialLIBD</code>. This package has a function, <code>spatialLIBD::run_app(spe)</code>, which will create an interactive website using a <code>SpatialExperiment</code> object (<code>spe</code>). The interactive website it creates has several features that were initially designed for a specific dataset <span class="citation" data-cites="Maynard2021">Maynard et al. (<a href="references.html#ref-Maynard2021" role="doc-biblioref">2021</a>)</span> and later made flexible for any dataset <span class="citation" data-cites="Pardo2022">Pardo et al. (<a href="references.html#ref-Pardo2022" role="doc-biblioref">2022</a>)</span>. These features include panels to visualize spots from the Visium platform by 10x Genomics:</p>
 <ul>
 <li>for one tissue section at a time, either with interactive or static versions</li>
@@ -416,8 +422,8 @@ div.csl-indent {
 </div>
 <p>You can try out a <code>spatialLIBD</code>-powered website yourself by opening <a href="http://spatial.libd.org/spatialLIBD">it on your browser</a> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 </section>
-<section id="want-to-learn-more-about-spatiallibd" class="level3" data-number="16.2.2">
-<h3 data-number="16.2.2" class="anchored" data-anchor-id="want-to-learn-more-about-spatiallibd"><span class="header-section-number">16.2.2</span> Want to learn more about spatialLIBD?</h3>
+<section id="want-to-learn-more-about-spatiallibd" class="level3" data-number="17.2.2">
+<h3 data-number="17.2.2" class="anchored" data-anchor-id="want-to-learn-more-about-spatiallibd"><span class="header-section-number">17.2.2</span> Want to learn more about spatialLIBD?</h3>
 <p>If you are interested in learning more about <code>spatialLIBD</code>, please check the <a href="http://bioconductor.org/packages/spatialLIBD"><code>spatialLIBD</code> Bioconductor landing page</a> or the <a href="http://lieberinstitute.github.io/spatialLIBD/"><code>pkgdown</code> documentation website</a>. In particular, we have two vignettes documents:</p>
 <ul>
 <li><a href="http://research.libd.org/spatialLIBD/articles/spatialLIBD.html">Introduction to spatialLIBD</a></li>
@@ -446,8 +452,8 @@ A BibTeX entry for LaTeX users is
   }</code></pre>
 </div>
 </div>
-<section id="recordings" class="level4" data-number="16.2.2.1">
-<h4 data-number="16.2.2.1" class="anchored" data-anchor-id="recordings"><span class="header-section-number">16.2.2.1</span> Recordings</h4>
+<section id="recordings" class="level4" data-number="17.2.2.1">
+<h4 data-number="17.2.2.1" class="anchored" data-anchor-id="recordings"><span class="header-section-number">17.2.2.1</span> Recordings</h4>
 <p>If you prefer to watch recordings of presentations related to the dataset <span class="citation" data-cites="Maynard2021">Maynard et al. (<a href="references.html#ref-Maynard2021" role="doc-biblioref">2021</a>)</span> or <code>spatialLIBD</code> <span class="citation" data-cites="Pardo2022">Pardo et al. (<a href="references.html#ref-Pardo2022" role="doc-biblioref">2022</a>)</span>, check the following <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
 <iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/dde92cd6dfc04f9589770e074915658f" title="BioTuring_spatialLIBD" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 420;" data-ratio="1.3333333333333333">
 </iframe>
@@ -463,9 +469,9 @@ A BibTeX entry for LaTeX users is
 </section>
 </section>
 </section>
-<section id="code-prerequisites" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="code-prerequisites"><span class="header-section-number">16.3</span> Code prerequisites</h2>
-<p>Ok, let’s get started! First we need to re-create the <code>spe</code> object from the <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;14</span></a> in the previous chapter. That chapter included code for visualizing results along the way, which we’ll skip here. Thus, we’ll use the following packages in addition to <code>spatialLIBD</code>:</p>
+<section id="code-prerequisites" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="code-prerequisites"><span class="header-section-number">17.3</span> Code prerequisites</h2>
+<p>Ok, let’s get started! First we need to re-create the <code>spe</code> object from the <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;15</span></a> in the previous chapter. That chapter included code for visualizing results along the way, which we’ll skip here. Thus, we’ll use the following packages in addition to <code>spatialLIBD</code>:</p>
 <ul>
 <li><a href="http://bioconductor.org/packages/SpatialExperiment"><code>SpatialExperiment</code></a>: for storing our data in a common object</li>
 <li><a href="http://bioconductor.org/packages/STexampleData"><code>STexampleData</code></a>: for accessing the example data</li>
@@ -498,7 +504,7 @@ A BibTeX entry for LaTeX users is
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"spatialLIBD"</span></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can now run the following R code to re-make the <code>spe</code> object from the <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;14</span></a>. This will take a bit of time.</p>
+<p>We can now run the following R code to re-make the <code>spe</code> object from the <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;15</span></a>. This will take a bit of time.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Load packages required for the</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## "Visium human DLPFC workflow"</span></span>
@@ -600,11 +606,11 @@ A BibTeX entry for LaTeX users is
 </div>
 </div>
 </section>
-<section id="prepare-for-spatiallibd" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="prepare-for-spatiallibd"><span class="header-section-number">16.4</span> Prepare for spatialLIBD</h2>
+<section id="prepare-for-spatiallibd" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="prepare-for-spatiallibd"><span class="header-section-number">17.4</span> Prepare for spatialLIBD</h2>
 <p>Now that we have a <code>spe</code> object with quality control information, dimension reduction results, clustering data, among other things, we can proceed to visualize the object using <code>spatialLIBD</code>. Well, almost. First we need to modify the <code>spe</code> object, similar to steps we need to carry out when <a href="http://research.libd.org/spatialLIBD/articles/TenX_data_download.html#modify-spe-for-spatiallibd-1">using spatialLIBD with 10x Genomics public datasets</a></p>
-<section id="basic-information" class="level3" data-number="16.4.1">
-<h3 data-number="16.4.1" class="anchored" data-anchor-id="basic-information"><span class="header-section-number">16.4.1</span> Basic information</h3>
+<section id="basic-information" class="level3" data-number="17.4.1">
+<h3 data-number="17.4.1" class="anchored" data-anchor-id="basic-information"><span class="header-section-number">17.4.1</span> Basic information</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Add some information used by spatialLIBD</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>spe<span class="sc">$</span>key <span class="ot">&lt;-</span> <span class="fu">paste0</span>(spe<span class="sc">$</span>sample_id, <span class="st">"_"</span>, <span class="fu">colnames</span>(spe))</span>
@@ -612,8 +618,8 @@ A BibTeX entry for LaTeX users is
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>spe<span class="sc">$</span>sum_gene <span class="ot">&lt;-</span> <span class="fu">colSums</span>(<span class="fu">counts</span>(spe) <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="gene-annotation" class="level3" data-number="16.4.2">
-<h3 data-number="16.4.2" class="anchored" data-anchor-id="gene-annotation"><span class="header-section-number">16.4.2</span> Gene annotation</h3>
+<section id="gene-annotation" class="level3" data-number="17.4.2">
+<h3 data-number="17.4.2" class="anchored" data-anchor-id="gene-annotation"><span class="header-section-number">17.4.2</span> Gene annotation</h3>
 <p>Since the gene information is missing, we’ll <a href="http://research.libd.org/spatialLIBD/articles/TenX_data_download.html#add-gene-annotation-information-1">add the gene annotation data from Gencode</a> although you would ideally add this information from the same gene annotation you used for running <code>spaceranger</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Download the Gencode v32 GTF file and cache it</span></span>
@@ -741,8 +747,8 @@ FALSE  TRUE
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>spe<span class="sc">$</span>expr_chrM_ratio <span class="ot">&lt;-</span> spe<span class="sc">$</span>expr_chrM <span class="sc">/</span> spe<span class="sc">$</span>sum_umi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="extra-information-and-filtering" class="level3" data-number="16.4.3">
-<h3 data-number="16.4.3" class="anchored" data-anchor-id="extra-information-and-filtering"><span class="header-section-number">16.4.3</span> Extra information and filtering</h3>
+<section id="extra-information-and-filtering" class="level3" data-number="17.4.3">
+<h3 data-number="17.4.3" class="anchored" data-anchor-id="extra-information-and-filtering"><span class="header-section-number">17.4.3</span> Extra information and filtering</h3>
 <p>Now that we have the full gene annotation information we need, we can proceed to add some last touches as well as <a href="http://research.libd.org/spatialLIBD/articles/TenX_data_download.html#filter-the-spe-object-1">filter the object</a> to reduce the memory required for visualizing the data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Add a variable for saving the manual annotations</span></span>
@@ -820,8 +826,8 @@ imgData names(4): sample_id image_id data scaleFactor</code></pre>
 </div>
 </section>
 </section>
-<section id="explore-the-data" class="level2" data-number="16.5">
-<h2 data-number="16.5" class="anchored" data-anchor-id="explore-the-data"><span class="header-section-number">16.5</span> Explore the data</h2>
+<section id="explore-the-data" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="explore-the-data"><span class="header-section-number">17.5</span> Explore the data</h2>
 <p>In order to visualize the data, we can then use <code>spatialLIBD::vis_gene()</code>. Note that we didn’t need to do all that hard work just for that. But well, this is a nice quick check before we try launching our interactive website.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sum of UMI</span></span>
@@ -966,8 +972,8 @@ TTGTTTGTGTAAATTC-1               0               NA</code></pre>
 </div>
 </div>
 </section>
-<section id="sharing-your-website" class="level2" data-number="16.6">
-<h2 data-number="16.6" class="anchored" data-anchor-id="sharing-your-website"><span class="header-section-number">16.6</span> Sharing your website</h2>
+<section id="sharing-your-website" class="level2" data-number="17.6">
+<h2 data-number="17.6" class="anchored" data-anchor-id="sharing-your-website"><span class="header-section-number">17.6</span> Sharing your website</h2>
 <p>Now that you have created a <code>spatialLIBD</code>-powered website, you might be interested in sharing it. To do so, it’ll be useful to have saved a small <code>spe</code> object using <code>saveRDS()</code> like we did earlier. The smaller the object, the better in terms of performance. For example, you might want to remove the lowly expressed genes to save space. One function you can use to measure how big your object is is <code>lobstr::obj_size()</code> as shown below.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Object size</span></span>
@@ -1068,12 +1074,12 @@ TTGTTTGTGTAAATTC-1               0               NA</code></pre>
 </ul>
 <p>The <code>Max Worker Processes</code> determines how many R sessions are open per instance. Then <code>Max Connections</code> specifies the number of connections to each R session. The <code>Instance Size</code> determines the memory available. In this case, 8000 / 300 is approximately 27, but we decided to be conservative and set the total number of users per instance to be 15. This is why it can be important to reduce the size of your <code>spe</code> object before sharing the website. Alternatively, you can rent an AWS Instance and deploy your app there, which is how http://spatial.libd.org/spatialLIBD is hosted along with these <a href="https://github.com/LieberInstitute/spatialLIBD/tree/master/dev/shiny-server-files">error configuration files</a>.</p>
 </section>
-<section id="wrapping-up" class="level2" data-number="16.7">
-<h2 data-number="16.7" class="anchored" data-anchor-id="wrapping-up"><span class="header-section-number">16.7</span> Wrapping up</h2>
+<section id="wrapping-up" class="level2" data-number="17.7">
+<h2 data-number="17.7" class="anchored" data-anchor-id="wrapping-up"><span class="header-section-number">17.7</span> Wrapping up</h2>
 <p>Thank you for reading this far! In this workflow we showed you:</p>
 <ul>
 <li>why you might be interested in using <code>spatialLIBD</code>,</li>
-<li>we re-used the <code>spe</code> object from the <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;14</span></a> chapter,</li>
+<li>we re-used the <code>spe</code> object from the <a href="workflow-Visium-humanDLPFC.html"><span>Chapter&nbsp;15</span></a> chapter,</li>
 <li>we adapted the <code>spe</code> object to make it compatible with <code>spatialLIBD</code>,</li>
 <li>we created an interactive website in our laptops,</li>
 <li>we shared the website with others using shinyapps.io.</li>
@@ -1521,7 +1527,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../chapters/workflow-Visium-mouseCoronal.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Mouse coronal workflow</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Mouse coronal workflow</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Best Practices for Spatial Transcriptomics Analysis with Bioconductor - Appendix B — Contributors</title>
+<title>Best Practices for Spatial Transcriptomics Analysis with Bioconductor - 13&nbsp; Multiple samples</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/references.html" rel="next">
-<link href="../chapters/related-resources.html" rel="prev">
+<link href="../chapters/workflows.html" rel="next">
+<link href="../chapters/differential-expression.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/related-resources.html">Appendices</a></li><li class="breadcrumb-item"><a href="../chapters/contributors.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Contributors</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/analysis-steps.html">Analysis steps</a></li><li class="breadcrumb-item"><a href="../chapters/multiple-samples.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple samples</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -202,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/multiple-samples.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/multiple-samples.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple samples</span></span></a>
   </div>
 </li>
@@ -260,7 +260,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/contributors.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/contributors.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Contributors</span></span></a>
   </div>
 </li>
@@ -282,8 +282,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-book" id="toc-best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-book" class="nav-link active" data-scroll-target="#best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-book"><span class="header-section-number">B.1</span> ‘Best Practices for Spatial Transcriptomics Analysis with Bioconductor’ book</a></li>
-  <li><a href="#spatialexperiment-data-class" id="toc-spatialexperiment-data-class" class="nav-link" data-scroll-target="#spatialexperiment-data-class"><span class="header-section-number">B.2</span> SpatialExperiment data class</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><span class="header-section-number">13.1</span> Background</a></li>
   </ul>
 </nav>
     </div>
@@ -292,7 +291,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-contributors" class="quarto-section-identifier">Appendix B — Contributors</span></h1>
+<h1 class="title"><span id="sec-multiple-samples" class="quarto-section-identifier"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Multiple samples</span></span></h1>
 </div>
 
 
@@ -307,24 +306,11 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-book" class="level2" data-number="B.1">
-<h2 data-number="B.1" class="anchored" data-anchor-id="best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-book"><span class="header-section-number">B.1</span> ‘Best Practices for Spatial Transcriptomics Analysis with Bioconductor’ book</h2>
-<ul>
-<li><a href="https://lmweber.org/">Lukas M. Weber</a>, <em>Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA</em></li>
-<li><a href="https://lcolladotor.github.io/">Leonardo Collado-Torres</a>, <em>Lieber Institute for Brain Development, Baltimore, MD, USA</em></li>
-<li><a href="https://www.stephaniehicks.com/">Stephanie C. Hicks</a>, <em>Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA</em></li>
-</ul>
-<p>As well as additional <a href="https://github.com/lmweber/BestPracticesST/graphs/contributors">GitHub contributors</a></p>
-</section>
-<section id="spatialexperiment-data-class" class="level2" data-number="B.2">
-<h2 data-number="B.2" class="anchored" data-anchor-id="spatialexperiment-data-class"><span class="header-section-number">B.2</span> SpatialExperiment data class</h2>
-<ul>
-<li>Dario Righelli, <em>Department of Statistical Sciences, University of Padova, Padova, Italy</em></li>
-<li>Helena L. Crowell, <em>Department of Molecular Life Sciences, University of Zurich, Zurich, Switzerland</em></li>
-<li>Aaron Lun, <em>Genentech, South San Francisco, CA, USA</em></li>
-<li>Stephanie C. Hicks, <em>Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA</em></li>
-<li>Davide Risso, <em>Department of Statistical Sciences, University of Padova, Padova, Italy</em></li>
-</ul>
+<section id="background" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="background"><span class="header-section-number">13.1</span> Background</h2>
+<p>In the preceding chapters, we have focused on spatial transcriptomics datasets consisting of a single tissue section, which we refer to as a sample.</p>
+<p>Datasets consisting of multiple samples from one or more biological conditions are used to study a variety of biological questions, such as characterizing biological variability within replicate tissue samples, or differential comparisons between biological conditions.</p>
+<p>These datasets require additional analysis methods that can make full use of the information contained in multiple samples in a computationally efficient and statistically rigorous manner.</p>
 
 
 </section>
@@ -565,13 +551,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/related-resources.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Related resources</span></span>
+      <a href="../chapters/differential-expression.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Differential expression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/workflows.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
