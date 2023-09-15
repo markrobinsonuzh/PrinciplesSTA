@@ -20,6 +20,7 @@ book:
     - part: "Analysis steps"
       chapters:
         - chapters/analysis-steps.qmd
+        - chapters/load-data.qmd
         - chapters/quality-control.qmd
         - chapters/normalization.qmd
         - chapters/feature-selection.qmd
