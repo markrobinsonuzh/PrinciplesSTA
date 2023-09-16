@@ -1,6 +1,7 @@
 # Quality control {#sec-quality-control}
 
-## Background
+
+## Overview
 
 Quality control (QC) procedures at the spot level aim to remove low-quality spots before further analysis. Low-quality spots can occur due to problems during library preparation or other experimental procedures. Examples include large proportions of dead cells due to cell damage during library preparation, and low mRNA capture efficiency due to inefficient reverse transcription or PCR amplification.
 
@@ -21,6 +22,7 @@ Low library size or low number of expressed features can indicate poor mRNA capt
 The first three characteristics listed above are also used for QC in scRNA-seq data. However, the expected distributions for high-quality spots are different (compared to high-quality cells in scRNA-seq), since spots may contain zero, one, or multiple cells.
 
 
+
 ## Load data
 
 ```{r, message=FALSE}
@@ -30,6 +32,7 @@ library(STexampleData)
 # load object
 spe <- Visium_humanDLPFC()
 ```
+
 
 
 ## Plot data
@@ -46,6 +49,7 @@ library(ggspavis)
 # plot spatial coordinates (spots)
 plotSpots(spe)
 ```
+
 
 
 ## Calculate QC metrics
@@ -76,6 +80,7 @@ rowData(spe)$gene_name[is_mito]
 spe <- addPerCellQC(spe, subsets = list(mito = is_mito))
 head(colData(spe))
 ```
+
 
 
 ## Selecting thresholds
@@ -311,6 +316,7 @@ dim(spe)
 ```
 
 
+
 ## Zero-cell and single-cell spots
 
 A particular characteristic of Visium data is that spots can contain zero, one, or multiple cells.
@@ -333,9 +339,9 @@ Only 6% of spots contain a single cell. If we restricted the analysis to these s
 Removing the spots containing zero cells (2% of spots) would also be problematic, since these spots can also contain biologically meaningful information. For example, in this brain dataset, the regions between cell bodies consists of neuropil (dense networks of axons and dendrites). In our paper [@Maynard2021], we explore the information contained in these neuropil spots.
 
 
+
 ## Quality control at gene level
 
 The sections above consider quality control at the spot level. In some datasets, it may also be appropriate to apply quality control procedures or filtering at the gene level. For example, certain genes may be biologically irrelevant for downstream analyses.
 
 However, here we make a distinction between quality control and feature selection. Removing biologically uninteresting genes (such as mitochondrial genes) may also be considered as part of feature selection, since there is no underlying experimental procedure that has failed. Therefore, we will discuss gene-level filtering in the @sec-feature-selection chapter.
-

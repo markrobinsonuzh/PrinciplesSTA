@@ -1,10 +1,12 @@
 # Load data {#sec-load-data}
 
+
 ## Overview
 
 In the following analysis chapters, we use a pre-prepared dataset where we have previously applied data preprocessing procedures (using tools outside R and Bioconductor) and saved the object in the `SpatialExperiment` format. This is available from the [STexampleData](https://bioconductor.org/packages/STexampleData) package.
 
 The dataset consists of a single sample of human brain from the dorsolateral prefrontal cortex (DLPFC) region, measured using the 10x Genomics Visium platform, sourced from @Maynard2021. The dataset is also described in more detail in @sec-workflow-human-dlpfc.
+
 
 
 ## Load data
@@ -18,6 +20,7 @@ library(STexampleData)
 # load object
 spe <- Visium_humanDLPFC()
 ```
+
 
 
 ## SpatialExperiment object
@@ -46,4 +49,3 @@ head(spatialCoords(spe))
 # image metadata
 imgData(spe)
 ```
-

@@ -1,5 +1,6 @@
 # spatialLIBD workflow {#sec-workflow-spatiallibd}
 
+
 ## Overview
 
 In the previous workflow, @sec-workflow-human-dlpfc, you practiced some of the basics with a portion of the postmortem human brain dataset @Maynard2021. The goal of this workflow is to learn what steps you need to carry out in order to create an interactive website to visualize this type of data. For this, we'll use the [`spatialLIBD`](http://bioconductor.org/packages/spatialLIBD) Bioconductor package @Pardo2022.
@@ -7,6 +8,8 @@ In the previous workflow, @sec-workflow-human-dlpfc, you practiced some of the b
 ```{r, echo=FALSE, out.width = "100%", fig.align="center", fig.cap="`spatialLIBD` overview. Source: @Pardo2022."}
 knitr::include_graphics("https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_Figure1.png")
 ```
+
+
 
 ## spatialLIBD
 
@@ -30,6 +33,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/lmweber/BestPractices
 ```
 
 You can try out a `spatialLIBD`-powered website yourself by opening [it on your browser](http://spatial.libd.org/spatialLIBD) ^[Check https://github.com/LieberInstitute/spatialLIBD#shiny-website-mirrors in case you need to use a mirror. `shiny`-powered websites work best on browsers such as Google Chrome and Mozilla Firefox, among others.].
+
 
 ### Want to learn more about spatialLIBD?
 
@@ -62,6 +66,8 @@ A recording of an earlier version of this talk is also available on YouTube.
 You might also be interested in this video demonstration of `spatialLIBD` for the [LIBD rstats club](http://research.libd.org/rstatsclub/).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LZ2kvCiRVdM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 
 ## Code prerequisites
 
@@ -194,9 +200,12 @@ time_prereqs <- Sys.time()
 time_prereqs - time_start
 ```
 
+
+
 ## Prepare for spatialLIBD
 
 Now that we have a `spe` object with quality control information, dimension reduction results, clustering data, among other things, we can proceed to visualize the object using `spatialLIBD`. Well, almost. First we need to modify the `spe` object, similar to steps we need to carry out when [using spatialLIBD with 10x Genomics public datasets](http://research.libd.org/spatialLIBD/articles/TenX_data_download.html#modify-spe-for-spatiallibd-1)
+
 
 ### Basic information
 
@@ -206,6 +215,7 @@ spe$key <- paste0(spe$sample_id, "_", colnames(spe))
 spe$sum_umi <- colSums(counts(spe))
 spe$sum_gene <- colSums(counts(spe) > 0)
 ```
+
 
 ### Gene annotation
 
@@ -275,6 +285,7 @@ spe$expr_chrM <- colSums(counts(spe)[is_mito, , drop = FALSE])
 spe$expr_chrM_ratio <- spe$expr_chrM / spe$sum_umi
 ```
 
+
 ### Extra information and filtering
 
 Now that we have the full gene annotation information we need, we can proceed to add some last touches as well as [filter the object](http://research.libd.org/spatialLIBD/articles/TenX_data_download.html#filter-the-spe-object-1) to reduce the memory required for visualizing the data.
@@ -332,6 +343,8 @@ You can then re-load it with the following code on a later session.
 spe <- readRDS("spe_workflow_Visium_spatialLIBD.rds")
 ```
 
+
+
 ## Explore the data
 
 In order to visualize the data, we can then use `spatialLIBD::vis_gene()`. Note that we didn't need to do all that hard work just for that. But well, this is a nice quick check before we try launching our interactive website.
@@ -353,7 +366,6 @@ spatialLIBD::vis_gene(
 ```
 
 As we wanted let's proceed to [visualize the data interactively](http://research.libd.org/spatialLIBD/articles/TenX_data_download.html#run-the-interactive-website-1) with a `spatialLIBD`-powered website. We have lots of variables to choose from. We'll specify which are our continuous and discrete variables in our `spatialLIBD::run_app()` call.
-
 
 ```{r spatialLIBD_interactive}
 ## Explore all the variables we can use
@@ -390,6 +402,8 @@ if (interactive()) {
 ```{r, echo=FALSE, out.width = "100%", fig.align="center", fig.cap="Screenshot of the 'clusters (interactive)' section of the 'spot-level data' panel created with with the data from this workflow."}
 knitr::include_graphics("https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_demo_result.png")
 ```
+
+
 
 ## Sharing your website
 
@@ -428,6 +442,8 @@ If you follow this workflow, you'll end up with a website [just like this one](h
 
 The `Max Worker Processes` determines how many R sessions are open per instance. Then `Max Connections` specifies the number of connections to each R session. The `Instance Size` determines the memory available. In this case, 8000 / 300 is approximately 27, but we decided to be conservative and set the total number of users per instance to be 15. This is why it can be important to reduce the size of your `spe` object before sharing the website. Alternatively, you can rent an AWS Instance and deploy your app there, which is how http://spatial.libd.org/spatialLIBD is hosted along with these [error configuration files](https://github.com/LieberInstitute/spatialLIBD/tree/master/dev/shiny-server-files).
 
+
+
 ## Wrapping up
 
 Thank you for reading this far! In this workflow we showed you:
@@ -440,6 +456,8 @@ Thank you for reading this far! In this workflow we showed you:
 
 Overall, we hope that you found this information useful and we wish you the best luck with exploring and annotating your own Visium data!
 
+
+
 ## R session information {-}
 
 Here's the R session information for this workflow.
@@ -448,4 +466,3 @@ Here's the R session information for this workflow.
 options(width = 120)
 sessioninfo::session_info()
 ```
-

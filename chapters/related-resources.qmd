@@ -1,6 +1,10 @@
 # Related resources {#sec-related-resources}
 
+
+## Overview
+
 In this chapter, we highlight several related resources from the Bioconductor and other communities.
+
 
 
 ## Data preprocessing procedures for Visium
@@ -56,4 +60,3 @@ Data structures for storing spatially-resolved transcriptomics (SRT) data.
 [**Modern Statistics for Modern Biology**](https://www.huber.embl.de//msmb/index.html)
 
 - Online textbook on concepts in modern statistics for high-throughput and high-dimensional biology, including [chapter on image data and spatial statistics](https://www.huber.embl.de//msmb/Chap-Images.html).
-

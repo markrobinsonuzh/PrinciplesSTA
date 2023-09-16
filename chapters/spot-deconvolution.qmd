@@ -1,12 +1,14 @@
 # Spot deconvolution {#sec-spot-deconvolution}
 
-## Background
+
+## Overview
 
 Spot-level ST data (e.g. from the 10x Genomics Visium platform) can contain zero, one, or multiple cells per spot, depending on the spatial resolution of the platform and the tissue cell density. This characteristic of the data affects several steps in analysis workflows, including quality control (@sec-quality-control) and clustering (@sec-clustering).
 
 Note that this is also a characteristic of ST data that is distinct from single-cell RNA sequencing data, so here we cannot easily apply existing methods from single-cell workflows.
 
 In this section, we will demonstrate methods to deconvolve cell types per spot.
+
 
 
 ## Previous steps
@@ -20,6 +22,7 @@ library(SpatialExperiment)
 library(STexampleData)
 spe <- Visium_humanDLPFC()
 ```
+
 
 
 ## Number of cells per spot
@@ -36,4 +39,3 @@ plotQC(spe, type = "bar", metric_x = "cell_count") +
   xlab("number of cells") + 
   ggtitle("Number of cells per spot")
 ```
-

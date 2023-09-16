@@ -1,5 +1,6 @@
 # Clustering {#sec-clustering}
 
+
 ## Overview
 
 In ST data, we can apply clustering algorithms to identify 'spatial domains', which represent spatially defined regions consisting of consistent gene expression profiles. In many (but not all) cases, spatial domains consist of regions with a single cell type or a consistent mixture of cell types.
@@ -9,6 +10,7 @@ If we apply clustering algorithms from single-cell workflows to ST data (without
 It is important to keep in mind that cell types and states can be defined at various resolutions (or on a continuum). For the purposes of clustering, this means that the optimal number of clusters depends on the biological context. There is no "true" number of clusters -- this depends on the biological context (e.g. major cell populations vs. rare subtypes).
 
 Once we have identified spatial domains by clustering or manual analyses, these can then be further investigated by differential expression testing to identify representative genes.
+
 
 
 ## Previous steps
@@ -70,6 +72,7 @@ colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 ```
 
 
+
 ## Non-spatial clustering on HVGs
 
 Here, we perform clustering by applying standard clustering methods developed for single-cell RNA sequencing data, using molecular features (gene expression) only. We apply graph-based clustering using the Walktrap method implemented in `scran` [@Lun2016], applied to the top 50 PCs calculated on the set of top HVGs.
@@ -121,6 +124,7 @@ plotDimRed(spe, type = "UMAP",
 ```
 
 
+
 ## Spatially-aware clustering
 
 In ST data, we can also perform clustering that takes spatial information into account, for example to identify spatially compact or spatially connected clusters.
@@ -134,4 +138,3 @@ More sophisticated approaches for spatially-aware clustering include the followi
 - **SpaGCN**: available as a Python package from [GitHub](https://github.com/jianhuupenn/SpaGCN) and described by @Hu2021
 
 - **PRECAST**: available as an R package from [CRAN](https://cran.r-project.org/package=PRECAST) and described by @Liu2023
-

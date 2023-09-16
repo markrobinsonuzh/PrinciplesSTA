@@ -1,6 +1,10 @@
 # Introduction {#sec-introduction}
 
+
+## Overview
+
 This book provides examples and discussion on best practices for computational analysis workflows for spatial transcriptomics data, using the [Bioconductor](http://bioconductor.org/) framework within R.
+
 
 
 ## Contents
@@ -14,6 +18,7 @@ The chapters are organized into several parts:
 - **Workflows:** complete analysis workflows for several example datasets
 
 - **Appendix:** related resources, contributors, and references
+
 
 
 ## Who this book is for
@@ -37,6 +42,7 @@ Additional details on data preprocessing procedures for spatially-resolved trans
 - [Visium Data Preprocessing](https://lmweber.org/Visium-data-preprocessing/)
 
 
+
 ## Bioconductor
 
 [Bioconductor](http://bioconductor.org/) is an *open source* and *open development* project, providing a cohesive and flexible framework for analyzing high-throughput genomic data in R [@Huber2015]. The Bioconductor project consists of more than 2,000 contributed R packages, as well as core infrastructure maintained by the Bioconductor Core Team, providing a rich analysis environment for users.
@@ -46,6 +52,7 @@ One of the main advantages of Bioconductor is the modularity and open developmen
 This modular and open development approach allows data analysts to build analysis workflows that integrate the latest state-of-the-art methods developed by research groups around the world. Any research group can contribute new packages to Bioconductor by following the contribution guidelines provided on the [Bioconductor](http://bioconductor.org/) website.
 
 
+
 ## Contributions
 
 We welcome suggestions for updates to the analysis and workflow chapters. Suggestions may be provided as [GitHub issues](https://github.com/lmweber/BestPracticesST/issues).
@@ -53,4 +60,3 @@ We welcome suggestions for updates to the analysis and workflow chapters. Sugges
 All methods included in the code examples must be available as R packages from either [Bioconductor](http://bioconductor.org/) or [CRAN](https://cran.r-project.org/). This ensures compatibility with the existing workflows and provides users with guarantees regarding ease of installation, long-term availability, stability, and maintenance through the Bioconductor or CRAN systems. By following this strategy, we aim to showcase key methods for individual analysis steps and demonstrate flexible analysis workflows at a sufficient level of detail to enable readers to adapt or extend these workflows to their own datasets.
 
 Additional methods (e.g. available from GitHub) may also be described within the analysis chapters, but these methods will not be included in the code examples. Methods available as `pip` installable Python packages will also be integrated into the examples in future updates using [reticulate](https://rstudio.github.io/reticulate/).
-

@@ -1,8 +1,10 @@
 # Dimensionality reduction {#sec-dimensionality-reduction}
 
-## Background
+
+## Overview
 
 In this chapter, we apply dimensionality reduction methods to visualize the data and to generate inputs for further downstream analyses.
+
 
 
 ## Previous steps
@@ -53,6 +55,7 @@ top_hvgs <- getTopHVGs(dec, prop = 0.1)
 ```
 
 
+
 ## Principal component analysis (PCA)
 
 Apply principal component analysis (PCA) to the set of top highly variable genes (HVGs) to reduce the dimensionality of the dataset, and retain the top 50 principal components (PCs) for further downstream analyses.
@@ -69,6 +72,7 @@ spe <- runPCA(spe, subset_row = top_hvgs)
 reducedDimNames(spe)
 dim(reducedDim(spe, "PCA"))
 ```
+
 
 
 ## Uniform Manifold Approximation and Projection (UMAP)
@@ -88,6 +92,7 @@ colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 ```
 
 
+
 ## Visualizations
 
 Generate plots using plotting functions from the [ggspavis](https://bioconductor.org/packages/ggspavis) package. In the next chapter on clustering, we will add cluster labels to these reduced dimension plots.
@@ -103,4 +108,3 @@ plotDimRed(spe, type = "PCA")
 # plot top 2 UMAP dimensions
 plotDimRed(spe, type = "UMAP")
 ```
-

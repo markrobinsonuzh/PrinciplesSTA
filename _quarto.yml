@@ -38,7 +38,7 @@ book:
         - chapters/workflow-Visium-spatialLIBD.qmd
   appendices:
     - chapters/related-resources.qmd
-    - chapters/contributors.qmd
+    - chapters/acknowledgments.qmd
     - chapters/references.qmd
 
 number-sections: true

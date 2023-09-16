@@ -1,5 +1,8 @@
 # Spatial transcriptomics {#sec-spatial-transcriptomics}
 
+
+## Overview
+
 Spatial transcriptomics (or spatially-resolved transcriptomics) refers to a set of recently developed high-throughput genomic technologies, which enable the measurement of up to transcriptome-scale gene expression at spatial resolution -- i.e. measuring the expression of up to thousands of genes at up to thousands of measurement locations, usually on two-dimensional tissue sections.
 
 A number of technological platforms have now been developed, which vary widely in terms of the technologies used and experimental procedures, as well as the number of genes that can be measured and the spatial resolution, and sensitivity. Spatially-resolved transcriptomics was named the [Method of the Year 2020](https://doi.org/10.1038/s41592-020-01042-x) by *Nature Methods*, and has found widespread application in numerous biological systems.
@@ -37,7 +40,6 @@ The array dimensions are 6.5mm x 6.5mm, with around 5000 barcoded spots. Spots a
 
 Histology images generated from hematoxylin and eosin (H&E) staining can be used to identify anatomical and cell morphological features such as the number of cells per spot.
 
-
 ```{r Visium-schematic, echo=FALSE, fig.wide=TRUE, fig.align="center", fig.cap="Schematic of 10x Genomics Visium platform. Source: [10x Genomics Visium website](https://www.10xgenomics.com/spatial-transcriptomics/)"}
 knitr::include_graphics("https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/Visium.png")
 ```
@@ -73,4 +75,3 @@ Additional details on the Vizgen MERSCOPE platform are available from [Vizgen](h
 ### NanoString CosMx
 
 Additional details on the NanoString CosMx platform are available from [NanoString](https://nanostring.com/products/cosmx-spatial-molecular-imager/).
-

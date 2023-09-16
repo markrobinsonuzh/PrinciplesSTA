@@ -1,6 +1,10 @@
 # Human DLPFC workflow {#sec-workflow-human-dlpfc}
 
+
+## Overview
+
 This workflow analyzes one sample of human brain from the dorsolateral prefrontal cortex (DLPFC) region, measured using the 10x Genomics Visium platform. This is a condensed version of the analyses shown in the individual analysis chapters in the previous part. For more details on the individual steps, see the previous chapters.
+
 
 
 ## Description of dataset
@@ -12,6 +16,7 @@ In the full dataset, there are 12 samples in total, from 3 individuals, with 2 p
 For the examples in this workflow and the analysis chapters, we use a single sample from this dataset (sample 151673), to keep the computational requirements to compile the book manageable.
 
 For more details on the dataset, see @Maynard2021. The full dataset is publicly available through the [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) Bioconductor package. The dataset can also be explored interactively through the [spatialLIBD Shiny web app](http://spatial.libd.org/spatialLIBD/).
+
 
 
 ## Load data
@@ -28,6 +33,7 @@ spe
 ```
 
 
+
 ## Plot data
 
 As an initial check, plot the spatial coordinates (spots) in x-y dimensions on the tissue slide, to check that the object has loaded correctly and that the orientation is as expected.
@@ -42,6 +48,7 @@ library(ggspavis)
 # plot spatial coordinates (spots)
 plotSpots(spe)
 ```
+
 
 
 ## Quality control (QC)
@@ -117,6 +124,7 @@ dim(spe)
 ```
 
 
+
 ## Normalization
 
 Calculate log-transformed normalized counts (logcounts) with the library size factors methodology, using methods from `scater` [@McCarthy2017] and `scran` [@Lun2016], making the assumption that spots can be treated as equivalent to cells. For more details, see @sec-normalization.
@@ -137,6 +145,7 @@ spe <- logNormCounts(spe)
 
 assayNames(spe)
 ```
+
 
 
 ## Feature selection
@@ -163,6 +172,7 @@ curve(fit$trend(x), col = "dodgerblue", add = TRUE, lwd = 2)
 top_hvgs <- getTopHVGs(dec, prop = 0.1)
 length(top_hvgs)
 ```
+
 
 
 ## Spatially-aware feature selection
@@ -216,6 +226,7 @@ rowData(spe_nnSVG)$gene_name[which(rowData(spe_nnSVG)$rank == 1)]
 ```
 
 
+
 ## Dimensionality reduction
 
 Run principal component analysis (PCA) on the set of top HVGs, and retain the top 50 principal components (PCs) for further downstream analyses. This is done both to reduce noise and to improve computational efficiency. We also run UMAP on the set of top 50 PCs and retain the top 2 UMAP components for visualization purposes.
@@ -242,6 +253,7 @@ dim(reducedDim(spe, "UMAP"))
 # update column names for easier plotting
 colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 ```
+
 
 
 ## Clustering
@@ -282,7 +294,8 @@ plotDimRed(spe, type = "UMAP",
 ```
 
 
-## Marker genes
+
+## Differential expression
 
 Identify marker genes by testing for differential gene expression between clusters. We use the `findMarkers` implementation in `scran` [@Lun2016], using a binomial test, which tests for genes that differ in the proportion expressed vs. not expressed between clusters. This is a more stringent test than the default t-tests, and tends to select genes that are easier to interpret and validate experimentally.
 
@@ -317,4 +330,3 @@ top_genes <- head(rownames(interesting))
 
 plotExpression(spe, x = "label", features = top_genes)
 ```
-

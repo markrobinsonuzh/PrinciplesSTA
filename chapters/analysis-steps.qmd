@@ -5,4 +5,3 @@ This part consists of several chapters for steps in a computational analysis pip
 These steps require that the raw data has been loaded into R. In the previous part, we provide instructions and examples showing how to do this for the 10x Genomics Visium platform.
 
 Throughout these chapters, we will rely on @sec-bioconductor-data-classes, especially `SpatialExperiment`, to connect the steps in the pipeline. Following the Bioconductor principle of modularity, you can substitute alternative methods for individual steps if you prefer, as long as these can interface with the `SpatialExperiment` structure.
-

@@ -1,8 +1,10 @@
 # Normalization {#sec-normalization}
 
-## Background
+
+## Overview
 
 Here we apply normalization methods developed for scRNA-seq data, treating each spot as equivalent to one cell.
+
 
 
 ## Previous steps
@@ -38,6 +40,7 @@ spe <- spe[, !colData(spe)$discard]
 ```
 
 
+
 ## Logcounts
 
 Calculate log-transformed normalized counts (abbreviated as "logcounts") using library size factors.
@@ -63,4 +66,3 @@ assayNames(spe)
 dim(counts(spe))
 dim(logcounts(spe))
 ```
-

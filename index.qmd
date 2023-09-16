@@ -7,4 +7,3 @@ This book provides examples and discussion on best practices for computational a
 The book is organized into several parts, including introductory material, analysis steps, and example workflows.
 
 Additional details on analysis workflows for non-spatial single-cell data as well as further introductory material on R and Bioconductor can be found in the related book [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://osca.bioconductor.org/).
-

@@ -1,8 +1,10 @@
 # Feature selection {#sec-feature-selection}
 
-## Background
+
+## Overview
 
 Here we apply feature selection methods to identify highly variable genes (HVGs) or spatially variable genes (SVGs), which can then be investigated individually or used as the input for further downstream analyses.
+
 
 
 ## Previous steps
@@ -44,6 +46,7 @@ spe <- logNormCounts(spe)
 ```
 
 
+
 ## Highly variable genes (HVGs)
 
 We use methods from `scran` [@Lun2016] to identify a set of top highly variable genes (HVGs), which can be used to define major cell types. These methods were originally developed for single-cell RNA sequencing (scRNA-seq) data, so here we are making the assumption that spots can be treated as equivalent to cells.
@@ -79,6 +82,7 @@ length(top_hvgs)
 ```
 
 
+
 ## Spatially variable genes (SVGs)
 
 Alternatively, we can apply methods to identify spatially variable genes (SVGs) instead of HVGs. SVGs are defined as genes with a spatially correlated patterns of expression.
@@ -94,4 +98,3 @@ Sophisticated statistical methods to identify SVGs adapted to the properties of 
 - **SPARK**: available as an R package from [GitHub](https://xzhoulab.github.io/SPARK/) and described by @Sun2020
 
 - **SpatialDE**: available as a Python package from [GitHub](https://github.com/Teichlab/SpatialDE) and described by @Svensson2018
-

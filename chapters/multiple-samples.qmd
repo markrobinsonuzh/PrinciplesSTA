@@ -1,6 +1,7 @@
 # Multiple samples {#sec-multiple-samples}
 
-## Background
+
+## Overview
 
 In the preceding chapters, we have focused on spatial transcriptomics datasets consisting of a single tissue section, which we refer to as a sample.
 

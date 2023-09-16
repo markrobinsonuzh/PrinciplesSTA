@@ -1,8 +1,10 @@
 # Differential expression {#sec-differential-expression}
 
-## Background
+
+## Overview
 
 In this chapter, we perform differential expression testing between clusters or spatial domains to identify representative marker genes for each cluster or spatial domain.
+
 
 
 ## Previous steps
@@ -74,6 +76,7 @@ colLabels(spe) <- factor(clus)
 ```
 
 
+
 ## Differential expression testing
 
 Identify representative marker genes for each cluster or spatial domain by testing for differential gene expression between clusters.
@@ -115,7 +118,7 @@ plotExpression(spe, x = "label", features = top_genes)
 ```
 
 
+
 ## Pseudobulking
 
 Alternatively, we can proceed by manually aggregating the counts per cluster or spatial domain, which is referred to as 'pseudobulking'. Then, we can perform differential expression testing between the pseudobulked clusters or spatial domains.
-
