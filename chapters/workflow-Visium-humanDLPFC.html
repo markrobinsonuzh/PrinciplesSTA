@@ -319,8 +319,8 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/contributors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Contributors</span></span></a>
+  <a href="../chapters/acknowledgments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Acknowledgments</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -341,16 +341,17 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#description-of-dataset" id="toc-description-of-dataset" class="nav-link active" data-scroll-target="#description-of-dataset"><span class="header-section-number">16.1</span> Description of dataset</a></li>
-  <li><a href="#load-data" id="toc-load-data" class="nav-link" data-scroll-target="#load-data"><span class="header-section-number">16.2</span> Load data</a></li>
-  <li><a href="#plot-data" id="toc-plot-data" class="nav-link" data-scroll-target="#plot-data"><span class="header-section-number">16.3</span> Plot data</a></li>
-  <li><a href="#quality-control-qc" id="toc-quality-control-qc" class="nav-link" data-scroll-target="#quality-control-qc"><span class="header-section-number">16.4</span> Quality control (QC)</a></li>
-  <li><a href="#normalization" id="toc-normalization" class="nav-link" data-scroll-target="#normalization"><span class="header-section-number">16.5</span> Normalization</a></li>
-  <li><a href="#feature-selection" id="toc-feature-selection" class="nav-link" data-scroll-target="#feature-selection"><span class="header-section-number">16.6</span> Feature selection</a></li>
-  <li><a href="#spatially-aware-feature-selection" id="toc-spatially-aware-feature-selection" class="nav-link" data-scroll-target="#spatially-aware-feature-selection"><span class="header-section-number">16.7</span> Spatially-aware feature selection</a></li>
-  <li><a href="#dimensionality-reduction" id="toc-dimensionality-reduction" class="nav-link" data-scroll-target="#dimensionality-reduction"><span class="header-section-number">16.8</span> Dimensionality reduction</a></li>
-  <li><a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering"><span class="header-section-number">16.9</span> Clustering</a></li>
-  <li><a href="#marker-genes" id="toc-marker-genes" class="nav-link" data-scroll-target="#marker-genes"><span class="header-section-number">16.10</span> Marker genes</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">16.1</span> Overview</a></li>
+  <li><a href="#description-of-dataset" id="toc-description-of-dataset" class="nav-link" data-scroll-target="#description-of-dataset"><span class="header-section-number">16.2</span> Description of dataset</a></li>
+  <li><a href="#load-data" id="toc-load-data" class="nav-link" data-scroll-target="#load-data"><span class="header-section-number">16.3</span> Load data</a></li>
+  <li><a href="#plot-data" id="toc-plot-data" class="nav-link" data-scroll-target="#plot-data"><span class="header-section-number">16.4</span> Plot data</a></li>
+  <li><a href="#quality-control-qc" id="toc-quality-control-qc" class="nav-link" data-scroll-target="#quality-control-qc"><span class="header-section-number">16.5</span> Quality control (QC)</a></li>
+  <li><a href="#normalization" id="toc-normalization" class="nav-link" data-scroll-target="#normalization"><span class="header-section-number">16.6</span> Normalization</a></li>
+  <li><a href="#feature-selection" id="toc-feature-selection" class="nav-link" data-scroll-target="#feature-selection"><span class="header-section-number">16.7</span> Feature selection</a></li>
+  <li><a href="#spatially-aware-feature-selection" id="toc-spatially-aware-feature-selection" class="nav-link" data-scroll-target="#spatially-aware-feature-selection"><span class="header-section-number">16.8</span> Spatially-aware feature selection</a></li>
+  <li><a href="#dimensionality-reduction" id="toc-dimensionality-reduction" class="nav-link" data-scroll-target="#dimensionality-reduction"><span class="header-section-number">16.9</span> Dimensionality reduction</a></li>
+  <li><a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering"><span class="header-section-number">16.10</span> Clustering</a></li>
+  <li><a href="#differential-expression" id="toc-differential-expression" class="nav-link" data-scroll-target="#differential-expression"><span class="header-section-number">16.11</span> Differential expression</a></li>
   </ul>
 </nav>
     </div>
@@ -374,16 +375,19 @@ div.csl-indent {
 
 </header>
 
+<section id="overview" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">16.1</span> Overview</h2>
 <p>This workflow analyzes one sample of human brain from the dorsolateral prefrontal cortex (DLPFC) region, measured using the 10x Genomics Visium platform. This is a condensed version of the analyses shown in the individual analysis chapters in the previous part. For more details on the individual steps, see the previous chapters.</p>
-<section id="description-of-dataset" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="description-of-dataset"><span class="header-section-number">16.1</span> Description of dataset</h2>
+</section>
+<section id="description-of-dataset" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="description-of-dataset"><span class="header-section-number">16.2</span> Description of dataset</h2>
 <p>This is a 10x Genomics Visium dataset generated from healthy human brain samples from the dorsolateral prefrontal cortex (DLPFC) region.</p>
 <p>In the full dataset, there are 12 samples in total, from 3 individuals, with 2 pairs of spatially adjacent replicates (serial sections) per individual (4 samples per individual). The individuals and spatially adjacent replicates can be used as blocking factors. Each sample spans the six layers of the cortex plus white matter in a perpendicular tissue section.</p>
 <p>For the examples in this workflow and the analysis chapters, we use a single sample from this dataset (sample 151673), to keep the computational requirements to compile the book manageable.</p>
 <p>For more details on the dataset, see <span class="citation" data-cites="Maynard2021">Maynard et al. (<a href="references.html#ref-Maynard2021" role="doc-biblioref">2021</a>)</span>. The full dataset is publicly available through the <a href="http://bioconductor.org/packages/spatialLIBD">spatialLIBD</a> Bioconductor package. The dataset can also be explored interactively through the <a href="http://spatial.libd.org/spatialLIBD/">spatialLIBD Shiny web app</a>.</p>
 </section>
-<section id="load-data" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="load-data"><span class="header-section-number">16.2</span> Load data</h2>
+<section id="load-data" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="load-data"><span class="header-section-number">16.3</span> Load data</h2>
 <p>Here, we load a single sample from this dataset (sample 151673), which is available as a <code>SpatialExperiment</code> object from the <a href="https://bioconductor.org/packages/STexampleData">STexampleData</a> package.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpatialExperiment)</span>
@@ -411,8 +415,8 @@ imgData names(4): sample_id image_id data scaleFactor</code></pre>
 </div>
 </div>
 </section>
-<section id="plot-data" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="plot-data"><span class="header-section-number">16.3</span> Plot data</h2>
+<section id="plot-data" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="plot-data"><span class="header-section-number">16.4</span> Plot data</h2>
 <p>As an initial check, plot the spatial coordinates (spots) in x-y dimensions on the tissue slide, to check that the object has loaded correctly and that the orientation is as expected.</p>
 <p>We use visualization functions from the <a href="https://bioconductor.org/packages/ggspavis">ggspavis</a> package to generate plots.</p>
 <div class="cell">
@@ -426,8 +430,8 @@ imgData names(4): sample_id image_id data scaleFactor</code></pre>
 </div>
 </div>
 </section>
-<section id="quality-control-qc" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="quality-control-qc"><span class="header-section-number">16.4</span> Quality control (QC)</h2>
+<section id="quality-control-qc" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="quality-control-qc"><span class="header-section-number">16.5</span> Quality control (QC)</h2>
 <p>First, we subset the object to keep only spots over tissue. The remaining spots are background spots, which we exclude.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset to keep only spots over tissue</span></span>
@@ -537,8 +541,8 @@ FALSE  TRUE
 </div>
 </div>
 </section>
-<section id="normalization" class="level2" data-number="16.5">
-<h2 data-number="16.5" class="anchored" data-anchor-id="normalization"><span class="header-section-number">16.5</span> Normalization</h2>
+<section id="normalization" class="level2" data-number="16.6">
+<h2 data-number="16.6" class="anchored" data-anchor-id="normalization"><span class="header-section-number">16.6</span> Normalization</h2>
 <p>Calculate log-transformed normalized counts (logcounts) with the library size factors methodology, using methods from <code>scater</code> <span class="citation" data-cites="McCarthy2017">(<a href="references.html#ref-McCarthy2017" role="doc-biblioref">McCarthy et al. 2017</a>)</span> and <code>scran</code> <span class="citation" data-cites="Lun2016">(<a href="references.html#ref-Lun2016" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span>, making the assumption that spots can be treated as equivalent to cells. For more details, see <a href="normalization.html"><span>Chapter&nbsp;7</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scran)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -565,8 +569,8 @@ FALSE  TRUE
 </div>
 </div>
 </section>
-<section id="feature-selection" class="level2" data-number="16.6">
-<h2 data-number="16.6" class="anchored" data-anchor-id="feature-selection"><span class="header-section-number">16.6</span> Feature selection</h2>
+<section id="feature-selection" class="level2" data-number="16.7">
+<h2 data-number="16.7" class="anchored" data-anchor-id="feature-selection"><span class="header-section-number">16.7</span> Feature selection</h2>
 <p>Identify a set of top highly variable genes (HVGs), which will be used to define cell types. We use methods from <code>scran</code> <span class="citation" data-cites="Lun2016">(<a href="references.html#ref-Lun2016" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span>, treating spots as equivalent to single cells, and considering only molecular features (gene expression) as described in <a href="feature-selection.html"><span>Chapter&nbsp;8</span></a>. We also first filter out mitochondrial genes, since these are very highly expressed and not of main biological interest here.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove mitochondrial genes</span></span>
@@ -596,8 +600,8 @@ FALSE  TRUE
 </div>
 </div>
 </section>
-<section id="spatially-aware-feature-selection" class="level2" data-number="16.7">
-<h2 data-number="16.7" class="anchored" data-anchor-id="spatially-aware-feature-selection"><span class="header-section-number">16.7</span> Spatially-aware feature selection</h2>
+<section id="spatially-aware-feature-selection" class="level2" data-number="16.8">
+<h2 data-number="16.8" class="anchored" data-anchor-id="spatially-aware-feature-selection"><span class="header-section-number">16.8</span> Spatially-aware feature selection</h2>
 <p>Alternatively, run <a href="https://bioconductor.org/packages/nnSVG">nnSVG</a> <span class="citation" data-cites="Weber2023">(<a href="references.html#ref-Weber2023" role="doc-biblioref">Weber et al. 2023</a>)</span> to identify a set of top spatially variable genes (SVGs) instead of HVGs.</p>
 <p>Here, we run nnSVG using a small subset of the dataset for faster runtime. We select a subset of the data by subsampling on the set of spots and including stringent filtering for low-expressed genes. For a full analysis, we recommend running <code>nnSVG</code> on all spots and using default filtering parameters (for Visium data from human brain tissue), which takes around 45 minutes for one Visium slide on a standard laptop using multiple cores.</p>
 <div class="cell">
@@ -652,9 +656,9 @@ ENSG00000171603 ENSG00000171603      CLSTN1 Gene Expression 0.43102027
 ENSG00000162545 ENSG00000162545     CAMK2N1 Gene Expression 0.15373440
                    tau.sq       phi    loglik   runtime      mean       var
                 &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-ENSG00000074800  0.518011  15.82454  -109.808     0.015   1.75820  0.530929
-ENSG00000171603  0.298698  18.12310  -123.212     0.022   2.07433  0.741077
-ENSG00000162545  0.547736   2.38046  -119.576     0.017   2.63576  0.702846
+ENSG00000074800  0.518011  15.82454  -109.808     0.016   1.75820  0.530929
+ENSG00000171603  0.298698  18.12310  -123.212     0.023   2.07433  0.741077
+ENSG00000162545  0.547736   2.38046  -119.576     0.016   2.63576  0.702846
                     spcov   prop_sv loglik_lm   LR_stat      rank      pval
                 &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
 ENSG00000074800 0.0521523 0.0159716  -109.735 -0.145454       167 1.0000000
@@ -690,8 +694,8 @@ ENSG00000160307 ENSG00000160307       S100B Gene Expression   1.24179  0.155737
 ENSG00000197971   0.93014  -118.372     0.021   3.78073   2.76535  0.523969
 ENSG00000123560   1.03983  -140.269     0.018   2.86143   3.02555  0.628613
 ENSG00000109846   1.88555  -126.692     0.017   1.86058   1.88123  0.740785
-ENSG00000173786   1.02675  -129.206     0.017   1.79558   1.97274  0.842396
-ENSG00000131095   2.49083  -149.004     0.019   1.94543   2.71281  0.768823
+ENSG00000173786   1.02675  -129.206     0.016   1.79558   1.97274  0.842396
+ENSG00000131095   2.49083  -149.004     0.018   1.94543   2.71281  0.768823
 ENSG00000160307   5.76279  -129.722     0.015   1.82695   1.46946  0.609953
                   prop_sv loglik_lm   LR_stat      rank        pval        padj
                 &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;   &lt;numeric&gt;   &lt;numeric&gt;
@@ -709,8 +713,8 @@ ENSG00000160307  0.888562  -160.636   61.8281         6 3.75255e-14 1.07573e-12<
 </div>
 </div>
 </section>
-<section id="dimensionality-reduction" class="level2" data-number="16.8">
-<h2 data-number="16.8" class="anchored" data-anchor-id="dimensionality-reduction"><span class="header-section-number">16.8</span> Dimensionality reduction</h2>
+<section id="dimensionality-reduction" class="level2" data-number="16.9">
+<h2 data-number="16.9" class="anchored" data-anchor-id="dimensionality-reduction"><span class="header-section-number">16.9</span> Dimensionality reduction</h2>
 <p>Run principal component analysis (PCA) on the set of top HVGs, and retain the top 50 principal components (PCs) for further downstream analyses. This is done both to reduce noise and to improve computational efficiency. We also run UMAP on the set of top 50 PCs and retain the top 2 UMAP components for visualization purposes.</p>
 <p>We use the computationally efficient implementation of PCA available in <code>scater</code> <span class="citation" data-cites="McCarthy2017">(<a href="references.html#ref-McCarthy2017" role="doc-biblioref">McCarthy et al. 2017</a>)</span>, which uses randomization, and therefore requires setting a random seed for reproducibility.</p>
 <div class="cell">
@@ -744,8 +748,8 @@ ENSG00000160307  0.888562  -160.636   61.8281         6 3.75255e-14 1.07573e-12<
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(<span class="fu">reducedDim</span>(spe, <span class="st">"UMAP"</span>)) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"UMAP"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="clustering" class="level2" data-number="16.9">
-<h2 data-number="16.9" class="anchored" data-anchor-id="clustering"><span class="header-section-number">16.9</span> Clustering</h2>
+<section id="clustering" class="level2" data-number="16.10">
+<h2 data-number="16.10" class="anchored" data-anchor-id="clustering"><span class="header-section-number">16.10</span> Clustering</h2>
 <p>Next, we perform clustering to define cell types. Here, we use molecular features (gene expression) only, as described in <a href="clustering.html"><span>Chapter&nbsp;10</span></a>. We apply graph-based clustering using the Walktrap method implemented in <code>scran</code> <span class="citation" data-cites="Lun2016">(<a href="references.html#ref-Lun2016" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span>, applied to the top 50 PCs calculated on the set of top HVGs.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># graph-based clustering</span></span>
@@ -788,8 +792,8 @@ ENSG00000160307  0.888562  -160.636   61.8281         6 3.75255e-14 1.07573e-12<
 </div>
 </div>
 </section>
-<section id="marker-genes" class="level2" data-number="16.10">
-<h2 data-number="16.10" class="anchored" data-anchor-id="marker-genes"><span class="header-section-number">16.10</span> Marker genes</h2>
+<section id="differential-expression" class="level2" data-number="16.11">
+<h2 data-number="16.11" class="anchored" data-anchor-id="differential-expression"><span class="header-section-number">16.11</span> Differential expression</h2>
 <p>Identify marker genes by testing for differential gene expression between clusters. We use the <code>findMarkers</code> implementation in <code>scran</code> <span class="citation" data-cites="Lun2016">(<a href="references.html#ref-Lun2016" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span>, using a binomial test, which tests for genes that differ in the proportion expressed vs.&nbsp;not expressed between clusters. This is a more stringent test than the default t-tests, and tends to select genes that are easier to interpret and validate experimentally.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set gene names as row names for easier plotting</span></span>

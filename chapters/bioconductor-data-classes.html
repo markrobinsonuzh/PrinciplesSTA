@@ -285,8 +285,8 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/contributors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Contributors</span></span></a>
+  <a href="../chapters/acknowledgments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Acknowledgments</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -307,11 +307,12 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#spatialexperiment-class" id="toc-spatialexperiment-class" class="nav-link active" data-scroll-target="#spatialexperiment-class"><span class="header-section-number">3.1</span> SpatialExperiment class</a></li>
-  <li><a href="#molecule-based-data" id="toc-molecule-based-data" class="nav-link" data-scroll-target="#molecule-based-data"><span class="header-section-number">3.2</span> Molecule-based data</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">3.1</span> Overview</a></li>
+  <li><a href="#spatialexperiment-class" id="toc-spatialexperiment-class" class="nav-link" data-scroll-target="#spatialexperiment-class"><span class="header-section-number">3.2</span> SpatialExperiment class</a></li>
+  <li><a href="#molecule-based-data" id="toc-molecule-based-data" class="nav-link" data-scroll-target="#molecule-based-data"><span class="header-section-number">3.3</span> Molecule-based data</a>
   <ul class="collapse">
-  <li><a href="#moleculeexperiment" id="toc-moleculeexperiment" class="nav-link" data-scroll-target="#moleculeexperiment"><span class="header-section-number">3.2.1</span> MoleculeExperiment</a></li>
-  <li><a href="#spatialfeatureexperiment" id="toc-spatialfeatureexperiment" class="nav-link" data-scroll-target="#spatialfeatureexperiment"><span class="header-section-number">3.2.2</span> SpatialFeatureExperiment</a></li>
+  <li><a href="#moleculeexperiment" id="toc-moleculeexperiment" class="nav-link" data-scroll-target="#moleculeexperiment"><span class="header-section-number">3.3.1</span> MoleculeExperiment</a></li>
+  <li><a href="#spatialfeatureexperiment" id="toc-spatialfeatureexperiment" class="nav-link" data-scroll-target="#spatialfeatureexperiment"><span class="header-section-number">3.3.2</span> SpatialFeatureExperiment</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -336,10 +337,13 @@ div.csl-indent {
 
 </header>
 
+<section id="overview" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">3.1</span> Overview</h2>
 <p>Bioconductor provides several data classes for storing and manipulating SRT datasets. By relying on these standardized data classes, we can build analysis workflows that can easily connect methods and packages developed by different groups.</p>
 <p>Below, we describe the Bioconductor data classes used in this book.</p>
-<section id="spatialexperiment-class" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="spatialexperiment-class"><span class="header-section-number">3.1</span> SpatialExperiment class</h2>
+</section>
+<section id="spatialexperiment-class" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="spatialexperiment-class"><span class="header-section-number">3.2</span> SpatialExperiment class</h2>
 <p>The <a href="https://bioconductor.org/packages/SpatialExperiment">SpatialExperiment</a> class <span class="citation" data-cites="Righelli2022">(<a href="references.html#ref-Righelli2022" role="doc-biblioref">Righelli et al. 2022</a>)</span> is the core data class that we use in this book. This class allows us to store datasets at the spot or cell level, e.g.&nbsp;10x Genomics Visium data (spot level) or data from molecule-based platforms that has been aggregated to the cell level.</p>
 <p>SpatialExperiment builds on the more general <a href="https://bioconductor.org/packages/SingleCellExperiment">SingleCellExperiment</a> class <span class="citation" data-cites="Amezquita2020">(<a href="references.html#ref-Amezquita2020" role="doc-biblioref">Amezquita et al. 2020</a>)</span> for single-cell RNA sequencing data, with additional customizations to store spatial information, such as spatial coordinates and image files.</p>
 <p>A summary of the <code>SpatialExperiment</code> object structure is shown in the following schematic. Briefly, a <code>SpatialExperiment</code> object consists of (i) <code>assays</code> containing expression counts, (ii) <code>rowData</code> containing information on features, i.e.&nbsp;genes, (iii) <code>colData</code> containing information on spots or cells, including nonspatial and spatial metadata, (iv) <code>spatialCoords</code> containing spatial coordinates, and (v) <code>imgData</code> containing image data. For spot-based SRT data (e.g.&nbsp;10x Genomics Visium), a single <code>assay</code> named <code>counts</code> is used.</p>
@@ -355,17 +359,17 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="molecule-based-data" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="molecule-based-data"><span class="header-section-number">3.2</span> Molecule-based data</h2>
+<section id="molecule-based-data" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="molecule-based-data"><span class="header-section-number">3.3</span> Molecule-based data</h2>
 <p>Molecule-based SRT datasets include additional information such as the locations of individual mRNA molecules and segmentation boundaries for cells.</p>
 <p>The following classes provide additional functionality to store and manipulate this information.</p>
 <p>Note that these classes extend <code>SpatialExperiment</code> and are compatible with <code>SpatialExperiment</code> for aggregated cell-level analyses.</p>
-<section id="moleculeexperiment" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="moleculeexperiment"><span class="header-section-number">3.2.1</span> MoleculeExperiment</h3>
+<section id="moleculeexperiment" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="moleculeexperiment"><span class="header-section-number">3.3.1</span> MoleculeExperiment</h3>
 <p><code>MoleculeExperiment</code> is available as a <a href="https://bioconductor.org/packages/MoleculeExperiment">Bioconductor package</a> and described in detail in a paper by <span class="citation" data-cites="PetersCouto2023">Peters Couto et al. (<a href="references.html#ref-PetersCouto2023" role="doc-biblioref">2023</a>)</span>.</p>
 </section>
-<section id="spatialfeatureexperiment" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="spatialfeatureexperiment"><span class="header-section-number">3.2.2</span> SpatialFeatureExperiment</h3>
+<section id="spatialfeatureexperiment" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="spatialfeatureexperiment"><span class="header-section-number">3.3.2</span> SpatialFeatureExperiment</h3>
 <p><code>SpatialFeatureExperiment</code> is available as a <a href="https://bioconductor.org/packages/SpatialFeatureExperiment">Bioconductor package</a> and described in detail in a paper by <span class="citation" data-cites="Moses2023">Moses et al. (<a href="references.html#ref-Moses2023" role="doc-biblioref">2023</a>)</span>.</p>
 <!-- ### SpatialData -->
 
