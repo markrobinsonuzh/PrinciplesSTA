@@ -43,7 +43,7 @@ A key strength of the Bioconductor framework is the modularity and open developm
 
 
 
-## Additional materials
+## Additional resources
 
 For readers who are new to R and Bioconductor, additional useful resources include:
 
