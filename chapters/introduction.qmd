@@ -21,7 +21,7 @@ The chapters are organized into several parts:
 
 
 
-## 'Who this book is for' and scope
+## Scope and who this book is for
 
 The aim of this book is to demonstrate best practices for computational analysis workflows for spatial transcriptomics data through interactive examples and discussion using R code and example datasets. We assume an intermediate familiarity with R programming and an understanding of the types of biological questions that single-cell or spatial transcriptomics can be used to answer. Previous experience with Bioconductor is not required. By working through the examples in this book, readers will be able to adapt or extend the example workflows to analyze their own data.
 
