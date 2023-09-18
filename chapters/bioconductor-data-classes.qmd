@@ -3,7 +3,7 @@
 
 ## Overview
 
-Bioconductor provides several data classes for storing and manipulating SRT datasets. By relying on these standardized data classes, we can build analysis workflows that can easily connect methods and packages developed by different groups.
+Bioconductor provides several data classes for storing and manipulating spatial transcriptomics datasets. By relying on these standardized data structures, we can build analysis workflows that can easily connect methods and packages developed by different research groups.
 
 Below, we describe the Bioconductor data classes used in this book.
 
@@ -13,13 +13,13 @@ Below, we describe the Bioconductor data classes used in this book.
 
 The [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) class [@Righelli2022] is the core data class that we use in this book. This class allows us to store datasets at the spot or cell level, e.g. 10x Genomics Visium data (spot level) or data from molecule-based platforms that has been aggregated to the cell level.
 
-SpatialExperiment builds on the more general [SingleCellExperiment](https://bioconductor.org/packages/SingleCellExperiment) class [@Amezquita2020] for single-cell RNA sequencing data, with additional customizations to store spatial information, such as spatial coordinates and image files.
+SpatialExperiment builds on the [SingleCellExperiment](https://bioconductor.org/packages/SingleCellExperiment) class [@Amezquita2020] for single-cell RNA sequencing data, with additional customizations to store spatial information, such as spatial coordinates and image files.
 
-A summary of the `SpatialExperiment` object structure is shown in the following schematic. Briefly, a `SpatialExperiment` object consists of (i) `assays` containing expression counts, (ii) `rowData` containing information on features, i.e. genes, (iii) `colData` containing information on spots or cells, including nonspatial and spatial metadata, (iv) `spatialCoords` containing spatial coordinates, and (v) `imgData` containing image data. For spot-based SRT data (e.g. 10x Genomics Visium), a single `assay` named `counts` is used.
+A summary of the `SpatialExperiment` object structure is shown in the following schematic. Briefly, a `SpatialExperiment` object consists of (i) `assays` containing expression counts, (ii) `rowData` containing information on features, i.e. genes, (iii) `colData` containing information on spots or cells, including nonspatial and spatial metadata, (iv) `spatialCoords` containing spatial coordinates, and (v) `imgData` containing image data. For spot-based data (e.g. 10x Genomics Visium), a single `assay` named `counts` is used.
 
-For more details, see the [Bioconductor vignette](https://bioconductor.org/packages/release/bioc/vignettes/SpatialExperiment/inst/doc/SpatialExperiment.html) for the SpatialExperiment class or the associated paper [@Righelli2022].
+For more details, see the `SpatialExperiment` package [Bioconductor vignette](https://bioconductor.org/packages/release/bioc/vignettes/SpatialExperiment/inst/doc/SpatialExperiment.html) or the paper describing the class [@Righelli2022].
 
-```{r spe-schematic, echo=FALSE, out.width = "100%", fig.align="center", fig.cap="Overview of the `SpatialExperiment` object class for storing spatially-resolved transcriptomics datasets in the Bioconductor framework."}
+```{r, echo = FALSE, out.width = "100%", fig.align = "center", fig.cap = "Overview of the `SpatialExperiment` data class for storing and manipulating spatial transcriptomics datasets within the Bioconductor framework."}
 knitr::include_graphics("https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/SPE.png")
 ```
 
@@ -27,21 +27,21 @@ knitr::include_graphics("https://raw.githubusercontent.com/lmweber/BestPractices
 
 ## Molecule-based data
 
-Molecule-based SRT datasets include additional information such as the locations of individual mRNA molecules and segmentation boundaries for cells.
+Molecule-based spatial transcriptomics datasets contain additional information, including the spatial coordinates of individual mRNA molecules and segmentation boundaries for cells or nuclei.
 
-The following classes provide additional functionality to store and manipulate this information.
+The following Bioconductor classes provide additional functionality to store and manipulate this information.
 
-Note that these classes extend `SpatialExperiment` and are compatible with `SpatialExperiment` for aggregated cell-level analyses.
+These classes extend `SpatialExperiment` and are compatible with `SpatialExperiment` for analyses at the aggregated cell level.
 
 
 ### MoleculeExperiment
 
-`MoleculeExperiment` is available as a [Bioconductor package](https://bioconductor.org/packages/MoleculeExperiment) and described in detail in a paper by @PetersCouto2023.
+`MoleculeExperiment` is available as a [Bioconductor package](https://bioconductor.org/packages/MoleculeExperiment) and described by the authors in their paper [@PetersCouto2023].
 
 
 ### SpatialFeatureExperiment
 
-`SpatialFeatureExperiment` is available as a [Bioconductor package](https://bioconductor.org/packages/SpatialFeatureExperiment) and described in detail in a paper by @Moses2023.
+`SpatialFeatureExperiment` is available as a [Bioconductor package](https://bioconductor.org/packages/SpatialFeatureExperiment) and described by the authors in their paper [@Moses2023].
 
 
 <!-- ### SpatialData -->
