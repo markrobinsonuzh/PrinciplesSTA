@@ -10,7 +10,7 @@
 - [Leonardo Collado-Torres](https://lcolladotor.github.io/), *Lieber Institute for Brain Development, Baltimore, MD, USA*
 - [Stephanie C. Hicks](https://www.stephaniehicks.com/), *Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA*
 
-As well as additional [GitHub contributors](https://github.com/lmweber/BestPracticesST/graphs/contributors).
+As well as additional [GitHub contributors](https://github.com/lmweber/BestPracticesST/graphs/contributors). Thank you for your contributions!
 
 
 ### SpatialExperiment data class
