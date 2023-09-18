@@ -339,21 +339,21 @@ div.csl-indent {
 
 <section id="overview" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">3.1</span> Overview</h2>
-<p>Bioconductor provides several data classes for storing and manipulating SRT datasets. By relying on these standardized data classes, we can build analysis workflows that can easily connect methods and packages developed by different groups.</p>
+<p>Bioconductor provides several data classes for storing and manipulating spatial transcriptomics datasets. By relying on these standardized data structures, we can build analysis workflows that can easily connect methods and packages developed by different research groups.</p>
 <p>Below, we describe the Bioconductor data classes used in this book.</p>
 </section>
 <section id="spatialexperiment-class" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="spatialexperiment-class"><span class="header-section-number">3.2</span> SpatialExperiment class</h2>
 <p>The <a href="https://bioconductor.org/packages/SpatialExperiment">SpatialExperiment</a> class <span class="citation" data-cites="Righelli2022">(<a href="references.html#ref-Righelli2022" role="doc-biblioref">Righelli et al. 2022</a>)</span> is the core data class that we use in this book. This class allows us to store datasets at the spot or cell level, e.g.&nbsp;10x Genomics Visium data (spot level) or data from molecule-based platforms that has been aggregated to the cell level.</p>
-<p>SpatialExperiment builds on the more general <a href="https://bioconductor.org/packages/SingleCellExperiment">SingleCellExperiment</a> class <span class="citation" data-cites="Amezquita2020">(<a href="references.html#ref-Amezquita2020" role="doc-biblioref">Amezquita et al. 2020</a>)</span> for single-cell RNA sequencing data, with additional customizations to store spatial information, such as spatial coordinates and image files.</p>
-<p>A summary of the <code>SpatialExperiment</code> object structure is shown in the following schematic. Briefly, a <code>SpatialExperiment</code> object consists of (i) <code>assays</code> containing expression counts, (ii) <code>rowData</code> containing information on features, i.e.&nbsp;genes, (iii) <code>colData</code> containing information on spots or cells, including nonspatial and spatial metadata, (iv) <code>spatialCoords</code> containing spatial coordinates, and (v) <code>imgData</code> containing image data. For spot-based SRT data (e.g.&nbsp;10x Genomics Visium), a single <code>assay</code> named <code>counts</code> is used.</p>
-<p>For more details, see the <a href="https://bioconductor.org/packages/release/bioc/vignettes/SpatialExperiment/inst/doc/SpatialExperiment.html">Bioconductor vignette</a> for the SpatialExperiment class or the associated paper <span class="citation" data-cites="Righelli2022">(<a href="references.html#ref-Righelli2022" role="doc-biblioref">Righelli et al. 2022</a>)</span>.</p>
+<p>SpatialExperiment builds on the <a href="https://bioconductor.org/packages/SingleCellExperiment">SingleCellExperiment</a> class <span class="citation" data-cites="Amezquita2020">(<a href="references.html#ref-Amezquita2020" role="doc-biblioref">Amezquita et al. 2020</a>)</span> for single-cell RNA sequencing data, with additional customizations to store spatial information, such as spatial coordinates and image files.</p>
+<p>A summary of the <code>SpatialExperiment</code> object structure is shown in the following schematic. Briefly, a <code>SpatialExperiment</code> object consists of (i) <code>assays</code> containing expression counts, (ii) <code>rowData</code> containing information on features, i.e.&nbsp;genes, (iii) <code>colData</code> containing information on spots or cells, including nonspatial and spatial metadata, (iv) <code>spatialCoords</code> containing spatial coordinates, and (v) <code>imgData</code> containing image data. For spot-based data (e.g.&nbsp;10x Genomics Visium), a single <code>assay</code> named <code>counts</code> is used.</p>
+<p>For more details, see the <code>SpatialExperiment</code> package <a href="https://bioconductor.org/packages/release/bioc/vignettes/SpatialExperiment/inst/doc/SpatialExperiment.html">Bioconductor vignette</a> or the paper describing the class <span class="citation" data-cites="Righelli2022">(<a href="references.html#ref-Righelli2022" role="doc-biblioref">Righelli et al. 2022</a>)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/SPE.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Overview of the <code>SpatialExperiment</code> object class for storing spatially-resolved transcriptomics datasets in the Bioconductor framework.</figcaption>
+<figcaption class="figure-caption">Overview of the <code>SpatialExperiment</code> data class for storing and manipulating spatial transcriptomics datasets within the Bioconductor framework.</figcaption>
 </figure>
 </div>
 </div>
@@ -361,31 +361,31 @@ div.csl-indent {
 </section>
 <section id="molecule-based-data" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="molecule-based-data"><span class="header-section-number">3.3</span> Molecule-based data</h2>
-<p>Molecule-based SRT datasets include additional information such as the locations of individual mRNA molecules and segmentation boundaries for cells.</p>
-<p>The following classes provide additional functionality to store and manipulate this information.</p>
-<p>Note that these classes extend <code>SpatialExperiment</code> and are compatible with <code>SpatialExperiment</code> for aggregated cell-level analyses.</p>
+<p>Molecule-based spatial transcriptomics datasets contain additional information, including the spatial coordinates of individual mRNA molecules and segmentation boundaries for cells or nuclei.</p>
+<p>The following Bioconductor classes provide additional functionality to store and manipulate this information.</p>
+<p>These classes extend <code>SpatialExperiment</code> and are compatible with <code>SpatialExperiment</code> for analyses at the aggregated cell level.</p>
 <section id="moleculeexperiment" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="moleculeexperiment"><span class="header-section-number">3.3.1</span> MoleculeExperiment</h3>
-<p><code>MoleculeExperiment</code> is available as a <a href="https://bioconductor.org/packages/MoleculeExperiment">Bioconductor package</a> and described in detail in a paper by <span class="citation" data-cites="PetersCouto2023">Peters Couto et al. (<a href="references.html#ref-PetersCouto2023" role="doc-biblioref">2023</a>)</span>.</p>
+<p><code>MoleculeExperiment</code> is available as a <a href="https://bioconductor.org/packages/MoleculeExperiment">Bioconductor package</a> and described by the authors in their paper <span class="citation" data-cites="PetersCouto2023">(<a href="references.html#ref-PetersCouto2023" role="doc-biblioref">Peters Couto et al. 2023</a>)</span>.</p>
 </section>
 <section id="spatialfeatureexperiment" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="spatialfeatureexperiment"><span class="header-section-number">3.3.2</span> SpatialFeatureExperiment</h3>
-<p><code>SpatialFeatureExperiment</code> is available as a <a href="https://bioconductor.org/packages/SpatialFeatureExperiment">Bioconductor package</a> and described in detail in a paper by <span class="citation" data-cites="Moses2023">Moses et al. (<a href="references.html#ref-Moses2023" role="doc-biblioref">2023</a>)</span>.</p>
+<p><code>SpatialFeatureExperiment</code> is available as a <a href="https://bioconductor.org/packages/SpatialFeatureExperiment">Bioconductor package</a> and described by the authors in their paper <span class="citation" data-cites="Moses2023">(<a href="references.html#ref-Moses2023" role="doc-biblioref">Moses et al. 2023</a>)</span>.</p>
 <!-- ### SpatialData -->
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-Amezquita2020" class="csl-entry" role="listitem">
-Amezquita, Robert A., Aaron T. L. Lun, Etienne Becht, Vince J. Carey, Lindsay N. Carpp, Ludwig Geistlinger, Federico Marini, et al. 2020. <span>“Orchestrating Single-Cell Analysis with <span>Bioconductor</span>.”</span> <em>Nature Methods</em> 17: 137–45. https://doi.org/<a href="https://doi.org/10.1038/s41592-019-0654-x">https://doi.org/10.1038/s41592-019-0654-x</a>.
+Amezquita, Robert A., Aaron T. L. Lun, Etienne Becht, Vince J. Carey, Lindsay N. Carpp, Ludwig Geistlinger, Federico Marini, et al. 2020. <span>“Orchestrating Single-Cell Analysis with <span>Bioconductor</span>.”</span> <em>Nature Methods</em> 17: 137–45. <a href="https://doi.org/10.1038/s41592-019-0654-x">https://doi.org/10.1038/s41592-019-0654-x</a>.
 </div>
 <div id="ref-Moses2023" class="csl-entry" role="listitem">
-Moses, Lambda, Pétur Helgi Einarsson, Kayla Jackson, Laura Luebbert, A. Sina Booeshaghi, Sindri Antonsson, Nicolas Bray, Páll Melsted, and Lior Pachter. 2023. <span>“<span>Voyager</span>: Exploratory Single-Cell Genomics Data Analysis with Geospatial Statistics.”</span> <em>bioRxiv</em>. https://doi.org/<a href="https://doi.org/10.1101/2023.07.20.549945">https://doi.org/10.1101/2023.07.20.549945</a>.
+Moses, Lambda, Pétur Helgi Einarsson, Kayla Jackson, Laura Luebbert, A. Sina Booeshaghi, Sindri Antonsson, Nicolas Bray, Páll Melsted, and Lior Pachter. 2023. <span>“<span>Voyager</span>: Exploratory Single-Cell Genomics Data Analysis with Geospatial Statistics.”</span> <em>bioRxiv</em>. <a href="https://doi.org/10.1101/2023.07.20.549945">https://doi.org/10.1101/2023.07.20.549945</a>.
 </div>
 <div id="ref-PetersCouto2023" class="csl-entry" role="listitem">
-Peters Couto, Bárbara Zita, Nicholas Robertson, Ellis Patrick, and Shila Ghazanfar. 2023. <span>“<span>MoleculeExperiment</span> Enables Consistent Infrastructure for Molecule-Resolved Spatial Transcriptomics Data in <span>Bioconductor</span>.”</span> <em>bioRxiv</em>. https://doi.org/<a href="https://doi.org/10.1101/2023.05.16.541040">https://doi.org/10.1101/2023.05.16.541040</a>.
+Peters Couto, Bárbara Zita, Nicholas Robertson, Ellis Patrick, and Shila Ghazanfar. 2023. <span>“<span>MoleculeExperiment</span> Enables Consistent Infrastructure for Molecule-Resolved Spatial Transcriptomics Data in <span>Bioconductor</span>.”</span> <em>bioRxiv</em>. <a href="https://doi.org/10.1101/2023.05.16.541040">https://doi.org/10.1101/2023.05.16.541040</a>.
 </div>
 <div id="ref-Righelli2022" class="csl-entry" role="listitem">
-Righelli, Dario, Lukas M. Weber, Helena L. Crowell, Brenda Pardo, Leonardo Collado-Torres, Shila Ghazanfar, Aaron T. L. Lun, Stephanie C. Hicks, and Davide Risso. 2022. <span>“<span>SpatialExperiment</span>: Infrastructure for Spatially-Resolved Transcriptomics Data in <span>R</span> Using <span>Bioconductor</span>.”</span> <em>Bioinformatics</em> 38 (11): 3128–31. https://doi.org/<a href="https://doi.org/10.1093/bioinformatics/btac299">https://doi.org/10.1093/bioinformatics/btac299</a>.
+Righelli, Dario, Lukas M. Weber, Helena L. Crowell, Brenda Pardo, Leonardo Collado-Torres, Shila Ghazanfar, Aaron T. L. Lun, Stephanie C. Hicks, and Davide Risso. 2022. <span>“<span>SpatialExperiment</span>: Infrastructure for Spatially-Resolved Transcriptomics Data in <span>R</span> Using <span>Bioconductor</span>.”</span> <em>Bioinformatics</em> 38 (11): 3128–31. <a href="https://doi.org/10.1093/bioinformatics/btac299">https://doi.org/10.1093/bioinformatics/btac299</a>.
 </div>
 </div>
 </section>

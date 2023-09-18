@@ -308,17 +308,16 @@ div.csl-indent {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">2.1</span> Overview</a></li>
-  <li><a href="#overview-1" id="toc-overview-1" class="nav-link" data-scroll-target="#overview-1"><span class="header-section-number">2.2</span> Overview</a></li>
-  <li><a href="#sequencing-based-platforms" id="toc-sequencing-based-platforms" class="nav-link" data-scroll-target="#sequencing-based-platforms"><span class="header-section-number">2.3</span> Sequencing-based platforms</a>
+  <li><a href="#sequencing-based-platforms" id="toc-sequencing-based-platforms" class="nav-link" data-scroll-target="#sequencing-based-platforms"><span class="header-section-number">2.2</span> Sequencing-based platforms</a>
   <ul class="collapse">
-  <li><a href="#x-genomics-visium" id="toc-x-genomics-visium" class="nav-link" data-scroll-target="#x-genomics-visium"><span class="header-section-number">2.3.1</span> 10x Genomics Visium</a></li>
-  <li><a href="#curio-seeker" id="toc-curio-seeker" class="nav-link" data-scroll-target="#curio-seeker"><span class="header-section-number">2.3.2</span> Curio Seeker</a></li>
+  <li><a href="#x-genomics-visium" id="toc-x-genomics-visium" class="nav-link" data-scroll-target="#x-genomics-visium"><span class="header-section-number">2.2.1</span> 10x Genomics Visium</a></li>
+  <li><a href="#curio-seeker" id="toc-curio-seeker" class="nav-link" data-scroll-target="#curio-seeker"><span class="header-section-number">2.2.2</span> Curio Seeker</a></li>
   </ul></li>
-  <li><a href="#molecule-based-platforms" id="toc-molecule-based-platforms" class="nav-link" data-scroll-target="#molecule-based-platforms"><span class="header-section-number">2.4</span> Molecule-based platforms</a>
+  <li><a href="#molecule-based-platforms" id="toc-molecule-based-platforms" class="nav-link" data-scroll-target="#molecule-based-platforms"><span class="header-section-number">2.3</span> Molecule-based platforms</a>
   <ul class="collapse">
-  <li><a href="#x-genomics-xenium" id="toc-x-genomics-xenium" class="nav-link" data-scroll-target="#x-genomics-xenium"><span class="header-section-number">2.4.1</span> 10x Genomics Xenium</a></li>
-  <li><a href="#vizgen-merscope" id="toc-vizgen-merscope" class="nav-link" data-scroll-target="#vizgen-merscope"><span class="header-section-number">2.4.2</span> Vizgen MERSCOPE</a></li>
-  <li><a href="#nanostring-cosmx" id="toc-nanostring-cosmx" class="nav-link" data-scroll-target="#nanostring-cosmx"><span class="header-section-number">2.4.3</span> NanoString CosMx</a></li>
+  <li><a href="#x-genomics-xenium" id="toc-x-genomics-xenium" class="nav-link" data-scroll-target="#x-genomics-xenium"><span class="header-section-number">2.3.1</span> 10x Genomics Xenium</a></li>
+  <li><a href="#vizgen-merscope" id="toc-vizgen-merscope" class="nav-link" data-scroll-target="#vizgen-merscope"><span class="header-section-number">2.3.2</span> Vizgen MERSCOPE</a></li>
+  <li><a href="#nanostring-cosmx" id="toc-nanostring-cosmx" class="nav-link" data-scroll-target="#nanostring-cosmx"><span class="header-section-number">2.3.3</span> NanoString CosMx</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -345,82 +344,70 @@ div.csl-indent {
 
 <section id="overview" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">2.1</span> Overview</h2>
-<p>Spatial transcriptomics (or spatially-resolved transcriptomics) refers to a set of recently developed high-throughput genomic technologies, which enable the measurement of up to transcriptome-scale gene expression at spatial resolution – i.e.&nbsp;measuring the expression of up to thousands of genes at up to thousands of measurement locations, usually on two-dimensional tissue sections.</p>
-<p>A number of technological platforms have now been developed, which vary widely in terms of the technologies used and experimental procedures, as well as the number of genes that can be measured and the spatial resolution, and sensitivity. Spatially-resolved transcriptomics was named the <a href="https://doi.org/10.1038/s41592-020-01042-x">Method of the Year 2020</a> by <em>Nature Methods</em>, and has found widespread application in numerous biological systems.</p>
-<p>Platforms may be grouped into ‘sequencing-based’ and ‘molecule-based’ (or ‘imaging-based’) platforms. These are described in more detail below.</p>
-<p>For recent reviews of available technological platforms, computational analysis methods, and outstanding challenges, see <span class="citation" data-cites="Bressan2023">Bressan, Battistoni, and Hannon (<a href="references.html#ref-Bressan2023" role="doc-biblioref">2023</a>)</span> or <span class="citation" data-cites="Moses2022">Moses and Pachter (<a href="references.html#ref-Moses2022" role="doc-biblioref">2022</a>)</span>.</p>
+<p>Spatial transcriptomics (or spatially-resolved transcriptomics) refers to recently developed high-throughput genomic technological platforms that enable the measurement of up to transcriptome-scale gene expression at spatial resolution, i.e.&nbsp;up to thousands of genes at up to thousands of measurement locations, usually on two-dimensional tissue sections.</p>
+<p>A number of technological platforms have been developed, which vary widely in terms of the technologies used and experimental procedures, as well as the resolution in terms of the number of genes that can be detected and the spatial resolution, and sensitivity and specificity. Spatially-resolved transcriptomics was named the <a href="https://doi.org/10.1038/s41592-020-01042-x">Method of the Year 2020</a> by <em>Nature Methods</em>, and has found widespread application in numerous biological systems.</p>
+<p>Spatial transcriptomics platforms may be grouped into ‘sequencing-based’ and ‘molecule-based’ (or ‘imaging-based’) platforms, which are described in more detail below.</p>
+<p>In this book, we focus on data from commercially available technological platforms, since these are the most easily accessible and (in general) the most widely used platforms. In this chapter, we provide a short overview and details on several key platforms.</p>
+<p>For more in-depth background, several recent reviews are available, e.g. <span class="citation" data-cites="Bressan2023">Bressan, Battistoni, and Hannon (<a href="references.html#ref-Bressan2023" role="doc-biblioref">2023</a>)</span> and <span class="citation" data-cites="Moses2022">Moses and Pachter (<a href="references.html#ref-Moses2022" role="doc-biblioref">2022</a>)</span>, which discuss available technological platforms, computational analysis methods, outstanding challenges, and additional topics.</p>
 </section>
-<section id="overview-1" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="overview-1"><span class="header-section-number">2.2</span> Overview</h2>
-<p>In this book, we focus on commercially available technological platforms, since these are the most easily accessible and widely used. In this chapter, we provide a short overview and details on several key platforms.</p>
+<section id="sequencing-based-platforms" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sequencing-based-platforms"><span class="header-section-number">2.2</span> Sequencing-based platforms</h2>
+<p>Sequencing-based platforms capture messenger RNA (mRNA) molecules at a large set (up to thousands) of measurement locations from a tissue section placed on a slide, tag the mRNAs with unique spatial barcodes for each measurement location, and generate a readout by next-generation sequencing.</p>
+<p>These platforms provide full-transcriptome gene resolution due to the use of next-generation sequencing. The spatial resolution varies between platforms, and depends on the size and spacing between the spatial capture locations. Depending on the spatial resolution and the tissue cell density, each spatial measurement location may capture mRNAs from one or more cells.</p>
+<p>Spatial measurement locations for sequencing-based platforms are often referred to as ‘spots’ or ‘beads’. In this book, we will often use the terminology ‘spots’.</p>
+<section id="x-genomics-visium" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="x-genomics-visium"><span class="header-section-number">2.2.1</span> 10x Genomics Visium</h3>
+<p>The <a href="https://www.10xgenomics.com/products/spatial-gene-expression">10x Genomics Visium</a> platform measures transcriptome-wide gene expression at a grid of spatial locations (referred to as spots) on a tissue capture area on a slide. Either fresh-frozen or formalin-fixed paraffin-embedded (FFPE) tissue may be used. Each spot contains millions of spatially-barcoded capture oligonucleotides, which bind to mRNAs from the tissue. A cDNA library is then generated for sequencing, which includes the spatial barcodes, allowing reads to be mapped back to their spatial locations.</p>
+<p>The array dimensions are 6.5mm x 6.5mm, with around 5000 barcoded spots. Spots are 55µm in diameter and spaced 100µm center-to-center in a hexagonal grid arrangement. The number of cells overlapping with each spot depends on the tissue cell density, e.g.&nbsp;around 0-10 for human brain tissue or ~50 for mouse brain tissue. Each Visium slide contains four tissue capture areas. The following figure provides an illustration.</p>
+<p>Histology images generated from hematoxylin and eosin (H&amp;E) staining can be used to identify anatomical and cell morphological features for each sample.</p>
+<p>The 10x Genomics Visium platform is based on the original technological implementation developed by <span class="citation" data-cites="Stahl2016">Ståhl et al. (<a href="references.html#ref-Stahl2016" role="doc-biblioref">2016</a>)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/Maynard2020_spatial.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">Illustration of potential uses of spatially-resolved transcriptomics data and how it can be combined with single cell/nucleus RNA-seq to study tissues of interest such as the human brain. Source: <span class="citation" data-cites="Maynard2020a">Maynard, Jaffe, and Martinowich (<a href="references.html#ref-Maynard2020a" role="doc-biblioref">2020</a>)</span>.</figcaption>
+<p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/Visium.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Schematic illustrating the 10x Genomics Visium platform. Source: <a href="https://www.10xgenomics.com/spatial-transcriptomics/">10x Genomics Visium</a></figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="sequencing-based-platforms" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="sequencing-based-platforms"><span class="header-section-number">2.3</span> Sequencing-based platforms</h2>
-<p>Sequencing-based platforms capture messenger RNA (mRNA) molecules at a large set (up to thousands) of measurement locations on a tissue slide, tag the mRNAs with unique spatial barcodes for each measurement location, and generate a readout by next-generation sequencing.</p>
-<p>These platforms can provide full-transcriptome gene resolution. The spatial resolution varies between platforms, and depends on the size and spacing between the spatial capture locations. Depending on the spatial resolution and the tissue cell density, each spatial measurement location may capture multiple cells.</p>
-<p>Spatial measurement locations for sequencing-based platforms are often referred to as ‘spots’ or ‘beads’. In this book, we will often use the terminology ‘spots’.</p>
-<section id="x-genomics-visium" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="x-genomics-visium"><span class="header-section-number">2.3.1</span> 10x Genomics Visium</h3>
-<p>The <a href="https://www.10xgenomics.com/products/spatial-gene-expression">10x Genomics Visium</a> platform measures transcriptome-wide gene expression at a grid of spatial locations (referred to as spots) on a tissue capture area. Either fresh-frozen or formalin-fixed paraffin-embedded (FFPE) tissue may be used. Each spot contains millions of spatially-barcoded capture oligonucleotides, which bind to mRNAs from the tissue. A cDNA library is then generated for sequencing, which includes the spatial barcodes, allowing reads to be mapped back to their spatial locations.</p>
-<p>The array dimensions are 6.5mm x 6.5mm, with around 5000 barcoded spots. Spots are 55µm in diameter and spaced 100µm center-to-center in a hexagonal grid arrangement. The number of cells per spot depends on the tissue cell density, e.g.&nbsp;around 0-10 for human brain or ~50 for mouse brain. Each Visium slide contains four tissue capture areas. The following figure provides an illustration.</p>
-<p>Histology images generated from hematoxylin and eosin (H&amp;E) staining can be used to identify anatomical and cell morphological features such as the number of cells per spot.</p>
-<div class="cell" data-layout-align="center" data-fig.wide="true">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/Visium.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Schematic of 10x Genomics Visium platform. Source: <a href="https://www.10xgenomics.com/spatial-transcriptomics/">10x Genomics Visium website</a></figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="curio-seeker" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="curio-seeker"><span class="header-section-number">2.3.2</span> Curio Seeker</h3>
-<p>The <a href="https://curiobioscience.com/product/">Curio Seeker</a> platform is a commercial implementation of the Slide-seqV2 <span class="citation" data-cites="Stickels2021">Stickels et al. (<a href="references.html#ref-Stickels2021" role="doc-biblioref">2021</a>)</span> platform.</p>
-<p>This platform captures mRNA molecules at a set of randomly placed measurement locations (referred to as ‘beads’) on a tissue slide (referred to as a ‘tile’) at high spatial resolution. The tile dimensions are 3 mm x 3 mm, and the spatial resolution consists of tightly packed 10 μm diameter beads.</p>
+<section id="curio-seeker" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="curio-seeker"><span class="header-section-number">2.2.2</span> Curio Seeker</h3>
+<p>The <a href="https://curiobioscience.com/product/">Curio Seeker</a> platform is a commercially available implementation and extension of the original Slide-seqV2 <span class="citation" data-cites="Stickels2021">Stickels et al. (<a href="references.html#ref-Stickels2021" role="doc-biblioref">2021</a>)</span> platform.</p>
+<p>The Curio Seeker platform captures mRNA molecules at a set of randomly placed measurement locations (referred to as ‘beads’) on a tissue slide (referred to as a ‘tile’) at high spatial resolution. The tile dimensions are 3 mm x 3 mm, and the spatial resolution consists of tightly packed 10 μm diameter beads.</p>
 </section>
 </section>
-<section id="molecule-based-platforms" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="molecule-based-platforms"><span class="header-section-number">2.4</span> Molecule-based platforms</h2>
-<p>Molecule-based (or imaging-based) platforms identify the spatial coordinates of individual RNA molecules by combinatorial in situ hybridization (ISH) or in situ sequencing (ISS), for targeted sets of hundreds to thousands of genes at up to sub-cellular spatial resolution.</p>
-<p>Image segmentation to identify the boundaries of individual cells and assign RNA molecules to cells represents a key step during analyses. For downstream analyses, gene counts may be aggregated to cellular (single-cell) resolution, or analyses may be performed directly at the level of the individual RNA molecules.</p>
-<p>Panel design to select sets of informative genes in a given biological context is an important consideration during experimental design, with several commerical options now available.</p>
-<section id="x-genomics-xenium" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="x-genomics-xenium"><span class="header-section-number">2.4.1</span> 10x Genomics Xenium</h3>
+<section id="molecule-based-platforms" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="molecule-based-platforms"><span class="header-section-number">2.3</span> Molecule-based platforms</h2>
+<p>Molecule-based (or imaging-based) platforms detect the spatial coordinates of individual RNA molecules by sequential in situ hybridization (ISH) or by in situ sequencing (ISS), for targeted sets of hundreds to thousands of genes at up to sub-cellular spatial resolution.</p>
+<p>Image segmentation is used to identify the boundaries of individual cells and assign RNA molecules to cells or nuclei during preprocessing. For downstream analyses, gene counts may be aggregated to the cell level, or analyses may be performed directly at the molecule level. Cell-level analyses can re-use methods developed for spot-level spatial transcriptomics data or single-cell data, while molecule-level analyses may require new methods.</p>
+<p>The selection of targeted sets of biologically informative genes for an experiment, which is referred to as panel design, is a key consideration during experimental design. Several commercially available options for targeted gene sets suitable for certain biological systems are now available.</p>
+<section id="x-genomics-xenium" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="x-genomics-xenium"><span class="header-section-number">2.3.1</span> 10x Genomics Xenium</h3>
 <p>Additional details on the 10x Genomics Xenium platform are available from <a href="https://www.10xgenomics.com/platforms/xenium">10x Genomics</a>.</p>
 </section>
-<section id="vizgen-merscope" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="vizgen-merscope"><span class="header-section-number">2.4.2</span> Vizgen MERSCOPE</h3>
+<section id="vizgen-merscope" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="vizgen-merscope"><span class="header-section-number">2.3.2</span> Vizgen MERSCOPE</h3>
 <p>Additional details on the Vizgen MERSCOPE platform are available from <a href="https://vizgen.com/products/">Vizgen</a>.</p>
 </section>
-<section id="nanostring-cosmx" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="nanostring-cosmx"><span class="header-section-number">2.4.3</span> NanoString CosMx</h3>
+<section id="nanostring-cosmx" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="nanostring-cosmx"><span class="header-section-number">2.3.3</span> NanoString CosMx</h3>
 <p>Additional details on the NanoString CosMx platform are available from <a href="https://nanostring.com/products/cosmx-spatial-molecular-imager/">NanoString</a>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-Bressan2023" class="csl-entry" role="listitem">
-Bressan, Dario, Giorgia Battistoni, and Gregory J. Hannon. 2023. <span>“The Dawn of Spatial Omics.”</span> <em>Science</em> 381 (6657). https://doi.org/<a href="https://doi.org/10.1126/science.abq4964">https://doi.org/10.1126/science.abq4964</a>.
-</div>
-<div id="ref-Maynard2020a" class="csl-entry" role="listitem">
-Maynard, K. R., A. E. Jaffe, and K. Martinowich. 2020. <span>“Spatial Transcriptomics: Putting Genome-Wide Expression on the Map.”</span> <em>Neuropsychopharmacology</em> 45: 232–33. https://doi.org/<a href="https://doi.org/10.1038/s41386-019-0484-7">https://doi.org/10.1038/s41386-019-0484-7</a>.
+Bressan, Dario, Giorgia Battistoni, and Gregory J. Hannon. 2023. <span>“The Dawn of Spatial Omics.”</span> <em>Science</em> 381 (6657). <a href="https://doi.org/10.1126/science.abq4964">https://doi.org/10.1126/science.abq4964</a>.
 </div>
 <div id="ref-Moses2022" class="csl-entry" role="listitem">
-Moses, Lambda, and Lior Pachter. 2022. <span>“Museum of Spatial Transcriptomics.”</span> <em>Nature Methods</em> 19: 534–46. https://doi.org/<a href="https://doi.org/10.1038/s41592-022-01409-2">https://doi.org/10.1038/s41592-022-01409-2</a>.
+Moses, Lambda, and Lior Pachter. 2022. <span>“Museum of Spatial Transcriptomics.”</span> <em>Nature Methods</em> 19: 534–46. <a href="https://doi.org/10.1038/s41592-022-01409-2">https://doi.org/10.1038/s41592-022-01409-2</a>.
+</div>
+<div id="ref-Stahl2016" class="csl-entry" role="listitem">
+Ståhl, Patrik L., Fredrik Salmén, Sanja Vickovic, Anna Lundmark, José Fernández Navarro, Jens Magnusson, Stefania Giacomello, et al. 2016. <span>“Visualization and Analysis of Gene Expression in Tissue Sections by Spatial Transcriptomics.”</span> <em>Science</em> 353 (6294): 78–82. <a href="https://doi.org/10.1126/science.aaf2403">https://doi.org/10.1126/science.aaf2403</a>.
 </div>
 <div id="ref-Stickels2021" class="csl-entry" role="listitem">
-Stickels, Robert R., Evan Murray, Pawan Kumar, Jilong Li, Jamie L. Marshall, Daniela J. Di Bella, Paola Arlotta, Evan Z. Macosko, and Fei Chen. 2021. <span>“Highly Sensitive Spatial Transcriptomics at Near-Cellular Resolution with <span class="nocase">Slide-seqV2</span>.”</span> <em>Nature Biotechnology</em> 39: 313–19. https://doi.org/<a href="https://doi.org/10.1038/s41587-020-0739-1">https://doi.org/10.1038/s41587-020-0739-1</a>.
+Stickels, Robert R., Evan Murray, Pawan Kumar, Jilong Li, Jamie L. Marshall, Daniela J. Di Bella, Paola Arlotta, Evan Z. Macosko, and Fei Chen. 2021. <span>“Highly Sensitive Spatial Transcriptomics at Near-Cellular Resolution with <span class="nocase">Slide-seqV2</span>.”</span> <em>Nature Biotechnology</em> 39: 313–19. <a href="https://doi.org/10.1038/s41587-020-0739-1">https://doi.org/10.1038/s41587-020-0739-1</a>.
 </div>
 </div>
 </section>
