@@ -20,3 +20,11 @@ As well as additional [GitHub contributors](https://github.com/lmweber/BestPract
 - Aaron Lun, *Genentech, South San Francisco, CA, USA*
 - Stephanie C. Hicks, *Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA*
 - Davide Risso, *Department of Statistical Sciences, University of Padova, Padova, Italy*
+
+
+
+## Additional acknowledgments
+
+- The 'Best Practices for Spatial Transcriptomics Analysis with Bioconductor' online book is inspired by the [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://bioconductor.org/books/release/OSCA/), which provides a detailed overview and examples of analysis workflows for single-cell RNA sequencing data using R and Bioconductor.
+
+- We are especially grateful to the [Bioconductor](https://bioconductor.org/) community and the [Bioconductor Core Team](https://www.bioconductor.org/about/core-team/).
