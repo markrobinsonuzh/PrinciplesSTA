@@ -1,7 +1,9 @@
 # Analysis steps {#sec-analysis-steps}
 
-This part consists of several chapters for steps in a computational analysis pipeline for spatially-resolved transcriptomics (SRT) data. This includes quality control (QC), normalization, feature selection, dimensionality reduction, clustering, identifying marker genes, and spot-level deconvolution.
+This part contains chapters describing individual analysis steps within computational analysis workflows for spatial transcriptomics data.
 
-These steps require that the raw data has been loaded into R. In the previous part, we provide instructions and examples showing how to do this for the 10x Genomics Visium platform.
+Each chapter describes the analysis type, including discussion on statistical topics and available methods, and provides an interactive example with R code and an example dataset.
 
-Throughout these chapters, we will rely on @sec-bioconductor-data-classes, especially `SpatialExperiment`, to connect the steps in the pipeline. Following the Bioconductor principle of modularity, you can substitute alternative methods for individual steps if you prefer, as long as these can interface with the `SpatialExperiment` structure.
+In the next chapter, we load a dataset in `SpatialExperiment` format (see @sec-bioconductor-data-classes), which will be used in the following chapters.
+
+For examples of complete analysis workflows for selected datasets and technological platforms, see the next part (@sec-workflows).
