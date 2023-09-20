@@ -3,15 +3,29 @@
 
 ## Overview
 
-In the following analysis chapters, we use a pre-prepared dataset where we have previously applied data preprocessing procedures (using tools outside R and Bioconductor) and saved the object in the `SpatialExperiment` format. This is available from the [STexampleData](https://bioconductor.org/packages/STexampleData) package.
+In the following chapters, we use spatial transcriptomics datasets that have been formatted into `SpatialExperiment` or other Bioconductor data classes (see @sec-bioconductor-data-classes).
 
-The dataset consists of a single sample of human brain from the dorsolateral prefrontal cortex (DLPFC) region, measured using the 10x Genomics Visium platform, sourced from @Maynard2021. The dataset is also described in more detail in @sec-workflow-human-dlpfc.
+Here, we load a 10x Genomics Visium dataset that will be used in several of the following chapters.
+
+This dataset has previously been preprocessed using data preprocessing procedures with tools outside R and formatted into `SpatialExperiment` format. For more details on data preprocessing procedures for the 10x Genomics Visium platform, see the related online book [Visium Data Preprocessing](https://lmweber.org/Visium-data-preprocessing/).
+
+The dataset here is available in `SpatialExperiment` format from the [STexampleData](https://bioconductor.org/packages/STexampleData) Bioconductor package.
+
+
+
+## Dataset
+
+This dataset consists of one sample (Visium capture area) from one donor, consisting of postmortem human brain tissue from the dorsolateral prefrontal cortex (DLPFC) brain region, which was measured with the 10x Genomics Visium platform. The dataset is described in the original publication by @Maynard2021.
+
+More details on the dataset are also included in @sec-workflow-human-dlpfc.
+
+<!-- To do: move additional details on dataset here (from DLPFC workflow chapter) -->
 
 
 
 ## Load data
 
-Here, we show how to load the data from the `STexampleData` package.
+Load the dataset in `SpatialExperiment` format from the [STexampleData](https://bioconductor.org/packages/STexampleData) Bioconductor package.
 
 ```{r, message=FALSE}
 library(SpatialExperiment)
@@ -25,27 +39,27 @@ spe <- Visium_humanDLPFC()
 
 ## SpatialExperiment object
 
-Next, we inspect the `SpatialExperiment` object. For more details, see @sec-bioconductor-data-classes.
+Check the contents of the `SpatialExperiment` object. For more details on the `SpatialExperiment` structure, see @sec-bioconductor-data-classes.
 
 ```{r, message=FALSE}
 # check object
 spe
 
-# number of features (rows) and spots (columns)
+# number of genes (rows) and spots (columns)
 dim(spe)
 
-# names of 'assay' tables
+# names of 'assays'
 assayNames(spe)
 
-# features metadata
+# row (gene) data
 head(rowData(spe))
 
-# spot-level metadata
+# column (spot) data
 head(colData(spe))
 
 # spatial coordinates
 head(spatialCoords(spe))
 
-# image metadata
+# image data
 imgData(spe)
 ```
