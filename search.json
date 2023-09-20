@@ -354,7 +354,7 @@
     "href": "chapters/workflows.html",
     "title": "15  Workflows",
     "section": "",
-    "text": "This part contains several extended chapters containing complete analysis workflows.\nEach chapter uses a specific example dataset and a selected set of analysis methods. The workflows have been selected to showcase certain types of analyses or datasets from a specific technological platform. Each workflow includes some discussion on the types of analyses and methods used, and interactive R code examples.\nFor more details on the individual analysis steps, see the chapters in the previous part (?sec-analysis-workflows)."
+    "text": "This part contains several extended chapters containing examples of complete analysis workflows.\nEach chapter uses a specific example dataset and a selected set of analysis methods. The workflows have been selected to showcase certain types of analyses or datasets from a specific technological platform. Each workflow includes some discussion on the analyses and methods used, and interactive R code examples.\nFor more details on the individual analysis steps, see the chapters in the previous part (Chapter 4)."
   },
   {
     "objectID": "chapters/workflow-Visium-humanDLPFC.html#overview",
@@ -620,7 +620,7 @@
     "href": "chapters/acknowledgments.html#additional-acknowledgments",
     "title": "Appendix B — Acknowledgments",
     "section": "B.2 Additional acknowledgments",
-    "text": "B.2 Additional acknowledgments\n\nThe ‘Best Practices for Spatial Transcriptomics Analysis with Bioconductor’ online book is inspired by the Orchestrating Single-Cell Analysis with Bioconductor (OSCA), which provides a detailed overview and examples of analysis workflows for single-cell RNA sequencing data using R and Bioconductor.\nWe are especially grateful to the Bioconductor community and the Bioconductor Core Team."
+    "text": "B.2 Additional acknowledgments\n\nThe ‘Best Practices for Spatial Transcriptomics Analysis with Bioconductor’ online book is inspired by the Orchestrating Single-Cell Analysis with Bioconductor (OSCA) online book, which provides a detailed overview and examples of analysis workflows for single-cell RNA sequencing data using R and Bioconductor.\nWe are especially grateful to the Bioconductor community and the Bioconductor Core Team."
   },
   {
     "objectID": "chapters/references.html",
