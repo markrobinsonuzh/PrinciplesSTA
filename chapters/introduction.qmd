@@ -47,7 +47,7 @@ A key strength of the Bioconductor framework is the modularity and open developm
 
 For readers who are new to R and Bioconductor, additional useful resources include:
 
-- The [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://osca.bioconductor.org/) online book [@Amezquita2020], which contains comprehensive materials on analysis workflows for non-spatial single-cell data as well as further introductory materials on R and Bioconductor.
+- The [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://bioconductor.org/books/release/OSCA/) online book [@Amezquita2020], which contains comprehensive materials on analysis workflows for non-spatial single-cell data as well as further introductory materials on R and Bioconductor.
 
 - The [R for Data Science](https://r4ds.had.co.nz/) online book provides an excellent introduction to R.
 
