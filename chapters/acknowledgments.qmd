@@ -3,14 +3,13 @@
 
 ## Contributors
 
-
-### 'Best Practices for Spatial Transcriptomics Analysis with Bioconductor' book
+Main developers of the 'Best Practices for Spatial Transcriptomics Analysis with Bioconductor' online book:
 
 - [Lukas M. Weber](https://lmweber.org/), *Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA*
 - [Leonardo Collado-Torres](https://lcolladotor.github.io/), *Lieber Institute for Brain Development, Baltimore, MD, USA*
 - [Stephanie C. Hicks](https://www.stephaniehicks.com/), *Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA*
 
-As well as additional [GitHub contributors](https://github.com/lmweber/BestPracticesST/graphs/contributors). Thank you for your contributions!
+We are also grateful to additional [GitHub contributors](https://github.com/lmweber/BestPracticesST/graphs/contributors) who have contributed materials, including updates, extensions, bug fixes, and other improvements. Thank you for your contributions!
 
 
 
