@@ -2,6 +2,6 @@
 
 This part contains several extended chapters containing examples of complete analysis workflows.
 
-Each chapter uses a specific example dataset and a selected set of analysis methods. The workflows have been selected to showcase certain types of analyses or datasets from a specific technological platform. Each workflow includes some discussion on the analyses and methods used, and interactive R code examples.
+Each chapter uses a specific example dataset and a selected set of analysis methods. The workflows have been selected to showcase certain types of analyses or datasets from specific technological platforms. Each workflow includes some discussion on the analyses and methods used, and interactive R code examples.
 
 For more details on the individual analysis steps, see the chapters in the previous part (@sec-analysis-steps).

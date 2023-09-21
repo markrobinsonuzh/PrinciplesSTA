@@ -11,7 +11,7 @@ Below, we describe the Bioconductor data classes used in this book.
 
 ## SpatialExperiment class
 
-The [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) class [@Righelli2022] is the core data class that we use in this book. This class allows us to store datasets at the spot or cell level, e.g. 10x Genomics Visium data (spot level) or data from molecule-based platforms that has been aggregated to the cell level.
+The [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) class [@Righelli2022] is the core data class that we use in this book. This class allows us to store datasets at the spot or cell level, i.e. data from sequencing-based platforms (e.g. 10x Genomics Visium) at the spot level, or data from molecule-based platforms that has been aggregated to the cell level.
 
 SpatialExperiment builds on the [SingleCellExperiment](https://bioconductor.org/packages/SingleCellExperiment) class [@Amezquita2020] for single-cell RNA sequencing data, with additional customizations to store spatial information, such as spatial coordinates and image files.
 

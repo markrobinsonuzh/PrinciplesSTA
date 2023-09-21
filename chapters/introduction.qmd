@@ -23,21 +23,21 @@ The chapters are organized into several parts:
 
 ## Scope and who this book is for
 
-The aim of this book is to demonstrate best practices for computational analysis workflows for spatial transcriptomics data through interactive examples and discussion using R code and example datasets. We assume an intermediate familiarity with R programming and an understanding of the types of biological questions that single-cell or spatial transcriptomics can be used to answer. Previous experience with Bioconductor is not required. By working through the examples in this book, readers will be able to adapt or extend the example workflows to analyze their own data.
+The aim of this book is to demonstrate best practices for computational analysis workflows for spatial transcriptomics data through interactive examples and discussion using R code and example datasets. We assume some familiarity with R programming and an understanding of the types of biological questions that single-cell and spatial transcriptomics can be used to answer. Previous experience with Bioconductor is not required. By working through the examples in this book, readers will be able to adapt or extend the example workflows to analyze their own data.
 
-In general, we focus on downstream analysis methods, which start with a gene count table and spatial coordinates as the main input. Preprocessing procedures to generate gene count tables are covered in other resources (e.g. our related book [Visium Data Preprocessing](https://lmweber.org/Visium-data-preprocessing/) for data from the 10x Genomics Visium platform) and tutorials provided by the manufacturers of each technological platform.
+In general, we focus on downstream analysis methods, which start with a gene count table and spatial coordinates as the main inputs. Preprocessing procedures to generate gene count tables are covered in other resources (e.g. our related book [Visium Data Preprocessing](https://lmweber.org/Visium-data-preprocessing/) for data from the 10x Genomics Visium platform) and tutorials provided by the manufacturers of each technological platform.
 
-Many downstream analysis methods are generally applicable across technological platforms. In the case of molecule-based platform, we will usually use data that has been aggregated to the cell level.
+Many downstream analysis methods are generally applicable across technological platforms. For molecule-based platforms, we will usually use data that has been aggregated to the cell level.
 
 For analysis steps where a number of different methods are available, we will showcase examples of methods that we have found to work well and are computationally scalable, with a preference for methods available through Bioconductor.
 
-All methods used in this book are available through Bioconductor or CRAN (in R) or PyPI (in Python) to ensure installability and long-term maintenance. In some chapters we may also mention additional methods available as packages from GitHub, but these will not be included within the interactive code examples.
+All methods used in this book are available through Bioconductor or CRAN (in R) or PyPI (in Python) to ensure installability and long-term maintenance. In some chapters we also mention additional methods available as packages from GitHub, but these will not be included within the interactive code examples.
 
 
 
 ## Bioconductor
 
-[Bioconductor](http://bioconductor.org/) is an *open source* and *open development* project providing a cohesive and flexible framework for rigorous and reproducible analyses of high-throughput genomic data in R [@Huber2015]. Bioconductor provides access to more than 2,000 contributed R packages, as well as infrastructure maintained by the Bioconductor Core Team, providing a rich analysis environment for users.
+[Bioconductor](http://bioconductor.org/) is an 'open source and open development' project providing a cohesive and flexible framework for rigorous and reproducible analyses of high-throughput genomic data in R [@Huber2015]. Bioconductor provides access to more than 2,000 contributed R packages, as well as infrastructure maintained by the Bioconductor Core Team, providing a rich analysis environment for users.
 
 A key strength of the Bioconductor framework is the modularity and open development philosophy. R packages are contributed by numerous research groups, with the Bioconductor Core Team coordinating the overall project and maintaining infrastructure, build testing, and development guidelines. Contributed packages use consistent data structures, enabling users to connect packages to build analysis workflows that include the latest state-of-the-art methods developed by research groups around the world. Bioconductor packages also include comprehensive documentation, including long-form tutorials or vignettes for new users.
 
@@ -55,7 +55,7 @@ For readers who are new to R and Bioconductor, additional useful resources inclu
 
 - The R/Bioconductor Data Science Team at the Lieber Institute for Brain Development has a [detailed guide](https://lcolladotor.github.io/bioc_team_ds/rbioconductor-data-science-bootcamps.html) of free resources and videos to learn more about R and Bioconductor, as well as [YouTube videos](https://www.youtube.com/c/LeonardoColladoTorres/playlists), including some on the basics of Bioconductor and infrastructure for storing gene expression data.
 
-- The [Visium Data Preprocessing](https://lmweber.org/Visium-data-preprocessing/) online book provides additional details on data preprocessing procedures for spatial transcriptomics data from the 10x Genomics Visium platform.
+- The [Visium Data Preprocessing](https://lmweber.org/Visium-data-preprocessing/) online book provides details on data preprocessing procedures for spatial transcriptomics data from the 10x Genomics Visium platform.
 
 
 
@@ -63,4 +63,4 @@ For readers who are new to R and Bioconductor, additional useful resources inclu
 
 We welcome suggestions for updates and additions to the book. Suggestions may be provided as [GitHub issues](https://github.com/lmweber/BestPracticesST/issues) for further discussion with the maintainers.
 
-We note that all methods to be included within the code examples must be available as either R packages from Bioconductor or CRAN, or Python packages from PyPI. This restriction is intended to provide readers with guarantees regarding installability, long-term availability, maintenance, and compatibility. Packages that are available from GitHub or other repositories are not suitable for inclusion within the interactive code examples and workflows, although we may discuss some key additional packages within the text. In general, our philosophy is to showcase examples of analysis methods that we have found to work well, are computationally scalable, relatively user-friendly, and which can be integrated into existing Bioconductor-based workflows.
+We note that all methods to be included within the code examples must be available as either R packages from Bioconductor or CRAN, or Python packages from PyPI. This restriction is intended to provide readers with guarantees regarding installability, long-term availability, maintenance, and compatibility. Packages that are available from GitHub or other repositories are not suitable for inclusion within the interactive code examples and workflows, although we may discuss some key additional packages within the text. In general, our philosophy is to showcase examples of analysis methods that we have found to work well, are computationally scalable, user-friendly, and which can be integrated into existing Bioconductor-based workflows.
