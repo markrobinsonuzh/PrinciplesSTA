@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -308,8 +289,8 @@ div.csl-indent {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">A.1</span> Overview</a></li>
-  <li><a href="#data-preprocessing-procedures-for-visium" id="toc-data-preprocessing-procedures-for-visium" class="nav-link" data-scroll-target="#data-preprocessing-procedures-for-visium"><span class="header-section-number">A.2</span> Data preprocessing procedures for Visium</a></li>
-  <li><a href="#resources-for-other-spatial-platforms" id="toc-resources-for-other-spatial-platforms" class="nav-link" data-scroll-target="#resources-for-other-spatial-platforms"><span class="header-section-number">A.3</span> Resources for other spatial platforms</a></li>
+  <li><a href="#data-preprocessing-procedures-for-the-visium-platform" id="toc-data-preprocessing-procedures-for-the-visium-platform" class="nav-link" data-scroll-target="#data-preprocessing-procedures-for-the-visium-platform"><span class="header-section-number">A.2</span> Data preprocessing procedures for the Visium platform</a></li>
+  <li><a href="#resources-for-other-spatial-omics-platforms" id="toc-resources-for-other-spatial-omics-platforms" class="nav-link" data-scroll-target="#resources-for-other-spatial-omics-platforms"><span class="header-section-number">A.3</span> Resources for other spatial omics platforms</a></li>
   <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures"><span class="header-section-number">A.4</span> Data structures</a></li>
   <li><a href="#statistical-concepts" id="toc-statistical-concepts" class="nav-link" data-scroll-target="#statistical-concepts"><span class="header-section-number">A.5</span> Statistical concepts</a></li>
   </ul>
@@ -339,68 +320,36 @@ div.csl-indent {
 <h2 data-number="A.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">A.1</span> Overview</h2>
 <p>In this chapter, we highlight several related resources from the Bioconductor and other communities.</p>
 </section>
-<section id="data-preprocessing-procedures-for-visium" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="data-preprocessing-procedures-for-visium"><span class="header-section-number">A.2</span> Data preprocessing procedures for Visium</h2>
-<p><a href="https://lmweber.org/Visium-data-preprocessing/"><strong>Visium data preprocessing</strong></a></p>
+<section id="data-preprocessing-procedures-for-the-visium-platform" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="data-preprocessing-procedures-for-the-visium-platform"><span class="header-section-number">A.2</span> Data preprocessing procedures for the Visium platform</h2>
+<p>Data preprocessing procedures for spatial transcriptomics data from the 10x Genomics Visium platform:</p>
 <ul>
-<li>Online book containing details on data preprocessing procedures for spatially-resolved transcriptomics data from the 10x Genomics Visium platform (using tools outside R and Bioconductor).</li>
+<li><a href="https://lmweber.org/Visium-data-preprocessing/"><strong>Visium data preprocessing</strong></a>: Online book containing details on data preprocessing procedures for spatial transcriptomics data from the 10x Genomics Visium platform (using tools outside R and Bioconductor).</li>
 </ul>
 </section>
-<section id="resources-for-other-spatial-platforms" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="resources-for-other-spatial-platforms"><span class="header-section-number">A.3</span> Resources for other spatial platforms</h2>
-<p>Workflows and other resources for other spatially-resolved platforms:</p>
-<p><a href="https://bodenmillergroup.github.io/IMCDataAnalysis/"><strong>Analysis workflow for IMC data</strong></a></p>
+<section id="resources-for-other-spatial-omics-platforms" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="resources-for-other-spatial-omics-platforms"><span class="header-section-number">A.3</span> Resources for other spatial omics platforms</h2>
+<p>Workflows and other resources for other spatial omics platforms:</p>
 <ul>
-<li>Online book providing a workflow highlighting the use of common R/Bioconductor packages to analyze single-cell data obtained from segmented imaging mass cytometry (IMC) images. Examples focus on IMC data and can also be applied to images obtained by other highly-multiplexed imaging technologies, e.g.&nbsp;CODEX, MIBI, and mIF.</li>
-</ul>
-<p><a href="https://bioconductor.org/packages/VectraPolarisData"><strong>VectraPolarisData</strong></a></p>
-<ul>
-<li>Bioconductor data package providing two multiplex single-cell imaging datasets collected on Vectra Polaris and Vectra 3 instruments.</li>
+<li><p><a href="https://bodenmillergroup.github.io/IMCDataAnalysis/"><strong>Analysis workflow for IMC data</strong></a>: Online book providing a workflow highlighting the use of common R/Bioconductor packages to analyze single-cell data obtained from segmented imaging mass cytometry (IMC) images. Examples focus on IMC data and can also be applied to images obtained by other highly-multiplexed imaging technologies, e.g.&nbsp;CODEX, MIBI, and mIF.</p></li>
+<li><p><a href="https://bioconductor.org/packages/VectraPolarisData"><strong>VectraPolarisData</strong></a>: Bioconductor data package providing two multiplex single-cell imaging datasets collected on Vectra Polaris and Vectra 3 instruments.</p></li>
 </ul>
 </section>
 <section id="data-structures" class="level2" data-number="A.4">
 <h2 data-number="A.4" class="anchored" data-anchor-id="data-structures"><span class="header-section-number">A.4</span> Data structures</h2>
-<p>Data structures for storing spatially-resolved transcriptomics (SRT) data.</p>
-<p><a href="https://bioconductor.org/packages/SpatialExperiment"><strong>SpatialExperiment</strong></a></p>
+<p>Data structures for storing spatial transcriptomics and other spatial omics data that have not already been discussed in <a href="bioconductor-data-classes.html"><span>Chapter&nbsp;3</span></a>:</p>
 <ul>
-<li>Class for storing SRT data, which is used as the basis for the examples in this book <span class="citation" data-cites="Righelli2022">(<a href="references.html#ref-Righelli2022" role="doc-biblioref">Righelli et al. 2022</a>)</span>. See <a href="bioconductor-data-classes.html"><span>Chapter&nbsp;3</span></a>.</li>
-</ul>
-<p><a href="https://bioconductor.org/packages/MoleculeExperiment"><strong>MoleculeExperiment</strong></a></p>
-<ul>
-<li>Class extending <code>SpatialExperiment</code> to store molecule-based SRT data within the R/Bioconductor framework <span class="citation" data-cites="PetersCouto2023">(<a href="references.html#ref-PetersCouto2023" role="doc-biblioref">Peters Couto et al. 2023</a>)</span>. See <a href="bioconductor-data-classes.html"><span>Chapter&nbsp;3</span></a>.</li>
-</ul>
-<p><a href="https://bioconductor.org/packages/SpatialFeatureExperiment"><strong>SpatialFeatureExperiment</strong></a></p>
-<ul>
-<li>Class extending <code>SpatialExperiment</code> to store molecule-based SRT data within the R/Bioconductor framework <span class="citation" data-cites="Moses2023">(<a href="references.html#ref-Moses2023" role="doc-biblioref">Moses et al. 2023</a>)</span>. See <a href="bioconductor-data-classes.html"><span>Chapter&nbsp;3</span></a>.</li>
-</ul>
-<p><a href="https://anndata.readthedocs.io/en/latest/"><strong>AnnData</strong></a></p>
-<ul>
-<li>Python class for storing single-cell and spatial data within the <a href="https://scverse.org/">scverse</a> framework.</li>
-</ul>
-<p><a href="https://spatialdata.scverse.org/en/latest/"><strong>SpatialData</strong></a></p>
-<ul>
-<li>Python class for storing spatial data from SRT and other platforms.</li>
+<li><p><a href="https://anndata.readthedocs.io/en/latest/"><strong>AnnData</strong></a>: Python class for storing single-cell and spatial data within the <a href="https://scverse.org/">scverse</a> framework.</p></li>
+<li><p><a href="https://spatialdata.scverse.org/en/latest/"><strong>SpatialData</strong></a>: Python class for storing data from spatial transcriptomics and other spatial omics platforms.</p></li>
 </ul>
 </section>
 <section id="statistical-concepts" class="level2" data-number="A.5">
 <h2 data-number="A.5" class="anchored" data-anchor-id="statistical-concepts"><span class="header-section-number">A.5</span> Statistical concepts</h2>
-<p><a href="https://www.huber.embl.de//msmb/index.html"><strong>Modern Statistics for Modern Biology</strong></a></p>
 <ul>
-<li>Online textbook on concepts in modern statistics for high-throughput and high-dimensional biology, including <a href="https://www.huber.embl.de//msmb/Chap-Images.html">chapter on image data and spatial statistics</a>.</li>
+<li><a href="https://www.huber.embl.de//msmb/index.html"><strong>Modern Statistics for Modern Biology</strong></a>: Online textbook on concepts in modern statistics for high-throughput and high-dimensional biology, including <a href="https://www.huber.embl.de//msmb/Chap-Images.html">chapter on image data and spatial statistics</a>.</li>
 </ul>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-Moses2023" class="csl-entry" role="listitem">
-Moses, Lambda, Pétur Helgi Einarsson, Kayla Jackson, Laura Luebbert, A. Sina Booeshaghi, Sindri Antonsson, Nicolas Bray, Páll Melsted, and Lior Pachter. 2023. <span>“<span>Voyager</span>: Exploratory Single-Cell Genomics Data Analysis with Geospatial Statistics.”</span> <em>bioRxiv</em>. <a href="https://doi.org/10.1101/2023.07.20.549945">https://doi.org/10.1101/2023.07.20.549945</a>.
-</div>
-<div id="ref-PetersCouto2023" class="csl-entry" role="listitem">
-Peters Couto, Bárbara Zita, Nicholas Robertson, Ellis Patrick, and Shila Ghazanfar. 2023. <span>“<span>MoleculeExperiment</span> Enables Consistent Infrastructure for Molecule-Resolved Spatial Transcriptomics Data in <span>Bioconductor</span>.”</span> <em>bioRxiv</em>. <a href="https://doi.org/10.1101/2023.05.16.541040">https://doi.org/10.1101/2023.05.16.541040</a>.
-</div>
-<div id="ref-Righelli2022" class="csl-entry" role="listitem">
-Righelli, Dario, Lukas M. Weber, Helena L. Crowell, Brenda Pardo, Leonardo Collado-Torres, Shila Ghazanfar, Aaron T. L. Lun, Stephanie C. Hicks, and Davide Risso. 2022. <span>“<span>SpatialExperiment</span>: Infrastructure for Spatially-Resolved Transcriptomics Data in <span>R</span> Using <span>Bioconductor</span>.”</span> <em>Bioinformatics</em> 38 (11): 3128–31. <a href="https://doi.org/10.1093/bioinformatics/btac299">https://doi.org/10.1093/bioinformatics/btac299</a>.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->

@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -290,8 +309,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#contributors" id="toc-contributors" class="nav-link active" data-scroll-target="#contributors"><span class="header-section-number">B.1</span> Contributors</a>
   <ul class="collapse">
-  <li><a href="#best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-online-book" id="toc-best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-online-book" class="nav-link" data-scroll-target="#best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-online-book"><span class="header-section-number">B.1.1</span> ‘Best Practices for Spatial Transcriptomics Analysis with Bioconductor’ online book</a></li>
-  <li><a href="#spatialexperiment-data-class" id="toc-spatialexperiment-data-class" class="nav-link" data-scroll-target="#spatialexperiment-data-class"><span class="header-section-number">B.1.2</span> SpatialExperiment data class</a></li>
+  <li><a href="#best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-book" id="toc-best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-book" class="nav-link" data-scroll-target="#best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-book"><span class="header-section-number">B.1.1</span> ‘Best Practices for Spatial Transcriptomics Analysis with Bioconductor’ book</a></li>
   </ul></li>
   <li><a href="#additional-acknowledgments" id="toc-additional-acknowledgments" class="nav-link" data-scroll-target="#additional-acknowledgments"><span class="header-section-number">B.2</span> Additional acknowledgments</a></li>
   </ul>
@@ -319,8 +337,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="contributors" class="level2" data-number="B.1">
 <h2 data-number="B.1" class="anchored" data-anchor-id="contributors"><span class="header-section-number">B.1</span> Contributors</h2>
-<section id="best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-online-book" class="level3" data-number="B.1.1">
-<h3 data-number="B.1.1" class="anchored" data-anchor-id="best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-online-book"><span class="header-section-number">B.1.1</span> ‘Best Practices for Spatial Transcriptomics Analysis with Bioconductor’ online book</h3>
+<section id="best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-book" class="level3" data-number="B.1.1">
+<h3 data-number="B.1.1" class="anchored" data-anchor-id="best-practices-for-spatial-transcriptomics-analysis-with-bioconductor-book"><span class="header-section-number">B.1.1</span> ‘Best Practices for Spatial Transcriptomics Analysis with Bioconductor’ book</h3>
 <ul>
 <li><a href="https://lmweber.org/">Lukas M. Weber</a>, <em>Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA</em></li>
 <li><a href="https://lcolladotor.github.io/">Leonardo Collado-Torres</a>, <em>Lieber Institute for Brain Development, Baltimore, MD, USA</em></li>
@@ -328,25 +346,20 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>As well as additional <a href="https://github.com/lmweber/BestPracticesST/graphs/contributors">GitHub contributors</a>. Thank you for your contributions!</p>
 </section>
-<section id="spatialexperiment-data-class" class="level3" data-number="B.1.2">
-<h3 data-number="B.1.2" class="anchored" data-anchor-id="spatialexperiment-data-class"><span class="header-section-number">B.1.2</span> SpatialExperiment data class</h3>
-<ul>
-<li>Dario Righelli, <em>Department of Statistical Sciences, University of Padova, Padova, Italy</em></li>
-<li>Helena L. Crowell, <em>Department of Molecular Life Sciences, University of Zurich, Zurich, Switzerland</em></li>
-<li>Aaron Lun, <em>Genentech, South San Francisco, CA, USA</em></li>
-<li>Stephanie C. Hicks, <em>Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA</em></li>
-<li>Davide Risso, <em>Department of Statistical Sciences, University of Padova, Padova, Italy</em></li>
-</ul>
-</section>
 </section>
 <section id="additional-acknowledgments" class="level2" data-number="B.2">
 <h2 data-number="B.2" class="anchored" data-anchor-id="additional-acknowledgments"><span class="header-section-number">B.2</span> Additional acknowledgments</h2>
 <ul>
-<li><p>The ‘Best Practices for Spatial Transcriptomics Analysis with Bioconductor’ online book is inspired by the <a href="https://bioconductor.org/books/release/OSCA/">Orchestrating Single-Cell Analysis with Bioconductor (OSCA)</a> online book, which provides a detailed overview and examples of analysis workflows for single-cell RNA sequencing data using R and Bioconductor.</p></li>
+<li><p>The ‘Best Practices for Spatial Transcriptomics Analysis with Bioconductor’ online book is inspired by the <a href="https://bioconductor.org/books/release/OSCA/">Orchestrating Single-Cell Analysis with Bioconductor (OSCA)</a> online book <span class="citation" data-cites="Amezquita2020">(<a href="references.html#ref-Amezquita2020" role="doc-biblioref">Amezquita et al. 2020</a>)</span>, which provides a detailed overview and examples of analysis workflows for single-cell RNA sequencing data using R and Bioconductor.</p></li>
 <li><p>We are especially grateful to the <a href="https://bioconductor.org/">Bioconductor</a> community and the <a href="https://www.bioconductor.org/about/core-team/">Bioconductor Core Team</a>.</p></li>
 </ul>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Amezquita2020" class="csl-entry" role="listitem">
+Amezquita, Robert A., Aaron T. L. Lun, Etienne Becht, Vince J. Carey, Lindsay N. Carpp, Ludwig Geistlinger, Federico Marini, et al. 2020. <span>“Orchestrating Single-Cell Analysis with <span>Bioconductor</span>.”</span> <em>Nature Methods</em> 17: 137–45. <a href="https://doi.org/10.1038/s41592-019-0654-x">https://doi.org/10.1038/s41592-019-0654-x</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
