@@ -345,6 +345,8 @@ div.csl-indent {
   <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset"><span class="header-section-number">5.2</span> Dataset</a></li>
   <li><a href="#load-data" id="toc-load-data" class="nav-link" data-scroll-target="#load-data"><span class="header-section-number">5.3</span> Load data</a></li>
   <li><a href="#spatialexperiment-object" id="toc-spatialexperiment-object" class="nav-link" data-scroll-target="#spatialexperiment-object"><span class="header-section-number">5.4</span> SpatialExperiment object</a></li>
+  <li><a href="#build-object" id="toc-build-object" class="nav-link" data-scroll-target="#build-object"><span class="header-section-number">5.5</span> Build object</a></li>
+  <li><a href="#molecule-based-data" id="toc-molecule-based-data" class="nav-link" data-scroll-target="#molecule-based-data"><span class="header-section-number">5.6</span> Molecule-based data</a></li>
   </ul>
 </nav>
     </div>
@@ -480,6 +482,42 @@ AAACAGCTTTCAGAAG-1               3393               7583</code></pre>
 2 sample_151673       hires   ####   0.1500150</code></pre>
 </div>
 </div>
+</section>
+<section id="build-object" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="build-object"><span class="header-section-number">5.5</span> Build object</h2>
+<p>Alternatively, we can also build a <code>SpatialExperiment</code> object directly from raw data.</p>
+<p>Here, we provide a short example with an empty dataset.</p>
+<p>For more details, including how to load raw data from the 10x Genomics Space Ranger output files to build an object, or how to add image data to the object, see the <a href="https://bioconductor.org/packages/SpatialExperiment">SpatialExperiment</a> documentation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create data</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>n_genes <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>n_spots <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> n_genes, <span class="at">ncol =</span> n_spots)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>row_data <span class="ot">&lt;-</span> <span class="fu">DataFrame</span>(</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">gene_name =</span> <span class="fu">paste0</span>(<span class="st">"gene"</span>, <span class="fu">sprintf</span>(<span class="st">"%03d"</span>, <span class="fu">seq_len</span>(n_genes)))</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>col_data <span class="ot">&lt;-</span> <span class="fu">DataFrame</span>(</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_id =</span> <span class="fu">rep</span>(<span class="st">"sample01"</span>, n_spots)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>spatial_coords <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> n_spots, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(spatial_coords) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co"># create SpatialExperiment object</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">SpatialExperiment</span>(</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">assays =</span> <span class="fu">list</span>(<span class="at">counts =</span> counts), </span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">colData =</span> col_data, </span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">rowData =</span> row_data, </span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">spatialCoords =</span> spatial_coords</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="molecule-based-data" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="molecule-based-data"><span class="header-section-number">5.6</span> Molecule-based data</h2>
+<p>For more details on data classes for molecule-based platforms, e.g.&nbsp;10x Genomics Xenium or Vizgen MERSCOPE, see <a href="bioconductor-data-classes.html"><span>Chapter&nbsp;3</span></a>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
