@@ -105,4 +105,4 @@ spe <- SpatialExperiment(
 
 ## Molecule-based data
 
-For more details on data classes for molecule-based platforms, e.g. 10x Genomics Xenium or Vizgen MERSCOPE, see @sec-bioconductor-data-classes).
+For more details on data classes for molecule-based platforms, e.g. 10x Genomics Xenium or Vizgen MERSCOPE, see @sec-bioconductor-data-classes.
