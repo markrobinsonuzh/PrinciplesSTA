@@ -63,3 +63,40 @@ head(spatialCoords(spe))
 # image data
 imgData(spe)
 ```
+
+
+
+## Build object
+
+Alternatively, we can also build a `SpatialExperiment` object directly from raw data.
+
+Here, we provide a short example with an empty dataset.
+
+For more details, including how to load raw data from the 10x Genomics Space Ranger output files to build an object, or how to add image data to the object, see the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) documentation.
+
+```{r, message=FALSE}
+# create data
+n_genes <- 200
+n_spots <- 100
+
+counts <- matrix(0, nrow = n_genes, ncol = n_spots)
+
+row_data <- DataFrame(
+  gene_name = paste0("gene", sprintf("%03d", seq_len(n_genes)))
+)
+
+col_data <- DataFrame(
+  sample_id = rep("sample01", n_spots)
+)
+
+spatial_coords <- matrix(0, nrow = n_spots, ncol = 2)
+colnames(spatial_coords) <- c("x", "y")
+
+# create SpatialExperiment object
+spe <- SpatialExperiment(
+  assays = list(counts = counts), 
+  colData = col_data, 
+  rowData = row_data, 
+  spatialCoords = spatial_coords
+)
+```

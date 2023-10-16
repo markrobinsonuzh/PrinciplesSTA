@@ -4,6 +4,6 @@ This part contains chapters describing individual analysis steps within computat
 
 Each chapter describes the analysis type, including discussion on statistical issues and available methods, and provides an interactive example with R code and an example dataset.
 
-In the next chapter, we load a dataset in `SpatialExperiment` format (see @sec-bioconductor-data-classes), which will be used in the subsequent chapters.
+In the next chapter, we load a dataset in `SpatialExperiment` format (see @sec-bioconductor-data-classes), which will be used in several of the subsequent chapters.
 
 For examples of complete analysis workflows for selected datasets and technological platforms, see the next part (@sec-workflows).
