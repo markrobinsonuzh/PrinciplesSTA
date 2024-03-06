@@ -135,6 +135,8 @@ More sophisticated approaches for spatially-aware clustering include the followi
 
 - **BayesSpace**: available as an R package from [Bioconductor](https://bioconductor.org/packages/BayesSpace) and described by @Zhao2021
 
+- **BANKSY**: available as an R package from Bioconductor [version 3.9 onwards](https://bioconductor.org/packages/devel/bioc/html/Banksy.html) and described by @Singhal2024
+
 - **SpaGCN**: available as a Python package from [GitHub](https://github.com/jianhuupenn/SpaGCN) and described by @Hu2021
 
 - **PRECAST**: available as an R package from [CRAN](https://cran.r-project.org/package=PRECAST) and described by @Liu2023
