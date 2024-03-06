@@ -1,0 +1,27 @@
+# Spatial co-localization {#sec-spatial-co-localization}
+
+
+## Overview
+
+In this chapter, we will show examples of analyses to investigate spatial co-localization of cell types.
+
+For these analyses, we will use a different dataset that provides single-cell spatial resolution, e.g. from the 10x Genomics Xenium platform.
+
+
+## Previous steps
+
+*Code to run steps from the previous chapters to generate the `SpatialExperiment` object required for this chapter.*
+<!--
+```{r, message=FALSE, results='hide'}
+```
+-->
+
+
+## Spatial co-localization of cell types within a single sample
+
+We will use the [spicyR](https://bioconductor.org/packages/spicyR) Bioconductor package [@Canete2022] for the following examples.
+
+
+<!--
+## Differential analyses between groups
+-->

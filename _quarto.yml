@@ -30,6 +30,7 @@ book:
         - chapters/spatial-registration.qmd
         - chapters/differential-expression.qmd
         - chapters/multiple-samples.qmd
+        - chapters/spatial-co-localization.qmd
     - part: "Workflows"
       chapters:
         - chapters/workflows.qmd
