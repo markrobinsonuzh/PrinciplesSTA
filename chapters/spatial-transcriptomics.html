@@ -231,6 +231,12 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple samples</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/spatial-co-localization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Spatial co-localization</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -245,25 +251,25 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/workflow-Visium-humanDLPFC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Human DLPFC workflow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Human DLPFC workflow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/workflow-Visium-mouseCoronal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Mouse coronal workflow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Mouse coronal workflow</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/workflow-Visium-spatialLIBD.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">spatialLIBD workflow</span></span></a>
   </div>
 </li>
       </ul>
@@ -346,18 +352,18 @@ div.csl-indent {
 <h2 data-number="2.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">2.1</span> Overview</h2>
 <p>Spatial transcriptomics (or spatially-resolved transcriptomics) refers to recently developed high-throughput genomic technological platforms that enable the measurement of up to transcriptome-scale gene expression at spatial resolution, i.e.&nbsp;up to thousands of genes at up to thousands of measurement locations, usually on two-dimensional tissue sections.</p>
 <p>A number of technological platforms have been developed, which vary widely in terms of the technologies used and experimental procedures, as well as the resolution in terms of the number of genes that can be detected and the spatial resolution, and sensitivity and specificity. Spatially-resolved transcriptomics was named the <a href="https://doi.org/10.1038/s41592-020-01042-x">Method of the Year 2020</a> by <em>Nature Methods</em>, and has found widespread application in numerous biological systems.</p>
-<p>Spatial transcriptomics platforms may be grouped into ‘sequencing-based’ and ‘molecule-based’ (or ‘imaging-based’) platforms, which are described in more detail below.</p>
-<p>In this book, we focus on data from commercially available technological platforms, since these are the most easily accessible and (in general) the most widely used platforms. In this chapter, we provide a short overview and details on several key platforms.</p>
+<p>Spatial transcriptomics platforms may be grouped into ‘sequencing-based’ and ‘molecule-based’ (or ‘imaging-based’) platforms, which are described in more detail below. In general, there is a tradeoff – sequencing-based platforms can be used to detect higher numbers of genes (e.g.&nbsp;full transcriptome-scale), while molecule-based platforms can provide higher spatial resolution (e.g.&nbsp;single-cell resolution).</p>
+<p>In this book, we focus on data from commercially available technological platforms, since these are the most easily accessible and usually the most widely used platforms. In this chapter, we provide a short overview and details on several key platforms.</p>
 <p>For more in-depth background, several recent reviews are available, e.g. <span class="citation" data-cites="Bressan2023">Bressan, Battistoni, and Hannon (<a href="references.html#ref-Bressan2023" role="doc-biblioref">2023</a>)</span> and <span class="citation" data-cites="Moses2022">Moses and Pachter (<a href="references.html#ref-Moses2022" role="doc-biblioref">2022</a>)</span>, which discuss available technological platforms, computational analysis methods, outstanding challenges, and additional topics.</p>
 </section>
 <section id="sequencing-based-platforms" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="sequencing-based-platforms"><span class="header-section-number">2.2</span> Sequencing-based platforms</h2>
 <p>Sequencing-based platforms capture messenger RNA (mRNA) molecules at a large set (up to thousands) of measurement locations from a tissue section placed on a slide, tag the mRNAs with unique spatial barcodes for each measurement location, and generate a readout by next-generation sequencing.</p>
-<p>These platforms provide full-transcriptome gene resolution due to the use of next-generation sequencing. The spatial resolution varies between platforms, and depends on the size and spacing between the spatial capture locations. Depending on the spatial resolution and the tissue cell density, each spatial measurement location may capture mRNAs from one or more cells.</p>
+<p>These platforms can provide full-transcriptome gene resolution due to the use of next-generation sequencing. The spatial resolution varies between platforms, and depends on the size and spacing between the spatial capture locations. Depending on the spatial resolution and the tissue cell density, each spatial location may include measurements from one or more cells.</p>
 <p>Spatial measurement locations for sequencing-based platforms are often referred to as ‘spots’ or ‘beads’. In this book, we will often use the terminology ‘spots’.</p>
 <section id="x-genomics-visium" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="x-genomics-visium"><span class="header-section-number">2.2.1</span> 10x Genomics Visium</h3>
-<p>The <a href="https://www.10xgenomics.com/products/spatial-gene-expression">10x Genomics Visium</a> platform measures transcriptome-wide gene expression at a grid of spatial locations (referred to as spots) on a tissue capture area on a slide. Either fresh-frozen or formalin-fixed paraffin-embedded (FFPE) tissue may be used. Each spot contains millions of spatially-barcoded capture oligonucleotides, which bind to mRNAs from the tissue. A cDNA library is then generated for sequencing, which includes the spatial barcodes, allowing reads to be mapped back to their spatial locations.</p>
+<p>The <a href="https://www.10xgenomics.com/products/spatial-gene-expression">10x Genomics Visium</a> platform measures transcriptome-scale gene expression at a grid of spatial locations (referred to as spots) on a tissue capture area on a slide. Either fresh-frozen or formalin-fixed paraffin-embedded (FFPE) tissue may be used. Each spot contains millions of spatially-barcoded capture oligonucleotides, which bind to mRNAs from the tissue. A cDNA library is then generated for sequencing, which includes the spatial barcodes, allowing reads to be mapped back to their spatial locations.</p>
 <p>The array dimensions are 6.5mm x 6.5mm, with around 5000 barcoded spots. Spots are 55µm in diameter and spaced 100µm center-to-center in a hexagonal grid arrangement. The number of cells overlapping with each spot depends on the tissue cell density, e.g.&nbsp;around 0-10 for human brain tissue or ~50 for mouse brain tissue. Each Visium slide contains four tissue capture areas. The following figure provides an illustration.</p>
 <p>Histology images generated from hematoxylin and eosin (H&amp;E) staining can be used to identify anatomical and cell morphological features for each sample.</p>
 <p>The 10x Genomics Visium platform is based on the original technological implementation developed by <span class="citation" data-cites="Stahl2016">Ståhl et al. (<a href="references.html#ref-Stahl2016" role="doc-biblioref">2016</a>)</span>.</p>
@@ -380,9 +386,9 @@ div.csl-indent {
 </section>
 <section id="molecule-based-platforms" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="molecule-based-platforms"><span class="header-section-number">2.3</span> Molecule-based platforms</h2>
-<p>Molecule-based (or imaging-based) platforms detect the spatial coordinates of individual RNA molecules by sequential in situ hybridization (ISH) or by in situ sequencing (ISS), for targeted sets of hundreds to thousands of genes at up to sub-cellular spatial resolution.</p>
+<p>Molecule-based (or imaging-based) platforms detect the spatial coordinates of individual RNA molecules by sequential in situ hybridization (ISH) or by in situ sequencing (ISS), for targeted sets of hundreds to thousands of genes at single-cell or sub-cellular spatial resolution.</p>
 <p>Image segmentation is used to identify the boundaries of individual cells and assign RNA molecules to cells or nuclei during preprocessing. For downstream analyses, gene counts may be aggregated to the cell level, or analyses may be performed directly at the molecule level. Cell-level analyses can re-use methods developed for spot-level spatial transcriptomics data or single-cell data, while molecule-level analyses may require new methods.</p>
-<p>The selection of targeted sets of biologically informative genes for an experiment, which is referred to as panel design, is a key consideration during experimental design. Several commercially available options for targeted gene sets suitable for certain biological systems are now available.</p>
+<p>The selection of targeted sets of biologically informative genes for an experiment, referred to as panel design, is a key consideration during experimental design. Several commercially available options for targeted gene sets suitable for certain biological systems are now available.</p>
 <section id="x-genomics-xenium" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="x-genomics-xenium"><span class="header-section-number">2.3.1</span> 10x Genomics Xenium</h3>
 <p>Additional details on the 10x Genomics Xenium platform are available from <a href="https://www.10xgenomics.com/platforms/xenium">10x Genomics</a>.</p>
