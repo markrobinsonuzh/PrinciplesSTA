@@ -21,3 +21,8 @@ Rendering and publishing to the website uses the GitHub Actions workflow in: [.g
 
 Run `quarto render` to render the book locally.
 
+
+## Publish manually
+
+Run `quarto publish` to render and publish to GitHub Pages manually (without using GitHub Actions workflow).
+
