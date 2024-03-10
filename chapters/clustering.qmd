@@ -3,13 +3,13 @@
 
 ## Overview
 
-In ST data, we can apply clustering algorithms to identify 'spatial domains', which represent spatially defined regions consisting of consistent gene expression profiles. In many (but not all) cases, spatial domains consist of regions with a single cell type or a consistent mixture of cell types.
+In ST data, we can apply clustering algorithms to identify 'spatial domains', which represent spatially defined regions consisting of relatively consistent gene expression profiles. For example, spatial domains may consist of regions containing cells from a single cell type or a consistent mixture of cell types.
 
-If we apply clustering algorithms from single-cell workflows to ST data (without including any spatial information), then this is the same as applying clustering to identify cell types in single-cell data (although each spot may contain one or more cells, depending on the platform and tissue cell density).
+Several alternative approaches exist for these analyses. For example, we can apply standard clustering algorithms from single-cell workflows to identify cell types without taking any spatial information into account, and then analyze the spatial distributions of these cell types. Alternatively, we can use spatially-aware clustering algorithms that directly take the spatial coordinates of the measurements into account. For larger datasets, there may also be important computational tradeoffs between the various approaches.
 
-It is important to keep in mind that cell types and states can be defined at various resolutions (or on a continuum). For the purposes of clustering, this means that the optimal number of clusters depends on the biological context. There is no "true" number of clusters -- this depends on the biological context (e.g. major cell populations vs. rare subtypes).
+It is also important to keep in mind that when we use clustering to define cell types and/or states, these can be defined at various resolutions (or even on a continuum). The optimal number of clusters depends on the biological context -- in particular, there is no "true" number of clusters, since this depends on the biological context (e.g. if we are comparing major cell populations vs. comparing rare subtypes), so the choice of the optimal number of clusters requires some judgment and biological interpretation.
 
-Once we have identified spatial domains by clustering or manual analyses, these can then be further investigated by differential expression testing to identify representative genes.
+Once we have identified spatial domains, these can then be further investigated in additional downstream analyses.
 
 
 
@@ -79,7 +79,7 @@ colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 
 Here, we perform clustering by applying standard clustering methods developed for single-cell RNA sequencing data, using molecular features (gene expression) only. We apply graph-based clustering using the Walktrap method implemented in `scran` [@Lun2016], applied to the top 50 PCs calculated on the set of top HVGs.
 
-In the context of spatial data, this means we assume that biologically informative spatial distribution patterns of cell types can be detected from the molecular features (gene expression).
+In the context of spatial data, this is the same as applying clustering to identify cell types in single-cell data (although each spot may contain one or more cells, depending on the platform and tissue cell density), and means that we are assuming that biologically informative spatial distribution patterns of cell types can be detected from the molecular features (gene expression).
 
 ```{r}
 # graph-based clustering
