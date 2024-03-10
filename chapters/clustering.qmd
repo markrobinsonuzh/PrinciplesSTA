@@ -73,7 +73,9 @@ colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 
 
 
-## Non-spatial clustering on HVGs
+## Non-spatial clustering
+
+### Clustering using HVGs
 
 Here, we perform clustering by applying standard clustering methods developed for single-cell RNA sequencing data, using molecular features (gene expression) only. We apply graph-based clustering using the Walktrap method implemented in `scran` [@Lun2016], applied to the top 50 PCs calculated on the set of top HVGs.
 
@@ -127,11 +129,30 @@ plotDimRed(spe, type = "UMAP",
 
 ## Spatially-aware clustering
 
-In ST data, we can also perform clustering that takes spatial information into account, for example to identify spatially compact or spatially connected clusters.
+The example above shows that non-spatial clustering can capture some spatial relationships in ST data, primarily if these are due to spatially distributed cell types and where the cell types can be identified from their gene expression profiles alone. However, this does not directly make use of the spatial information contained in the measurements.
 
-A simple strategy is to perform graph-based clustering on a set of features (columns) that includes both molecular features (gene expression) and spatial features (x-y coordinates). In this case, a crucial tuning parameter is the relative amount of scaling between the two data modalities -- if the scaling is chosen poorly, either the molecular or spatial features will dominate the clustering. Depending on data availability, further modalities could also be included. In this section, we will include some examples on this clustering approach.
+In many ST datasets, we can uncover further structure by performing analyses that directly take spatial information into account. Below, we demonstrate examples of these types of analyses, which we refer to as 'spatially-aware clustering'.
 
-More sophisticated approaches for spatially-aware clustering include the following:
+
+### Clustering using SVGs
+
+One way to perform spatially-aware clustering is to first perform spatially-aware feature selection to identify a set of top spatially variable genes (SVGs) (see @sec-feature-selection) and then use the set of top SVGs as the input for clustering.
+
+In this case, the spatial information is taken into account during the feature selection stage, where we select a set of top SVGs instead of top HVGs. For the clustering stage, we can use the same algorithms as for non-spatial clustering.
+
+Here, we demonstrate an example using [nnSVG](https://bioconductor.org/packages/nnSVG) [@Weber2023] to select the set of top SVGs.
+
+
+### Clustering using concatenated features
+
+An alternative strategy is to perform clustering on a set of concatenated columns of non-spatial and spatial features. For example, we can concatenate columns of non-spatial molecular features (e.g. top PCs calculated on the set of top HVGs) and columns of spatial features (e.g. x and y coordinates). In this case, a tuning parameter to scale the relative value ranges of the columns controls the relative weight between the two data modalities. If the tuning parameter is chosen poorly, either the molecular or spatial features may dominate the clustering. An example of this strategy was used in @Maynard2021.
+
+
+### Spatially-aware clustering algorithms
+
+Alternatively, we can use a spatially-aware clustering algorithm, which directly uses the spatial coordinates of the measurements within the clustering algorithm. Various algorithms have been developed, which have different advantages and make different assumptions, for example identifying spatially compact or spatially connected clusters.
+
+Examples of spatially-aware clustering algorithms include:
 
 - **BayesSpace**: available as an R package from [Bioconductor](https://bioconductor.org/packages/BayesSpace) and described by @Zhao2021
 
