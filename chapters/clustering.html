@@ -349,8 +349,16 @@ div.csl-indent {
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">10.1</span> Overview</a></li>
   <li><a href="#previous-steps" id="toc-previous-steps" class="nav-link" data-scroll-target="#previous-steps"><span class="header-section-number">10.2</span> Previous steps</a></li>
-  <li><a href="#non-spatial-clustering-on-hvgs" id="toc-non-spatial-clustering-on-hvgs" class="nav-link" data-scroll-target="#non-spatial-clustering-on-hvgs"><span class="header-section-number">10.3</span> Non-spatial clustering on HVGs</a></li>
-  <li><a href="#spatially-aware-clustering" id="toc-spatially-aware-clustering" class="nav-link" data-scroll-target="#spatially-aware-clustering"><span class="header-section-number">10.4</span> Spatially-aware clustering</a></li>
+  <li><a href="#non-spatial-clustering" id="toc-non-spatial-clustering" class="nav-link" data-scroll-target="#non-spatial-clustering"><span class="header-section-number">10.3</span> Non-spatial clustering</a>
+  <ul class="collapse">
+  <li><a href="#clustering-using-hvgs" id="toc-clustering-using-hvgs" class="nav-link" data-scroll-target="#clustering-using-hvgs"><span class="header-section-number">10.3.1</span> Clustering using HVGs</a></li>
+  </ul></li>
+  <li><a href="#spatially-aware-clustering" id="toc-spatially-aware-clustering" class="nav-link" data-scroll-target="#spatially-aware-clustering"><span class="header-section-number">10.4</span> Spatially-aware clustering</a>
+  <ul class="collapse">
+  <li><a href="#clustering-using-svgs" id="toc-clustering-using-svgs" class="nav-link" data-scroll-target="#clustering-using-svgs"><span class="header-section-number">10.4.1</span> Clustering using SVGs</a></li>
+  <li><a href="#clustering-using-concatenated-features" id="toc-clustering-using-concatenated-features" class="nav-link" data-scroll-target="#clustering-using-concatenated-features"><span class="header-section-number">10.4.2</span> Clustering using concatenated features</a></li>
+  <li><a href="#spatially-aware-clustering-algorithms" id="toc-spatially-aware-clustering-algorithms" class="nav-link" data-scroll-target="#spatially-aware-clustering-algorithms"><span class="header-section-number">10.4.3</span> Spatially-aware clustering algorithms</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -376,10 +384,10 @@ div.csl-indent {
 
 <section id="overview" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">10.1</span> Overview</h2>
-<p>In ST data, we can apply clustering algorithms to identify ‘spatial domains’, which represent spatially defined regions consisting of consistent gene expression profiles. In many (but not all) cases, spatial domains consist of regions with a single cell type or a consistent mixture of cell types.</p>
-<p>If we apply clustering algorithms from single-cell workflows to ST data (without including any spatial information), then this is the same as applying clustering to identify cell types in single-cell data (although each spot may contain one or more cells, depending on the platform and tissue cell density).</p>
-<p>It is important to keep in mind that cell types and states can be defined at various resolutions (or on a continuum). For the purposes of clustering, this means that the optimal number of clusters depends on the biological context. There is no “true” number of clusters – this depends on the biological context (e.g.&nbsp;major cell populations vs.&nbsp;rare subtypes).</p>
-<p>Once we have identified spatial domains by clustering or manual analyses, these can then be further investigated by differential expression testing to identify representative genes.</p>
+<p>In ST data, we can apply clustering algorithms to identify ‘spatial domains’, which represent spatially defined regions consisting of relatively consistent gene expression profiles. For example, spatial domains may consist of regions containing cells from a single cell type or a consistent mixture of cell types.</p>
+<p>Several alternative approaches exist for these analyses. For example, we can apply standard clustering algorithms from single-cell workflows to identify cell types without taking any spatial information into account, and then analyze the spatial distributions of these cell types. Alternatively, we can use spatially-aware clustering algorithms that directly take the spatial coordinates of the measurements into account. For larger datasets, there may also be important computational tradeoffs between the various approaches.</p>
+<p>It is also important to keep in mind that when we use clustering to define cell types and/or states, these can be defined at various resolutions (or even on a continuum). The optimal number of clusters depends on the biological context – in particular, there is no “true” number of clusters, since this depends on the biological context (e.g.&nbsp;if we are comparing major cell populations vs.&nbsp;comparing rare subtypes), so the choice of the optimal number of clusters requires some judgment and biological interpretation.</p>
+<p>Once we have identified spatial domains, these can then be further investigated in additional downstream analyses.</p>
 </section>
 <section id="previous-steps" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="previous-steps"><span class="header-section-number">10.2</span> Previous steps</h2>
@@ -438,10 +446,12 @@ div.csl-indent {
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(<span class="fu">reducedDim</span>(spe, <span class="st">"UMAP"</span>)) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"UMAP"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="non-spatial-clustering-on-hvgs" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="non-spatial-clustering-on-hvgs"><span class="header-section-number">10.3</span> Non-spatial clustering on HVGs</h2>
+<section id="non-spatial-clustering" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="non-spatial-clustering"><span class="header-section-number">10.3</span> Non-spatial clustering</h2>
+<section id="clustering-using-hvgs" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="clustering-using-hvgs"><span class="header-section-number">10.3.1</span> Clustering using HVGs</h3>
 <p>Here, we perform clustering by applying standard clustering methods developed for single-cell RNA sequencing data, using molecular features (gene expression) only. We apply graph-based clustering using the Walktrap method implemented in <code>scran</code> <span class="citation" data-cites="Lun2016">(<a href="references.html#ref-Lun2016" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span>, applied to the top 50 PCs calculated on the set of top HVGs.</p>
-<p>In the context of spatial data, this means we assume that biologically informative spatial distribution patterns of cell types can be detected from the molecular features (gene expression).</p>
+<p>In the context of spatial data, this is the same as applying clustering to identify cell types in single-cell data (although each spot may contain one or more cells, depending on the platform and tissue cell density), and means that we are assuming that biologically informative spatial distribution patterns of cell types can be detected from the molecular features (gene expression).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># graph-based clustering</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
@@ -493,11 +503,25 @@ div.csl-indent {
 </div>
 </div>
 </section>
+</section>
 <section id="spatially-aware-clustering" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="spatially-aware-clustering"><span class="header-section-number">10.4</span> Spatially-aware clustering</h2>
-<p>In ST data, we can also perform clustering that takes spatial information into account, for example to identify spatially compact or spatially connected clusters.</p>
-<p>A simple strategy is to perform graph-based clustering on a set of features (columns) that includes both molecular features (gene expression) and spatial features (x-y coordinates). In this case, a crucial tuning parameter is the relative amount of scaling between the two data modalities – if the scaling is chosen poorly, either the molecular or spatial features will dominate the clustering. Depending on data availability, further modalities could also be included. In this section, we will include some examples on this clustering approach.</p>
-<p>More sophisticated approaches for spatially-aware clustering include the following:</p>
+<p>The example above shows that non-spatial clustering can capture some spatial relationships in ST data, primarily if these are due to spatially distributed cell types and where the cell types can be identified from their gene expression profiles alone. However, this does not directly make use of the spatial information contained in the measurements.</p>
+<p>In many ST datasets, we can uncover further structure by performing analyses that directly take spatial information into account. Below, we demonstrate examples of these types of analyses, which we refer to as ‘spatially-aware clustering’.</p>
+<section id="clustering-using-svgs" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="clustering-using-svgs"><span class="header-section-number">10.4.1</span> Clustering using SVGs</h3>
+<p>One way to perform spatially-aware clustering is to first perform spatially-aware feature selection to identify a set of top spatially variable genes (SVGs) (see <a href="feature-selection.html"><span>Chapter&nbsp;8</span></a>) and then use the set of top SVGs as the input for clustering.</p>
+<p>In this case, the spatial information is taken into account during the feature selection stage, where we select a set of top SVGs instead of top HVGs. For the clustering stage, we can use the same algorithms as for non-spatial clustering.</p>
+<p>Here, we demonstrate an example using <a href="https://bioconductor.org/packages/nnSVG">nnSVG</a> <span class="citation" data-cites="Weber2023">(<a href="references.html#ref-Weber2023" role="doc-biblioref">Weber et al. 2023</a>)</span> to select the set of top SVGs.</p>
+</section>
+<section id="clustering-using-concatenated-features" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="clustering-using-concatenated-features"><span class="header-section-number">10.4.2</span> Clustering using concatenated features</h3>
+<p>An alternative strategy is to perform clustering on a set of concatenated columns of non-spatial and spatial features. For example, we can concatenate columns of non-spatial molecular features (e.g.&nbsp;top PCs calculated on the set of top HVGs) and columns of spatial features (e.g.&nbsp;x and y coordinates). In this case, a tuning parameter to scale the relative value ranges of the columns controls the relative weight between the two data modalities. If the tuning parameter is chosen poorly, either the molecular or spatial features may dominate the clustering. An example of this strategy was used in <span class="citation" data-cites="Maynard2021">Maynard et al. (<a href="references.html#ref-Maynard2021" role="doc-biblioref">2021</a>)</span>.</p>
+</section>
+<section id="spatially-aware-clustering-algorithms" class="level3" data-number="10.4.3">
+<h3 data-number="10.4.3" class="anchored" data-anchor-id="spatially-aware-clustering-algorithms"><span class="header-section-number">10.4.3</span> Spatially-aware clustering algorithms</h3>
+<p>Alternatively, we can use a spatially-aware clustering algorithm, which directly uses the spatial coordinates of the measurements within the clustering algorithm. Various algorithms have been developed, which have different advantages and make different assumptions, for example identifying spatially compact or spatially connected clusters.</p>
+<p>Examples of spatially-aware clustering algorithms include:</p>
 <ul>
 <li><p><strong>BayesSpace</strong>: available as an R package from <a href="https://bioconductor.org/packages/BayesSpace">Bioconductor</a> and described by <span class="citation" data-cites="Zhao2021">Zhao et al. (<a href="references.html#ref-Zhao2021" role="doc-biblioref">2021</a>)</span></p></li>
 <li><p><strong>BANKSY</strong>: available as an R package from Bioconductor <a href="https://bioconductor.org/packages/devel/bioc/html/Banksy.html">version 3.9 onwards</a> and described by <span class="citation" data-cites="Singhal2024">Singhal et al. (<a href="references.html#ref-Singhal2024" role="doc-biblioref">2024</a>)</span></p></li>
@@ -516,13 +540,20 @@ Liu, Wei, Xu Liao, Ziye Luo, Yi Yang, Mai Chan Lau, Yuling Jiao, Xingjie Shi, et
 <div id="ref-Lun2016" class="csl-entry" role="listitem">
 Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-by-Step Workflow for Low-Level Analysis of Single-Cell <span class="nocase">RNA-seq</span> Data with <span>Bioconductor</span>.”</span> <em>F1000Research</em> 5 (2122). <a href="https://doi.org/10.12688/f1000research.9501.2">https://doi.org/10.12688/f1000research.9501.2</a>.
 </div>
+<div id="ref-Maynard2021" class="csl-entry" role="listitem">
+Maynard, Kristen R., Leonardo Collado-Torres, Lukas M. Weber, Cedric Uytingco, Brianna K. Barry, Stephen R. Williams, Joseph L. Catallini II, et al. 2021. <span>“Transcriptome-Scale Spatial Gene Expression in the Human Dorsolateral Prefrontal Cortex.”</span> <em>Nature Neuroscience</em> 24: 425–36. <a href="https://doi.org/10.1038/s41593-020-00787-0">https://doi.org/10.1038/s41593-020-00787-0</a>.
+</div>
 <div id="ref-Singhal2024" class="csl-entry" role="listitem">
 Singhal, Vipul, Nigel Chou, Joseph Lee, Yifei Yue, Jinyue Liu, Wan Kee Chock, Li Lin, et al. 2024. <span>“<span>BANKSY</span> Unifies Cell Typing and Tissue Domain Segmentation for Scalable Spatial Omics Data Analysis.”</span> <em>Nature Genetics</em>. <a href="https://doi.org/10.1038/s41588-024-01664-3">https://doi.org/10.1038/s41588-024-01664-3</a>.
+</div>
+<div id="ref-Weber2023" class="csl-entry" role="listitem">
+Weber, Lukas M., Arkajyoti Saha, Abhirup Datta, Kasper D. Hansen, and Stephanie C. Hicks. 2023. <span>“<span class="nocase">nnSVG</span> for the Scalable Identification of Spatially Variable Genes Using Nearest-Neighbor <span>Gaussian</span> Processes.”</span> <em>Nature Communications</em> 14: 4059. <a href="https://doi.org/10.1038/s41467-023-39748-z">https://doi.org/10.1038/s41467-023-39748-z</a>.
 </div>
 <div id="ref-Zhao2021" class="csl-entry" role="listitem">
 Zhao, Edward, Matthew R. Stone, Xing Ren, Jamie Guenthoer, Kimberly S. Smythe, Thomas Pulliam, Stephen R. Williams, et al. 2021. <span>“Spatial Transcriptomics at Subspot Resolution with <span>BayesSpace</span>.”</span> <em>Nature Biotechnology</em> 39: 1375–84. <a href="https://doi.org/10.1038/s41587-021-00935-2">https://doi.org/10.1038/s41587-021-00935-2</a>.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
