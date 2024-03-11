@@ -150,29 +150,3 @@ rowData(spe_nnSVG)[order(rowData(spe_nnSVG)$rank)[1:6], ]
 # identify top-ranked SVG
 rowData(spe_nnSVG)$gene_name[which(rowData(spe_nnSVG)$rank == 1)]
 ```
-
-```{r}
-# plot spatial expression of top-ranked SVG
-ix <- which(rowData(spe_nnSVG)$rank == 1)
-ix_name <- rowData(spe_nnSVG)$gene_name[ix]
-
-df <- as.data.frame(
-  cbind(spatialCoords(spe_nnSVG), 
-        expr = counts(spe_nnSVG)[ix, ]))
-
-ggplot(df, aes(x = pxl_col_in_fullres, y = pxl_row_in_fullres, 
-               color = expr)) + 
-  geom_point(size = 0.8) + 
-  coord_fixed() + 
-  scale_y_reverse() + 
-  scale_color_gradient(low = "gray90", high = "blue", 
-                       trans = "sqrt", breaks = range(df$expr), 
-                       name = "counts") + 
-  ggtitle(ix_name) + 
-  theme_bw() + 
-  theme(plot.title = element_text(face = "italic"), 
-        panel.grid = element_blank(), 
-        axis.title = element_blank(), 
-        axis.text = element_blank(), 
-        axis.ticks = element_blank())
-```
