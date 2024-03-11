@@ -150,3 +150,5 @@ rowData(spe_nnSVG)[order(rowData(spe_nnSVG)$rank)[1:6], ]
 # identify top-ranked SVG
 rowData(spe_nnSVG)$gene_name[which(rowData(spe_nnSVG)$rank == 1)]
 ```
+
+The set of top SVGs from nnSVG may then be investigated further, e.g. by plotting the spatial expression of several top genes and by comparing the list of top genes with known gene sets associated with biological processes of interest in the dataset. The set of top SVGs may also be used as the input for further downstream analyses such as spatially-aware clustering to define spatial domains (see @sec-clustering).
