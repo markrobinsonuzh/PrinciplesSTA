@@ -423,27 +423,32 @@ div.csl-indent {
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate logcounts using library size factors</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">logNormCounts</span>(spe)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># FEATURE SELECTION</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># remove mitochondrial genes</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> spe[<span class="sc">!</span>is_mito, ]</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># fit mean-variance relationship</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>dec <span class="ot">&lt;-</span> <span class="fu">modelGeneVar</span>(spe)</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># select top HVGs</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>top_hvgs <span class="ot">&lt;-</span> <span class="fu">getTopHVGs</span>(dec, <span class="at">prop =</span> <span class="fl">0.1</span>)</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co"># DIMENSIONALITY REDUCTION</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co"># compute PCA</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(spe, <span class="at">subset_row =</span> top_hvgs)</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="co"># compute UMAP on top 50 PCs</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(spe, <span class="at">dimred =</span> <span class="st">"PCA"</span>)</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="co"># update column names</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(<span class="fu">reducedDim</span>(spe, <span class="st">"UMAP"</span>)) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"UMAP"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">logNormCounts</span>(spe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note: store object for later</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>spe_full <span class="ot">&lt;-</span> spe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FEATURE SELECTION</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># remove mitochondrial genes</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> spe[<span class="sc">!</span>is_mito, ]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># fit mean-variance relationship</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>dec <span class="ot">&lt;-</span> <span class="fu">modelGeneVar</span>(spe)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># select top HVGs</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>top_hvgs <span class="ot">&lt;-</span> <span class="fu">getTopHVGs</span>(dec, <span class="at">prop =</span> <span class="fl">0.1</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># DIMENSIONALITY REDUCTION</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># compute PCA</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(spe, <span class="at">subset_row =</span> top_hvgs)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># compute UMAP on top 50 PCs</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(spe, <span class="at">dimred =</span> <span class="st">"PCA"</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># update column names</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(<span class="fu">reducedDim</span>(spe, <span class="st">"UMAP"</span>)) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"UMAP"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="non-spatial-clustering" class="level2" data-number="10.3">
@@ -453,53 +458,53 @@ div.csl-indent {
 <p>Here, we perform clustering by applying standard clustering methods developed for single-cell RNA sequencing data, using molecular features (gene expression) only. We apply graph-based clustering using the Walktrap method implemented in <code>scran</code> <span class="citation" data-cites="Lun2016">(<a href="references.html#ref-Lun2016" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span>, applied to the top 50 PCs calculated on the set of top HVGs.</p>
 <p>In the context of spatial data, this is the same as applying clustering to identify cell types in single-cell data (although each spot may contain one or more cells, depending on the platform and tissue cell density), and means that we are assuming that biologically informative spatial distribution patterns of cell types can be detected from the molecular features (gene expression).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># graph-based clustering</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">buildSNNGraph</span>(spe, <span class="at">k =</span> k, <span class="at">use.dimred =</span> <span class="st">"PCA"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>g_walk <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">cluster_walktrap</span>(g)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>clus <span class="ot">&lt;-</span> g_walk<span class="sc">$</span>membership</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(clus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># graph-based clustering</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">buildSNNGraph</span>(spe, <span class="at">k =</span> k, <span class="at">use.dimred =</span> <span class="st">"PCA"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>g_walk <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">cluster_walktrap</span>(g)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>clus <span class="ot">&lt;-</span> g_walk<span class="sc">$</span>membership</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(clus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>clus
    1    2    3    4    5    6    7 
  338  312 1146  978  274  116  360 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store cluster labels in column 'label' in colData</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colLabels</span>(spe) <span class="ot">&lt;-</span> <span class="fu">factor</span>(clus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store cluster labels in column 'label' in colData</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colLabels</span>(spe) <span class="ot">&lt;-</span> <span class="fu">factor</span>(clus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Visualize the clusters by plotting in (i) spatial (x-y) coordinates on the tissue slide, and (ii) reduced dimension space (PCA or UMAP). We use plotting functions from the <a href="https://bioconductor.org/packages/ggspavis">ggspavis</a> package.</p>
 <p>For reference, we also display the ground truth (manually annotated) labels available for this dataset (in spatial coordinates).</p>
 <p>From the visualizations, we can see that the clustering reproduces the known biological structure (cortical layers), although not perfectly. The clusters are also separated in UMAP space, but again not perfectly.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspavis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspavis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot clusters in spatial x-y coordinates</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpots</span>(spe, <span class="at">annotate =</span> <span class="st">"label"</span>, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot clusters in spatial x-y coordinates</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpots</span>(spe, <span class="at">annotate =</span> <span class="st">"label"</span>, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="clustering_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="clustering_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot ground truth labels in spatial coordinates</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpots</span>(spe, <span class="at">annotate =</span> <span class="st">"ground_truth"</span>, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot ground truth labels in spatial coordinates</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpots</span>(spe, <span class="at">annotate =</span> <span class="st">"ground_truth"</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="clustering_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+<p><img src="clustering_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot clusters in PCA reduced dimensions</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotDimRed</span>(spe, <span class="at">type =</span> <span class="st">"PCA"</span>, </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annotate =</span> <span class="st">"label"</span>, <span class="at">palette =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot clusters in PCA reduced dimensions</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotDimRed</span>(spe, <span class="at">type =</span> <span class="st">"PCA"</span>, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annotate =</span> <span class="st">"label"</span>, <span class="at">palette =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="clustering_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="480"></p>
+<p><img src="clustering_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="480"></p>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot clusters in UMAP reduced dimensions</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotDimRed</span>(spe, <span class="at">type =</span> <span class="st">"UMAP"</span>, </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annotate =</span> <span class="st">"label"</span>, <span class="at">palette =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot clusters in UMAP reduced dimensions</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotDimRed</span>(spe, <span class="at">type =</span> <span class="st">"UMAP"</span>, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annotate =</span> <span class="st">"label"</span>, <span class="at">palette =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="clustering_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="480"></p>
+<p><img src="clustering_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="480"></p>
 </div>
 </div>
 </section>
@@ -512,7 +517,77 @@ div.csl-indent {
 <h3 data-number="10.4.1" class="anchored" data-anchor-id="clustering-using-svgs"><span class="header-section-number">10.4.1</span> Clustering using SVGs</h3>
 <p>One way to perform spatially-aware clustering is to first perform spatially-aware feature selection to identify a set of top spatially variable genes (SVGs) (see <a href="feature-selection.html"><span>Chapter&nbsp;8</span></a>) and then use the set of top SVGs as the input for clustering.</p>
 <p>In this case, the spatial information is taken into account during the feature selection stage, where we select a set of top SVGs instead of top HVGs. For the clustering stage, we can use the same algorithms as for non-spatial clustering.</p>
-<p>Here, we demonstrate an example using <a href="https://bioconductor.org/packages/nnSVG">nnSVG</a> <span class="citation" data-cites="Weber2023">(<a href="references.html#ref-Weber2023" role="doc-biblioref">Weber et al. 2023</a>)</span> to select the set of top SVGs.</p>
+<p>Here, we demonstrate an example using <a href="https://bioconductor.org/packages/nnSVG">nnSVG</a> <span class="citation" data-cites="Weber2023">(<a href="references.html#ref-Weber2023" role="doc-biblioref">Weber et al. 2023</a>)</span> to select the set of top SVGs. Note that in this example, we run nnSVG using a small subset of the dataset for faster runtime. For a full analysis, the full dataset should be used (see <a href="feature-selection.html"><span>Chapter&nbsp;8</span></a> for more details).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnSVG)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subsample spots for faster runtime in this example</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># note: skip this step in full analysis</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>ix <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_len</span>(n), n)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>spe_nnSVG <span class="ot">&lt;-</span> spe_full[, ix]  <span class="do">## note: using full object</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># filter low-expressed and mitochondrial genes</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># using stringent filtering for faster runtime in this example</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># note: use default filtering in full analysis</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>spe_nnSVG <span class="ot">&lt;-</span> <span class="fu">filter_genes</span>(</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  spe_nnSVG, <span class="at">filter_genes_ncounts =</span> <span class="dv">10</span>, <span class="at">filter_genes_pcspots =</span> <span class="dv">3</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Gene filtering: removing mitochondrial genes</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>removed 13 mitochondrial genes</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Gene filtering: retaining genes with at least 10 counts in at least 3% (n = 3) of spatial locations</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>removed 33353 out of 33525 genes due to low expression</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># re-calculate logcounts after filtering</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>spe_nnSVG <span class="ot">&lt;-</span> <span class="fu">logNormCounts</span>(spe_nnSVG)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run nnSVG</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>spe_nnSVG <span class="ot">&lt;-</span> <span class="fu">nnSVG</span>(spe_nnSVG)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we have run nnSVG, we can select at set of top SVGs (instead of HVGs), and use these as the input for the subsequent clustering steps.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select top SVGs</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># note: using small subset in this example</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use larger set (e.g. top 1000 genes) in full analysis</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>n_top <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>ix_top <span class="ot">&lt;-</span> <span class="fu">order</span>(<span class="fu">rowData</span>(spe_nnSVG)<span class="sc">$</span>rank)[<span class="dv">1</span><span class="sc">:</span>n]</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>top_svgs <span class="ot">&lt;-</span> <span class="fu">rowData</span>(spe_nnSVG)[ix_top, <span class="st">"gene_id"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dimensionality reduction</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># compute PCA</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># note: using small number of components in this example</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use larger number (e.g. ncomponents = 50) in full analysis</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>spe_nnSVG <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(spe_nnSVG, <span class="at">ncomponents =</span> <span class="dv">10</span>, <span class="at">subset_row =</span> top_svgs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># graph-based clustering</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">buildSNNGraph</span>(spe_nnSVG, <span class="at">k =</span> k, <span class="at">use.dimred =</span> <span class="st">"PCA"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>g_walk <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">cluster_walktrap</span>(g)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>clus <span class="ot">&lt;-</span> g_walk<span class="sc">$</span>membership</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(clus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>clus
+ 1  2  3  4  5 
+ 6  6 53 24 11 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store cluster labels in column 'label' in colData</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colLabels</span>(spe_nnSVG) <span class="ot">&lt;-</span> <span class="fu">factor</span>(clus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="clustering-using-concatenated-features" class="level3" data-number="10.4.2">
 <h3 data-number="10.4.2" class="anchored" data-anchor-id="clustering-using-concatenated-features"><span class="header-section-number">10.4.2</span> Clustering using concatenated features</h3>
