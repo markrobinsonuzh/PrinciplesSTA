@@ -49,7 +49,14 @@ spe <- spe[, !colData(spe)$discard]
 library(scran)
 # calculate logcounts using library size factors
 spe <- logNormCounts(spe)
+```
 
+```{r}
+# note: store object for later
+spe_full <- spe
+```
+
+```{r}
 # FEATURE SELECTION
 
 # remove mitochondrial genes
@@ -140,7 +147,70 @@ One way to perform spatially-aware clustering is to first perform spatially-awar
 
 In this case, the spatial information is taken into account during the feature selection stage, where we select a set of top SVGs instead of top HVGs. For the clustering stage, we can use the same algorithms as for non-spatial clustering.
 
-Here, we demonstrate an example using [nnSVG](https://bioconductor.org/packages/nnSVG) [@Weber2023] to select the set of top SVGs.
+Here, we demonstrate an example using [nnSVG](https://bioconductor.org/packages/nnSVG) [@Weber2023] to select the set of top SVGs. Note that in this example, we run nnSVG using a small subset of the dataset for faster runtime. For a full analysis, the full dataset should be used (see @sec-feature-selection for more details).
+
+```{r, message=FALSE}
+library(nnSVG)
+```
+
+```{r}
+# subsample spots for faster runtime in this example
+# note: skip this step in full analysis
+n <- 100
+set.seed(123)
+ix <- sample(seq_len(n), n)
+spe_nnSVG <- spe_full[, ix]  ## note: using full object
+
+# filter low-expressed and mitochondrial genes
+# using stringent filtering for faster runtime in this example
+# note: use default filtering in full analysis
+spe_nnSVG <- filter_genes(
+  spe_nnSVG, filter_genes_ncounts = 10, filter_genes_pcspots = 3
+)
+
+# re-calculate logcounts after filtering
+spe_nnSVG <- logNormCounts(spe_nnSVG)
+```
+
+```{r}
+# run nnSVG
+set.seed(123)
+spe_nnSVG <- nnSVG(spe_nnSVG)
+```
+
+
+Now that we have run nnSVG, we can select at set of top SVGs (instead of HVGs), and use these as the input for the subsequent clustering steps.
+
+```{r}
+# select top SVGs
+# note: using small subset in this example
+# use larger set (e.g. top 1000 genes) in full analysis
+n_top <- 50
+ix_top <- order(rowData(spe_nnSVG)$rank)[1:n]
+top_svgs <- rowData(spe_nnSVG)[ix_top, "gene_id"]
+```
+
+```{r}
+# dimensionality reduction
+# compute PCA
+# note: using small number of components in this example
+# use larger number (e.g. ncomponents = 50) in full analysis
+set.seed(123)
+spe_nnSVG <- runPCA(spe_nnSVG, ncomponents = 10, subset_row = top_svgs)
+```
+
+```{r}
+# graph-based clustering
+set.seed(123)
+k <- 10
+g <- buildSNNGraph(spe_nnSVG, k = k, use.dimred = "PCA")
+g_walk <- igraph::cluster_walktrap(g)
+clus <- g_walk$membership
+table(clus)
+
+# store cluster labels in column 'label' in colData
+colLabels(spe_nnSVG) <- factor(clus)
+```
 
 
 ### Clustering using concatenated features
