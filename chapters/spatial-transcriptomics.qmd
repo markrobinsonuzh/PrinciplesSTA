@@ -3,13 +3,13 @@
 
 ## Overview
 
-Spatial transcriptomics (or spatially-resolved transcriptomics) refers to recently developed high-throughput genomic technological platforms that enable the measurement of up to transcriptome-scale gene expression at spatial resolution, i.e. up to thousands of genes at up to thousands of measurement locations, usually on two-dimensional tissue sections.
+Spatial transcriptomics (or spatially-resolved transcriptomics) refers to high-throughput genomic technological platforms that enable the measurement of high-dimensional gene expression at spatial resolution. Depending on the platform, this can include up to transcriptome-scale gene expression at up to thousands of measurement locations per tissue sample, usually on two-dimensional tissue sections. Spatially-resolved transcriptomics was named the [Method of the Year 2020](https://doi.org/10.1038/s41592-020-01042-x) by *Nature Methods*, and has found widespread application in numerous biological systems.
 
-A number of technological platforms have been developed, which vary widely in terms of the technologies used and experimental procedures, as well as the resolution in terms of the number of genes that can be detected and the spatial resolution, and sensitivity and specificity. Spatially-resolved transcriptomics was named the [Method of the Year 2020](https://doi.org/10.1038/s41592-020-01042-x) by *Nature Methods*, and has found widespread application in numerous biological systems.
+A number of technological platforms have been developed, using a wide variety of technologies and experimental procedures. Platforms vary widely in terms of gene coverage, spatial resolution, and sensitivity and specificity. For users deciding between platforms, the tradeoff between gene coverage and spatial resolution is often a key consideration.
 
-Spatial transcriptomics platforms may be grouped into 'sequencing-based' and 'molecule-based' (or 'imaging-based') platforms, which are described in more detail below. In general, there is a tradeoff -- sequencing-based platforms can be used to detect higher numbers of genes (e.g. full transcriptome-scale), while molecule-based platforms can provide higher spatial resolution (e.g. single-cell resolution).
+Platforms may be grouped into 'sequencing-based' and 'molecule-based' (or 'imaging-based') platforms, which are described in more detail below. In general, sequencing-based platforms provide higher gene coverage (up to transcriptome-scale, i.e. thousands of genes), while molecule-based platforms provide higher spatial resolution (single-cell or sub-cellular resolution).
 
-In this book, we focus on data from commercially available technological platforms, since these are the most easily accessible and usually the most widely used platforms. In this chapter, we provide a short overview and details on several key platforms.
+In this book, we focus on data from commercially available platforms, since these are the most accessible and widely used platforms. In this chapter, we provide a short overview and links to additional information on several key platforms.
 
 For more in-depth background, several recent reviews are available, e.g. @Bressan2023 and @Moses2022, which discuss available technological platforms, computational analysis methods, outstanding challenges, and additional topics.
 
@@ -17,26 +17,31 @@ For more in-depth background, several recent reviews are available, e.g. @Bressa
 
 ## Sequencing-based platforms
 
-Sequencing-based platforms capture messenger RNA (mRNA) molecules at a large set (up to thousands) of measurement locations from a tissue section placed on a slide, tag the mRNAs with unique spatial barcodes for each measurement location, and generate a readout by next-generation sequencing.
+Sequencing-based platforms capture messenger RNA (mRNA) molecules at a set of spatial measurement locations on a tissue section placed on a slide, tag the mRNAs with unique spatial barcodes for each measurement location, and generate a readout by sequencing.
 
-These platforms can provide full-transcriptome gene resolution due to the use of next-generation sequencing. The spatial resolution varies between platforms, and depends on the size and spacing between the spatial capture locations. Depending on the spatial resolution and the tissue cell density, each spatial location may include measurements from one or more cells.
+These platforms can provide full-transcriptome gene coverage (i.e. >10,000 genes) due to the use of sequencing, which does not require pre-selection of genes of interest. The spatial resolution varies between platforms, and depends on the size and spacing between the spatial capture locations. However, depending on the spatial resolution and tissue cell density, each spatial location may contain measurements from one or more cells, and capture locations may or may not overlap with individual cells, so these platforms generally do not provide single-cell spatial resolution.
 
-Spatial measurement locations for sequencing-based platforms are often referred to as 'spots' or 'beads'. In this book, we will often use the terminology 'spots'.
+Spatial measurement locations for sequencing-based platforms are often referred to as 'spots' or 'beads'. In this book, we will usually use the terminology 'spots'.
 
 
 ### 10x Genomics Visium
 
 The [10x Genomics Visium](https://www.10xgenomics.com/products/spatial-gene-expression) platform measures transcriptome-scale gene expression at a grid of spatial locations (referred to as spots) on a tissue capture area on a slide. Either fresh-frozen or formalin-fixed paraffin-embedded (FFPE) tissue may be used. Each spot contains millions of spatially-barcoded capture oligonucleotides, which bind to mRNAs from the tissue. A cDNA library is then generated for sequencing, which includes the spatial barcodes, allowing reads to be mapped back to their spatial locations.
 
-The array dimensions are 6.5mm x 6.5mm, with around 5000 barcoded spots. Spots are 55µm in diameter and spaced 100µm center-to-center in a hexagonal grid arrangement. The number of cells overlapping with each spot depends on the tissue cell density, e.g. around 0-10 for human brain tissue or ~50 for mouse brain tissue. Each Visium slide contains four tissue capture areas. The following figure provides an illustration.
+The array dimensions are 6.5 x 6.5 mm, with around 5,000 barcoded spots. Spots are 55 µm in diameter and spaced 100 µm center-to-center in a hexagonal grid arrangement. The number of cells overlapping with each spot depends on the tissue cell density, e.g. around 0-10 for human brain tissue or ~50 for mouse brain tissue. Each Visium slide contains four tissue capture areas. The following figure provides an illustration.
 
-Histology images generated from hematoxylin and eosin (H&E) staining can be used to identify anatomical and cell morphological features for each sample.
+Histology images generated from hematoxylin and eosin (H&E) staining can be used to identify anatomical and cell morphological features for each sample, including the number of cells per spot.
 
 The 10x Genomics Visium platform is based on the original technological implementation developed by @Stahl2016.
 
 ```{r, echo = FALSE, out.width = "75%", fig.cap = "Schematic illustrating the 10x Genomics Visium platform. Source: [10x Genomics Visium](https://www.10xgenomics.com/spatial-transcriptomics/)"}
 knitr::include_graphics("https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/Visium.png")
 ```
+
+
+### 10x Genomics Visium HD
+
+The [10x Genomics Visium HD](https://www.10xgenomics.com/products/visium-hd-spatial-gene-expression) platform provides higher spatial resolution. Capture area dimensions are 6.5 x 6.5 mm, with a continuous 'lawn' of capture oligonucleotides arranged into 2 x 2 µm barcoded squares, which can optionally be aggregated into larger 8 x 8 µm bins. There are no gaps between the squares, and there are two capture areas per slide. The high spatial resolution of the barcoded squares provide near-single-cell resolution, while the use of sequencing provides transcriptome-scale gene coverage.
 
 
 ### Curio Seeker
@@ -49,23 +54,23 @@ The Curio Seeker platform captures mRNA molecules at a set of randomly placed me
 
 ## Molecule-based platforms
 
-Molecule-based (or imaging-based) platforms detect the spatial coordinates of individual RNA molecules by sequential in situ hybridization (ISH) or by in situ sequencing (ISS), for targeted sets of hundreds to thousands of genes at single-cell or sub-cellular spatial resolution.
+Molecule-based (or imaging-based) platforms identify the spatial locations of individual RNA molecules by sequential in situ hybridization (ISH) or by in situ sequencing (ISS), for targeted sets of up to hundreds or thousands of genes at single-cell or sub-cellular spatial resolution.
 
 Image segmentation is used to identify the boundaries of individual cells and assign RNA molecules to cells or nuclei during preprocessing. For downstream analyses, gene counts may be aggregated to the cell level, or analyses may be performed directly at the molecule level. Cell-level analyses can re-use methods developed for spot-level spatial transcriptomics data or single-cell data, while molecule-level analyses may require new methods.
 
-The selection of targeted sets of biologically informative genes for an experiment, referred to as panel design, is a key consideration during experimental design. Several commercially available options for targeted gene sets suitable for certain biological systems are now available.
+The selection of targeted sets of biologically informative genes for an experiment, referred to as panel design, is a key consideration during experimental design. Several commercially available options for targeted gene sets suitable for certain biological systems are available.
 
 
 ### 10x Genomics Xenium
 
-Additional details on the 10x Genomics Xenium platform are available from [10x Genomics](https://www.10xgenomics.com/platforms/xenium).
+Details on the 10x Genomics Xenium platform are available from [10x Genomics](https://www.10xgenomics.com/platforms/xenium).
 
 
 ### Vizgen MERSCOPE
 
-Additional details on the Vizgen MERSCOPE platform are available from [Vizgen](https://vizgen.com/products/).
+Details on the Vizgen MERSCOPE platform are available from [Vizgen](https://vizgen.com/products/).
 
 
 ### NanoString CosMx
 
-Additional details on the NanoString CosMx platform are available from [NanoString](https://nanostring.com/products/cosmx-spatial-molecular-imager/).
+Details on the NanoString CosMx platform are available from [NanoString](https://nanostring.com/products/cosmx-spatial-molecular-imager/).
