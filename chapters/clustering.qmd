@@ -115,21 +115,21 @@ library(ggspavis)
 ```{r, fig.height=3.5}
 # plot clusters in spatial x-y coordinates
 plotSpots(spe, annotate = "label", 
-          palette = "libd_layer_colors")
+          pal = "libd_layer_colors")
 
 # plot ground truth labels in spatial coordinates
 plotSpots(spe, annotate = "ground_truth", 
-          palette = "libd_layer_colors")
+          pal = "libd_layer_colors")
 ```
 
 ```{r, message=FALSE, fig.width=5, fig.height=4.25}
 # plot clusters in PCA reduced dimensions
-plotDimRed(spe, type = "PCA", 
-           annotate = "label", palette = "libd_layer_colors")
+plotDimRed(spe, plot_type = "PCA", 
+           annotate = "label", pal = "libd_layer_colors")
 
 # plot clusters in UMAP reduced dimensions
-plotDimRed(spe, type = "UMAP", 
-           annotate = "label", palette = "libd_layer_colors")
+plotDimRed(spe, plot_type = "UMAP", 
+           annotate = "label", pal = "libd_layer_colors")
 ```
 
 

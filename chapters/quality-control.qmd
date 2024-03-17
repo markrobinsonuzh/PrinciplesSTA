@@ -107,9 +107,9 @@ We also plot the library sizes against the number of cells per spot (which is av
 
 ```{r, fig.width=3.75, fig.height=3.75}
 # plot library size vs. number of cells per spot
-plotQC(spe, type = "scatter", 
-       metric_x = "cell_count", metric_y = "sum", 
-       threshold_y = 600)
+plotSpotQC(spe, plot_type = "scatter", 
+           x_metric = "cell_count", y_metric = "sum", 
+           y_threshold = 600)
 ```
 
 The plot shows that setting a filtering threshold for library size (e.g. at the value shown) does not appear to select for any obvious biologically consistent group of spots.
@@ -128,8 +128,8 @@ Finally, we also check that the discarded spots do not have any obvious spatial 
 
 ```{r, fig.height=3.5}
 # check spatial pattern of discarded spots
-plotQC(spe, type = "spots", 
-       discard = "qc_lib_size")
+plotSpotQC(spe, plot_type = "spot", 
+           annotate = "qc_lib_size")
 ```
 
 As an aside, here we can also illustrate what happens if we set the threshold too high. For example, if we set the threshold to 2000 UMI counts per spot -- which may also seem like a reasonable value based on the histogram and scatterplot -- then we see a possible spatial pattern in the discarded spots, matching the cortical layers. This illustrates the importance of interactively checking exploratory visualizations when choosing these thresholds.
@@ -138,8 +138,8 @@ As an aside, here we can also illustrate what happens if we set the threshold to
 # check spatial pattern of discarded spots if threshold is too high
 qc_lib_size_2000 <- colData(spe)$sum < 2000
 colData(spe)$qc_lib_size_2000 <- qc_lib_size_2000
-plotQC(spe, type = "spots", 
-       discard = "qc_lib_size_2000")
+plotSpotQC(spe, plot_type = "spot", 
+           annotate = "qc_lib_size_2000")
 ```
 
 For reference, here are the ground truth (manually annotated) cortical layers in this dataset.
@@ -147,7 +147,7 @@ For reference, here are the ground truth (manually annotated) cortical layers in
 ```{r, fig.height=3.5}
 # plot ground truth (manually annotated) layers
 plotSpots(spe, annotate = "ground_truth", 
-          palette = "libd_layer_colors")
+          pal = "libd_layer_colors")
 ```
 
 
@@ -164,9 +164,9 @@ hist(colData(spe)$detected, breaks = 20)
 
 ```{r, fig.width=3.75, fig.height=3.75}
 # plot number of expressed genes vs. number of cells per spot
-plotQC(spe, type = "scatter", 
-       metric_x = "cell_count", metric_y = "detected", 
-       threshold_y = 400)
+plotSpotQC(spe, plot_type = "scatter", 
+           x_metric = "cell_count", y_metric = "detected", 
+           y_threshold = 400)
 ```
 
 Based on the plots, we select a threshold of 400 expressed genes per spot.
@@ -181,8 +181,8 @@ colData(spe)$qc_detected <- qc_detected
 
 ```{r, fig.height=3.5}
 # check spatial pattern of discarded spots
-plotQC(spe, type = "spots", 
-       discard = "qc_detected")
+plotSpotQC(spe, plot_type = "spot", 
+           annotate = "qc_detected")
 ```
 
 Again, we also check what happens when we set the threshold too high.
@@ -191,8 +191,8 @@ Again, we also check what happens when we set the threshold too high.
 # check spatial pattern of discarded spots if threshold is too high
 qc_detected_1000 <- colData(spe)$detected < 1000
 colData(spe)$qc_detected_1000 <- qc_detected_1000
-plotQC(spe, type = "spots", 
-       discard = "qc_detected_1000")
+plotSpotQC(spe, plot_type = "spot", 
+           annotate = "qc_detected_1000")
 ```
 
 
@@ -209,9 +209,9 @@ hist(colData(spe)$subsets_mito_percent, breaks = 20)
 
 ```{r, fig.width=3.75, fig.height=3.75}
 # plot mitochondrial read proportion vs. number of cells per spot
-plotQC(spe, type = "scatter", 
-       metric_x = "cell_count", metric_y = "subsets_mito_percent", 
-       threshold_y = 28)
+plotSpotQC(spe, plot_type = "scatter", 
+           x_metric = "cell_count", y_metric = "subsets_mito_percent", 
+           y_threshold = 28)
 ```
 
 We select a threshold of 28% for the mitochondrial read proportion.
@@ -226,8 +226,8 @@ colData(spe)$qc_mito <- qc_mito
 
 ```{r, fig.height=3.5}
 # check spatial pattern of discarded spots
-plotQC(spe, type = "spots", 
-       discard = "qc_mito")
+plotSpotQC(spe, plot_type = "spot", 
+           annotate = "qc_mito")
 ```
 
 We also check what happens when we set the threshold too low.
@@ -236,8 +236,8 @@ We also check what happens when we set the threshold too low.
 # check spatial pattern of discarded spots if threshold is too high
 qc_mito_25 <- colData(spe)$subsets_mito_percent > 25
 colData(spe)$qc_mito_25 <- qc_mito_25
-plotQC(spe, type = "spots", 
-       discard = "qc_mito_25")
+plotSpotQC(spe, plot_type = "spot", 
+           annotate = "qc_mito_25")
 ```
 
 
@@ -259,9 +259,9 @@ We see a tail of very high values, which could indicate problems for these spots
 
 ```{r, fig.width=3.75, fig.height=3.75}
 # plot number of expressed genes vs. number of cells per spot
-plotQC(spe, type = "scatter", 
-       metric_x = "cell_count", metric_y = "detected", 
-       threshold_x = 10)
+plotSpotQC(spe, plot_type = "scatter", 
+           x_metric = "cell_count", y_metric = "detected", 
+           x_threshold = 10)
 ```
 
 In particular, we see that the spots with very high cell counts also have low numbers of expressed genes. This indicates that the experiments have failed for these spots, and they should be removed.
@@ -278,8 +278,8 @@ colData(spe)$qc_cell_count <- qc_cell_count
 
 ```{r, fig.height=3.5}
 # check spatial pattern of discarded spots
-plotQC(spe, type = "spots", 
-       discard = "qc_cell_count")
+plotSpotQC(spe, plot_type = "spot", 
+           annotate = "qc_cell_count")
 ```
 
 While there is a spatial pattern to the discarded spots, it does not appear to be correlated with the known biological features (cortical layers). The discarded spots are all on the edges of the tissue. It seems plausible that something has gone wrong with the cell segmentation on the edges of the images, so it makes sense to remove these spots.
@@ -305,8 +305,8 @@ colData(spe)$discard <- discard
 
 ```{r, fig.height=3.5}
 # check spatial pattern of combined set of discarded spots
-plotQC(spe, type = "spots", 
-       discard = "discard")
+plotSpotQC(spe, plot_type = "spot", 
+           annotate = "discard")
 ```
 
 ```{r}

@@ -103,8 +103,8 @@ library(ggspavis)
 
 ```{r, fig.width=4.25, fig.height=4.25}
 # plot top 2 PCA dimensions
-plotDimRed(spe, type = "PCA")
+plotDimRed(spe, plot_type = "PCA")
 
 # plot top 2 UMAP dimensions
-plotDimRed(spe, type = "UMAP")
+plotDimRed(spe, plot_type = "UMAP")
 ```

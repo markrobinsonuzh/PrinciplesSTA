@@ -35,7 +35,7 @@ We see that spots in this dataset contain around 0-10 cells, with a mode of 3. T
 library(ggspavis)
 
 # plot number of cells per spot
-plotQC(spe, type = "bar", metric_x = "cell_count") + 
+plotSpotQC(spe, plot_type = "histogram", x_metric = "cell_count") + 
   xlab("number of cells") + 
   ggtitle("Number of cells per spot")
 ```
