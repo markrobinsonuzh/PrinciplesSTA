@@ -1,59 +1,62 @@
 Package: BestPracticesST
 Title: Best Practices for Spatial Transcriptomics Analysis with Bioconductor
-Description: This package contains source materials to build the Best Practices 
-    for Spatial Transcriptomics Analysis with Bioconductor online book.
+Description: This package contains source code and materials for the 'Best 
+    Practices for Spatial Transcriptomics Analysis with Bioconductor' online 
+    book. The book contains examples of analysis steps and workflows 
+    demonstrating best practices for spatial transcriptomics analyses using the 
+    Bioconductor framework in R. The examples include R code and downloadable 
+    datasets.
 Version: 0.99.0
 Authors@R: 
-    c(person(given = "Lukas M.",
-             family = "Weber",
-             role = c("aut", "cre"),
-             email = "lmweberedu@gmail.com",
-             comment = c(ORCID = "0000-0002-3282-1730")),
-      person(given = "Leonardo",
-             family = "Collado-Torres",
-             role = c("aut"),
-             email = "lcolladotor@gmail.com",
-             comment = c(ORCID = "0000-0003-2140-308X")),
-      person(given = "Stephanie C.",
-             family = "Hicks",
-             role = c("aut"),
-             email = "shicks19@jhu.edu",
+    c(person("Lukas M.", "Weber", 
+             role = c("aut", "cre"), 
+             email = "lmweberedu@gmail.com", 
+             comment = c(ORCID = "0000-0002-3282-1730")), 
+      person("Leonardo", "Collado-Torres", 
+             role = c("aut"), 
+             email = "lcolladotor@gmail.com", 
+             comment = c(ORCID = "0000-0003-2140-308X")), 
+      person("Stephanie C.", "Hicks", 
+             role = c("aut"), 
+             email = "shicks19@jhu.edu", 
              comment = c(ORCID = "0000-0002-7858-0231")))
-License: CC BY-NC-ND 3.0 US
+License: CC BY 4.0
 URL: https://github.com/lmweber/BestPracticesST
 BugReports: https://github.com/lmweber/BestPracticesST/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+biocViews: 
+    Book, 
+    Spatial, 
+    SingleCell, 
+    Transcriptomics, 
+    GeneExpression
 Depends: 
     SpatialExperiment
 Imports: 
-    BiocFileCache,
-    BiocStyle,
-    bookdown,
-    DelayedMatrixStats,
-    devtools,
-    ExperimentHub,
-    ggspavis,
-    igraph,
-    knitr,
-    lobstr,
-    pheatmap,
-    rmarkdown,
-    rtracklayer,
-    scater,
-    scran,
-    sessioninfo,
-    SingleCellExperiment,
-    spatialLIBD,
-    STexampleData,
+    bookdown, 
+    BiocFileCache, 
+    BiocStyle, 
+    knitr, 
+    rmarkdown, 
+    ExperimentHub, 
+    devtools, 
+    SingleCellExperiment, 
+    STexampleData, 
+    DelayedMatrixStats, 
+    ggspavis, 
+    igraph, 
+    lobstr, 
+    pheatmap, 
+    rtracklayer, 
+    scater, 
+    scran, 
+    sessioninfo, 
+    spatialLIBD, 
     uwot, 
     nnSVG
 Suggests:
     RefManageR
 VignetteBuilder: knitr
-biocViews: 
-    Book,
-    Transcriptomics,
-    Spatial
+RoxygenNote: 7.1.1
