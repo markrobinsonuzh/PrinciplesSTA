@@ -348,7 +348,7 @@ div.csl-indent {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">6.1</span> Overview</a></li>
-  <li><a href="#load-data" id="toc-load-data" class="nav-link" data-scroll-target="#load-data"><span class="header-section-number">6.2</span> Load data</a></li>
+  <li><a href="#load-data-from-previous-steps" id="toc-load-data-from-previous-steps" class="nav-link" data-scroll-target="#load-data-from-previous-steps"><span class="header-section-number">6.2</span> Load data from previous steps</a></li>
   <li><a href="#plot-data" id="toc-plot-data" class="nav-link" data-scroll-target="#plot-data"><span class="header-section-number">6.3</span> Plot data</a></li>
   <li><a href="#calculate-qc-metrics" id="toc-calculate-qc-metrics" class="nav-link" data-scroll-target="#calculate-qc-metrics"><span class="header-section-number">6.4</span> Calculate QC metrics</a></li>
   <li><a href="#selecting-thresholds" id="toc-selecting-thresholds" class="nav-link" data-scroll-target="#selecting-thresholds"><span class="header-section-number">6.5</span> Selecting thresholds</a>
@@ -398,14 +398,13 @@ div.csl-indent {
 <p>Low library size or low number of expressed features can indicate poor mRNA capture rates, e.g.&nbsp;due to cell damage and missing mRNAs, or low reaction efficiency. A high proportion of mitochondrial reads indicates cell damage, e.g.&nbsp;partial cell lysis leading to leakage and missing cytoplasmic mRNAs, with the resulting reads therefore concentrated on the remaining mitochondrial mRNAs that are relatively protected inside the mitochondrial membrane. Unusually high numbers of cells per spot can indicate problems during cell segmentation.</p>
 <p>The first three characteristics listed above are also used for QC in scRNA-seq data. However, the expected distributions for high-quality spots are different (compared to high-quality cells in scRNA-seq), since spots may contain zero, one, or multiple cells.</p>
 </section>
-<section id="load-data" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="load-data"><span class="header-section-number">6.2</span> Load data</h2>
+<section id="load-data-from-previous-steps" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="load-data-from-previous-steps"><span class="header-section-number">6.2</span> Load data from previous steps</h2>
+<p>We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in <a href="analysis-steps.html"><span>Chapter&nbsp;4</span></a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpatialExperiment)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(STexampleData)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load object</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">Visium_humanDLPFC</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"outputs/spe_load.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="plot-data" class="level2" data-number="6.3">

@@ -330,7 +330,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">11.1</span> Overview</a></li>
   <li><a href="#previous-steps" id="toc-previous-steps" class="nav-link" data-scroll-target="#previous-steps"><span class="header-section-number">11.2</span> Previous steps</a></li>
-  <li><a href="#number-of-cells-per-spot" id="toc-number-of-cells-per-spot" class="nav-link" data-scroll-target="#number-of-cells-per-spot"><span class="header-section-number">11.3</span> Number of cells per spot</a></li>
+  <li><a href="#load-data-from-previous-steps" id="toc-load-data-from-previous-steps" class="nav-link" data-scroll-target="#load-data-from-previous-steps"><span class="header-section-number">11.3</span> Load data from previous steps</a></li>
+  <li><a href="#number-of-cells-per-spot" id="toc-number-of-cells-per-spot" class="nav-link" data-scroll-target="#number-of-cells-per-spot"><span class="header-section-number">11.4</span> Number of cells per spot</a></li>
   </ul>
 </nav>
     </div>
@@ -362,17 +363,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="previous-steps" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="previous-steps"><span class="header-section-number">11.2</span> Previous steps</h2>
-<p><em>Code to run steps from the previous chapters to generate the <code>SpatialExperiment</code> object required for this chapter.</em></p>
+</section>
+<section id="load-data-from-previous-steps" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="load-data-from-previous-steps"><span class="header-section-number">11.3</span> Load data from previous steps</h2>
+<p>We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in <a href="analysis-steps.html"><span>Chapter&nbsp;4</span></a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD DATA</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpatialExperiment)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(STexampleData)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">Visium_humanDLPFC</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpatialExperiment)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"outputs/spe_cluster.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="number-of-cells-per-spot" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="number-of-cells-per-spot"><span class="header-section-number">11.3</span> Number of cells per spot</h2>
+<section id="number-of-cells-per-spot" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="number-of-cells-per-spot"><span class="header-section-number">11.4</span> Number of cells per spot</h2>
 <p>The following figure provides an overview of the number of cells per spot in this dataset, which is known in this dataset and stored in a column in <code>colData</code> in the <code>SpatialExperiment</code> object. We use a visualization function from <a href="https://bioconductor.org/packages/ggspavis">ggspavis</a> to generate the plot.</p>
 <p>We see that spots in this dataset contain around 0-10 cells, with a mode of 3. Therefore, it is plausible that some spots contain multiple cell types, and spot-level deconvolution could improve downstream analyses by deconvolving these cell types.</p>
 <div class="cell" data-warnings="false">
@@ -382,10 +384,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpotQC</span>(spe, <span class="at">plot_type =</span> <span class="st">"histogram"</span>, <span class="at">x_metric =</span> <span class="st">"cell_count"</span>) <span class="sc">+</span> </span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"number of cells"</span>) <span class="sc">+</span> </span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Number of cells per spot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1353 rows containing non-finite outside the scale range
-(`stat_bin()`).</code></pre>
-</div>
 <div class="cell-output-display">
 <p><img src="spot-deconvolution_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="480"></p>
 </div>
