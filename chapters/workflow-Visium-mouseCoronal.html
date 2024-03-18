@@ -522,7 +522,7 @@ FALSE  TRUE
 <p>Plot discarded spots in x-y coordinates on the tissue slide to check if there is any biologically meaningful spatial pattern. This would be problematic, since it would mean we are removing biologically informative spots.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check spatial pattern of discarded spots</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotQC</span>(spe, <span class="at">type =</span> <span class="st">"spots"</span>, <span class="at">discard =</span> <span class="st">"discard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpotQC</span>(spe, <span class="at">plot_type =</span> <span class="st">"spot"</span>, <span class="at">annotate =</span> <span class="st">"discard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="workflow-Visium-mouseCoronal_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -674,9 +674,9 @@ ENSMUSG00000073702 ENSMUSG00000073702       Rpl31 Gene Expression 0.0688871
 ENSMUSG00000046330 ENSMUSG00000046330      Rpl37a Gene Expression 0.0549986
                       tau.sq       phi    loglik   runtime      mean       var
                    &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-ENSMUSG00000061518 0.1202984  13.53194  -43.6472     0.025   4.98425  0.142977
-ENSMUSG00000073702 0.0860842   5.84110  -40.3003     0.014   4.83432  0.143616
-ENSMUSG00000046330 0.1133114   6.47579  -48.2811     0.017   5.35620  0.166734
+ENSMUSG00000061518 0.1202984  13.53194  -43.6472     0.026   4.98425  0.142977
+ENSMUSG00000073702 0.0860842   5.84110  -40.3003     0.015   4.83432  0.143616
+ENSMUSG00000046330 0.1133114   6.47579  -48.2811     0.018   5.35620  0.166734
                        spcov   prop_sv loglik_lm   LR_stat      rank      pval
                    &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
 ENSMUSG00000061518 0.0291204  0.149022  -44.1377  0.981135       184 0.6122789
@@ -709,12 +709,12 @@ ENSMUSG00000070570 ENSMUSG00000070570     Slc17a7 Gene Expression   2.64081
 ENSMUSG00000024617 ENSMUSG00000024617      Camk2a Gene Expression   1.41249
                         tau.sq       phi    loglik   runtime      mean
                      &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-ENSMUSG00000046447 6.28372e-02   2.05206   -99.021     0.020   5.35338
-ENSMUSG00000053310 2.47772e-01   3.26420  -151.225     0.021   4.85871
+ENSMUSG00000046447 6.28372e-02   2.05206   -99.021     0.021   5.35338
+ENSMUSG00000053310 2.47772e-01   3.26420  -151.225     0.022   4.85871
 ENSMUSG00000018593 7.63186e-02   3.68722  -124.793     0.021   3.61331
 ENSMUSG00000032532 2.98145e-08   5.07869  -147.464     0.018   4.19282
-ENSMUSG00000070570 3.20107e-01   4.15601  -155.620     0.016   3.62933
-ENSMUSG00000024617 9.79965e-02   3.74573  -113.269     0.025   4.11652
+ENSMUSG00000070570 3.20107e-01   4.15601  -155.620     0.018   3.62933
+ENSMUSG00000024617 9.79965e-02   3.74573  -113.269     0.024   4.11652
                          var     spcov   prop_sv loglik_lm   LR_stat      rank
                    &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
 ENSMUSG00000046447   1.50820  0.256357  0.967714  -161.937  125.8321         1
@@ -799,15 +799,15 @@ ENSMUSG00000024617 1.11022e-16 3.66374e-15</code></pre>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot clusters in spatial x-y coordinates</span></span>
 <span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpots</span>(spe, <span class="at">annotate =</span> <span class="st">"label"</span>, </span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">pal =</span> colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="workflow-Visium-mouseCoronal_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot clusters in UMAP dimensions</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotDimRed</span>(spe, <span class="at">type =</span> <span class="st">"UMAP"</span>, </span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annotate =</span> <span class="st">"label"</span>, <span class="at">palette =</span> colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotDimRed</span>(spe, <span class="at">plot_type =</span> <span class="st">"UMAP"</span>, </span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annotate =</span> <span class="st">"label"</span>, <span class="at">pal =</span> colors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="workflow-Visium-mouseCoronal_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="480"></p>
 </div>

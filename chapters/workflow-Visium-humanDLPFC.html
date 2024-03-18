@@ -531,7 +531,7 @@ FALSE  TRUE
 <p>Plot the set of discarded spots in the spatial x-y coordinates, to confirm that the spatial distribution of the discarded spots does not correspond to any biologically meaningful regions, which would indicate that we are removing biologically informative spots.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check spatial pattern of discarded spots</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotQC</span>(spe, <span class="at">type =</span> <span class="st">"spots"</span>, <span class="at">discard =</span> <span class="st">"discard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpotQC</span>(spe, <span class="at">plot_type =</span> <span class="st">"spot"</span>, <span class="at">annotate =</span> <span class="st">"discard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="workflow-Visium-humanDLPFC_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -662,7 +662,7 @@ ENSG00000171603 ENSG00000171603      CLSTN1 Gene Expression 0.43102027
 ENSG00000162545 ENSG00000162545     CAMK2N1 Gene Expression 0.15373440
                    tau.sq       phi    loglik   runtime      mean       var
                 &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-ENSG00000074800  0.518011  15.82454  -109.808     0.016   1.75820  0.530929
+ENSG00000074800  0.518011  15.82454  -109.808     0.018   1.75820  0.530929
 ENSG00000171603  0.298698  18.12310  -123.212     0.023   2.07433  0.741077
 ENSG00000162545  0.547736   2.38046  -119.576     0.016   2.63576  0.702846
                     spcov   prop_sv loglik_lm   LR_stat      rank      pval
@@ -697,11 +697,11 @@ ENSG00000131095 ENSG00000131095        GFAP Gene Expression   2.23709  0.461297
 ENSG00000160307 ENSG00000160307       S100B Gene Expression   1.24179  0.155737
                       phi    loglik   runtime      mean       var     spcov
                 &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-ENSG00000197971   0.93014  -118.372     0.021   3.78073   2.76535  0.523969
+ENSG00000197971   0.93014  -118.372     0.023   3.78073   2.76535  0.523969
 ENSG00000123560   1.03983  -140.269     0.018   2.86143   3.02555  0.628613
-ENSG00000109846   1.88555  -126.692     0.017   1.86058   1.88123  0.740785
-ENSG00000173786   1.02675  -129.206     0.016   1.79558   1.97274  0.842396
-ENSG00000131095   2.49083  -149.004     0.018   1.94543   2.71281  0.768823
+ENSG00000109846   1.88555  -126.692     0.018   1.86058   1.88123  0.740785
+ENSG00000173786   1.02675  -129.206     0.018   1.79558   1.97274  0.842396
+ENSG00000131095   2.49083  -149.004     0.019   1.94543   2.71281  0.768823
 ENSG00000160307   5.76279  -129.722     0.015   1.82695   1.46946  0.609953
                   prop_sv loglik_lm   LR_stat      rank        pval        padj
                 &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;   &lt;numeric&gt;   &lt;numeric&gt;
@@ -778,21 +778,21 @@ ENSG00000160307  0.888562  -160.636   61.8281         6 3.75255e-14 1.07573e-12<
 <div class="cell">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot clusters in spatial x-y coordinates</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpots</span>(spe, <span class="at">annotate =</span> <span class="st">"label"</span>, </span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">pal =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="workflow-Visium-humanDLPFC_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot ground truth labels in spatial coordinates</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpots</span>(spe, <span class="at">annotate =</span> <span class="st">"ground_truth"</span>, </span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">pal =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="workflow-Visium-humanDLPFC_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot clusters in UMAP reduced dimensions</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotDimRed</span>(spe, <span class="at">type =</span> <span class="st">"UMAP"</span>, </span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annotate =</span> <span class="st">"label"</span>, <span class="at">palette =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotDimRed</span>(spe, <span class="at">plot_type =</span> <span class="st">"UMAP"</span>, </span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">annotate =</span> <span class="st">"label"</span>, <span class="at">pal =</span> <span class="st">"libd_layer_colors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="workflow-Visium-humanDLPFC_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="480"></p>
 </div>
