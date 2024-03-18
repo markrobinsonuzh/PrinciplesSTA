@@ -8,11 +8,12 @@ In this chapter, we will show examples of analyses to investigate spatial co-loc
 For these analyses, we will use a different dataset that provides single-cell spatial resolution, e.g. from the 10x Genomics Xenium platform.
 
 
-## Previous steps
+## Load data from previous steps
 
-*Code to run steps from the previous chapters to generate the `SpatialExperiment` object required for this chapter.*
+We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-analysis-steps.
 <!--
 ```{r, message=FALSE, results='hide'}
+
 ```
 -->
 
