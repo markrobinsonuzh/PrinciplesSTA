@@ -27,6 +27,7 @@ spe <- Visium_humanDLPFC()
 
 # save object
 library(here)
+if (!dir.exists(here("outputs"))) dir.create(here("outputs"))
 saveRDS(spe, file = here("outputs/spe_load.rds"))
 ```
 
