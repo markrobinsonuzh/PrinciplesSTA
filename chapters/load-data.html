@@ -416,7 +416,7 @@ rownames(33538): ENSG00000243485 ENSG00000237613 ... ENSG00000277475
 rowData names(3): gene_id gene_name feature_type
 colnames(4992): AAACAACGAATAGTTC-1 AAACAAGTATCTCCCA-1 ...
   TTGTTTGTATTACACG-1 TTGTTTGTGTAAATTC-1
-colData names(7): barcode_id sample_id ... ground_truth cell_count
+colData names(8): barcode_id sample_id ... reference cell_count
 reducedDimNames(0):
 mainExpName: NULL
 altExpNames(0):
@@ -449,7 +449,7 @@ ENSG00000239906 ENSG00000239906  AL627309.2 Gene Expression</code></pre>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># column (spot) data</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">colData</span>(spe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>DataFrame with 6 rows and 7 columns
+<pre><code>DataFrame with 6 rows and 8 columns
                            barcode_id     sample_id in_tissue array_row
                           &lt;character&gt;   &lt;character&gt; &lt;integer&gt; &lt;integer&gt;
 AAACAACGAATAGTTC-1 AAACAACGAATAGTTC-1 sample_151673         0         0
@@ -458,14 +458,14 @@ AAACAATCTACTAGCA-1 AAACAATCTACTAGCA-1 sample_151673         1         3
 AAACACCAATAACTGC-1 AAACACCAATAACTGC-1 sample_151673         1        59
 AAACAGAGCGACTCCT-1 AAACAGAGCGACTCCT-1 sample_151673         1        14
 AAACAGCTTTCAGAAG-1 AAACAGCTTTCAGAAG-1 sample_151673         1        43
-                   array_col ground_truth cell_count
-                   &lt;integer&gt;  &lt;character&gt;  &lt;integer&gt;
-AAACAACGAATAGTTC-1        16           NA         NA
-AAACAAGTATCTCCCA-1       102       Layer3          6
-AAACAATCTACTAGCA-1        43       Layer1         16
-AAACACCAATAACTGC-1        19           WM          5
-AAACAGAGCGACTCCT-1        94       Layer3          2
-AAACAGCTTTCAGAAG-1         9       Layer5          4</code></pre>
+                   array_col ground_truth   reference cell_count
+                   &lt;integer&gt;  &lt;character&gt; &lt;character&gt;  &lt;integer&gt;
+AAACAACGAATAGTTC-1        16           NA          NA         NA
+AAACAAGTATCTCCCA-1       102       Layer3      Layer3          6
+AAACAATCTACTAGCA-1        43       Layer1      Layer1         16
+AAACACCAATAACTGC-1        19           WM          WM          5
+AAACAGAGCGACTCCT-1        94       Layer3      Layer3          2
+AAACAGCTTTCAGAAG-1         9       Layer5      Layer5          4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># spatial coordinates</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">spatialCoords</span>(spe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

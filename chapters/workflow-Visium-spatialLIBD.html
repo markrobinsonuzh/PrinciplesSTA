@@ -608,7 +608,7 @@ A BibTeX entry for LaTeX users is
 <span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>time_prereqs <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
 <span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>time_prereqs <span class="sc">-</span> time_start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 1.281022 mins</code></pre>
+<pre><code>Time difference of 1.279839 mins</code></pre>
 </div>
 </div>
 </section>
@@ -683,7 +683,7 @@ FALSE  TRUE
 <span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Inspect the gene annotation data we added</span></span>
 <span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="fu">rowRanges</span>(spe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>GRanges object with 33267 ranges and 12 metadata columns:
+<pre><code>GRanges object with 33267 ranges and 11 metadata columns:
                   seqnames            ranges strand |   source     type
                      &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;factor&gt; &lt;factor&gt;
   ENSG00000243485     chr1       29554-31109      + |   HAVANA     gene
@@ -723,19 +723,19 @@ FALSE  TRUE
   ENSG00000160305           FALSE           FALSE           FALSE
   ENSG00000160307           FALSE           FALSE           FALSE
   ENSG00000160310           FALSE           FALSE           FALSE
-                  gene_interest_5 gene_interest_6 gene_interest_7
-                        &lt;logical&gt;       &lt;logical&gt;       &lt;logical&gt;
-  ENSG00000243485            TRUE            TRUE            TRUE
-  ENSG00000237613            TRUE            TRUE            TRUE
-  ENSG00000186092            TRUE            TRUE            TRUE
-  ENSG00000238009            TRUE            TRUE            TRUE
-  ENSG00000239945            TRUE            TRUE            TRUE
-              ...             ...             ...             ...
-  ENSG00000160298           FALSE           FALSE           FALSE
-  ENSG00000160299           FALSE           FALSE           FALSE
-  ENSG00000160305           FALSE           FALSE           FALSE
-  ENSG00000160307           FALSE           FALSE           FALSE
-  ENSG00000160310           FALSE           FALSE           FALSE
+                  gene_interest_5 gene_interest_6
+                        &lt;logical&gt;       &lt;logical&gt;
+  ENSG00000243485            TRUE            TRUE
+  ENSG00000237613            TRUE            TRUE
+  ENSG00000186092            TRUE            TRUE
+  ENSG00000238009            TRUE            TRUE
+  ENSG00000239945            TRUE            TRUE
+              ...             ...             ...
+  ENSG00000160298           FALSE           FALSE
+  ENSG00000160299           FALSE           FALSE
+  ENSG00000160305           FALSE           FALSE
+  ENSG00000160307           FALSE           FALSE
+  ENSG00000160310           FALSE           FALSE
   -------
   seqinfo: 25 sequences from an unspecified genome; no seqlengths</code></pre>
 </div>
@@ -802,10 +802,10 @@ metadata(0):
 assays(2): counts logcounts
 rownames(21671): ENSG00000243485 ENSG00000238009 ... ENSG00000160307
   ENSG00000160310
-rowData names(13): source type ... gene_interest_7 gene_search
+rowData names(12): source type ... gene_interest_6 gene_search
 colnames(3524): AAACAAGTATCTCCCA-1 AAACACCAATAACTGC-1 ...
   TTGTTTCCATACAACT-1 TTGTTTGTGTAAATTC-1
-colData names(22): barcode_id sample_id ... expr_chrM_ratio
+colData names(23): barcode_id sample_id ... expr_chrM_ratio
   ManualAnnotation
 reducedDimNames(2): PCA UMAP
 mainExpName: NULL
@@ -819,10 +819,10 @@ imgData names(4): sample_id image_id data scaleFactor</code></pre>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="do">## How long this code took to run</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>time_end <span class="sc">-</span> time_prereqs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 34.86219 secs</code></pre>
+<pre><code>Time difference of 35.76977 secs</code></pre>
 </div>
 </div>
-<p>Creating our final <code>spe</code> object took 1.86205826600393 to run. So you might want to save this object for later use.</p>
+<p>Creating our final <code>spe</code> object took 1.8760017991066 to run. So you might want to save this object for later use.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(spe, <span class="at">file =</span> <span class="st">"spe_workflow_Visium_spatialLIBD.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -860,7 +860,7 @@ imgData names(4): sample_id image_id data scaleFactor</code></pre>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Explore all the variables we can use</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colData</span>(spe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>DataFrame with 3524 rows and 22 columns
+<pre><code>DataFrame with 3524 rows and 23 columns
                            barcode_id     sample_id in_tissue array_row
                           &lt;character&gt;   &lt;character&gt; &lt;integer&gt; &lt;integer&gt;
 AAACAAGTATCTCCCA-1 AAACAAGTATCTCCCA-1 sample_151673         1        50
@@ -874,45 +874,45 @@ TTGTTTCACATCCAGG-1 TTGTTTCACATCCAGG-1 sample_151673         1        58
 TTGTTTCATTAGTCTA-1 TTGTTTCATTAGTCTA-1 sample_151673         1        60
 TTGTTTCCATACAACT-1 TTGTTTCCATACAACT-1 sample_151673         1        45
 TTGTTTGTGTAAATTC-1 TTGTTTGTGTAAATTC-1 sample_151673         1         7
-                   array_col ground_truth cell_count       sum  detected
-                   &lt;integer&gt;  &lt;character&gt;  &lt;integer&gt; &lt;numeric&gt; &lt;numeric&gt;
-AAACAAGTATCTCCCA-1       102       Layer3          6      8458      3586
-AAACACCAATAACTGC-1        19           WM          5      3769      1960
-AAACAGAGCGACTCCT-1        94       Layer3          2      5433      2424
-AAACAGCTTTCAGAAG-1         9       Layer5          4      4278      2264
-AAACAGGGTCTATATT-1        13       Layer6          6      4004      2178
-...                      ...          ...        ...       ...       ...
-TTGTTGTGTGTCAAGA-1        77       Layer5          3      3966      1982
-TTGTTTCACATCCAGG-1        42           WM          3      4324      2170
-TTGTTTCATTAGTCTA-1        30           WM          4      2761      1560
-TTGTTTCCATACAACT-1        27       Layer6          3      2322      1343
-TTGTTTGTGTAAATTC-1        51       Layer2          5      6281      2927
-                   subsets_mito_sum subsets_mito_detected subsets_mito_percent
-                          &lt;numeric&gt;             &lt;numeric&gt;            &lt;numeric&gt;
-AAACAAGTATCTCCCA-1             1407                    13              16.6351
-AAACACCAATAACTGC-1              430                    13              11.4089
-AAACAGAGCGACTCCT-1             1316                    13              24.2223
-AAACAGCTTTCAGAAG-1              651                    12              15.2174
-AAACAGGGTCTATATT-1              621                    13              15.5095
-...                             ...                   ...                  ...
-TTGTTGTGTGTCAAGA-1              789                    13             19.89410
-TTGTTTCACATCCAGG-1              370                    12              8.55689
-TTGTTTCATTAGTCTA-1              314                    12             11.37269
-TTGTTTCCATACAACT-1              476                    13             20.49957
-TTGTTTGTGTAAATTC-1              991                    13             15.77774
-                       total   discard sizeFactor    label
-                   &lt;numeric&gt; &lt;logical&gt;  &lt;numeric&gt; &lt;factor&gt;
-AAACAAGTATCTCCCA-1      8458     FALSE   1.822839        3
-AAACACCAATAACTGC-1      3769     FALSE   0.812282        1
-AAACAGAGCGACTCCT-1      5433     FALSE   1.170902        3
-AAACAGCTTTCAGAAG-1      4278     FALSE   0.921980        3
-AAACAGGGTCTATATT-1      4004     FALSE   0.862928        6
-...                      ...       ...        ...      ...
-TTGTTGTGTGTCAAGA-1      3966     FALSE   0.854739        4
-TTGTTTCACATCCAGG-1      4324     FALSE   0.931894        1
-TTGTTTCATTAGTCTA-1      2761     FALSE   0.595041        1
-TTGTTTCCATACAACT-1      2322     FALSE   0.500429        2
-TTGTTTGTGTAAATTC-1      6281     FALSE   1.353660        7
+                   array_col ground_truth   reference cell_count       sum
+                   &lt;integer&gt;  &lt;character&gt; &lt;character&gt;  &lt;integer&gt; &lt;numeric&gt;
+AAACAAGTATCTCCCA-1       102       Layer3      Layer3          6      8458
+AAACACCAATAACTGC-1        19           WM          WM          5      3769
+AAACAGAGCGACTCCT-1        94       Layer3      Layer3          2      5433
+AAACAGCTTTCAGAAG-1         9       Layer5      Layer5          4      4278
+AAACAGGGTCTATATT-1        13       Layer6      Layer6          6      4004
+...                      ...          ...         ...        ...       ...
+TTGTTGTGTGTCAAGA-1        77       Layer5      Layer5          3      3966
+TTGTTTCACATCCAGG-1        42           WM          WM          3      4324
+TTGTTTCATTAGTCTA-1        30           WM          WM          4      2761
+TTGTTTCCATACAACT-1        27       Layer6      Layer6          3      2322
+TTGTTTGTGTAAATTC-1        51       Layer2      Layer2          5      6281
+                    detected subsets_mito_sum subsets_mito_detected
+                   &lt;numeric&gt;        &lt;numeric&gt;             &lt;numeric&gt;
+AAACAAGTATCTCCCA-1      3586             1407                    13
+AAACACCAATAACTGC-1      1960              430                    13
+AAACAGAGCGACTCCT-1      2424             1316                    13
+AAACAGCTTTCAGAAG-1      2264              651                    12
+AAACAGGGTCTATATT-1      2178              621                    13
+...                      ...              ...                   ...
+TTGTTGTGTGTCAAGA-1      1982              789                    13
+TTGTTTCACATCCAGG-1      2170              370                    12
+TTGTTTCATTAGTCTA-1      1560              314                    12
+TTGTTTCCATACAACT-1      1343              476                    13
+TTGTTTGTGTAAATTC-1      2927              991                    13
+                   subsets_mito_percent     total   discard sizeFactor    label
+                              &lt;numeric&gt; &lt;numeric&gt; &lt;logical&gt;  &lt;numeric&gt; &lt;factor&gt;
+AAACAAGTATCTCCCA-1              16.6351      8458     FALSE   1.822839        2
+AAACACCAATAACTGC-1              11.4089      3769     FALSE   0.812282        1
+AAACAGAGCGACTCCT-1              24.2223      5433     FALSE   1.170902        6
+AAACAGCTTTCAGAAG-1              15.2174      4278     FALSE   0.921980        2
+AAACAGGGTCTATATT-1              15.5095      4004     FALSE   0.862928        2
+...                                 ...       ...       ...        ...      ...
+TTGTTGTGTGTCAAGA-1             19.89410      3966     FALSE   0.854739        2
+TTGTTTCACATCCAGG-1              8.55689      4324     FALSE   0.931894        1
+TTGTTTCATTAGTCTA-1             11.37269      2761     FALSE   0.595041        1
+TTGTTTCCATACAACT-1             20.49957      2322     FALSE   0.500429        4
+TTGTTTGTGTAAATTC-1             15.77774      6281     FALSE   1.353660        6
                                       key   sum_umi  sum_gene expr_chrM
                               &lt;character&gt; &lt;numeric&gt; &lt;integer&gt; &lt;numeric&gt;
 AAACAAGTATCTCCCA-1 sample_151673_AAACAA..      7051      3573         0
@@ -985,7 +985,7 @@ TTGTTTGTGTAAATTC-1               0               NA</code></pre>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Object size</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>lobstr<span class="sc">::</span><span class="fu">obj_size</span>(spe) <span class="sc">/</span> <span class="dv">1024</span><span class="sc">^</span><span class="dv">2</span> <span class="do">## Convert to MB</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>293.12 B</code></pre>
+<pre><code>293.07 B</code></pre>
 </div>
 </div>
 <p>If your data is small enough, you might want to share your website by hosting on <a href="https://www.shinyapps.io/">shinyapps.io</a> by RStudio, which you can try for free. Once you have created your account, you’ll want to create an <code>app.R</code> file like the one we have <a href="https://github.com/lmweber/BestPracticesST-resources/tree/main/spatialLIBD_demo">on the <code>spatialLIBD_demo</code> directory</a>.</p>
@@ -1048,12 +1048,12 @@ TTGTTTGTGTAAATTC-1               0               NA</code></pre>
  
  ## Or you can go to your shinyapps.io account and copy this
  ## Here we do this to keep our information hidden.
- load(".deploy_info.Rdata")
- rsconnect::setAccountInfo(
-     name = deploy_info$name,
-     token = deploy_info$token,
-     secret = deploy_info$secret
- )
+ # load(".deploy_info.Rdata")
+ # rsconnect::setAccountInfo(
+ #     name = deploy_info$name,
+ #     token = deploy_info$token,
+ #     secret = deploy_info$secret
+ # )
  
  ## You need this to enable shinyapps to install Bioconductor packages
  options(repos = BiocManager::repositories())
@@ -1101,177 +1101,176 @@ TTGTTTGTGTAAATTC-1               0               NA</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
- version  R version 4.3.3 (2024-02-29)
- os       macOS Sonoma 14.3.1
+ version  R version 4.4.0 (2024-04-24)
+ os       macOS Sonoma 14.5
  system   x86_64, darwin20
  ui       X11
  language (EN)
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       America/New_York
- date     2024-03-17
+ date     2024-06-03
  pandoc   3.1.1 @ /Applications/quarto/bin/tools/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
- package                * version   date (UTC) lib source
- abind                    1.4-5     2016-07-21 [1] CRAN (R 4.3.0)
- AnnotationDbi            1.64.1    2023-11-03 [1] Bioconductor
- AnnotationHub          * 3.10.0    2023-10-24 [1] Bioconductor
- attempt                  0.3.1     2020-05-03 [1] CRAN (R 4.3.0)
- beachmat                 2.18.1    2024-02-14 [1] Bioconductor 3.18 (R 4.3.2)
- beeswarm                 0.4.0     2021-06-01 [1] CRAN (R 4.3.0)
- benchmarkme              1.0.8     2022-06-12 [1] CRAN (R 4.3.0)
- benchmarkmeData          1.0.4     2020-04-23 [1] CRAN (R 4.3.0)
- Biobase                * 2.62.0    2023-10-24 [1] Bioconductor
- BiocFileCache          * 2.10.1    2023-10-26 [1] Bioconductor
- BiocGenerics           * 0.48.1    2023-11-01 [1] Bioconductor
- BiocIO                   1.12.0    2023-10-24 [1] Bioconductor
- BiocManager              1.30.22   2023-08-08 [1] CRAN (R 4.3.0)
- BiocNeighbors            1.20.1    2023-12-18 [1] Bioconductor 3.18 (R 4.3.2)
- BiocParallel             1.36.0    2023-10-24 [1] Bioconductor
- BiocSingular             1.18.0    2023-10-24 [1] Bioconductor
- BiocVersion              3.18.1    2023-11-15 [1] Bioconductor
- Biostrings               2.70.1    2023-10-25 [1] Bioconductor
- bit                      4.0.5     2022-11-15 [1] CRAN (R 4.3.0)
- bit64                    4.0.5     2020-08-30 [1] CRAN (R 4.3.0)
- bitops                   1.0-7     2021-04-24 [1] CRAN (R 4.3.0)
- blob                     1.2.4     2023-03-17 [1] CRAN (R 4.3.0)
- bluster                  1.12.0    2023-10-24 [1] Bioconductor
- bslib                    0.6.1     2023-11-28 [1] CRAN (R 4.3.0)
- cachem                   1.0.8     2023-05-01 [1] CRAN (R 4.3.0)
- cli                      3.6.2     2023-12-11 [1] CRAN (R 4.3.0)
- cluster                  2.1.6     2023-12-01 [1] CRAN (R 4.3.3)
- codetools                0.2-19    2023-02-01 [1] CRAN (R 4.3.3)
- colorspace               2.1-0     2023-01-23 [1] CRAN (R 4.3.0)
- config                   0.3.2     2023-08-30 [1] CRAN (R 4.3.0)
- cowplot                  1.1.3     2024-01-22 [1] CRAN (R 4.3.2)
- crayon                   1.5.2     2022-09-29 [1] CRAN (R 4.3.0)
- curl                     5.2.1     2024-03-01 [1] CRAN (R 4.3.2)
- data.table               1.14.10   2023-12-08 [1] CRAN (R 4.3.0)
- DBI                      1.2.2     2024-02-16 [1] CRAN (R 4.3.2)
- dbplyr                 * 2.4.0     2023-10-26 [1] CRAN (R 4.3.0)
- DelayedArray             0.28.0    2023-10-24 [1] Bioconductor
- DelayedMatrixStats       1.24.0    2023-10-24 [1] Bioconductor
- digest                   0.6.33    2023-07-07 [1] CRAN (R 4.3.0)
- doParallel               1.0.17    2022-02-07 [1] CRAN (R 4.3.0)
- dotCall64                1.1-1     2023-11-28 [1] CRAN (R 4.3.0)
- dplyr                    1.1.4     2023-11-17 [1] CRAN (R 4.3.0)
- dqrng                    0.3.2     2023-11-29 [1] CRAN (R 4.3.0)
- DT                       0.31      2023-12-09 [1] CRAN (R 4.3.0)
- edgeR                    4.0.3     2023-12-10 [1] Bioconductor
- ellipsis                 0.3.2     2021-04-29 [1] CRAN (R 4.3.0)
- evaluate                 0.23      2023-11-01 [1] CRAN (R 4.3.0)
- ExperimentHub          * 2.10.0    2023-10-24 [1] Bioconductor
- fansi                    1.0.6     2023-12-08 [1] CRAN (R 4.3.0)
- farver                   2.1.1     2022-07-06 [1] CRAN (R 4.3.0)
- fastmap                  1.1.1     2023-02-24 [1] CRAN (R 4.3.0)
- fields                   15.2      2023-08-17 [1] CRAN (R 4.3.0)
- filelock                 1.0.3     2023-12-11 [1] CRAN (R 4.3.0)
- FNN                      1.1.3.2   2023-03-20 [1] CRAN (R 4.3.0)
- foreach                  1.5.2     2022-02-02 [1] CRAN (R 4.3.0)
- generics                 0.1.3     2022-07-05 [1] CRAN (R 4.3.0)
- GenomeInfoDb           * 1.38.7    2024-03-06 [1] Bioconductor 3.18 (R 4.3.3)
- GenomeInfoDbData         1.2.11    2023-12-26 [1] Bioconductor
- GenomicAlignments        1.38.2    2024-01-16 [1] Bioconductor 3.18 (R 4.3.2)
- GenomicRanges          * 1.54.1    2023-10-29 [1] Bioconductor
- ggbeeswarm               0.7.2     2023-04-29 [1] CRAN (R 4.3.0)
- ggplot2                * 3.5.0     2024-02-23 [1] CRAN (R 4.3.2)
- ggrepel                  0.9.5     2024-01-10 [1] CRAN (R 4.3.0)
- glue                     1.7.0     2024-01-09 [1] CRAN (R 4.3.0)
- golem                    0.4.1     2023-06-05 [1] CRAN (R 4.3.0)
- gridExtra                2.3       2017-09-09 [1] CRAN (R 4.3.0)
- gtable                   0.3.4     2023-08-21 [1] CRAN (R 4.3.0)
- htmltools                0.5.7     2023-11-03 [1] CRAN (R 4.3.0)
- htmlwidgets              1.6.4     2023-12-06 [1] CRAN (R 4.3.0)
- httpuv                   1.6.13    2023-12-06 [1] CRAN (R 4.3.0)
- httr                     1.4.7     2023-08-15 [1] CRAN (R 4.3.0)
- igraph                 * 1.6.0     2023-12-11 [1] CRAN (R 4.3.0)
- interactiveDisplayBase   1.40.0    2023-10-24 [1] Bioconductor
- IRanges                * 2.36.0    2023-10-24 [1] Bioconductor
- irlba                    2.3.5.1   2022-10-03 [1] CRAN (R 4.3.0)
- iterators                1.0.14    2022-02-05 [1] CRAN (R 4.3.0)
- jquerylib                0.1.4     2021-04-26 [1] CRAN (R 4.3.0)
- jsonlite                 1.8.8     2023-12-04 [1] CRAN (R 4.3.0)
- KEGGREST                 1.42.0    2023-10-24 [1] Bioconductor
- knitr                    1.45      2023-10-30 [1] CRAN (R 4.3.0)
- labeling                 0.4.3     2023-08-29 [1] CRAN (R 4.3.0)
- later                    1.3.2     2023-12-06 [1] CRAN (R 4.3.0)
- lattice                  0.22-5    2023-10-24 [1] CRAN (R 4.3.3)
- lazyeval                 0.2.2     2019-03-15 [1] CRAN (R 4.3.0)
- lifecycle                1.0.4     2023-11-07 [1] CRAN (R 4.3.0)
- limma                    3.58.1    2023-10-31 [1] Bioconductor
- lobstr                 * 1.1.2     2022-06-22 [1] CRAN (R 4.3.0)
- locfit                   1.5-9.8   2023-06-11 [1] CRAN (R 4.3.0)
- magick                   2.8.3     2024-02-18 [1] CRAN (R 4.3.2)
- magrittr                 2.0.3     2022-03-30 [1] CRAN (R 4.3.0)
- maps                     3.4.2     2023-12-15 [1] CRAN (R 4.3.0)
- Matrix                   1.6-5     2024-01-11 [1] CRAN (R 4.3.3)
- MatrixGenerics         * 1.14.0    2023-10-24 [1] Bioconductor
- matrixStats            * 1.2.0     2023-12-11 [1] CRAN (R 4.3.0)
- memoise                  2.0.1     2021-11-26 [1] CRAN (R 4.3.0)
- metapod                  1.10.1    2023-12-24 [1] Bioconductor 3.18 (R 4.3.2)
- mime                     0.12      2021-09-28 [1] CRAN (R 4.3.0)
- munsell                  0.5.0     2018-06-12 [1] CRAN (R 4.3.0)
- paletteer                1.6.0     2024-01-21 [1] CRAN (R 4.3.0)
- pillar                   1.9.0     2023-03-22 [1] CRAN (R 4.3.0)
- pkgconfig                2.0.3     2019-09-22 [1] CRAN (R 4.3.0)
- plotly                   4.10.4    2024-01-13 [1] CRAN (R 4.3.0)
- png                      0.1-8     2022-11-29 [1] CRAN (R 4.3.0)
- prettyunits              1.2.0     2023-09-24 [1] CRAN (R 4.3.0)
- promises                 1.2.1     2023-08-10 [1] CRAN (R 4.3.0)
- purrr                    1.0.2     2023-08-10 [1] CRAN (R 4.3.0)
- R6                       2.5.1     2021-08-19 [1] CRAN (R 4.3.0)
- rappdirs                 0.3.3     2021-01-31 [1] CRAN (R 4.3.0)
- RColorBrewer             1.1-3     2022-04-03 [1] CRAN (R 4.3.0)
- Rcpp                     1.0.12    2024-01-09 [1] CRAN (R 4.3.0)
- RCurl                    1.98-1.14 2024-01-09 [1] CRAN (R 4.3.0)
- rematch2                 2.1.2     2020-05-01 [1] CRAN (R 4.3.0)
- restfulr                 0.0.15    2022-06-16 [1] CRAN (R 4.3.0)
- rjson                    0.2.21    2022-01-09 [1] CRAN (R 4.3.0)
- rlang                    1.1.3     2024-01-10 [1] CRAN (R 4.3.0)
- rmarkdown                2.25      2023-09-18 [1] CRAN (R 4.3.0)
- Rsamtools                2.18.0    2023-10-24 [1] Bioconductor
- RSQLite                  2.3.5     2024-01-21 [1] CRAN (R 4.3.0)
- rsvd                     1.0.5     2021-04-16 [1] CRAN (R 4.3.0)
- rtracklayer            * 1.62.0    2023-10-24 [1] Bioconductor
- S4Arrays                 1.2.1     2024-03-06 [1] Bioconductor 3.18 (R 4.3.3)
- S4Vectors              * 0.40.2    2023-11-23 [1] Bioconductor
- sass                     0.4.8     2023-12-06 [1] CRAN (R 4.3.0)
- ScaledMatrix             1.10.0    2023-10-24 [1] Bioconductor
- scales                   1.3.0     2023-11-28 [1] CRAN (R 4.3.0)
- scater                 * 1.30.1    2023-12-06 [1] Bioconductor
- scran                  * 1.30.0    2023-10-24 [1] Bioconductor
- scuttle                * 1.12.0    2023-10-24 [1] Bioconductor
- sessioninfo              1.2.2     2021-12-06 [1] CRAN (R 4.3.0)
- shiny                    1.8.0     2023-11-17 [1] CRAN (R 4.3.0)
- shinyWidgets             0.8.2     2024-03-01 [1] CRAN (R 4.3.2)
- SingleCellExperiment   * 1.24.0    2023-10-24 [1] Bioconductor
- spam                     2.10-0    2023-10-23 [1] CRAN (R 4.3.0)
- SparseArray              1.2.4     2024-02-11 [1] Bioconductor 3.18 (R 4.3.2)
- sparseMatrixStats        1.14.0    2023-10-24 [1] Bioconductor
- SpatialExperiment      * 1.13.1    2024-03-15 [1] Bioconductor
- spatialLIBD            * 1.14.1    2023-11-30 [1] Bioconductor 3.18 (R 4.3.3)
- statmod                  1.5.0     2023-01-06 [1] CRAN (R 4.3.0)
- STexampleData          * 1.10.0    2023-10-26 [1] Bioconductor
- SummarizedExperiment   * 1.32.0    2023-10-24 [1] Bioconductor
- tibble                   3.2.1     2023-03-20 [1] CRAN (R 4.3.0)
- tidyr                    1.3.1     2024-01-24 [1] CRAN (R 4.3.2)
- tidyselect               1.2.1     2024-03-11 [1] CRAN (R 4.3.2)
- utf8                     1.2.4     2023-10-22 [1] CRAN (R 4.3.0)
- uwot                     0.1.16    2023-06-29 [1] CRAN (R 4.3.0)
- vctrs                    0.6.5     2023-12-01 [1] CRAN (R 4.3.0)
- vipor                    0.4.7     2023-12-18 [1] CRAN (R 4.3.0)
- viridis                  0.6.4     2023-07-22 [1] CRAN (R 4.3.0)
- viridisLite              0.4.2     2023-05-02 [1] CRAN (R 4.3.0)
- withr                    3.0.0     2024-01-16 [1] CRAN (R 4.3.0)
- xfun                     0.42      2024-02-08 [1] CRAN (R 4.3.2)
- XML                      3.99-0.16 2023-11-29 [1] CRAN (R 4.3.0)
- xtable                   1.8-4     2019-04-21 [1] CRAN (R 4.3.0)
- XVector                  0.42.0    2023-10-24 [1] Bioconductor
- yaml                     2.3.8     2023-12-11 [1] CRAN (R 4.3.0)
- zlibbioc                 1.48.2    2024-03-13 [1] Bioconductor 3.18 (R 4.3.3)
+ package              * version     date (UTC) lib source
+ abind                  1.4-5       2016-07-21 [1] CRAN (R 4.4.0)
+ AnnotationDbi          1.66.0      2024-05-01 [1] Bioconductor 3.19 (R 4.4.0)
+ AnnotationHub        * 3.12.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ attempt                0.3.1       2020-05-03 [1] CRAN (R 4.4.0)
+ beachmat               2.20.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ beeswarm               0.4.0       2021-06-01 [1] CRAN (R 4.4.0)
+ benchmarkme            1.0.8       2022-06-12 [1] CRAN (R 4.4.0)
+ benchmarkmeData        1.0.4       2020-04-23 [1] CRAN (R 4.4.0)
+ Biobase              * 2.64.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ BiocFileCache        * 2.12.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ BiocGenerics         * 0.50.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ BiocIO                 1.14.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ BiocManager            1.30.23     2024-05-04 [1] CRAN (R 4.4.0)
+ BiocNeighbors          1.22.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ BiocParallel           1.38.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ BiocSingular           1.20.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ BiocVersion            3.19.1      2024-04-17 [1] Bioconductor 3.19 (R 4.4.0)
+ Biostrings             2.72.1      2024-06-02 [1] Bioconductor 3.19 (R 4.4.0)
+ bit                    4.0.5       2022-11-15 [1] CRAN (R 4.4.0)
+ bit64                  4.0.5       2020-08-30 [1] CRAN (R 4.4.0)
+ bitops                 1.0-7       2021-04-24 [1] CRAN (R 4.4.0)
+ blob                   1.2.4       2023-03-17 [1] CRAN (R 4.4.0)
+ bluster                1.14.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ bslib                  0.7.0       2024-03-29 [1] CRAN (R 4.4.0)
+ cachem                 1.1.0       2024-05-16 [1] CRAN (R 4.4.0)
+ cli                    3.6.2       2023-12-11 [1] CRAN (R 4.4.0)
+ cluster                2.1.6       2023-12-01 [1] CRAN (R 4.4.0)
+ codetools              0.2-20      2024-03-31 [1] CRAN (R 4.4.0)
+ colorspace             2.1-0       2023-01-23 [1] CRAN (R 4.4.0)
+ config                 0.3.2       2023-08-30 [1] CRAN (R 4.4.0)
+ cowplot                1.1.3       2024-01-22 [1] CRAN (R 4.4.0)
+ crayon                 1.5.2       2022-09-29 [1] CRAN (R 4.4.0)
+ curl                   5.2.1       2024-03-01 [1] CRAN (R 4.4.0)
+ data.table             1.15.4      2024-03-30 [1] CRAN (R 4.4.0)
+ DBI                    1.2.3       2024-06-02 [1] CRAN (R 4.4.0)
+ dbplyr               * 2.5.0       2024-03-19 [1] CRAN (R 4.4.0)
+ DelayedArray           0.30.1      2024-05-07 [1] Bioconductor 3.19 (R 4.4.0)
+ DelayedMatrixStats     1.26.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ digest                 0.6.35      2024-03-11 [1] CRAN (R 4.4.0)
+ doParallel             1.0.17      2022-02-07 [1] CRAN (R 4.4.0)
+ dotCall64              1.1-1       2023-11-28 [1] CRAN (R 4.4.0)
+ dplyr                  1.1.4       2023-11-17 [1] CRAN (R 4.4.0)
+ dqrng                  0.4.0       2024-05-15 [1] CRAN (R 4.4.0)
+ DT                     0.33        2024-04-04 [1] CRAN (R 4.4.0)
+ edgeR                  4.2.0       2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ evaluate               0.23        2023-11-01 [1] CRAN (R 4.4.0)
+ ExperimentHub        * 2.12.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ fansi                  1.0.6       2023-12-08 [1] CRAN (R 4.4.0)
+ farver                 2.1.2       2024-05-13 [1] CRAN (R 4.4.0)
+ fastmap                1.2.0       2024-05-15 [1] CRAN (R 4.4.0)
+ fields                 15.2        2023-08-17 [1] CRAN (R 4.4.0)
+ filelock               1.0.3       2023-12-11 [1] CRAN (R 4.4.0)
+ FNN                    1.1.4       2024-01-12 [1] CRAN (R 4.4.0)
+ foreach                1.5.2       2022-02-02 [1] CRAN (R 4.4.0)
+ generics               0.1.3       2022-07-05 [1] CRAN (R 4.4.0)
+ GenomeInfoDb         * 1.40.1      2024-05-24 [1] Bioconductor 3.19 (R 4.4.0)
+ GenomeInfoDbData       1.2.12      2024-05-08 [1] Bioconductor
+ GenomicAlignments      1.40.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ GenomicRanges        * 1.56.0      2024-05-01 [1] Bioconductor 3.19 (R 4.4.0)
+ ggbeeswarm             0.7.2       2023-04-29 [1] CRAN (R 4.4.0)
+ ggplot2              * 3.5.1       2024-04-23 [1] CRAN (R 4.4.0)
+ ggrepel                0.9.5       2024-01-10 [1] CRAN (R 4.4.0)
+ glue                   1.7.0       2024-01-09 [1] CRAN (R 4.4.0)
+ golem                  0.4.1       2023-06-05 [1] CRAN (R 4.4.0)
+ gridExtra              2.3         2017-09-09 [1] CRAN (R 4.4.0)
+ gtable                 0.3.5       2024-04-22 [1] CRAN (R 4.4.0)
+ htmltools              0.5.8.1     2024-04-04 [1] CRAN (R 4.4.0)
+ htmlwidgets            1.6.4       2023-12-06 [1] CRAN (R 4.4.0)
+ httpuv                 1.6.15      2024-03-26 [1] CRAN (R 4.4.0)
+ httr                   1.4.7       2023-08-15 [1] CRAN (R 4.4.0)
+ igraph               * 2.0.3       2024-03-13 [1] CRAN (R 4.4.0)
+ IRanges              * 2.38.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ irlba                  2.3.5.1     2022-10-03 [1] CRAN (R 4.4.0)
+ iterators              1.0.14      2022-02-05 [1] CRAN (R 4.4.0)
+ jquerylib              0.1.4       2021-04-26 [1] CRAN (R 4.4.0)
+ jsonlite               1.8.8       2023-12-04 [1] CRAN (R 4.4.0)
+ KEGGREST               1.44.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ knitr                  1.47        2024-05-29 [1] CRAN (R 4.4.0)
+ labeling               0.4.3       2023-08-29 [1] CRAN (R 4.4.0)
+ later                  1.3.2       2023-12-06 [1] CRAN (R 4.4.0)
+ lattice                0.22-6      2024-03-20 [1] CRAN (R 4.4.0)
+ lazyeval               0.2.2       2019-03-15 [1] CRAN (R 4.4.0)
+ lifecycle              1.0.4       2023-11-07 [1] CRAN (R 4.4.0)
+ limma                  3.60.2      2024-05-19 [1] Bioconductor 3.19 (R 4.4.0)
+ lobstr               * 1.1.2       2022-06-22 [1] CRAN (R 4.4.0)
+ locfit                 1.5-9.9     2024-03-01 [1] CRAN (R 4.4.0)
+ magick                 2.8.3       2024-02-18 [1] CRAN (R 4.4.0)
+ magrittr               2.0.3       2022-03-30 [1] CRAN (R 4.4.0)
+ maps                   3.4.2       2023-12-15 [1] CRAN (R 4.4.0)
+ Matrix                 1.7-0       2024-03-22 [1] CRAN (R 4.4.0)
+ MatrixGenerics       * 1.16.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ matrixStats          * 1.3.0       2024-04-11 [1] CRAN (R 4.4.0)
+ memoise                2.0.1       2021-11-26 [1] CRAN (R 4.4.0)
+ metapod                1.12.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ mime                   0.12        2021-09-28 [1] CRAN (R 4.4.0)
+ munsell                0.5.1       2024-04-01 [1] CRAN (R 4.4.0)
+ paletteer              1.6.0       2024-01-21 [1] CRAN (R 4.4.0)
+ pillar                 1.9.0       2023-03-22 [1] CRAN (R 4.4.0)
+ pkgconfig              2.0.3       2019-09-22 [1] CRAN (R 4.4.0)
+ plotly                 4.10.4      2024-01-13 [1] CRAN (R 4.4.0)
+ png                    0.1-8       2022-11-29 [1] CRAN (R 4.4.0)
+ prettyunits            1.2.0       2023-09-24 [1] CRAN (R 4.4.0)
+ promises               1.3.0       2024-04-05 [1] CRAN (R 4.4.0)
+ purrr                  1.0.2       2023-08-10 [1] CRAN (R 4.4.0)
+ R6                     2.5.1       2021-08-19 [1] CRAN (R 4.4.0)
+ rappdirs               0.3.3       2021-01-31 [1] CRAN (R 4.4.0)
+ RColorBrewer           1.1-3       2022-04-03 [1] CRAN (R 4.4.0)
+ Rcpp                   1.0.12      2024-01-09 [1] CRAN (R 4.4.0)
+ RCurl                  1.98-1.14   2024-01-09 [1] CRAN (R 4.4.0)
+ rematch2               2.1.2       2020-05-01 [1] CRAN (R 4.4.0)
+ restfulr               0.0.15      2022-06-16 [1] CRAN (R 4.4.0)
+ rjson                  0.2.21      2022-01-09 [1] CRAN (R 4.4.0)
+ rlang                  1.1.3       2024-01-10 [1] CRAN (R 4.4.0)
+ rmarkdown              2.27        2024-05-17 [1] CRAN (R 4.4.0)
+ Rsamtools              2.20.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ RSQLite                2.3.6       2024-03-31 [1] CRAN (R 4.4.0)
+ rsvd                   1.0.5       2021-04-16 [1] CRAN (R 4.4.0)
+ rtracklayer          * 1.64.0      2024-05-01 [1] Bioconductor 3.19 (R 4.4.0)
+ S4Arrays               1.4.1       2024-05-20 [1] Bioconductor 3.19 (R 4.4.0)
+ S4Vectors            * 0.42.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ sass                   0.4.9       2024-03-15 [1] CRAN (R 4.4.0)
+ ScaledMatrix           1.12.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ scales                 1.3.0       2023-11-28 [1] CRAN (R 4.4.0)
+ scater               * 1.32.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ scran                * 1.32.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ scuttle              * 1.14.0      2024-05-01 [1] Bioconductor 3.19 (R 4.4.0)
+ sessioninfo            1.2.2       2021-12-06 [1] CRAN (R 4.4.0)
+ shiny                  1.8.1.1     2024-04-02 [1] CRAN (R 4.4.0)
+ shinyWidgets           0.8.6       2024-04-24 [1] CRAN (R 4.4.0)
+ SingleCellExperiment * 1.26.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ spam                   2.10-0      2023-10-23 [1] CRAN (R 4.4.0)
+ SparseArray            1.4.8       2024-05-24 [1] Bioconductor 3.19 (R 4.4.0)
+ sparseMatrixStats      1.16.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ SpatialExperiment    * 1.14.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ spatialLIBD          * 1.16.2      2024-05-28 [1] Bioconductor 3.19 (R 4.4.0)
+ statmod                1.5.0       2023-01-06 [1] CRAN (R 4.4.0)
+ STexampleData        * 1.12.3      2024-05-21 [1] Bioconductor 3.19 (R 4.4.0)
+ SummarizedExperiment * 1.34.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ tibble                 3.2.1       2023-03-20 [1] CRAN (R 4.4.0)
+ tidyr                  1.3.1       2024-01-24 [1] CRAN (R 4.4.0)
+ tidyselect             1.2.1       2024-03-11 [1] CRAN (R 4.4.0)
+ UCSC.utils             1.0.0       2024-05-01 [1] Bioconductor 3.19 (R 4.4.0)
+ utf8                   1.2.4       2023-10-22 [1] CRAN (R 4.4.0)
+ uwot                   0.2.2       2024-04-21 [1] CRAN (R 4.4.0)
+ vctrs                  0.6.5       2023-12-01 [1] CRAN (R 4.4.0)
+ vipor                  0.4.7       2023-12-18 [1] CRAN (R 4.4.0)
+ viridis                0.6.5       2024-01-29 [1] CRAN (R 4.4.0)
+ viridisLite            0.4.2       2023-05-02 [1] CRAN (R 4.4.0)
+ withr                  3.0.0       2024-01-16 [1] CRAN (R 4.4.0)
+ xfun                   0.44        2024-05-15 [1] CRAN (R 4.4.0)
+ XML                    3.99-0.16.1 2024-01-22 [1] CRAN (R 4.4.0)
+ xtable                 1.8-4       2019-04-21 [1] CRAN (R 4.4.0)
+ XVector                0.44.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
+ yaml                   2.3.8       2023-12-11 [1] CRAN (R 4.4.0)
+ zlibbioc               1.50.0      2024-04-30 [1] Bioconductor 3.19 (R 4.4.0)
 
- [1] /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/library
+ [1] /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/library
 
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 </div>

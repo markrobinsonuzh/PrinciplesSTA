@@ -456,7 +456,7 @@ FALSE  TRUE
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">addPerCellQC</span>(spe, <span class="at">subsets =</span> <span class="fu">list</span>(<span class="at">mito =</span> is_mito))</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">colData</span>(spe))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>DataFrame with 6 rows and 13 columns
+<pre><code>DataFrame with 6 rows and 14 columns
                            barcode_id     sample_id in_tissue array_row
                           &lt;character&gt;   &lt;character&gt; &lt;integer&gt; &lt;integer&gt;
 AAACAAGTATCTCCCA-1 AAACAAGTATCTCCCA-1 sample_151673         1        50
@@ -465,30 +465,30 @@ AAACACCAATAACTGC-1 AAACACCAATAACTGC-1 sample_151673         1        59
 AAACAGAGCGACTCCT-1 AAACAGAGCGACTCCT-1 sample_151673         1        14
 AAACAGCTTTCAGAAG-1 AAACAGCTTTCAGAAG-1 sample_151673         1        43
 AAACAGGGTCTATATT-1 AAACAGGGTCTATATT-1 sample_151673         1        47
-                   array_col ground_truth cell_count       sum  detected
-                   &lt;integer&gt;  &lt;character&gt;  &lt;integer&gt; &lt;numeric&gt; &lt;numeric&gt;
-AAACAAGTATCTCCCA-1       102       Layer3          6      8458      3586
-AAACAATCTACTAGCA-1        43       Layer1         16      1667      1150
-AAACACCAATAACTGC-1        19           WM          5      3769      1960
-AAACAGAGCGACTCCT-1        94       Layer3          2      5433      2424
-AAACAGCTTTCAGAAG-1         9       Layer5          4      4278      2264
-AAACAGGGTCTATATT-1        13       Layer6          6      4004      2178
-                   subsets_mito_sum subsets_mito_detected subsets_mito_percent
-                          &lt;numeric&gt;             &lt;numeric&gt;            &lt;numeric&gt;
-AAACAAGTATCTCCCA-1             1407                    13              16.6351
-AAACAATCTACTAGCA-1              204                    11              12.2376
-AAACACCAATAACTGC-1              430                    13              11.4089
-AAACAGAGCGACTCCT-1             1316                    13              24.2223
-AAACAGCTTTCAGAAG-1              651                    12              15.2174
-AAACAGGGTCTATATT-1              621                    13              15.5095
-                       total
-                   &lt;numeric&gt;
-AAACAAGTATCTCCCA-1      8458
-AAACAATCTACTAGCA-1      1667
-AAACACCAATAACTGC-1      3769
-AAACAGAGCGACTCCT-1      5433
-AAACAGCTTTCAGAAG-1      4278
-AAACAGGGTCTATATT-1      4004</code></pre>
+                   array_col ground_truth   reference cell_count       sum
+                   &lt;integer&gt;  &lt;character&gt; &lt;character&gt;  &lt;integer&gt; &lt;numeric&gt;
+AAACAAGTATCTCCCA-1       102       Layer3      Layer3          6      8458
+AAACAATCTACTAGCA-1        43       Layer1      Layer1         16      1667
+AAACACCAATAACTGC-1        19           WM          WM          5      3769
+AAACAGAGCGACTCCT-1        94       Layer3      Layer3          2      5433
+AAACAGCTTTCAGAAG-1         9       Layer5      Layer5          4      4278
+AAACAGGGTCTATATT-1        13       Layer6      Layer6          6      4004
+                    detected subsets_mito_sum subsets_mito_detected
+                   &lt;numeric&gt;        &lt;numeric&gt;             &lt;numeric&gt;
+AAACAAGTATCTCCCA-1      3586             1407                    13
+AAACAATCTACTAGCA-1      1150              204                    11
+AAACACCAATAACTGC-1      1960              430                    13
+AAACAGAGCGACTCCT-1      2424             1316                    13
+AAACAGCTTTCAGAAG-1      2264              651                    12
+AAACAGGGTCTATATT-1      2178              621                    13
+                   subsets_mito_percent     total
+                              &lt;numeric&gt; &lt;numeric&gt;
+AAACAAGTATCTCCCA-1              16.6351      8458
+AAACAATCTACTAGCA-1              12.2376      1667
+AAACACCAATAACTGC-1              11.4089      3769
+AAACAGAGCGACTCCT-1              24.2223      5433
+AAACAGCTTTCAGAAG-1              15.2174      4278
+AAACAGGGTCTATATT-1              15.5095      4004</code></pre>
 </div>
 </div>
 </section>
