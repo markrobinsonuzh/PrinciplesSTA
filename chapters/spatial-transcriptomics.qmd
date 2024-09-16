@@ -41,7 +41,9 @@ knitr::include_graphics("https://raw.githubusercontent.com/lmweber/BestPractices
 
 ### 10x Genomics Visium HD
 
-The [10x Genomics Visium HD](https://www.10xgenomics.com/products/visium-hd-spatial-gene-expression) platform provides higher spatial resolution. Capture area dimensions are 6.5 x 6.5 mm, with a continuous 'lawn' of capture oligonucleotides arranged into 2 x 2 µm barcoded squares, which can optionally be aggregated into larger 8 x 8 µm bins. There are no gaps between the squares, and there are two capture areas per slide. The high spatial resolution of the barcoded squares provide near-single-cell resolution, while the use of sequencing provides transcriptome-scale gene coverage.
+The [10x Genomics Visium HD](https://www.10xgenomics.com/products/visium-hd-spatial-gene-expression) platform provides higher spatial resolution. Capture area dimensions are 6.5 x 6.5 mm, with a continuous lawn of capture oligonucleotides arranged into a grid of 2 x 2 µm barcoded squares, which are also aggregated into 8 x 8 µm and 16 x 16 µm bins for downstream analyses. There are no gaps between the squares, and there are two capture areas per slide. The high spatial resolution of the barcoded squares provide near-single-cell resolution, while the use of sequencing provides transcriptome-scale gene coverage.
+
+A preprint describing the platform applied to human colorectal cancer samples is available from 10x Genomics [@Oliveira2024].
 
 
 ### Curio Seeker
