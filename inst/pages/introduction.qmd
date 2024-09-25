@@ -62,3 +62,6 @@ For readers who are new to R and Bioconductor, additional useful resources inclu
 We welcome suggestions for updates and additions to the book. Suggestions may be provided as [GitHub issues](https://github.com/lmweber/BestPracticesST/issues) for further discussion with the maintainers.
 
 Note that all methods to be run within code examples must be available as either R packages from Bioconductor or CRAN, or Python packages from PyPI. This restriction provides readers with guarantees regarding installability, long-term availability, maintenance, and compatibility. Packages that are only available from GitHub or other repositories may be discussed within the text, but will not be included in the code examples. In general, our philosophy is to showcase examples of analysis methods that we have found to work well, are computationally scalable, user-friendly, and which can be integrated into existing Bioconductor-based workflows.
+
+
+## References {.unnumbered}
