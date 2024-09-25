@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.555">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>BestPracticesSTBiocBook - 1&nbsp; Introduction</title>
+<title>BestPracticesSTBiocBook - 3&nbsp; Bioconductor data classes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,7 +39,6 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
-
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -50,8 +46,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pages/spatial-transcriptomics.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../pages/spatial-transcriptomics.html" rel="prev">
 <link href="../assets/favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -61,8 +56,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -89,40 +83,31 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/introduction.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/bioconductor-data-classes.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bioconductor data classes</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">BestPracticesSTBiocBook</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
       <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-git"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
+<li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/lmweber/BestPracticesSTBiocBook/">
             Source Code
             </a>
@@ -133,7 +118,7 @@ div.csl-indent {
             </a>
           </li>
       </ul>
-    </div>
+</div>
 </div>
     </div>
       </div>
@@ -144,7 +129,7 @@ div.csl-indent {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
@@ -152,7 +137,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/introduction.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -164,36 +149,33 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/bioconductor-data-classes.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/bioconductor-data-classes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bioconductor data classes</span></span></a>
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">1.1</span> Overview</a></li>
-  <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents"><span class="header-section-number">1.2</span> Contents</a></li>
-  <li><a href="#scope-and-who-this-book-is-for" id="toc-scope-and-who-this-book-is-for" class="nav-link" data-scroll-target="#scope-and-who-this-book-is-for"><span class="header-section-number">1.3</span> Scope and who this book is for</a></li>
-  <li><a href="#bioconductor" id="toc-bioconductor" class="nav-link" data-scroll-target="#bioconductor"><span class="header-section-number">1.4</span> Bioconductor</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="header-section-number">1.5</span> Additional resources</a></li>
-  <li><a href="#contributions" id="toc-contributions" class="nav-link" data-scroll-target="#contributions"><span class="header-section-number">1.6</span> Contributions</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+<li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">3.1</span> Overview</a></li>
+  <li><a href="#spatialexperiment-class" id="toc-spatialexperiment-class" class="nav-link" data-scroll-target="#spatialexperiment-class"><span class="header-section-number">3.2</span> SpatialExperiment class</a></li>
+  <li>
+<a href="#molecule-based-data" id="toc-molecule-based-data" class="nav-link" data-scroll-target="#molecule-based-data"><span class="header-section-number">3.3</span> Molecule-based data</a>
+  <ul class="collapse">
+<li><a href="#moleculeexperiment" id="toc-moleculeexperiment" class="nav-link" data-scroll-target="#moleculeexperiment"><span class="header-section-number">3.3.1</span> MoleculeExperiment</a></li>
+  <li><a href="#spatialfeatureexperiment" id="toc-spatialfeatureexperiment" class="nav-link" data-scroll-target="#spatialfeatureexperiment"><span class="header-section-number">3.3.2</span> SpatialFeatureExperiment</a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span id="sec-introduction" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-bioconductor-data-classes" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bioconductor data classes</span></span></h1>
 </div>
 
 
@@ -207,67 +189,54 @@ div.csl-indent {
   
 
 
-</header>
-
-
-<section id="overview" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">1.1</span> Overview</h2>
-<p>This book provides discussion and interactive examples on best practices for computational analysis workflows for spatial transcriptomics data, using the <a href="http://bioconductor.org/">Bioconductor</a> framework within R.</p>
-</section>
-<section id="contents" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="contents"><span class="header-section-number">1.2</span> Contents</h2>
-<p>The chapters are organized into several parts:</p>
-<ul>
-<li><p><strong>Introduction:</strong> introduction, background on spatial transcriptomics, and R/Bioconductor data classes</p></li>
-<li><p><strong>Analysis steps:</strong> individual analysis steps</p></li>
-<li><p><strong>Workflows:</strong> examples of complete analysis workflows</p></li>
-<li><p><strong>Appendix:</strong> related resources, acknowledgments, and references</p></li>
-</ul>
-</section>
-<section id="scope-and-who-this-book-is-for" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="scope-and-who-this-book-is-for"><span class="header-section-number">1.3</span> Scope and who this book is for</h2>
-<p>The aim of this book is to demonstrate best practices for computational analysis workflows for spatial transcriptomics data through interactive examples and discussion using R code and example datasets. We assume some familiarity with R programming and an understanding of the types of biological questions that single-cell and spatial transcriptomics can be used to answer. Previous experience with Bioconductor is not required. By working through the examples in this book, readers will be able to adapt or extend the example workflows to analyze their own data.</p>
-<p>In general, we focus on downstream analysis methods, which start with a gene expression count table and spatial coordinates as the main inputs. Preprocessing procedures to generate gene expression count tables are covered in other resources (e.g.&nbsp;our related book <a href="https://lmweber.org/Visium-data-preprocessing/">Visium Data Preprocessing</a> for data from the 10x Genomics Visium platform) and tutorials provided by the manufacturers of the technological platforms. For molecule-based platforms, we will usually use data that has been aggregated to the cell level.</p>
-<p>For analysis steps where a number of different methods are available, we will showcase examples of methods that we have found to work well and are computationally scalable, with a preference for methods available through Bioconductor.</p>
-<p>All methods used in this book are available through Bioconductor or CRAN (in R) or PyPI (in Python) to ensure installability and long-term maintenance. We also mention a number of additional methods that are available as packages from GitHub, but these are not run within the code examples.</p>
-</section>
-<section id="bioconductor" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="bioconductor"><span class="header-section-number">1.4</span> Bioconductor</h2>
-<p><a href="http://bioconductor.org/">Bioconductor</a> is an ‘open source and open development’ project providing a cohesive and flexible framework for rigorous and reproducible analyses of high-throughput genomic data in R <span class="citation" data-cites="Huber2015">(<a href="#ref-Huber2015" role="doc-biblioref">Huber et al. 2015</a>)</span>. Bioconductor provides access to more than 2,000 contributed R packages, as well as infrastructure maintained by the Bioconductor Core Team, providing a rich analysis environment for users.</p>
-<p>A key strength of the Bioconductor framework is the modularity and open development philosophy. R packages are contributed by numerous research groups around the world, with the Bioconductor Core Team coordinating the overall project and maintaining infrastructure, build testing, and development guidelines. Contributed packages use consistent data structures, enabling users to connect packages developed by different groups to build analysis workflows that include the latest state-of-the-art methods. Bioconductor packages also include comprehensive documentation, including long-form tutorials or package vignettes.</p>
-</section>
-<section id="additional-resources" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">1.5</span> Additional resources</h2>
-<p>For readers who are new to R and Bioconductor, additional useful resources include:</p>
-<ul>
-<li><p>The <a href="https://bioconductor.org/books/release/OSCA/">Orchestrating Single-Cell Analysis with Bioconductor (OSCA)</a> online book <span class="citation" data-cites="Amezquita2020">(<a href="#ref-Amezquita2020" role="doc-biblioref">Amezquita et al. 2020</a>)</span>, which contains comprehensive materials on analysis workflows for non-spatial single-cell data as well as further introductory materials on R and Bioconductor.</p></li>
-<li><p>The <a href="https://r4ds.had.co.nz/">R for Data Science</a> online book provides an excellent introduction to R.</p></li>
-<li><p><a href="https://datacarpentry.org/">Data Carpentry</a> and <a href="https://software-carpentry.org/">Software Carpentry</a> provide online lesson materials on R programming, the Unix shell, and version control.</p></li>
-<li><p>The R/Bioconductor Data Science Team at the Lieber Institute for Brain Development has a <a href="https://lcolladotor.github.io/bioc_team_ds/rbioconductor-data-science-bootcamps.html">detailed guide</a> of free resources and videos to learn more about R and Bioconductor, as well as <a href="https://www.youtube.com/c/LeonardoColladoTorres/playlists">YouTube videos</a>, including some on the basics of Bioconductor and infrastructure for storing gene expression data.</p></li>
-<li><p>The <a href="https://lmweber.org/Visium-data-preprocessing/">Visium Data Preprocessing</a> online book provides details on data preprocessing procedures for spatial transcriptomics data from the 10x Genomics Visium platform.</p></li>
-</ul>
-</section>
-<section id="contributions" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="contributions"><span class="header-section-number">1.6</span> Contributions</h2>
-<p>We welcome suggestions for updates and additions to the book. Suggestions may be provided as <a href="https://github.com/lmweber/BestPracticesST/issues">GitHub issues</a> for further discussion with the maintainers.</p>
-<p>Note that all methods to be run within code examples must be available as either R packages from Bioconductor or CRAN, or Python packages from PyPI. This restriction provides readers with guarantees regarding installability, long-term availability, maintenance, and compatibility. Packages that are only available from GitHub or other repositories may be discussed within the text, but will not be included in the code examples. In general, our philosophy is to showcase examples of analysis methods that we have found to work well, are computationally scalable, user-friendly, and which can be integrated into existing Bioconductor-based workflows.</p>
-</section>
-<section id="references" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+</header><section id="overview" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="overview">
+<span class="header-section-number">3.1</span> Overview</h2>
+<p>Bioconductor provides several data classes for storing and manipulating spatial transcriptomics datasets. By relying on these standardized data structures, we can build analysis workflows that can easily connect methods and packages developed by different research groups.</p>
+<p>Below, we describe the Bioconductor data classes used in this book.</p>
+</section><section id="spatialexperiment-class" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="spatialexperiment-class">
+<span class="header-section-number">3.2</span> SpatialExperiment class</h2>
+<p>The <a href="https://bioconductor.org/packages/SpatialExperiment">SpatialExperiment</a> class <span class="citation" data-cites="Righelli2022">(<a href="#ref-Righelli2022" role="doc-biblioref">Righelli et al. 2022</a>)</span> is the core data class that we use in this book. This class allows us to store datasets at the spot or cell level, i.e.&nbsp;data from sequencing-based platforms (e.g.&nbsp;10x Genomics Visium) at the spot level, or data from molecule-based platforms that has been aggregated to the cell level.</p>
+<p>SpatialExperiment builds on the <a href="https://bioconductor.org/packages/SingleCellExperiment">SingleCellExperiment</a> class <span class="citation" data-cites="Amezquita2020">(<a href="#ref-Amezquita2020" role="doc-biblioref">Amezquita et al. 2020</a>)</span> for single-cell RNA sequencing data, with additional customizations to store spatial information, such as spatial coordinates and image files.</p>
+<p>A summary of the <code>SpatialExperiment</code> object structure is shown in the following schematic. Briefly, a <code>SpatialExperiment</code> object consists of (i) <code>assays</code> containing expression counts, (ii) <code>rowData</code> containing information on features, i.e.&nbsp;genes, (iii) <code>colData</code> containing information on spots or cells, including nonspatial and spatial metadata, (iv) <code>spatialCoords</code> containing spatial coordinates, and (v) <code>imgData</code> containing image data. For spot-based data (e.g.&nbsp;10x Genomics Visium), a single <code>assay</code> named <code>counts</code> is used.</p>
+<p>For more details, see the <code>SpatialExperiment</code> package <a href="https://bioconductor.org/packages/release/bioc/vignettes/SpatialExperiment/inst/doc/SpatialExperiment.html">Bioconductor vignette</a> or the paper describing the class <span class="citation" data-cites="Righelli2022">(<a href="#ref-Righelli2022" role="doc-biblioref">Righelli et al. 2022</a>)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/SPE.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Overview of the <code>SpatialExperiment</code> data class for storing and manipulating spatial transcriptomics datasets within the Bioconductor framework.</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="molecule-based-data" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="molecule-based-data">
+<span class="header-section-number">3.3</span> Molecule-based data</h2>
+<p>Molecule-based spatial transcriptomics datasets contain additional information, including the spatial coordinates of individual mRNA molecules and segmentation boundaries for cells or nuclei.</p>
+<p>The following Bioconductor classes provide additional functionality to store and manipulate this information.</p>
+<p>These classes extend <code>SpatialExperiment</code> and are compatible with <code>SpatialExperiment</code> for analyses at the aggregated cell level.</p>
+<section id="moleculeexperiment" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="moleculeexperiment">
+<span class="header-section-number">3.3.1</span> MoleculeExperiment</h3>
+<p><code>MoleculeExperiment</code> is available as a <a href="https://bioconductor.org/packages/MoleculeExperiment">Bioconductor package</a> and described by the authors in their paper <span class="citation" data-cites="PetersCouto2023">(<a href="#ref-PetersCouto2023" role="doc-biblioref">Peters Couto et al. 2023</a>)</span>.</p>
+</section><section id="spatialfeatureexperiment" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="spatialfeatureexperiment">
+<span class="header-section-number">3.3.2</span> SpatialFeatureExperiment</h3>
+<p><code>SpatialFeatureExperiment</code> is available as a <a href="https://bioconductor.org/packages/SpatialFeatureExperiment">Bioconductor package</a> and described by the authors in their paper <span class="citation" data-cites="Moses2023">(<a href="#ref-Moses2023" role="doc-biblioref">Moses et al. 2023</a>)</span>.</p>
+<!-- ### SpatialData -->
+</section></section><section id="references" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Amezquita2020" class="csl-entry" role="listitem">
 Amezquita, Robert A., Aaron T. L. Lun, Etienne Becht, Vince J. Carey, Lindsay N. Carpp, Ludwig Geistlinger, Federico Marini, et al. 2020. <span>“Orchestrating Single-Cell Analysis with <span>Bioconductor</span>.”</span> <em>Nature Methods</em> 17: 137–45. <a href="https://doi.org/10.1038/s41592-019-0654-x">https://doi.org/10.1038/s41592-019-0654-x</a>.
 </div>
-<div id="ref-Huber2015" class="csl-entry" role="listitem">
-Huber, Wolfgang, Vincent J. Carey, Robert Gentleman, Simon Anders, Marc Carlson, Benilton S. Carvalho, Hector Corrada Bravo, et al. 2015. <span>“Orchestrating High-Throughput Genomic Analysis with <span>Bioconductor</span>.”</span> <em>Nature Methods</em> 12: 115–21. <a href="https://doi.org/10.1038/nmeth.3252">https://doi.org/10.1038/nmeth.3252</a>.
+<div id="ref-Moses2023" class="csl-entry" role="listitem">
+Moses, Lambda, Pétur Helgi Einarsson, Kayla Jackson, Laura Luebbert, A. Sina Booeshaghi, Sindri Antonsson, Nicolas Bray, Páll Melsted, and Lior Pachter. 2023. <span>“<span>Voyager</span>: Exploratory Single-Cell Genomics Data Analysis with Geospatial Statistics.”</span> <em>bioRxiv</em>. <a href="https://doi.org/10.1101/2023.07.20.549945">https://doi.org/10.1101/2023.07.20.549945</a>.
+</div>
+<div id="ref-PetersCouto2023" class="csl-entry" role="listitem">
+Peters Couto, Bárbara Zita, Nicholas Robertson, Ellis Patrick, and Shila Ghazanfar. 2023. <span>“<span>MoleculeExperiment</span> Enables Consistent Infrastructure for Molecule-Resolved Spatial Transcriptomics Data in <span>Bioconductor</span>.”</span> <em>bioRxiv</em>. <a href="https://doi.org/10.1101/2023.05.16.541040">https://doi.org/10.1101/2023.05.16.541040</a>.
+</div>
+<div id="ref-Righelli2022" class="csl-entry" role="listitem">
+Righelli, Dario, Lukas M. Weber, Helena L. Crowell, Brenda Pardo, Leonardo Collado-Torres, Shila Ghazanfar, Aaron T. L. Lun, Stephanie C. Hicks, and Davide Risso. 2022. <span>“<span>SpatialExperiment</span>: Infrastructure for Spatially-Resolved Transcriptomics Data in <span>R</span> Using <span>Bioconductor</span>.”</span> <em>Bioinformatics</em> 38 (11): 3128–31. <a href="https://doi.org/10.1093/bioinformatics/btac299">https://doi.org/10.1093/bioinformatics/btac299</a>.
 </div>
 </div>
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -675,22 +644,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Welcome">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../pages/spatial-transcriptomics.html" class="pagination-link" aria-label="Spatial transcriptomics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Spatial transcriptomics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../pages/spatial-transcriptomics.html" class="pagination-link" aria-label="Spatial transcriptomics">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Spatial transcriptomics</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>This book was built with <a href="https://github.com/js2264/BiocBook/">BiocBook</a> with <span class="emoji" data-emoji="heart">❤️</span></p>
 </div>   
@@ -702,8 +665,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-
-
 
 
 </body></html>
