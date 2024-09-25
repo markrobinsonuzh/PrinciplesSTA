@@ -1,0 +1,111 @@
+# Load data {#sec-load-data}
+
+
+## Overview
+
+In the following chapters, we apply analysis methods to spatial transcriptomics datasets that are formatted as `SpatialExperiment` objects or objects from other Bioconductor data classes (see @sec-bioconductor-data-classes).
+
+Here, we load a 10x Genomics Visium dataset that will be used in several of the following chapters.
+
+This dataset has previously been preprocessed using data preprocessing procedures with tools outside R and saved in `SpatialExperiment` format. For more details on data preprocessing procedures for the 10x Genomics Visium platform, see the related online book [Visium Data Preprocessing](https://lmweber.org/Visium-data-preprocessing/).
+
+This dataset is available for download in `SpatialExperiment` format from the [STexampleData](https://bioconductor.org/packages/STexampleData) Bioconductor package.
+
+
+
+## Dataset
+
+This dataset consists of one sample (Visium capture area) from one donor, consisting of postmortem human brain tissue from the dorsolateral prefrontal cortex (DLPFC) brain region, measured with the 10x Genomics Visium platform. The dataset is described in the original publication by @Maynard2021.
+
+More details on the dataset are also included in @sec-workflow-human-dlpfc.
+
+<!-- To do: move additional details on dataset here (from DLPFC workflow chapter) -->
+
+
+
+## Load data
+
+Download and load the dataset in `SpatialExperiment` format from the [STexampleData](https://bioconductor.org/packages/STexampleData) Bioconductor package.
+
+```{r, message=FALSE}
+library(SpatialExperiment)
+library(STexampleData)
+
+# load object
+spe <- Visium_humanDLPFC()
+```
+
+
+
+## SpatialExperiment object
+
+Check the structure of the `SpatialExperiment` object. For more details on the `SpatialExperiment` structure, see @sec-bioconductor-data-classes.
+
+```{r, message=FALSE}
+# check object
+spe
+
+# number of genes (rows) and spots (columns)
+dim(spe)
+
+# names of 'assays'
+assayNames(spe)
+
+# row (gene) data
+head(rowData(spe))
+
+# column (spot) data
+head(colData(spe))
+
+# spatial coordinates
+head(spatialCoords(spe))
+
+# image data
+imgData(spe)
+```
+
+
+
+## Build object
+
+Alternatively, we can also build a `SpatialExperiment` object directly from raw data.
+
+Here, we provide a short example with an empty dataset.
+
+For more details, including how to load raw data from the 10x Genomics Space Ranger output files to build an object, or how to add image data to the object, see the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) documentation.
+
+```{r, message=FALSE}
+# create data
+n_genes <- 200
+n_spots <- 100
+
+counts <- matrix(0, nrow = n_genes, ncol = n_spots)
+
+row_data <- DataFrame(
+  gene_name = paste0("gene", sprintf("%03d", seq_len(n_genes)))
+)
+
+col_data <- DataFrame(
+  sample_id = rep("sample01", n_spots)
+)
+
+spatial_coords <- matrix(0, nrow = n_spots, ncol = 2)
+colnames(spatial_coords) <- c("x", "y")
+
+# create SpatialExperiment object
+spe <- SpatialExperiment(
+  assays = list(counts = counts), 
+  colData = col_data, 
+  rowData = row_data, 
+  spatialCoords = spatial_coords
+)
+```
+
+
+
+## Molecule-based data
+
+For more details on data classes for molecule-based platforms, e.g. 10x Genomics Xenium or Vizgen MERSCOPE, see @sec-bioconductor-data-classes.
+
+
+## References {.unnumbered}

@@ -6,6 +6,7 @@ book:
       chapters:
         - pages/introduction.qmd
         - pages/spatial-transcriptomics.qmd
+    - pages/load-data.qmd
         - pages/bioconductor-data-classes.qmd
     - part: "Analysis steps"
       chapters:
