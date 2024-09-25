@@ -17,6 +17,11 @@ BugReports: https://github.com/lmweber/BestPracticesSTBiocBook
 Depends:
     R (>= 4.3)
 Imports:
+    SpatialExperiment, 
+    STexampleData, 
+    scater, 
+    scran, 
+    here
 Suggests:
     BiocManager, 
     BiocVersion, 
