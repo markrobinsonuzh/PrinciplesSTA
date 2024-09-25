@@ -2,6 +2,7 @@ book:
   title: "BestPracticesSTBiocBook"
   chapters:
     - index.qmd
+    - pages/introduction.qmd
   cover-image: assets/cover.png
   favicon: assets/favicon.png
   sidebar: 
