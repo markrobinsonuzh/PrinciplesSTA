@@ -3,6 +3,8 @@ book:
   chapters:
     - index.qmd
     - pages/introduction.qmd
+    - pages/spatial-transcriptomics.qmd
+    - pages/bioconductor-data-classes.qmd
   cover-image: assets/cover.png
   favicon: assets/favicon.png
   sidebar: 
