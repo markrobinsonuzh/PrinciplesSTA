@@ -2,10 +2,14 @@ book:
   title: "BestPracticesSTBiocBook"
   chapters:
     - index.qmd
-    - pages/introduction.qmd
-    - pages/spatial-transcriptomics.qmd
-    - pages/bioconductor-data-classes.qmd
-    - pages/analysis-steps.qmd
+    - part: "Introduction"
+      chapters:
+        - pages/introduction.qmd
+        - pages/spatial-transcriptomics.qmd
+        - pages/bioconductor-data-classes.qmd
+    - part: "Analysis steps"
+      chapters:
+        - pages/analysis-steps.qmd
   cover-image: assets/cover.png
   favicon: assets/favicon.png
   sidebar: 
