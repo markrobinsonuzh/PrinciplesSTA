@@ -11,6 +11,7 @@ book:
       chapters:
         - pages/analysis-steps.qmd
         - pages/load-data.qmd
+        - pages/quality-control.qmd
   cover-image: assets/cover.png
   favicon: assets/favicon.png
   sidebar: 

@@ -29,7 +29,7 @@ spe <- Visium_humanDLPFC()
 library(here)
 # if (!dir.exists(here("outputs"))) dir.create(here("outputs"))
 # saveRDS(spe, file = here("outputs/spe_load.rds"))
-saveRDS(spe, file = here("spe_load.rds"))
+saveRDS(spe, file = "spe_load.rds")
 ```
 
 ```{r, message=FALSE, results='hide'}
@@ -55,7 +55,7 @@ spe <- spe[, !colData(spe)$discard]
 
 # save object
 # saveRDS(spe, file = here("outputs/spe_qc.rds"))
-saveRDS(spe, file = here("spe_qc.rds"))
+saveRDS(spe, file = "spe_qc.rds")
 ```
 
 ```{r, message=FALSE, results='hide'}
@@ -67,7 +67,7 @@ spe <- logNormCounts(spe)
 
 # save object
 # saveRDS(spe, file = here("outputs/spe_logcounts.rds"))
-saveRDS(spe, file = here("spe_logcounts.rds"))
+saveRDS(spe, file = "spe_logcounts.rds")
 ```
 
 ```{r, message=FALSE, results='hide'}
@@ -83,8 +83,8 @@ top_hvgs <- getTopHVGs(dec, prop = 0.1)
 # save object
 # saveRDS(spe, file = here("outputs/spe_hvgs.rds"))
 # saveRDS(top_hvgs, file = here("outputs/top_hvgs.rds"))
-saveRDS(spe, file = here("spe_hvgs.rds"))
-saveRDS(top_hvgs, file = here("top_hvgs.rds"))
+saveRDS(spe, file = "spe_hvgs.rds")
+saveRDS(top_hvgs, file = "top_hvgs.rds")
 ```
 
 ```{r, message=FALSE, results='hide'}
@@ -101,7 +101,7 @@ colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 
 # save object
 # saveRDS(spe, file = here("outputs/spe_reduceddims.rds"))
-saveRDS(spe, file = here("spe_reduceddims.rds"))
+saveRDS(spe, file = "spe_reduceddims.rds")
 ```
 
 ```{r, message=FALSE, results='hide'}
@@ -117,7 +117,7 @@ colLabels(spe) <- factor(clus)
 
 # save object
 # saveRDS(spe, file = here("outputs/spe_cluster.rds"))
-saveRDS(spe, file = here("spe_cluster.rds"))
+saveRDS(spe, file = "spe_cluster.rds")
 ```
 
 
