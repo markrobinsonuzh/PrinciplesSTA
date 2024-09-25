@@ -6,3 +6,5 @@
 ^NOTES\.md$
 ^README\.Rmd$
 ^Dockerfile$
+^.*\.Rproj$
+^\.Rproj\.user$
