@@ -15,9 +15,9 @@ Authors@R:
 URL: https://github.com/lmweber/BestPracticesSTBiocBook
 BugReports: https://github.com/lmweber/BestPracticesSTBiocBook
 Depends:
-    R (>= 4.3), 
-    SpatialExperiment
+    R (>= 4.3)
 Imports:
+    SpatialExperiment, 
     STexampleData, 
     scater, 
     scran, 
