@@ -90,13 +90,21 @@ pre.sourceCode.r, code.sourceCode.r {
 }
 
 /* Chapter label ---------------------------------------- */
-
+/*
 .chapter-number::before {
   content: "Chapter ";
 }
 
 .chapter-number::after {
   content: " –";
+}
+*/
+.chapter-number::before {
+  content: "";
+}
+
+.chapter-number::after {
+  content: " ";
 }
 
 /* Cover image ------------------------------------------ */
@@ -129,11 +137,11 @@ div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, 
   -webkit-background-clip: text;
   -webkit-text-fill-color: black;
 }
-
+/*
 .sidebar-navigation li a {
   text-decoration: underline;
 }
-
+*/
 .text-start {
   text-align: left !important;
   font-weight: 800;
@@ -222,9 +230,14 @@ ul li::marker {
 }
 
 /* Underlining links ------------------------------------ */
-
+/*
 .citation a, .footnote-ref {
   text-decoration: underline;
+}
+*/
+.citation a, .footnote-ref {
+  text-decoration: underline;
+  color: #2780e3;
 }
 
 /* Printing --------------------------------------------- */
