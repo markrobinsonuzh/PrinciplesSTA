@@ -21,6 +21,7 @@ Imports:
     STexampleData, 
     scater, 
     scran, 
+    ggspavis, 
     here
 Suggests:
     BiocManager, 
