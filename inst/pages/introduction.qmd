@@ -11,9 +11,9 @@ The chapters are organized into several parts:
 
 - **Introduction:** introduction, background on spatial transcriptomics, and R/Bioconductor data classes
 
-- **Sequencing-based platforms:** chapters on individual analysis steps and extended workflows for data from sequencing-based spatial transcriptomics platforms
+- **Sequencing-based platforms:** chapters on individual analysis steps and extended workflows for data from sequencing-based platforms
 
-- **Imaging-based platforms:** chapters on individual analysis steps and extended workflows for data from imaging-based spatial transcriptomics platforms
+- **Imaging-based platforms:** chapters on individual analysis steps and extended workflows for data from imaging-based platforms
 
 - **Appendix:** related resources and acknowledgments
 
