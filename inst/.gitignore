@@ -1,0 +1,4 @@
+/.quarto/
+docs/
+pages/*.html
+pages/*.rds
