@@ -15,7 +15,7 @@ This dataset is available for download in `SpatialExperiment` format from the [S
 
 This dataset consists of one sample (Visium capture area) from one donor, consisting of postmortem human brain tissue from the dorsolateral prefrontal cortex (DLPFC) brain region, measured with the 10x Genomics Visium platform. The dataset is described in the original publication by @Maynard2021.
 
-More details on the dataset are also included in @sec-human-dlpfc-workflow.
+More details on the dataset are also included in @sec-workflow-human-dlpfc.
 
 <!-- To do: move additional details on dataset here (from DLPFC workflow chapter) -->
 

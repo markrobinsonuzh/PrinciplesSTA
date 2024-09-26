@@ -1,3 +1,3 @@
-# Workflows: imaging-based data {#sec-workflows-imaging-based}
+# Workflows: imaging-based platforms {#sec-workflows-imaging-based}
 
-This part contains several extended chapters containing examples of analysis workflows for data from imaging-based platforms.
+The following chapters contain examples of extended analysis workflows for data from imaging-based platforms.
