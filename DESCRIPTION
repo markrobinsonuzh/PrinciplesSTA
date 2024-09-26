@@ -52,11 +52,9 @@ Suggests:
     sessioninfo,
     knitr 
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
 BiocType: Book
 License: CC BY 4.0
 VignetteBuilder: knitr
 BiocBookTemplate: 1.0.6
 SystemRequirements: quarto
-RoxygenNote: 7.1.1
