@@ -5,7 +5,7 @@ website:
   page-footer:
     background: light
     left: |
-      This book was built with <a href="https://github.com/js2264/BiocBook/">BiocBook</a> with :heart:
+      This book was built with <a href="https://github.com/js2264/BiocBook/">BiocBook</a>
   repo-branch: devel
   repo-actions: [edit, issue]
   open-graph: true
