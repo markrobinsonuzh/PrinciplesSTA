@@ -23,7 +23,12 @@ Imports:
     scran, 
     ggspavis, 
     nnSVG, 
-    pheatmap
+    pheatmap, 
+    spatialLIBD, 
+    igraph, 
+    BiocFileCache, 
+    rtracklayer, 
+    lobstr
 Suggests:
     BiocManager, 
     BiocVersion, 
