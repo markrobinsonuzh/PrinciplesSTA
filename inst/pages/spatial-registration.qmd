@@ -1,0 +1,10 @@
+# Spatial registration {#sec-spatial-registration}
+
+
+## Overview
+
+Spatial registration methods use gene expression profiles for cell populations of interest from single-cell RNA sequencing data as a reference, and use these single-cell expression profiles to 'spatially register' the spatial coordinates of observations corresponding to these cell populations in spatial transcriptomics data.
+
+For spot-based ST data, this is the same as spot deconvolution using reference-based methods (@sec-spot-deconvolution).
+
+For molecule-based ST data, this may be used as an alternative to clustering to identify cell populations after aggregation to cellular resolution (@sec-clustering).

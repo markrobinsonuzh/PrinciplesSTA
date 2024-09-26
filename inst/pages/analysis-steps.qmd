@@ -26,9 +26,6 @@ library(STexampleData)
 spe <- Visium_humanDLPFC()
 
 # save object
-library(here)
-# if (!dir.exists(here("outputs"))) dir.create(here("outputs"))
-# saveRDS(spe, file = here("outputs/spe_load.rds"))
 saveRDS(spe, file = "spe_load.rds")
 ```
 
@@ -54,7 +51,6 @@ colData(spe)$discard <- discard
 spe <- spe[, !colData(spe)$discard]
 
 # save object
-# saveRDS(spe, file = here("outputs/spe_qc.rds"))
 saveRDS(spe, file = "spe_qc.rds")
 ```
 
@@ -66,7 +62,6 @@ library(scran)
 spe <- logNormCounts(spe)
 
 # save object
-# saveRDS(spe, file = here("outputs/spe_logcounts.rds"))
 saveRDS(spe, file = "spe_logcounts.rds")
 ```
 
@@ -81,8 +76,6 @@ dec <- modelGeneVar(spe)
 top_hvgs <- getTopHVGs(dec, prop = 0.1)
 
 # save object
-# saveRDS(spe, file = here("outputs/spe_hvgs.rds"))
-# saveRDS(top_hvgs, file = here("outputs/top_hvgs.rds"))
 saveRDS(spe, file = "spe_hvgs.rds")
 saveRDS(top_hvgs, file = "top_hvgs.rds")
 ```
@@ -100,7 +93,6 @@ spe <- runUMAP(spe, dimred = "PCA")
 colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 
 # save object
-# saveRDS(spe, file = here("outputs/spe_reduceddims.rds"))
 saveRDS(spe, file = "spe_reduceddims.rds")
 ```
 
@@ -116,7 +108,6 @@ clus <- g_walk$membership
 colLabels(spe) <- factor(clus)
 
 # save object
-# saveRDS(spe, file = here("outputs/spe_cluster.rds"))
 saveRDS(spe, file = "spe_cluster.rds")
 ```
 

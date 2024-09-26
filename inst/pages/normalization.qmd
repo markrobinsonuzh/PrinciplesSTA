@@ -1,0 +1,47 @@
+# Normalization {#sec-normalization}
+
+
+## Overview
+
+Here we apply normalization methods developed for scRNA-seq data, treating each spot as equivalent to one cell.
+
+
+## Load data from previous steps
+
+We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-analysis-steps.
+
+```{r, message=FALSE, results='hide'}
+library(SpatialExperiment)
+spe <- readRDS("spe_qc.rds")
+```
+
+
+
+## Logcounts
+
+Calculate log-transformed normalized counts (abbreviated as "logcounts") using library size factors.
+
+We apply the methods implemented in the `scater` [@McCarthy2017] and `scran` [@Lun2016] packages, which were originally developed for scRNA-seq data, making the assumption here that these methods can be applied to SRT data by treating spots as equivalent to cells.
+
+We use the library size factors methodology since this is the simplest approach, and can easily be applied to SRT data. Alternative approaches that are populare for scRNA-seq data, including normalization by deconvolution, are more difficulty to justify in the context of spot-based SRT data since (i) spots may contain multiple cells from more than one cell type, and (ii) datasets can contain multiple samples (e.g. multiple Visium slides, resulting in sample-specific clustering).
+
+```{r, message=FALSE, fig.height=3.5}
+library(scran)
+
+# calculate library size factors
+spe <- computeLibraryFactors(spe)
+
+summary(sizeFactors(spe))
+hist(sizeFactors(spe), breaks = 20)
+
+# calculate logcounts and store in object
+spe <- logNormCounts(spe)
+
+# check
+assayNames(spe)
+dim(counts(spe))
+dim(logcounts(spe))
+```
+
+
+## References {.unnumbered}

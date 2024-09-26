@@ -12,6 +12,18 @@ book:
         - pages/analysis-steps.qmd
         - pages/load-data.qmd
         - pages/quality-control.qmd
+        - pages/normalization.qmd
+        - pages/feature-selection.qmd
+        - pages/dimensionality-reduction.qmd
+        - pages/clustering.qmd
+        - pages/spot-deconvolution.qmd
+        - pages/spatial-registration.qmd
+        - pages/differential-expression.qmd
+        - pages/multiple-samples.qmd
+        - pages/spatial-co-localization.qmd
+    - part: "Workflows"
+      chapters:
+        - pages/workflows.qmd
   cover-image: assets/cover.png
   favicon: assets/favicon.png
   sidebar: 

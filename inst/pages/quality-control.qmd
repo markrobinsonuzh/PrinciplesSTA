@@ -29,8 +29,6 @@ We start by loading the data object(s) saved after running the analysis steps fr
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)
-library(here)
-# spe <- readRDS(here("outputs/spe_load.rds"))
 spe <- readRDS("spe_load.rds")
 ```
 
