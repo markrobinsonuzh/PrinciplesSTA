@@ -1,4 +1,4 @@
-Package: BestPracticesSTBiocBook
+Package: BestPracticesST
 Title: Best Practices for Spatial Transcriptomics Analysis with Bioconductor
 Description: This package contains source code and materials for the 'Best 
     Practices for Spatial Transcriptomics Analysis with Bioconductor' online 
@@ -21,8 +21,8 @@ Authors@R:
              role = c("aut"), 
              email = "shicks19@jhu.edu", 
              comment = c(ORCID = "0000-0002-7858-0231")))
-URL: https://github.com/lmweber/BestPracticesSTBiocBook
-BugReports: https://github.com/lmweber/BestPracticesSTBiocBook
+URL: https://github.com/lmweber/BestPracticesST
+BugReports: https://github.com/lmweber/BestPracticesST
 biocViews: 
     Book, 
     Spatial, 

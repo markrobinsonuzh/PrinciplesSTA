@@ -4,7 +4,7 @@
 #| echo: false
 intro <- tryCatch(
     {
-        description <- packageDescription("BestPracticesSTBiocBook")
+        description <- packageDescription("BestPracticesST")
         pkg <- description$Package
         version <- description$Version
         authors <- eval(parse(text = description$Authors))
@@ -30,7 +30,7 @@ intro <- tryCatch(
 
 A `Docker` image built from this repository is available here: 
 
-👉 [ghcr.io/lmweber/bestpracticesstbiocbook](https://ghcr.io/lmweber/bestpracticesstbiocbook) 🐳
+👉 [ghcr.io/lmweber/bestpracticesst](https://ghcr.io/lmweber/bestpracticesst) 🐳
 
 ::: {.callout-tip icon='true'}
 ## Get started now 🎉
@@ -40,7 +40,7 @@ using this command in a terminal:
 
 ```{sh "docker", filename="bash"}
 #| eval: false
-docker run -it ghcr.io/lmweber/bestpracticesstbiocbook:devel R
+docker run -it ghcr.io/lmweber/bestpracticesst:devel R
 ```
 
 :::
@@ -55,7 +55,7 @@ docker run \
     --volume <local_folder>:<destination_folder> \
     -e PASSWORD=OHCA \
     -p 8787:8787 \
-    ghcr.io/lmweber/bestpracticesstbiocbook:devel
+    ghcr.io/lmweber/bestpracticesst:devel
 ```
 
 The initiated RStudio Server instance will be available at 
@@ -70,7 +70,7 @@ once the Docker image is loaded. It provides all the softwares listed in
 
 ```{sh "micromamba", filename="bash"}
 #| eval: false
-docker run -it ghcr.io/lmweber/bestpracticesstbiocbook:devel bash
+docker run -it ghcr.io/lmweber/bestpracticesst:devel bash
 micromamba activate BiocBook
 ``` 
 -->

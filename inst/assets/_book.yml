@@ -1,5 +1,5 @@
 book:
-  title: "BestPracticesSTBiocBook"
+  title: "BestPracticesST"
   chapters:
     - index.qmd
     - pages/preamble.qmd
@@ -38,9 +38,9 @@ book:
       - icon: git
         menu:
           - text: Source Code
-            url:  https://github.com/lmweber/BestPracticesSTBiocBook/
+            url:  https://github.com/lmweber/BestPracticesST/
           - text: Browse version `devel`
-            url:  https://lmweber.github.io/BestPracticesSTBiocBook/devel/
+            url:  https://lmweber.github.io/BestPracticesST/devel/
     style: "docked"
     background: "light"
     collapse-level: 5
