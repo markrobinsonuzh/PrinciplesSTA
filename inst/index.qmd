@@ -1,3 +1,19 @@
+```{r "welcome"}
+#| echo: false
+welcome <- tryCatch(
+    {
+        date <- date()
+        glue::glue(
+            "**Published:** {date}<br/>"
+        )
+    }, 
+    error = function(e) {"Local preview"}
+)
+```
+
+`r welcome`
+
+
 # Welcome {-}
 
 This is the website for the online book **'Best Practices for Spatial Transcriptomics Analysis with Bioconductor'**.
