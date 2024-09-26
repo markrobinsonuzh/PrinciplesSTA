@@ -1,12 +1,10 @@
 # Bioconductor data classes {#sec-bioconductor-data-classes}
 
-
 ## Overview
 
 Bioconductor provides several data classes for storing and manipulating spatial transcriptomics datasets. By relying on these standardized data structures, we can build analysis workflows that can easily connect methods and packages developed by different research groups.
 
 Below, we describe the Bioconductor data classes used in this book.
-
 
 
 ## SpatialExperiment class
@@ -24,19 +22,13 @@ knitr::include_graphics("https://raw.githubusercontent.com/lmweber/BestPractices
 ```
 
 
+## Imaging-based data
 
-## Molecule-based data
-
-Molecule-based spatial transcriptomics datasets contain additional information, including the spatial coordinates of individual mRNA molecules and segmentation boundaries for cells or nuclei.
+Imaging-based spatial transcriptomics datasets contain additional information, including the spatial coordinates of individual mRNA molecules and segmentation boundaries for cells or nuclei.
 
 The following Bioconductor classes provide additional functionality to store and manipulate this information.
 
 These classes extend `SpatialExperiment` and are compatible with `SpatialExperiment` for analyses at the aggregated cell level.
-
-
-### MoleculeExperiment
-
-`MoleculeExperiment` is available as a [Bioconductor package](https://bioconductor.org/packages/MoleculeExperiment) and described by the authors in their paper [@PetersCouto2023].
 
 
 ### SpatialFeatureExperiment
@@ -44,7 +36,9 @@ These classes extend `SpatialExperiment` and are compatible with `SpatialExperim
 `SpatialFeatureExperiment` is available as a [Bioconductor package](https://bioconductor.org/packages/SpatialFeatureExperiment) and described by the authors in their paper [@Moses2023].
 
 
-<!-- ### SpatialData -->
+### MoleculeExperiment
+
+`MoleculeExperiment` is available as a [Bioconductor package](https://bioconductor.org/packages/MoleculeExperiment) and described by the authors in their paper [@PetersCouto2023].
 
 
 ## References {.unnumbered}

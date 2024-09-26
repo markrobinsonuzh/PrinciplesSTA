@@ -1,0 +1,10 @@
+# Load imaging-based data {#sec-load-imaging-based-data}
+
+## Overview
+
+In this chapter, we load spatial transcriptomics datasets from imaging-based platforms (10x Genomics Xenium, Vizgen MERSCOPE, and/or NanoString CosMx), which will be used in the examples in the following chapters.
+
+For details on the technological platforms, see @sec-bioconductor-data-classes.
+
+
+## References {.unnumbered}

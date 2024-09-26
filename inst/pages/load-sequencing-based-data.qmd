@@ -1,16 +1,14 @@
-# Load data {#sec-load-data}
-
+# Load sequencing-based data {#sec-load-sequencing-based-data}
 
 ## Overview
 
-In the following chapters, we apply analysis methods to spatial transcriptomics datasets that are formatted as `SpatialExperiment` objects or objects from other Bioconductor data classes (see @sec-bioconductor-data-classes).
+In the following chapters, we apply analysis methods to spatial transcriptomics datasets from sequencing-based platforms, which are formatted as `SpatialExperiment` objects or objects from other Bioconductor data classes (see @sec-bioconductor-data-classes).
 
 Here, we load a 10x Genomics Visium dataset that will be used in several of the following chapters.
 
 This dataset has previously been preprocessed using data preprocessing procedures with tools outside R and saved in `SpatialExperiment` format. For more details on data preprocessing procedures for the 10x Genomics Visium platform, see the related online book [Visium Data Preprocessing](https://lmweber.org/Visium-data-preprocessing/).
 
 This dataset is available for download in `SpatialExperiment` format from the [STexampleData](https://bioconductor.org/packages/STexampleData) Bioconductor package.
-
 
 
 ## Dataset
@@ -20,7 +18,6 @@ This dataset consists of one sample (Visium capture area) from one donor, consis
 More details on the dataset are also included in @sec-human-dlpfc-workflow.
 
 <!-- To do: move additional details on dataset here (from DLPFC workflow chapter) -->
-
 
 
 ## Load data
@@ -34,7 +31,6 @@ library(STexampleData)
 # load object
 spe <- Visium_humanDLPFC()
 ```
-
 
 
 ## SpatialExperiment object
@@ -63,7 +59,6 @@ head(spatialCoords(spe))
 # image data
 imgData(spe)
 ```
-
 
 
 ## Build object
@@ -100,12 +95,6 @@ spe <- SpatialExperiment(
   spatialCoords = spatial_coords
 )
 ```
-
-
-
-## Molecule-based data
-
-For more details on data classes for molecule-based platforms, e.g. 10x Genomics Xenium or Vizgen MERSCOPE, see @sec-bioconductor-data-classes.
 
 
 ## References {.unnumbered}

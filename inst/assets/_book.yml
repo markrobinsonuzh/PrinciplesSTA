@@ -8,10 +8,10 @@ book:
         - pages/introduction.qmd
         - pages/spatial-transcriptomics.qmd
         - pages/bioconductor-data-classes.qmd
-    - part: "Analysis steps"
+    - part: "Sequencing-based data"
       chapters:
         - pages/analysis-steps.qmd
-        - pages/load-data.qmd
+        - pages/load-sequencing-based-data.qmd
         - pages/quality-control.qmd
         - pages/normalization.qmd
         - pages/feature-selection.qmd
@@ -22,12 +22,18 @@ book:
         - pages/differential-expression.qmd
         - pages/multiple-samples.qmd
         - pages/spatial-co-localization.qmd
-    - part: "Workflows"
+    - part: "Workflows: sequencing-based data"
       chapters:
-        - pages/workflows.qmd
+        - pages/workflows-sequencing-based.qmd
         - pages/human-dlpfc-workflow.qmd
         - pages/mouse-coronal-workflow.qmd
         - pages/spatialibd-workflow.qmd
+    - part: "Imaging-based data"
+      chapters:
+        - pages/load-imaging-based-data.qmd
+    - part: "Workflows: imaging-based data"
+      chapters:
+        - pages/workflows-imaging-based.qmd
   appendices:
     - pages/related-resources.qmd
     - pages/acknowledgments.qmd
