@@ -11,7 +11,6 @@ intro <- tryCatch(
         license <- description$License
         glue::glue(
             "**Package:** {pkg}<br/>\n", 
-            "**Authors:** {paste(format(authors, include = c('given', 'family', 'role')), collapse = ', ')}<br/>\n", 
             "**Compiled:** {as.character(Sys.Date())}<br/>\n", 
             "**Package version:** {version}<br/>\n", 
             "**R version:** <b style='color:red;'>{R.version.string}</b><br/>\n", 
