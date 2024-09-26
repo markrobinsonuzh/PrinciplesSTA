@@ -1,10 +1,8 @@
 # Differential expression {#sec-differential-expression}
 
-
 ## Overview
 
 In this chapter, we perform differential expression testing between clusters or spatial domains to identify representative marker genes for each cluster or spatial domain.
-
 
 
 ## Load data from previous steps
@@ -15,7 +13,6 @@ We start by loading the data object(s) saved after running the analysis steps fr
 library(SpatialExperiment)
 spe <- readRDS("spe_cluster.rds")
 ```
-
 
 
 ## Differential expression testing
@@ -59,10 +56,18 @@ plotExpression(spe, x = "label", features = top_genes)
 ```
 
 
-
 ## Pseudobulking
 
 Alternatively, we can proceed by manually aggregating the counts per cluster or spatial domain, which is referred to as 'pseudobulking'. Then, we can perform differential expression testing between the pseudobulked clusters or spatial domains.
+
+
+## Multiple samples
+
+In the preceding chapters, we have focused on spatial transcriptomics datasets consisting of a single tissue section, which we refer to as a sample.
+
+Datasets consisting of multiple samples from one or more biological conditions are used to study a variety of biological questions, such as characterizing biological variability within replicate tissue samples, or differential comparisons between biological conditions.
+
+These datasets require additional analysis methods that can make full use of the information contained in multiple samples in a computationally efficient and statistically rigorous manner.
 
 
 ## References {.unnumbered}

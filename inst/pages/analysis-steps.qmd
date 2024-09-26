@@ -110,6 +110,3 @@ colLabels(spe) <- factor(clus)
 # save object
 saveRDS(spe, file = "spe_cluster.rds")
 ```
-
-
-## References {.unnumbered}

@@ -18,10 +18,8 @@ book:
         - pages/dimensionality-reduction.qmd
         - pages/clustering.qmd
         - pages/spot-deconvolution.qmd
-        - pages/spatial-registration.qmd
-        - pages/differential-expression.qmd
-        - pages/multiple-samples.qmd
         - pages/spatial-co-localization.qmd
+        - pages/differential-expression.qmd
     - part: "Workflows: sequencing-based data"
       chapters:
         - pages/workflows-sequencing-based.qmd

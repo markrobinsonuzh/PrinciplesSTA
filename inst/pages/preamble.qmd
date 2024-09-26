@@ -80,7 +80,7 @@ micromamba activate BiocBook
 
 ::: {.callout-note collapse="true"}
 
-## Click to expand 👇
+## Click to expand
 
 ```{r "session info"}
 #| cache: false

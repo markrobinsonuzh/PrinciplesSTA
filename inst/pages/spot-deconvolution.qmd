@@ -1,6 +1,5 @@
 # Spot deconvolution {#sec-spot-deconvolution}
 
-
 ## Overview
 
 Spot-level ST data (e.g. from the 10x Genomics Visium platform) can contain zero, one, or multiple cells per spot, depending on the spatial resolution of the platform and the tissue cell density. This characteristic of the data affects several steps in analysis workflows, including quality control (@sec-quality-control) and clustering (@sec-clustering).
@@ -8,7 +7,6 @@ Spot-level ST data (e.g. from the 10x Genomics Visium platform) can contain zero
 Note that this is also a characteristic of ST data that is distinct from single-cell RNA sequencing data, so here we cannot easily apply existing methods from single-cell workflows.
 
 In this section, we will demonstrate methods to deconvolve cell types per spot.
-
 
 
 ## Previous steps
@@ -21,7 +19,6 @@ We start by loading the data object(s) saved after running the analysis steps fr
 library(SpatialExperiment)
 spe <- readRDS("spe_cluster.rds")
 ```
-
 
 
 ## Number of cells per spot
@@ -40,4 +37,6 @@ plotSpotQC(spe, plot_type = "histogram", x_metric = "cell_count") +
 ```
 
 
-## References {.unnumbered}
+## Spatial registration
+
+Spatial registration methods use gene expression profiles for cell populations of interest from single-cell RNA sequencing data as a reference, and use these single-cell expression profiles to 'spatially register' the spatial coordinates of observations corresponding to these cell populations in spatial transcriptomics data.
