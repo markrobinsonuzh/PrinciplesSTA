@@ -22,7 +22,8 @@ Imports:
     scater, 
     scran, 
     ggspavis, 
-    here
+    nnSVG, 
+    pheatmap
 Suggests:
     BiocManager, 
     BiocVersion, 
