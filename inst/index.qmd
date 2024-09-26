@@ -2,7 +2,7 @@
 #| echo: false
 welcome <- tryCatch(
     {
-        date <- date()
+        date <- format(Sys.time(), "%B %e, %Y")
         glue::glue(
             "**Published:** {date}<br/>"
         )
