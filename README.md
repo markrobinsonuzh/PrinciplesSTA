@@ -1,6 +1,7 @@
 # Best Practices for Spatial Transcriptomics Analysis with Bioconductor
 
-📖 [Book](https://lmweber.github.io/BestPracticesST/devel) [![deployment](https://img.shields.io/github/actions/workflow/status/lmweber/BestPracticesST/pages/pages-build-deployment?label=Book%20deployment)](https://github.com/lmweber/BestPracticesST/actions/workflows/pages/pages-build-deployment) 🐳 [Docker](https://github.com/lmweber/BestPracticesST/pkgs/container/BestPracticesST) [![biocbook](https://img.shields.io/github/actions/workflow/status/lmweber/BestPracticesST/biocbook.yml?label=Docker%20image)](https://github.com/lmweber/BestPracticesST/actions/workflows/biocbook.yml)
+📖 [Book](https://lmweber.github.io/BestPracticesST/devel) [![deployment](https://img.shields.io/github/actions/workflow/status/lmweber/BestPracticesST/pages/pages-build-deployment?label=Book%20deployment)](https://github.com/lmweber/BestPracticesST/actions/workflows/pages/pages-build-deployment)
+🐳 [Docker](https://github.com/lmweber/BestPracticesST/pkgs/container/BestPracticesST) [![biocbook](https://img.shields.io/github/actions/workflow/status/lmweber/BestPracticesST/biocbook.yml?label=Docker%20image)](https://github.com/lmweber/BestPracticesST/actions/workflows/biocbook.yml)
 
 
 ## Overview
@@ -33,6 +34,11 @@ library(BiocBook)
 bb <- BiocBook(".")
 preview(bb)
 ```
+
+
+## For developers: image files
+
+Image files are stored separately in the [BestPracticesST-resources](https://github.com/lmweber/BestPracticesST-resources) repository and linked within chapters using URLs, in order to keep the size of the main repository smaller. Please use this repository for image files in pull requests.
 
 
 ## BiocBook
