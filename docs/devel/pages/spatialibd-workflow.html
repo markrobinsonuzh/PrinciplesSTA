@@ -620,7 +620,7 @@ div.csl-indent {
 <span><span class="co">## How long this code took to run</span></span>
 <span><span class="va">time_prereqs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">time_prereqs</span> <span class="op">-</span> <span class="va">time_start</span></span>
-<span><span class="co">##  Time difference of 1.448533 mins</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">##  Time difference of 1.463111 mins</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="prepare-for-spatiallibd" class="level2" data-number="21.4"><h2 data-number="21.4" class="anchored" data-anchor-id="prepare-for-spatiallibd">
 <span class="header-section-number">21.4</span> Prepare for spatialLIBD</h2>
@@ -650,8 +650,8 @@ div.csl-indent {
 <span></span>
 <span><span class="co">## Show the GTF cache location</span></span>
 <span><span class="va">gtf_cache</span></span>
-<span><span class="co">##                                                                      BFC1 </span></span>
-<span><span class="co">##  "/root/.cache/R/BiocFileCache/6d353eee13c_gencode.v32.annotation.gtf.gz"</span></span>
+<span><span class="co">##                                                                     BFC1 </span></span>
+<span><span class="co">##  "/root/.cache/R/BiocFileCache/68e5feb9af_gencode.v32.annotation.gtf.gz"</span></span>
 <span></span>
 <span><span class="co">## Import into R (takes ~1 min)</span></span>
 <span><span class="va">gtf</span> <span class="op">&lt;-</span> <span class="fu">rtracklayer</span><span class="fu">::</span><span class="fu">import</span><span class="op">(</span><span class="va">gtf_cache</span><span class="op">)</span></span>
@@ -818,9 +818,9 @@ div.csl-indent {
 <span></span>
 <span><span class="co">## How long this code took to run</span></span>
 <span><span class="va">time_end</span> <span class="op">-</span> <span class="va">time_prereqs</span></span>
-<span><span class="co">##  Time difference of 37.52729 secs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">##  Time difference of 35.95872 secs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Creating our final <code>spe</code> object took 2.07398759524028 to run. So you might want to save this object for later use.</p>
+<p>Creating our final <code>spe</code> object took 2.06242278416951 to run. So you might want to save this object for later use.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">spe</span>, file <span class="op">=</span> <span class="st">"spe_workflow_Visium_spatialLIBD.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1258,7 +1258,7 @@ div.csl-indent {
 <span><span class="co">##   yaml                   2.3.10    2024-07-26 [2] RSPM (R 4.4.0)</span></span>
 <span><span class="co">##   zlibbioc               1.51.1    2024-06-05 [2] Bioconductor 3.20 (R 4.4.0)</span></span>
 <span><span class="co">##  </span></span>
-<span><span class="co">##   [1] /tmp/RtmpoUpHHW/Rinst8d10c17ec1</span></span>
+<span><span class="co">##   [1] /tmp/RtmpPgF429/Rinst8c6a864baf</span></span>
 <span><span class="co">##   [2] /usr/local/lib/R/site-library</span></span>
 <span><span class="co">##   [3] /usr/local/lib/R/library</span></span>
 <span><span class="co">##  </span></span>
@@ -1699,7 +1699,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
-<p>This book was built with <a href="https://github.com/js2264/BiocBook/">BiocBook</a> with <span class="emoji" data-emoji="heart">❤️</span></p>
+<p>This book was built with <a href="https://github.com/js2264/BiocBook/">BiocBook</a></p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
