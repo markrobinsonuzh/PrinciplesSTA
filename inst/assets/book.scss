@@ -104,7 +104,7 @@ pre.sourceCode.r, code.sourceCode.r {
 }
 
 .chapter-number::after {
-  content: " ";
+  content: "";
 }
 
 /* Cover image ------------------------------------------ */
@@ -156,10 +156,14 @@ div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, 
 .sidebar.sidebar-navigation:not(.rollup) {
   border-right: 0px !important
 }
-
+/*
 .sidebar-navigation .sidebar-item {
   font-size: 1rem;
   line-height: 2em;
+}
+*/
+.sidebar-navigation .sidebar-item {
+  font-size: 1rem;
 }
 
 .sidebar-menu-container {
@@ -235,7 +239,7 @@ ul li::marker {
   text-decoration: underline;
 }
 */
-.citation a, .footnote-ref {
+a, .citation a, .footnote-ref {
   text-decoration: underline;
   color: #2780e3;
 }
