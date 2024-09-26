@@ -1,7 +1,6 @@
 # Best Practices for Spatial Transcriptomics Analysis with Bioconductor
 
-📖 [Book](https://lmweber.github.io/BestPracticesST/devel) [![deployment](https://img.shields.io/github/actions/workflow/status/lmweber/BestPracticesST/pages/pages-build-deployment?label=Book%20deployment)](https://github.com/lmweber/BestPracticesST/actions/workflows/pages/pages-build-deployment)
-
+📖 [Book](https://lmweber.github.io/BestPracticesST/devel) [![deployment](https://img.shields.io/github/actions/workflow/status/lmweber/BestPracticesST/pages/pages-build-deployment?label=Book%20deployment)](https://github.com/lmweber/BestPracticesST/actions/workflows/pages/pages-build-deployment)  
 🐳 [Docker](https://github.com/lmweber/BestPracticesST/pkgs/container/BestPracticesST) [![biocbook](https://img.shields.io/github/actions/workflow/status/lmweber/BestPracticesST/biocbook.yml?label=Docker%20image)](https://github.com/lmweber/BestPracticesST/actions/workflows/biocbook.yml)
 
 
