@@ -24,6 +24,9 @@ book:
     - part: "Workflows"
       chapters:
         - pages/workflows.qmd
+        - pages/human-dlpfc-workflow.qmd
+        - pages/mouse-coronal-workflow.qmd
+        - pages/spatialibd-workflow.qmd
   cover-image: assets/cover.png
   favicon: assets/favicon.png
   sidebar: 
