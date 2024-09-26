@@ -22,8 +22,6 @@ book:
         - pages/differential-expression.qmd
         - pages/multiple-samples.qmd
         - pages/spatial-co-localization.qmd
-    - pages/related-resources.qmd
-    - pages/acknowledgments.qmd
     - part: "Workflows"
       chapters:
         - pages/workflows.qmd
