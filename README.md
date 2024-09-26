@@ -3,7 +3,9 @@
 📖 [Book](https://lmweber.github.io/BestPracticesST/devel) [![deployment](https://img.shields.io/github/actions/workflow/status/lmweber/BestPracticesST/pages/pages-build-deployment?label=Book%20deployment)](https://github.com/lmweber/BestPracticesST/actions/workflows/pages/pages-build-deployment) 🐳 [Docker](https://github.com/lmweber/BestPracticesST/pkgs/container/BestPracticesST) [![biocbook](https://img.shields.io/github/actions/workflow/status/lmweber/BestPracticesST/biocbook.yml?label=Docker%20image)](https://github.com/lmweber/BestPracticesST/actions/workflows/biocbook.yml)
 
 
-Repository containing source files for 'Best Practices for Spatial Transcriptomics Analysis with Bioconductor' online book.
+## Overview
+
+This repository contains source files for the 'Best Practices for Spatial Transcriptomics Analysis with Bioconductor' book.
 
 
 ## Link to book
@@ -11,7 +13,7 @@ Repository containing source files for 'Best Practices for Spatial Transcriptomi
 The development version of the book is available at: https://lmweber.org/BestPracticesST/
 
 
-## Building the book
+## For developers: publish updated version of book
 
 To make changes and publish an updated version of the book, first manually commit and push any changes to files that are located outside the `inst/` directory, and then use the following code using the `BiocBook` package to commit and publish changes to files in `inst/` (e.g. `inst/assets/_book.yml` and `inst/pages/chapter-name.qmd` if adding a new chapter):
 
@@ -21,7 +23,10 @@ bb <- BiocBook(".")
 publish(bb, message = "commit message")
 ```
 
-To compile and preview the book locally:
+
+## For developers: preview locally
+
+To build and preview the book locally, use the following code:
 
 ```
 library(BiocBook)
