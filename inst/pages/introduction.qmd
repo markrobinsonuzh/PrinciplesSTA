@@ -15,7 +15,7 @@ The chapters are organized into several parts:
 
 - **Imaging-based platforms:** chapters on individual analysis steps and extended workflows for data from imaging-based platforms
 
-- **Appendix:** related resources and acknowledgments
+- **Appendix:** related resources, acknowledgments
 
 
 ## Scope and who this book is for
