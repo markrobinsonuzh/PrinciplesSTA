@@ -1,4 +1,4 @@
-# Human DLPFC workflow {#sec-human-dlpfc-workflow}
+# Workflow: Human DLPFC {#sec-human-dlpfc-workflow}
 
 
 ## Overview

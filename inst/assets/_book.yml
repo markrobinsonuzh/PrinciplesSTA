@@ -8,7 +8,7 @@ book:
         - pages/introduction.qmd
         - pages/spatial-transcriptomics.qmd
         - pages/bioconductor-data-classes.qmd
-    - part: "Sequencing-based data"
+    - part: "Sequencing-based platforms"
       chapters:
         - pages/analysis-steps.qmd
         - pages/load-sequencing-based-data.qmd
@@ -24,7 +24,7 @@ book:
         - pages/workflow-human-dlpfc.qmd
         - pages/workflow-mouse-coronal.qmd
         - pages/workflow-spatialibd.qmd
-    - part: "Imaging-based data"
+    - part: "Imaging-based platforms"
       chapters:
         - pages/load-imaging-based-data.qmd
         - pages/workflows-imaging-based.qmd

@@ -1,4 +1,4 @@
-# spatialLIBD workflow {#sec-spatiallibd-workflow}
+# Workflow: spatialLIBD {#sec-spatiallibd-workflow}
 
 
 ## Overview

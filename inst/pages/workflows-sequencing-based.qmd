@@ -1,4 +1,4 @@
-# Workflows: sequencing-based platforms {#sec-workflows-sequencing-based}
+# Workflows for sequencing-based data {#sec-workflows-sequencing-based}
 
 The following chapters contain examples of extended analysis workflows for data from sequencing-based platforms.
 
