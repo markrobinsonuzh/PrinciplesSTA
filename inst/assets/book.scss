@@ -65,7 +65,7 @@ div.sourceCode {
   background-color: #ffffff00;
   border: 2px;
   border-radius: 8px;
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.06), 0 10px 10px 0 rgba(0, 0, 0, 0.05), 0 22px 13px 0 rgba(0, 0, 0, 0.03), 0 39px 16px 0 rgba(0, 0, 0, 0.01), 0 61px 17px 0 rgba(0, 0, 0, 0);
+/*  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.06), 0 10px 10px 0 rgba(0, 0, 0, 0.05), 0 22px 13px 0 rgba(0, 0, 0, 0.03), 0 39px 16px 0 rgba(0, 0, 0, 0.01), 0 61px 17px 0 rgba(0, 0, 0, 0); */
 }
 
 pre.sourceCode.r, code.sourceCode.r {
@@ -84,37 +84,32 @@ pre.sourceCode.r, code.sourceCode.r {
     z-index: -1;
     margin: -$border; /* !importanté */
     border-radius: inherit; /* !importanté */
-    background: linear-gradient(to right, #18a603, #0484a9, #0087af);
+    background: #0087af;
+/*    background: linear-gradient(to right, #18a603, #0484a9, #0087af); */
   }
 
 }
 
 /* Chapter label ---------------------------------------- */
-/*
-.chapter-number::before {
-  content: "Chapter ";
-}
 
-.chapter-number::after {
-  content: " –";
-}
-*/
 .chapter-number::before {
+/*  content: "Chapter "; */
   content: "";
 }
 
 .chapter-number::after {
+/*  content: " –"; */
   content: "";
 }
 
 /* Cover image ------------------------------------------ */
 
 .quarto-cover-image {
-  max-width: 250px;
+  max-width: 275px;
   float: right;
   margin-left: 30px;
-  margin-top: -30px;
-  margin-right: 10%;
+  margin-top: 100px;
+  margin-bottom: 50px;
 }
 
 /* Left navbar ------------------------------------------ */
@@ -125,7 +120,8 @@ div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, 
 
 .sidebar-title {
   font-weight: 800;
-  background: linear-gradient(to right, #18a603, #0484a9, #0087af);
+  background: #0087af;
+/*  background: linear-gradient(to right, #18a603, #0484a9, #0087af); */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -156,14 +152,10 @@ div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, 
 .sidebar.sidebar-navigation:not(.rollup) {
   border-right: 0px !important
 }
-/*
+
 .sidebar-navigation .sidebar-item {
   font-size: 1rem;
-  line-height: 2em;
-}
-*/
-.sidebar-navigation .sidebar-item {
-  font-size: 1rem;
+/*  line-height: 2em; */
 }
 
 .sidebar-menu-container {
@@ -176,7 +168,7 @@ div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, 
 /* right navbar ----------------------------------------- */
 
 .sidebar nav[role=doc-toc] ul>li>a.active, .sidebar nav[role=doc-toc] ul>li>ul>li>a.active {
-  border-left: 4px solid #3792ad;
+  border-left: 4px solid #0087af;
   font-weight: 800;
 }
 
@@ -190,14 +182,15 @@ h1 {
   font-size: 36px;
   color: #070707;
   font-weight: 700;
-  border-image: linear-gradient(to right, #18a603, #0484a9, #0087af) 1;
+  border-image: linear-gradient(to right, #0087af, #0087af, #0087af) 1;
+/*  border-image: linear-gradient(to right, #18a603, #0484a9, #0087af) 1; */
   border-bottom-style: solid;
   border-bottom-width: 4px;
 }
 h2 {
   margin-top: 3rem;
   margin-bottom: 1rem;
-  font-size: 32px;
+  font-size: 28px;
   border-bottom: 0px;
 }
 h3 { margin-top: 1.5em; font-size: 1.2rem; }
@@ -214,7 +207,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 
 p {
   margin: 0 0 1rem;
-  font-size: 1rem;
+  font-size: 0.98rem;
   color: #070707;
   line-height: 130%;
   display: block;
@@ -230,7 +223,7 @@ p {
 }
 
 ul li::marker {
-  color: #3792ad; 
+  color: #070707; 
 }
 
 /* Underlining links ------------------------------------ */
