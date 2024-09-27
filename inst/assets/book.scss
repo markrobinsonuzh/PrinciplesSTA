@@ -62,7 +62,7 @@ code { color: #070707; }
 /* Code chunks ------------------------------------------ */
 
 div.sourceCode {
-  background-color: #ffffff00;
+  background-color: #f7f7f700;
   border: 2px;
   border-radius: 8px;
 /*  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.06), 0 10px 10px 0 rgba(0, 0, 0, 0.05), 0 22px 13px 0 rgba(0, 0, 0, 0.03), 0 39px 16px 0 rgba(0, 0, 0, 0.01), 0 61px 17px 0 rgba(0, 0, 0, 0); */
@@ -72,7 +72,7 @@ pre.sourceCode.r, code.sourceCode.r {
   
   $border: 2px;
   color: #070707;
-  background: #FFF;
+  background: #f7f7f7;
   background-clip: padding-box; /* !importanté */
   border: solid $border transparent; /* !importanté */
   border-radius: 8px;
@@ -88,6 +88,10 @@ pre.sourceCode.r, code.sourceCode.r {
 /*    background: linear-gradient(to right, #18a603, #0484a9, #0087af); */
   }
 
+}
+
+pre.code_output {
+  background: #f7f7f7;
 }
 
 /* Chapter label ---------------------------------------- */
