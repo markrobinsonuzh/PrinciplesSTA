@@ -1,4 +1,4 @@
-# Related resources {#sec-related-resources}
+# Related resources {#sec-apx-related-resources}
 
 
 ## Overview
@@ -27,7 +27,7 @@ Workflows and other resources for other spatial omics platforms:
 
 ## Data structures
 
-Data structures for storing spatial transcriptomics and other spatial omics data that have not already been discussed in @sec-bioconductor-data-classes:
+Data structures for storing spatial transcriptomics and other spatial omics data that have not already been discussed in @sec-bkg-bioconductor-data-classes:
 
 - [**AnnData**](https://anndata.readthedocs.io/en/latest/): Python class for storing single-cell and spatial data within the [scverse](https://scverse.org/) framework.
 

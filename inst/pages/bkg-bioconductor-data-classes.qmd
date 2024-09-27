@@ -1,4 +1,4 @@
-# Bioconductor data classes {#sec-bioconductor-data-classes}
+# Bioconductor data classes {#sec-bkg-bioconductor-data-classes}
 
 ## Overview
 

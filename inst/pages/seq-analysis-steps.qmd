@@ -1,10 +1,10 @@
-# Analysis steps {#sec-analysis-steps}
+# Analysis steps {#sec-seq-analysis-steps}
 
 This part contains chapters describing individual analysis steps within computational analysis workflows for spatial transcriptomics data from sequencing-based platforms.
 
 Each chapter describes the analysis type, including discussion on statistical issues and available methods, and provides an interactive example with R code and an example dataset.
 
-In the next chapter, we load a dataset in `SpatialExperiment` format (see @sec-bioconductor-data-classes), which will be used in several of the subsequent chapters.
+In the next chapter, we load a dataset in `SpatialExperiment` format (see @sec-bkg-bioconductor-data-classes), which will be used in several of the subsequent chapters.
 
 The last few chapters in this part also contain examples of complete analysis workflows for selected datasets and technological platforms.
 

@@ -1,4 +1,4 @@
-# Clustering {#sec-clustering}
+# Clustering {#sec-seq-clustering}
 
 
 ## Overview
@@ -15,7 +15,7 @@ Once we have identified spatial domains, these can then be further investigated 
 
 ## Load data from previous steps
 
-We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-analysis-steps.
+We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-seq-analysis-steps.
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)
@@ -92,11 +92,11 @@ In many ST datasets, we can uncover further structure by performing analyses tha
 
 ### Clustering using SVGs
 
-One way to perform spatially-aware clustering is to first perform spatially-aware feature selection to identify a set of top spatially variable genes (SVGs) (see @sec-feature-selection) and then use the set of top SVGs as the input for clustering.
+One way to perform spatially-aware clustering is to first perform spatially-aware feature selection to identify a set of top spatially variable genes (SVGs) (see @sec-seq-feature-selection) and then use the set of top SVGs as the input for clustering.
 
 In this case, the spatial information is taken into account during the feature selection stage, where we select a set of top SVGs instead of top HVGs. For the clustering stage, we can use the same algorithms as for non-spatial clustering.
 
-Here, we demonstrate an example using [nnSVG](https://bioconductor.org/packages/nnSVG) [@Weber2023] to select the set of top SVGs. Note that in this example, we run nnSVG using a small subset of the dataset for faster runtime. For a full analysis, the full dataset should be used (see @sec-feature-selection for more details).
+Here, we demonstrate an example using [nnSVG](https://bioconductor.org/packages/nnSVG) [@Weber2023] to select the set of top SVGs. Note that in this example, we run nnSVG using a small subset of the dataset for faster runtime. For a full analysis, the full dataset should be used (see @sec-seq-feature-selection for more details).
 
 ```{r, message=FALSE}
 library(nnSVG)

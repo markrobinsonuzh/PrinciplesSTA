@@ -1,8 +1,8 @@
-# Load sequencing-based data {#sec-load-sequencing-based-data}
+# Load sequencing-based data {#sec-seq-load-data}
 
 ## Overview
 
-In the following chapters, we apply analysis methods to spatial transcriptomics datasets from sequencing-based platforms, which are formatted as `SpatialExperiment` objects or objects from other Bioconductor data classes (see @sec-bioconductor-data-classes).
+In the following chapters, we apply analysis methods to spatial transcriptomics datasets from sequencing-based platforms, which are formatted as `SpatialExperiment` objects or objects from other Bioconductor data classes (see @sec-bkg-bioconductor-data-classes).
 
 Here, we load a 10x Genomics Visium dataset that will be used in several of the following chapters.
 
@@ -15,7 +15,7 @@ This dataset is available for download in `SpatialExperiment` format from the [S
 
 This dataset consists of one sample (Visium capture area) from one donor, consisting of postmortem human brain tissue from the dorsolateral prefrontal cortex (DLPFC) brain region, measured with the 10x Genomics Visium platform. The dataset is described in the original publication by @Maynard2021.
 
-More details on the dataset are also included in @sec-workflow-human-dlpfc.
+More details on the dataset are also included in @sec-seq-workflow-human-dlpfc.
 
 <!-- To do: move additional details on dataset here (from DLPFC workflow chapter) -->
 
@@ -35,7 +35,7 @@ spe <- Visium_humanDLPFC()
 
 ## SpatialExperiment object
 
-Check the structure of the `SpatialExperiment` object. For more details on the `SpatialExperiment` structure, see @sec-bioconductor-data-classes.
+Check the structure of the `SpatialExperiment` object. For more details on the `SpatialExperiment` structure, see @sec-bkg-bioconductor-data-classes.
 
 ```{r, message=FALSE}
 # check object

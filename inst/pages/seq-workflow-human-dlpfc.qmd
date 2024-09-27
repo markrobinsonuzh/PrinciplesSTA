@@ -1,4 +1,4 @@
-# Workflow: Human DLPFC {#sec-human-dlpfc-workflow}
+# Workflow: Human DLPFC {#sec-seq-workflow-human-dlpfc}
 
 
 ## Overview
@@ -61,7 +61,7 @@ spe <- spe[, colData(spe)$in_tissue == 1]
 dim(spe)
 ```
 
-Next, calculate spot-level QC metrics using the `scater` package [@McCarthy2017], and store the QC metrics in `colData`. See @sec-quality-control for more details, including explanations of the QC metrics.
+Next, calculate spot-level QC metrics using the `scater` package [@McCarthy2017], and store the QC metrics in `colData`. See @sec-seq-quality-control for more details, including explanations of the QC metrics.
 
 ```{r, message=FALSE}
 library(scater)
@@ -78,7 +78,7 @@ spe <- addPerCellQC(spe, subsets = list(mito = is_mito))
 head(colData(spe), 3)
 ```
 
-Select filtering thresholds for the QC metrics by examining distributions using histograms. For additional details, including further exploratory visualizations to select the thresholds, see @sec-quality-control. Here, we use relatively relaxed thresholds, since the additional exploratory visualizations showed that more stringent thresholds tended to remove groups of spots corresponding to biologically meaningful regions.
+Select filtering thresholds for the QC metrics by examining distributions using histograms. For additional details, including further exploratory visualizations to select the thresholds, see @sec-seq-quality-control. Here, we use relatively relaxed thresholds, since the additional exploratory visualizations showed that more stringent thresholds tended to remove groups of spots corresponding to biologically meaningful regions.
 
 ```{r, fig.width=7, fig.height=3}
 # histograms of QC metrics
@@ -127,7 +127,7 @@ dim(spe)
 
 ## Normalization
 
-Calculate log-transformed normalized counts (logcounts) with the library size factors methodology, using methods from `scater` [@McCarthy2017] and `scran` [@Lun2016], making the assumption that spots can be treated as equivalent to cells. For more details, see @sec-normalization.
+Calculate log-transformed normalized counts (logcounts) with the library size factors methodology, using methods from `scater` [@McCarthy2017] and `scran` [@Lun2016], making the assumption that spots can be treated as equivalent to cells. For more details, see @sec-seq-normalization.
 
 ```{r, message=FALSE}
 library(scran)
@@ -150,7 +150,7 @@ assayNames(spe)
 
 ## Feature selection
 
-Identify a set of top highly variable genes (HVGs), which will be used to define cell types. We use methods from `scran` [@Lun2016], treating spots as equivalent to single cells, and considering only molecular features (gene expression) as described in @sec-feature-selection. We also first filter out mitochondrial genes, since these are very highly expressed and not of main biological interest here.
+Identify a set of top highly variable genes (HVGs), which will be used to define cell types. We use methods from `scran` [@Lun2016], treating spots as equivalent to single cells, and considering only molecular features (gene expression) as described in @sec-seq-feature-selection. We also first filter out mitochondrial genes, since these are very highly expressed and not of main biological interest here.
 
 ```{r}
 # remove mitochondrial genes
@@ -258,7 +258,7 @@ colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 
 ## Clustering
 
-Next, we perform clustering to define cell types. Here, we use molecular features (gene expression) only, as described in @sec-clustering. We apply graph-based clustering using the Walktrap method implemented in `scran` [@Lun2016], applied to the top 50 PCs calculated on the set of top HVGs.
+Next, we perform clustering to define cell types. Here, we use molecular features (gene expression) only, as described in @sec-seq-clustering. We apply graph-based clustering using the Walktrap method implemented in `scran` [@Lun2016], applied to the top 50 PCs calculated on the set of top HVGs.
 
 ```{r}
 # graph-based clustering

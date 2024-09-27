@@ -1,4 +1,4 @@
-# Spatial transcriptomics {#sec-spatial-transcriptomics}
+# Spatial transcriptomics {#sec-bkg-spatial-transcriptomics}
 
 ## Overview
 
