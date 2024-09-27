@@ -2,18 +2,18 @@
 
 ## Contributors
 
-Main developers of the 'Best Practices for Spatial Transcriptomics Analysis with Bioconductor' online book:
+Main developers of the 'Principles of Spatial Transcriptomics Analysis with Bioconductor' online book:
 
 - [Lukas M. Weber](https://lmweber.org/), *Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA*
 - [Leonardo Collado-Torres](https://lcolladotor.github.io/), *Lieber Institute for Brain Development, Baltimore, MD, USA*
 - [Stephanie C. Hicks](https://www.stephaniehicks.com/), *Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA*
 
-We are also grateful to additional [GitHub contributors](https://github.com/lmweber/BestPracticesST/graphs/contributors) who have contributed materials, including updates, extensions, bug fixes, and other improvements. Thank you for your contributions!
+We are also grateful to additional [GitHub contributors](https://github.com/lmweber/PrinciplesSTA/graphs/contributors) who have contributed materials, including updates, extensions, bug fixes, and other improvements. Thank you for your contributions!
 
 
 ## Additional acknowledgments
 
-- The 'Best Practices for Spatial Transcriptomics Analysis with Bioconductor' online book is inspired by the [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://bioconductor.org/books/release/OSCA/) online book [@Amezquita2020], which provides a detailed overview and examples of analysis workflows for single-cell RNA sequencing data using R and Bioconductor.
+- The 'Principles of Spatial Transcriptomics Analysis with Bioconductor' online book is inspired by the [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://bioconductor.org/books/release/OSCA/) online book [@Amezquita2020], which provides a detailed overview and examples of analysis workflows for single-cell RNA sequencing data using R and Bioconductor.
 
 - We are especially grateful to the [Bioconductor](https://bioconductor.org/) community and the [Bioconductor Core Team](https://www.bioconductor.org/about/core-team/).
 

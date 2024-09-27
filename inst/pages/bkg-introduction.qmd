@@ -2,7 +2,7 @@
 
 ## Overview
 
-This book provides discussion and interactive examples on best practices for computational analysis workflows for spatial transcriptomics data, using the [Bioconductor](http://bioconductor.org/) framework within R.
+This book provides discussion and interactive examples on computational analysis workflows for spatial transcriptomics data, using the [Bioconductor](http://bioconductor.org/) framework within R.
 
 
 ## Contents
@@ -20,7 +20,7 @@ The chapters are organized into several parts:
 
 ## Scope and who this book is for
 
-The aim of this book is to demonstrate best practices for computational analysis workflows for spatial transcriptomics data through interactive examples and discussion using R code and example datasets. We assume some familiarity with R programming and an understanding of the types of biological questions that single-cell and spatial transcriptomics can be used to answer. Previous experience with Bioconductor is not required. By working through the examples in this book, readers will be able to adapt or extend the example workflows to analyze their own data.
+The aim of this book is to demonstrate computational analysis workflows for spatial transcriptomics data through interactive examples and discussion using R code and example datasets. We assume some familiarity with R programming and an understanding of the types of biological questions that single-cell and spatial transcriptomics can be used to answer. Previous experience with Bioconductor is not required. By working through the examples in this book, readers will be able to adapt or extend the example workflows to analyze their own data.
 
 In general, we focus on downstream analysis methods, which start with a gene expression count table and spatial coordinates as the main inputs. Preprocessing procedures to generate gene expression count tables are covered in other resources (e.g. our related book [Visium Data Preprocessing](https://lmweber.org/Visium-data-preprocessing/) for data from the 10x Genomics Visium platform) and tutorials provided by the manufacturers of the technological platforms. For molecule-based platforms, we will usually use data that has been aggregated to the cell level.
 
@@ -53,7 +53,7 @@ For readers who are new to R and Bioconductor, additional useful resources inclu
 
 ## Contributions
 
-We welcome suggestions for updates and additions to the book. Suggestions may be provided as [GitHub issues](https://github.com/lmweber/BestPracticesST/issues) for further discussion with the maintainers.
+We welcome suggestions for updates and additions to the book. Suggestions may be provided as [GitHub issues](https://github.com/lmweber/PrinciplesSTA/issues) for further discussion with the maintainers.
 
 Note that all methods to be run within code examples must be available as either R packages from Bioconductor or CRAN, or Python packages from PyPI. This restriction provides readers with guarantees regarding installability, long-term availability, maintenance, and compatibility. Packages that are only available from GitHub or other repositories may be discussed within the text, but will not be included in the code examples. In general, our philosophy is to showcase examples of analysis methods that we have found to work well, are computationally scalable, user-friendly, and which can be integrated into existing Bioconductor-based workflows.
 

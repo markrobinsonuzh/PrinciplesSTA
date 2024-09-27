@@ -16,9 +16,9 @@ welcome <- tryCatch(
 
 # Welcome {-}
 
-This is the website for the online book **'Best Practices for Spatial Transcriptomics Analysis with Bioconductor'**.
+This is the website for the online book **'Principles of Spatial Transcriptomics Analysis with Bioconductor'**.
 
-This book provides discussion and interactive examples on best practices for computational analysis workflows for spatial transcriptomics data, using [Bioconductor](http://bioconductor.org/) in R. The chapters contain details on individual analysis steps and longer workflows, with interactive examples consisting of R code and example datasets.
+This book provides discussion and interactive examples on computational analysis workflows for spatial transcriptomics data, using [Bioconductor](http://bioconductor.org/) in R. The chapters contain details on individual analysis steps and longer workflows, with interactive examples consisting of R code and example datasets.
 
 The book is organized into several parts, including introductory materials, analysis steps, and extended workflows, for sequencing-based and imaging-based spatial transcriptomics platforms.
 
