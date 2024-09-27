@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>BestPracticesST - 17&nbsp; Workflow: spatialLIBD</title>
+<title>17&nbsp; Workflow: spatialLIBD – PrinciplesSTA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -123,13 +123,13 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/seq-analysis-steps.html">Sequencing-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/seq-workflow-spatialibd.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Workflow: spatialLIBD</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -137,18 +137,18 @@ div.csl-indent {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">BestPracticesST</a> 
+      <a href="../">PrinciplesSTA</a> 
         <div class="sidebar-tools-main">
     <div class="dropdown">
-      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-git"></i></a>
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-git"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
 <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/lmweber/BestPracticesST/">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/lmweber/PrinciplesSTA/">
             Source Code
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://lmweber.github.io/BestPracticesST/devel/">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://lmweber.github.io/PrinciplesSTA/devel/">
             Browse version `devel`
             </a>
           </li>
@@ -178,9 +178,9 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Introduction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -207,9 +207,9 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Sequencing-based platforms</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -302,9 +302,9 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Imaging-based platforms</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -325,9 +325,9 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -400,7 +400,7 @@ div.csl-indent {
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_Figure1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="https://raw.githubusercontent.com/lmweber/PrinciplesSTA-resources/main/images/spatialLIBD_Figure1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <figcaption><code>spatialLIBD</code> overview. Source: <span class="citation" data-cites="Pardo2022">Pardo et al. (<a href="#ref-Pardo2022" role="doc-biblioref">2022</a>)</span>.</figcaption></figure>
 </div>
 </div>
@@ -418,7 +418,7 @@ div.csl-indent {
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_interactive_cluster.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="https://raw.githubusercontent.com/lmweber/PrinciplesSTA-resources/main/images/spatialLIBD_interactive_cluster.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <figcaption>Screenshot of the ‘clusters (interactive)’ section of the ‘spot-level data’ panel created with the full spatialLIBD dataset. The website was created with <code>spatialLIBD::run_app(spatialLIBD::fetch_data('spe'))</code> version 1.4.0 and then using the lasso selection, we selected a set of spots in the UMAP interactive plot colored by the estimated number of cells per spot (<code>cell_count</code>) on the bottom left, which automatically updated the other three plots.</figcaption></figure>
 </div>
 </div>
@@ -427,7 +427,7 @@ div.csl-indent {
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_gene_grid.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="https://raw.githubusercontent.com/lmweber/PrinciplesSTA-resources/main/images/spatialLIBD_gene_grid.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <figcaption>Screenshot of the ‘gene grid (static)’ section of the ‘spot-level data’ panel created with the full spatialLIBD dataset. The website was created with <code>spatialLIBD::run_app(spatialLIBD::fetch_data('spe'))</code> version 1.4.0, selecting the <em>PCP4</em> gene, selecting the <em>paper</em> gene color scale, changing the number of rows and columns in the grid 2, selecting two pairs of spatially adjacent replicate samples (151507, 151508, 151673, and 151674), and clicking on the <em>upgrade grid plot</em> button. Note that the default <em>viridis</em> gene color scale is color-blind friendly.</figcaption></figure>
 </div>
 </div>
@@ -444,7 +444,7 @@ div.csl-indent {
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"spatialLIBD"</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  Pardo B, Spangler A, Weber LM, Hicks SC, Jaffe AE, Martinowich K,
+<pre class="code_output"><code>##  Pardo B, Spangler A, Weber LM, Hicks SC, Jaffe AE, Martinowich K,
 ##  Maynard KR, Collado-Torres L (2022). "spatialLIBD: an R/Bioconductor
 ##  package to visualize spatially-resolved transcriptomics data." _BMC
 ##  Genomics_. doi:10.1186/s12864-022-08601-w
@@ -612,7 +612,7 @@ div.csl-indent {
 <span><span class="va">time_prereqs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">time_prereqs</span> <span class="op">-</span> <span class="va">time_start</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  Time difference of 1.478094 mins</code></pre>
+<pre class="code_output"><code>##  Time difference of 1.489541 mins</code></pre>
 </div>
 </div>
 </section><section id="prepare-for-spatiallibd" class="level2" data-number="17.4"><h2 data-number="17.4" class="anchored" data-anchor-id="prepare-for-spatiallibd">
@@ -645,8 +645,8 @@ div.csl-indent {
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Show the GTF cache location</span></span>
 <span><span class="va">gtf_cache</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##                                                                      BFC1 
-##  "/root/.cache/R/BiocFileCache/6bd751d752a_gencode.v32.annotation.gtf.gz"</code></pre>
+<pre class="code_output"><code>##                                                                      BFC1 
+##  "/root/.cache/R/BiocFileCache/6bc5ef12e17_gencode.v32.annotation.gtf.gz"</code></pre>
 </div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Import into R (takes ~1 min)</span></span>
 <span><span class="va">gtf</span> <span class="op">&lt;-</span> <span class="fu">rtracklayer</span><span class="fu">::</span><span class="fu">import</span><span class="op">(</span><span class="va">gtf_cache</span><span class="op">)</span></span>
@@ -664,7 +664,7 @@ div.csl-indent {
 <span><span class="va">match_genes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe</span><span class="op">)</span><span class="op">$</span><span class="va">gene_id</span>, <span class="va">gtf</span><span class="op">$</span><span class="va">gene_id</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">match_genes</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  
+<pre class="code_output"><code>##  
 ##  FALSE  TRUE 
 ##  33267   258</code></pre>
 </div>
@@ -687,7 +687,7 @@ div.csl-indent {
 <span><span class="co">## Inspect the gene annotation data we added</span></span>
 <span><span class="fu">rowRanges</span><span class="op">(</span><span class="va">spe</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  GRanges object with 33267 ranges and 11 metadata columns:
+<pre class="code_output"><code>##  GRanges object with 33267 ranges and 11 metadata columns:
 ##                    seqnames            ranges strand |   source     type
 ##                       &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;factor&gt; &lt;factor&gt;
 ##    ENSG00000243485     chr1       29554-31109      + |   HAVANA     gene
@@ -769,19 +769,19 @@ div.csl-indent {
 <span><span class="co">## Number of genes with no counts</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">no_expr</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  [1] 11596</code></pre>
+<pre class="code_output"><code>##  [1] 11596</code></pre>
 </div>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Compute the percent of genes with no counts</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">no_expr</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  [1] 34.85737</code></pre>
+<pre class="code_output"><code>##  [1] 34.85737</code></pre>
 </div>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="va">spe</span><span class="op">[</span><span class="op">-</span><span class="va">no_expr</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co">## Remove spots without counts</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">sum_umi</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##     Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+<pre class="code_output"><code>##     Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##      537    2414    3466    3870    4938   15862</code></pre>
 </div>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## If we had spots with no counts, we would remove them</span></span>
@@ -799,7 +799,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Run check_spe() function</span></span>
 <span><span class="fu">spatialLIBD</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/spatialLIBD/man/check_spe.html">check_spe</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  class: SpatialExperiment 
+<pre class="code_output"><code>##  class: SpatialExperiment 
 ##  dim: 21671 3524 
 ##  metadata(0):
 ##  assays(2): counts logcounts
@@ -822,10 +822,10 @@ div.csl-indent {
 <span><span class="co">## How long this code took to run</span></span>
 <span><span class="va">time_end</span> <span class="op">-</span> <span class="va">time_prereqs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  Time difference of 39.31629 secs</code></pre>
+<pre class="code_output"><code>##  Time difference of 36.39384 secs</code></pre>
 </div>
 </div>
-<p>Creating our final <code>spe</code> object took 2.13336511452993 to run. So you might want to save this object for later use.</p>
+<p>Creating our final <code>spe</code> object took 2.09610520203908 to run. So you might want to save this object for later use.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">spe</span>, file <span class="op">=</span> <span class="st">"spe_workflow_Visium_spatialLIBD.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -867,7 +867,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Explore all the variables we can use</span></span>
 <span><span class="fu">colData</span><span class="op">(</span><span class="va">spe</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  DataFrame with 3524 rows and 23 columns
+<pre class="code_output"><code>##  DataFrame with 3524 rows and 23 columns
 ##                             barcode_id     sample_id in_tissue array_row
 ##                            &lt;character&gt;   &lt;character&gt; &lt;integer&gt; &lt;integer&gt;
 ##  AAACAAGTATCTCCCA-1 AAACAAGTATCTCCCA-1 sample_151673         1        50
@@ -977,7 +977,7 @@ div.csl-indent {
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_demo_result.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="https://raw.githubusercontent.com/lmweber/PrinciplesSTA-resources/main/images/spatialLIBD_demo_result.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <figcaption>Screenshot of the ‘clusters (interactive)’ section of the ‘spot-level data’ panel created with with the data from this workflow.</figcaption></figure>
 </div>
 </div>
@@ -989,13 +989,13 @@ div.csl-indent {
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Object size</span></span>
 <span><span class="fu">lobstr</span><span class="fu">::</span><span class="fu"><a href="https://lobstr.r-lib.org/reference/obj_size.html">obj_size</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span> <span class="op">/</span> <span class="fl">1024</span><span class="op">^</span><span class="fl">2</span> <span class="co">## Convert to MB</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  293.07 B</code></pre>
+<pre class="code_output"><code>##  293.07 B</code></pre>
 </div>
 </div>
-<p>If your data is small enough, you might want to share your website by hosting on <a href="https://www.shinyapps.io/">shinyapps.io</a> by RStudio, which you can try for free. Once you have created your account, you’ll want to create an <code>app.R</code> file like the one we have <a href="https://github.com/lmweber/BestPracticesST-resources/tree/main/spatialLIBD_demo">on the <code>spatialLIBD_demo</code> directory</a>.</p>
+<p>If your data is small enough, you might want to share your website by hosting on <a href="https://www.shinyapps.io/">shinyapps.io</a> by RStudio, which you can try for free. Once you have created your account, you’ll want to create an <code>app.R</code> file like the one we have <a href="https://github.com/lmweber/PrinciplesSTA-resources/tree/main/spatialLIBD_demo">on the <code>spatialLIBD_demo</code> directory</a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>##  library("spatialLIBD")
+<pre class="code_output"><code>##  library("spatialLIBD")
 ##   library("markdown") # for shinyapps.io
 ##   
 ##   ## spatialLIBD uses golem
@@ -1038,7 +1038,7 @@ div.csl-indent {
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/spatialLIBD_publish.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figure class="figure"><p><img src="https://raw.githubusercontent.com/lmweber/PrinciplesSTA-resources/main/images/spatialLIBD_publish.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption>Screenshot of the RStudio window for publishing your spatialLIBD-powered website to shinyapps.io</figcaption></figure>
 </div>
 </div>
@@ -1046,7 +1046,7 @@ div.csl-indent {
 <p>The RStudio prompts will guide you along the process for authenticating to your shinyapps.io account, which will involve copy pasting some code that starts with <code>rsconnect::setAccountInfo()</code>. Alternatively, you can create a <code>deploy.R</code> script and write the code for uploading your files to shinyapps.io as shown below.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>##  library('rsconnect')
+<pre class="code_output"><code>##  library('rsconnect')
 ##   
 ##   ## Or you can go to your shinyapps.io account and copy this
 ##   ## Here we do this to keep our information hidden.
@@ -1073,7 +1073,7 @@ div.csl-indent {
 ##   )</code></pre>
 </div>
 </div>
-<p>Note that we have copied the default <a href="https://github.com/LieberInstitute/spatialLIBD/tree/master/inst/app/www"><code>www</code> directory files from the <code>spatialLIBD</code> repository</a> and <a href="https://github.com/lmweber/BestPracticesST-resources/tree/main/spatialLIBD_demo/www">adapted them to our liking</a>. We then use these files with <code>spatialLIBD::run_app(docs_path)</code> in our <code>app.R</code> script. These files help us control portions of our <code>spatialLIBD</code>-powered website and customize it to our liking.</p>
+<p>Note that we have copied the default <a href="https://github.com/LieberInstitute/spatialLIBD/tree/master/inst/app/www"><code>www</code> directory files from the <code>spatialLIBD</code> repository</a> and <a href="https://github.com/lmweber/PrinciplesSTA-resources/tree/main/spatialLIBD_demo/www">adapted them to our liking</a>. We then use these files with <code>spatialLIBD::run_app(docs_path)</code> in our <code>app.R</code> script. These files help us control portions of our <code>spatialLIBD</code>-powered website and customize it to our liking.</p>
 <p>If you follow this workflow, you’ll end up with a website <a href="https://libd.shinyapps.io/OSTA_spatialLIBD_demo/">just like this one</a>. In our case, we further configured our website through the shinyapps.io dashboard. We selected the following options:</p>
 <ul>
 <li>
@@ -1101,10 +1101,10 @@ div.csl-indent {
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">120</span><span class="op">)</span></span>
 <span><span class="fu">sessioninfo</span><span class="fu">::</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html">session_info</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
+<pre class="code_output"><code>##  ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
 ##   setting  value
 ##   version  R version 4.4.1 (2024-06-14)
-##   os       Ubuntu 22.04.4 LTS
+##   os       Ubuntu 22.04.5 LTS
 ##   system   x86_64, linux-gnu
 ##   ui       X11
 ##   language (EN)
@@ -1112,7 +1112,7 @@ div.csl-indent {
 ##   ctype    en_US.UTF-8
 ##   tz       Etc/UTC
 ##   date     2024-09-27
-##   pandoc   3.3 @ /usr/bin/ (via rmarkdown)
+##   pandoc   3.4 @ /usr/bin/ (via rmarkdown)
 ##  
 ##  ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
 ##   package              * version   date (UTC) lib source
@@ -1133,7 +1133,7 @@ div.csl-indent {
 ##   BiocParallel           1.39.0    2024-05-01 [2] Bioconductor 3.20 (R 4.4.0)
 ##   BiocSingular           1.21.4    2024-09-22 [2] Bioconductor 3.20 (R 4.4.1)
 ##   BiocVersion            3.20.0    2024-05-01 [2] Bioconductor 3.20 (R 4.4.1)
-##   Biostrings             2.73.1    2024-06-02 [2] Bioconductor 3.20 (R 4.4.0)
+##   Biostrings             2.73.2    2024-09-26 [2] Bioconductor 3.20 (R 4.4.1)
 ##   bit                    4.5.0     2024-09-20 [2] RSPM (R 4.4.0)
 ##   bit64                  4.5.2     2024-09-22 [2] RSPM (R 4.4.0)
 ##   bitops                 1.0-8     2024-07-29 [2] RSPM (R 4.4.0)
@@ -1198,7 +1198,7 @@ div.csl-indent {
 ##   lattice                0.22-6    2024-03-20 [3] CRAN (R 4.4.1)
 ##   lazyeval               0.2.2     2019-03-15 [2] RSPM (R 4.4.0)
 ##   lifecycle              1.0.4     2023-11-07 [2] RSPM (R 4.4.0)
-##   limma                  3.61.10   2024-09-22 [2] Bioconductor 3.20 (R 4.4.1)
+##   limma                  3.61.11   2024-09-26 [2] Bioconductor 3.20 (R 4.4.1)
 ##   lobstr               * 1.1.2     2022-06-22 [2] RSPM (R 4.4.0)
 ##   locfit                 1.5-9.10  2024-06-24 [2] RSPM (R 4.4.0)
 ##   magick                 2.8.5     2024-09-20 [2] RSPM (R 4.4.0)
@@ -1229,11 +1229,11 @@ div.csl-indent {
 ##   rjson                  0.2.23    2024-09-16 [2] RSPM (R 4.4.0)
 ##   rlang                  1.1.4     2024-06-04 [2] RSPM (R 4.4.0)
 ##   rmarkdown              2.28      2024-08-17 [2] RSPM (R 4.4.0)
-##   Rsamtools              2.21.1    2024-08-16 [2] Bioconductor 3.20 (R 4.4.1)
+##   Rsamtools              2.21.2    2024-09-26 [2] Bioconductor 3.20 (R 4.4.1)
 ##   RSQLite                2.3.7     2024-05-27 [2] RSPM (R 4.4.0)
 ##   rsvd                   1.0.5     2021-04-16 [2] RSPM (R 4.4.0)
 ##   rtracklayer          * 1.65.0    2024-05-01 [2] Bioconductor 3.20 (R 4.4.0)
-##   S4Arrays               1.5.8     2024-09-22 [2] Bioconductor 3.20 (R 4.4.1)
+##   S4Arrays               1.5.9     2024-09-26 [2] Bioconductor 3.20 (R 4.4.1)
 ##   S4Vectors            * 0.43.2    2024-07-17 [2] Bioconductor 3.20 (R 4.4.1)
 ##   sass                   0.4.9     2024-03-15 [2] RSPM (R 4.4.0)
 ##   ScaledMatrix           1.13.0    2024-05-01 [2] Bioconductor 3.20 (R 4.4.0)
@@ -1246,7 +1246,7 @@ div.csl-indent {
 ##   shinyWidgets           0.8.7     2024-09-23 [2] RSPM (R 4.4.0)
 ##   SingleCellExperiment * 1.27.2    2024-05-24 [2] Bioconductor 3.20 (R 4.4.0)
 ##   spam                   2.10-0    2023-10-23 [2] RSPM (R 4.4.0)
-##   SparseArray            1.5.39    2024-09-23 [2] Bioconductor 3.20 (R 4.4.1)
+##   SparseArray            1.5.40    2024-09-26 [2] Bioconductor 3.20 (R 4.4.1)
 ##   SpatialExperiment    * 1.15.1    2024-06-20 [2] Bioconductor 3.20 (R 4.4.0)
 ##   spatialLIBD          * 1.17.8    2024-07-25 [2] Bioconductor 3.20 (R 4.4.1)
 ##   statmod                1.5.0     2023-01-06 [2] RSPM (R 4.4.0)
@@ -1270,7 +1270,7 @@ div.csl-indent {
 ##   yaml                   2.3.10    2024-07-26 [2] RSPM (R 4.4.0)
 ##   zlibbioc               1.51.1    2024-06-05 [2] Bioconductor 3.20 (R 4.4.0)
 ##  
-##   [1] /tmp/RtmpZwAKKq/Rinst8c28594160
+##   [1] /tmp/RtmpOvdljA/Rinst8c4f2fa96c
 ##   [2] /usr/local/lib/R/site-library
 ##   [3] /usr/local/lib/R/library
 ##  
@@ -1328,18 +1328,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1371,7 +1360,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1379,7 +1390,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
