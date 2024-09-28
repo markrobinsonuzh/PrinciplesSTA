@@ -1,5 +1,5 @@
 book:
-  title: "PrinciplesSTA"
+  title: "Principles of Spatial Transcriptomics Analysis with Bioconductor"
   chapters:
     - index.qmd
     - pages/preamble.qmd
@@ -34,13 +34,7 @@ book:
   cover-image: assets/cover.png
   favicon: assets/favicon.png
   sidebar: 
-    tools:
-      - icon: git
-        menu:
-          - text: Source Code
-            url:  https://github.com/lmweber/PrinciplesSTA/
-          - text: Browse version `devel`
-            url:  https://lmweber.github.io/PrinciplesSTA/devel/
+    title: "PrinciplesSTA"
     style: "docked"
     background: "light"
     collapse-level: 5

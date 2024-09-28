@@ -1,18 +1,15 @@
 # Related resources {#sec-apx-related-resources}
 
-
 ## Overview
 
-In this chapter, we highlight several related resources from the Bioconductor and other communities.
-
+This chapter provides links to several related resources from the Bioconductor and other communities.
 
 
 ## Data preprocessing procedures for the Visium platform
 
 Data preprocessing procedures for spatial transcriptomics data from the 10x Genomics Visium platform:
 
-- [**Visium data preprocessing**](https://lmweber.org/Visium-data-preprocessing/): Online book containing details on data preprocessing procedures for spatial transcriptomics data from the 10x Genomics Visium platform (using tools outside R and Bioconductor).
-
+- [**Visium data preprocessing**](https://lmweber.org/Visium-data-preprocessing/): Online book containing details on data preprocessing procedures for spatial transcriptomics data from the 10x Genomics Visium platform, using tools outside R and Bioconductor.
 
 
 ## Resources for other spatial omics platforms
@@ -24,15 +21,13 @@ Workflows and other resources for other spatial omics platforms:
 - [**VectraPolarisData**](https://bioconductor.org/packages/VectraPolarisData): Bioconductor data package providing two multiplex single-cell imaging datasets collected on Vectra Polaris and Vectra 3 instruments.
 
 
-
 ## Data structures
 
-Data structures for storing spatial transcriptomics and other spatial omics data that have not already been discussed in @sec-bkg-bioconductor-data-classes:
+Data structures for storing spatial transcriptomics and other spatial omics data that are widely used outside the Bioconductor framework:
 
-- [**AnnData**](https://anndata.readthedocs.io/en/latest/): Python class for storing single-cell and spatial data within the [scverse](https://scverse.org/) framework.
+- [**AnnData**](https://anndata.readthedocs.io/en/latest/): Python class for storing single-cell and spatial data in the [scverse](https://scverse.org/) framework.
 
 - [**SpatialData**](https://spatialdata.scverse.org/en/latest/): Python class for storing data from spatial transcriptomics and other spatial omics platforms.
-
 
 
 ## Statistical concepts

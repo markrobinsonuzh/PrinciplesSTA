@@ -7,14 +7,13 @@ intro <- tryCatch(
         description <- packageDescription("PrinciplesSTA")
         pkg <- description$Package
         version <- description$Version
-        authors <- eval(parse(text = description$Authors))
         license <- description$License
         glue::glue(
             "**Package:** {pkg}<br/>\n", 
             "**Compiled:** {as.character(Sys.Date())}<br/>\n", 
             "**Package version:** {version}<br/>\n", 
-            "**R version:** <b style='color:red;'>{R.version.string}</b><br/>\n", 
-            "**BioC version:** <b style='color:red;'>{BiocManager::version()}</b><br/>\n", 
+            "**R version:** {R.version.string}<br/>\n", 
+            "**Bioconductor version:** {BiocManager::version()}<br/>\n", 
             "**License:** {license}<br/>"
         )
     }, 
@@ -27,15 +26,14 @@ intro <- tryCatch(
 
 ## Docker image {-}
 
-A `Docker` image built from this repository is available here: 
+A `Docker` image built from this repository is available here:
 
-👉 [ghcr.io/lmweber/principlessta](https://ghcr.io/lmweber/principlessta) 🐳
+[ghcr.io/lmweber/principlessta](https://ghcr.io/lmweber/principlessta)
 
 ::: {.callout-tip icon='true'}
-## Get started now 🎉
+## Get started now
 
-You can get access to all the packages used in this book in < 1 minute, 
-using this command in a terminal: 
+You can get access to all the packages used in this book in < 1 minute, using this command in a terminal:
 
 ```{sh "docker", filename="bash"}
 #| eval: false
@@ -47,7 +45,7 @@ docker run -it ghcr.io/lmweber/principlessta:devel R
 
 ## RStudio Server {-}
 
-An RStudio Server instance can be initiated from the `Docker` image as follows: 
+An RStudio Server instance can be initiated from the `Docker` image as follows:
 
 ```{sh "rstudio", filename="bash"}
 #| eval: false
@@ -58,22 +56,14 @@ docker run \
     ghcr.io/lmweber/principlessta:devel
 ```
 
-The initiated RStudio Server instance will be available at 
-[https://localhost:8787](https://localhost:8787).
+The initiated RStudio Server instance will be available at [https://localhost:8787](https://localhost:8787).
 
-<!-- 
-# System dependencies and conda 
 
-A pre-configured `micromamba` environment called `BiocBook` is available 
-once the Docker image is loaded. It provides all the softwares listed in 
-`requirements.yml`. 
+## BiocBook
 
-```{sh "micromamba", filename="bash"}
-#| eval: false
-docker run -it ghcr.io/lmweber/principlessta:devel bash
-micromamba activate BiocBook
-``` 
--->
+This book is built using the [BiocBook](https://github.com/js2264/BiocBook) package, developed by [Jacques Serizay](https://jserizay.com/) for building Quarto books with Bioconductor.
+
+More details on how to build a book using BiocBook can be found in the [BiocBook book](https://jserizay.com/BiocBookDemo/devel/).
 
 
 ## Session info {-}
@@ -91,8 +81,3 @@ sessioninfo::session_info(
 ```
 
 :::
-
-
-## BiocBook
-
-The book is built using the [BiocBook](https://github.com/js2264/BiocBook) package, developed by [Jacques Serizay](https://jserizay.com/) for building Quarto books with Bioconductor. For more details on building a book with BiocBook, see the [BiocBook book](https://jserizay.com/BiocBookDemo/devel/).

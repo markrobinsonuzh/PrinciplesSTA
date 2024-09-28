@@ -1,26 +1,30 @@
 # Acknowledgments {#sec-apx-acknowledgments}
 
-## Contributors
+## Authors
 
-Main developers of the 'Principles of Spatial Transcriptomics Analysis with Bioconductor' online book:
+The main developers of the book are:
 
-- [Lukas M. Weber](https://lmweber.org/), *Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA*
-- [Leonardo Collado-Torres](https://lcolladotor.github.io/), *Lieber Institute for Brain Development, Baltimore, MD, USA*
-- [Stephanie C. Hicks](https://www.stephaniehicks.com/), *Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA*
+- [Lukas M. Weber](https://lmweber.org/), Boston University, Boston, USA
+- [Helena L. Crowell](https://helenalc.github.io/), National Center for Genomic Analysis (CNAG), Barcelona, Spain
+- [Leonardo Collado-Torres](https://lcolladotor.github.io/), Lieber Institute for Brain Development, Baltimore, USA
+- [Stephanie C. Hicks](https://www.stephaniehicks.com/), Johns Hopkins University, Baltimore, USA
 
-We are also grateful to additional [GitHub contributors](https://github.com/lmweber/PrinciplesSTA/graphs/contributors) who have contributed materials, including updates, extensions, bug fixes, and other improvements. Thank you for your contributions!
+
+## Feedback and contributions
+
+We are grateful for feedback, suggestions, and contributions received from readers in the broader research community. Feedback may be provided as [GitHub](https://github.com/lmweber/PrinciplesSTA) issues.
 
 
 ## Additional acknowledgments
 
-- The 'Principles of Spatial Transcriptomics Analysis with Bioconductor' online book is inspired by the [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://bioconductor.org/books/release/OSCA/) online book [@Amezquita2020], which provides a detailed overview and examples of analysis workflows for single-cell RNA sequencing data using R and Bioconductor.
+This book is inspired by the [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://bioconductor.org/books/release/OSCA/) book [@Amezquita2020] on analysis workflows for non-spatial single-cell data using R and Bioconductor.
 
-- We are especially grateful to the [Bioconductor](https://bioconductor.org/) community and the [Bioconductor Core Team](https://www.bioconductor.org/about/core-team/).
+We are especially grateful to the [Bioconductor](https://bioconductor.org/) community and the [Bioconductor Core Team](https://www.bioconductor.org/about/core-team/).
 
 
 ## BiocBook
 
-The book is built using the [BiocBook](https://github.com/js2264/BiocBook) package, developed by [Jacques Serizay](https://jserizay.com/) for building Quarto books with Bioconductor.
+This book is built using the [BiocBook](https://github.com/js2264/BiocBook) package, developed by [Jacques Serizay](https://jserizay.com/) for building Quarto books with Bioconductor. More details on BiocBook can be found in the [BiocBook book](https://jserizay.com/BiocBookDemo/devel/).
 
 
 ## References {.unnumbered}
