@@ -70,7 +70,7 @@ div.sourceCode {
 
 pre.sourceCode.r, code.sourceCode.r {
   
-  $border: 2px;
+  $border: 1.5px;
   color: #070707;
   background: #f7f7f7;
   background-clip: padding-box; /* !importanté */
@@ -109,7 +109,7 @@ pre.code_output {
 /* Cover image ------------------------------------------ */
 
 .quarto-cover-image {
-  max-width: 275px;
+  max-width: 250px;
   float: right;
   margin-left: 30px;
   margin-top: 100px;
