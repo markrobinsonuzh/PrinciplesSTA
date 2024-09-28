@@ -33,3 +33,6 @@ Data structures for storing data from spatial transcriptomics and other spatial 
 ## Statistical concepts
 
 - [**Modern Statistics for Modern Biology**](https://www.huber.embl.de//msmb/index.html): Online textbook on concepts in modern statistics for high-throughput and high-dimensional biology. This book includes a detailed chapter on [image data and spatial statistics](https://www.huber.embl.de//msmb/Chap-Images.html).
+
+
+## References {.unnumbered}
