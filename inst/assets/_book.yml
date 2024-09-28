@@ -20,7 +20,7 @@ book:
         - pages/seq-spot-deconvolution.qmd
         - pages/seq-spatial-co-localization.qmd
         - pages/seq-differential-expression.qmd
-        - pages/seq-analysis-steps-code-summary.qmd
+        - pages/seq-code-summary-analysis-steps.qmd
         - pages/seq-workflow-human-dlpfc.qmd
         - pages/seq-workflow-mouse-coronal.qmd
         - pages/seq-workflow-spatialibd.qmd

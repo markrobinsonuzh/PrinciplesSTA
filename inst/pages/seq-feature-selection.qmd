@@ -7,7 +7,7 @@ Here we apply feature selection methods to identify highly variable genes (HVGs)
 
 ## Load previously saved data
 
-We start by loading the previously saved data object(s) (see @sec-seq-normalization-save-object).
+We start by loading the previously saved data object(s) (see @sec-seq-normalization-save-objects).
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)
