@@ -126,7 +126,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/seq-analysis-steps.html">Sequencing-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/seq-dimensionality-reduction.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dimensionality reduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/seq-overview.html">Sequencing-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/seq-dimensionality-reduction.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dimensionality reduction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,8 +199,8 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/seq-analysis-steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Analysis steps</span></span></a>
+  <a href="../pages/seq-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -259,8 +259,8 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/seq-workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows for sequencing-based data</span></span></a>
+  <a href="../pages/seq-analysis-steps-code-summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Analysis steps: Code summary</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -294,14 +294,20 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/img-load-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Load data</span></span></a>
+  <a href="../pages/img-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/img-workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Workflows for imaging-based data</span></span></a>
+  <a href="../pages/img-load-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Load data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/img-workflow-imaging-dataset-x.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Workflow: Imaging-based dataset</span></span></a>
   </div>
 </li>
       </ul>
@@ -317,14 +323,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/apx-related-resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Related resources</span></span></a>
+  <a href="../pages/apx-acknowledgments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Acknowledgments</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/apx-acknowledgments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Acknowledgments</span></span></a>
+  <a href="../pages/apx-related-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Related resources</span></span></a>
   </div>
 </li>
       </ul>
@@ -337,16 +343,17 @@ div.csl-indent {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">9.1</span> Overview</a></li>
-  <li><a href="#load-data-from-previous-steps" id="toc-load-data-from-previous-steps" class="nav-link" data-scroll-target="#load-data-from-previous-steps"><span class="header-section-number">9.2</span> Load data from previous steps</a></li>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">9.1</span> Introduction</a></li>
+  <li><a href="#load-previously-saved-data" id="toc-load-previously-saved-data" class="nav-link" data-scroll-target="#load-previously-saved-data"><span class="header-section-number">9.2</span> Load previously saved data</a></li>
   <li><a href="#principal-component-analysis-pca" id="toc-principal-component-analysis-pca" class="nav-link" data-scroll-target="#principal-component-analysis-pca"><span class="header-section-number">9.3</span> Principal component analysis (PCA)</a></li>
   <li><a href="#uniform-manifold-approximation-and-projection-umap" id="toc-uniform-manifold-approximation-and-projection-umap" class="nav-link" data-scroll-target="#uniform-manifold-approximation-and-projection-umap"><span class="header-section-number">9.4</span> Uniform Manifold Approximation and Projection (UMAP)</a></li>
-  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations"><span class="header-section-number">9.5</span> Visualizations</a></li>
+  <li><a href="#sec-seq-dimensionality-reduction-save-objects" id="toc-sec-seq-dimensionality-reduction-save-objects" class="nav-link" data-scroll-target="#sec-seq-dimensionality-reduction-save-objects"><span class="header-section-number">9.5</span> Save objects for later chapters</a></li>
+  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations"><span class="header-section-number">9.6</span> Visualizations</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/seq-analysis-steps.html">Sequencing-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/seq-dimensionality-reduction.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dimensionality reduction</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/seq-overview.html">Sequencing-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/seq-dimensionality-reduction.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dimensionality reduction</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title"><span id="sec-seq-dimensionality-reduction" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dimensionality reduction</span></span></h1>
 </div>
 
@@ -361,12 +368,12 @@ div.csl-indent {
   
 
 
-</header><section id="overview" class="level2" data-number="9.1"><h2 data-number="9.1" class="anchored" data-anchor-id="overview">
-<span class="header-section-number">9.1</span> Overview</h2>
+</header><section id="introduction" class="level2" data-number="9.1"><h2 data-number="9.1" class="anchored" data-anchor-id="introduction">
+<span class="header-section-number">9.1</span> Introduction</h2>
 <p>In this chapter, we apply dimensionality reduction methods to visualize the data and to generate inputs for further downstream analyses.</p>
-</section><section id="load-data-from-previous-steps" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="load-data-from-previous-steps">
-<span class="header-section-number">9.2</span> Load data from previous steps</h2>
-<p>We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in <a href="seq-analysis-steps.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
+</section><section id="load-previously-saved-data" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="load-previously-saved-data">
+<span class="header-section-number">9.2</span> Load previously saved data</h2>
+<p>We start by loading the previously saved data object(s) (see <a href="seq-feature-selection.html#sec-seq-feature-selection-save-objects" class="quarto-xref"><span>Section 8.4</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/drighelli/SpatialExperiment">SpatialExperiment</a></span><span class="op">)</span></span>
 <span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"spe_hvgs.rds"</span><span class="op">)</span></span>
@@ -413,26 +420,33 @@ div.csl-indent {
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># update column names for easier plotting</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html">reducedDim</a></span><span class="op">(</span><span class="va">spe</span>, <span class="st">"UMAP"</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"UMAP"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="visualizations" class="level2" data-number="9.5"><h2 data-number="9.5" class="anchored" data-anchor-id="visualizations">
-<span class="header-section-number">9.5</span> Visualizations</h2>
+</section><section id="sec-seq-dimensionality-reduction-save-objects" class="level2" data-number="9.5"><h2 data-number="9.5" class="anchored" data-anchor-id="sec-seq-dimensionality-reduction-save-objects">
+<span class="header-section-number">9.5</span> Save objects for later chapters</h2>
+<p>We also save the object(s) in <code>.rds</code> format for re-use within later chapters to speed up the build time of the book.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># save object(s)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">spe</span>, file <span class="op">=</span> <span class="st">"spe_reduceddims.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="visualizations" class="level2" data-number="9.6"><h2 data-number="9.6" class="anchored" data-anchor-id="visualizations">
+<span class="header-section-number">9.6</span> Visualizations</h2>
 <p>Generate plots using plotting functions from the <a href="https://bioconductor.org/packages/ggspavis">ggspavis</a> package. In the next chapter on clustering, we will add cluster labels to these reduced dimension plots.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/ggspavis">ggspavis</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/ggspavis">ggspavis</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot top 2 PCA dimensions</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot top 2 PCA dimensions</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotDimRed.html">plotDimRed</a></span><span class="op">(</span><span class="va">spe</span>, plot_type <span class="op">=</span> <span class="st">"PCA"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="seq-dimensionality-reduction_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="408"></p>
+<figure class="figure"><p><img src="seq-dimensionality-reduction_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="408"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot top 2 UMAP dimensions</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot top 2 UMAP dimensions</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotDimRed.html">plotDimRed</a></span><span class="op">(</span><span class="va">spe</span>, plot_type <span class="op">=</span> <span class="st">"UMAP"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="seq-dimensionality-reduction_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="408"></p>
+<figure class="figure"><p><img src="seq-dimensionality-reduction_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="408"></p>
 </figure>
 </div>
 </div>

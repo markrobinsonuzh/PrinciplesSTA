@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>18&nbsp; Load data – Principles of Spatial Transcriptomics Analysis with Bioconductor</title>
+<title>19&nbsp; Load data – Principles of Spatial Transcriptomics Analysis with Bioconductor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pages/img-workflows.html" rel="next">
-<link href="../pages/seq-workflow-spatialibd.html" rel="prev">
+<link href="../pages/img-workflow-imaging-dataset-x.html" rel="next">
+<link href="../pages/img-overview.html" rel="prev">
 <link href="../assets/favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/img-load-data.html">Imaging-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/img-load-data.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Load data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/img-overview.html">Imaging-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/img-load-data.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Load data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,8 +159,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/seq-analysis-steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Analysis steps</span></span></a>
+  <a href="../pages/seq-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -219,8 +219,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/seq-workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows for sequencing-based data</span></span></a>
+  <a href="../pages/seq-analysis-steps-code-summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Analysis steps: Code summary</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -254,14 +254,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/img-load-data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Load data</span></span></a>
+  <a href="../pages/img-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/img-workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Workflows for imaging-based data</span></span></a>
+  <a href="../pages/img-load-data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Load data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/img-workflow-imaging-dataset-x.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Workflow: Imaging-based dataset</span></span></a>
   </div>
 </li>
       </ul>
@@ -277,14 +283,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/apx-related-resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Related resources</span></span></a>
+  <a href="../pages/apx-acknowledgments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Acknowledgments</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/apx-acknowledgments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Acknowledgments</span></span></a>
+  <a href="../pages/apx-related-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Related resources</span></span></a>
   </div>
 </li>
       </ul>
@@ -299,17 +305,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">18.1</span> Overview</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">19.1</span> Introduction</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/img-load-data.html">Imaging-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/img-load-data.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Load data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/img-overview.html">Imaging-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/img-load-data.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Load data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-img-load-data" class="quarto-section-identifier"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Load data</span></span></h1>
+<h1 class="title"><span id="sec-img-load-data" class="quarto-section-identifier"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Load data</span></span></h1>
 </div>
 
 
@@ -326,13 +331,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="overview" class="level2" data-number="18.1">
-<h2 data-number="18.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">18.1</span> Overview</h2>
-<p>In this chapter, we load spatial transcriptomics datasets from imaging-based platforms (10x Genomics Xenium, Vizgen MERSCOPE, and/or NanoString CosMx), which will be used in the examples in the following chapters.</p>
-<p>For details on the technological platforms, see <a href="bkg-bioconductor-data-classes.html" class="quarto-xref"><span>Chapter 3</span></a>.</p>
-</section>
-<section id="references" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+<section id="introduction" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">19.1</span> Introduction</h2>
+<p>In this chapter, we load one or more datasets from the commercially available imaging-based spatial transcriptomics platforms (10x Genomics Xenium, Vizgen MERSCOPE, and NanoString CosMx), which will be used in the examples in the following chapters.</p>
+<p>For details on the technological platforms, see <a href="bkg-spatial-transcriptomics.html" class="quarto-xref"><span>Chapter 2</span></a>.</p>
+<!--
+## References {.unnumbered}
+-->
 
 
 </section>
@@ -760,13 +765,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/seq-workflow-spatialibd.html" class="pagination-link" aria-label="Workflow: spatialLIBD">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Workflow: spatialLIBD</span></span>
+      <a href="../pages/img-overview.html" class="pagination-link" aria-label="Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Overview</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../pages/img-workflows.html" class="pagination-link" aria-label="Workflows for imaging-based data">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Workflows for imaging-based data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/img-workflow-imaging-dataset-x.html" class="pagination-link" aria-label="Workflow: Imaging-based dataset">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Workflow: Imaging-based dataset</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -126,7 +126,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/seq-analysis-steps.html">Sequencing-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/seq-feature-selection.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Feature selection</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/seq-overview.html">Sequencing-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/seq-feature-selection.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Feature selection</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,8 +199,8 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/seq-analysis-steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Analysis steps</span></span></a>
+  <a href="../pages/seq-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -259,8 +259,8 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/seq-workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workflows for sequencing-based data</span></span></a>
+  <a href="../pages/seq-analysis-steps-code-summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Analysis steps: Code summary</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -294,14 +294,20 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/img-load-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Load data</span></span></a>
+  <a href="../pages/img-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/img-workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Workflows for imaging-based data</span></span></a>
+  <a href="../pages/img-load-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Load data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/img-workflow-imaging-dataset-x.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Workflow: Imaging-based dataset</span></span></a>
   </div>
 </li>
       </ul>
@@ -317,14 +323,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/apx-related-resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Related resources</span></span></a>
+  <a href="../pages/apx-acknowledgments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Acknowledgments</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/apx-acknowledgments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Acknowledgments</span></span></a>
+  <a href="../pages/apx-related-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Related resources</span></span></a>
   </div>
 </li>
       </ul>
@@ -337,21 +343,22 @@ div.csl-indent {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">8.1</span> Overview</a></li>
-  <li><a href="#load-data-from-previous-steps" id="toc-load-data-from-previous-steps" class="nav-link" data-scroll-target="#load-data-from-previous-steps"><span class="header-section-number">8.2</span> Load data from previous steps</a></li>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">8.1</span> Introduction</a></li>
+  <li><a href="#load-previously-saved-data" id="toc-load-previously-saved-data" class="nav-link" data-scroll-target="#load-previously-saved-data"><span class="header-section-number">8.2</span> Load previously saved data</a></li>
   <li><a href="#highly-variable-genes-hvgs" id="toc-highly-variable-genes-hvgs" class="nav-link" data-scroll-target="#highly-variable-genes-hvgs"><span class="header-section-number">8.3</span> Highly variable genes (HVGs)</a></li>
+  <li><a href="#sec-seq-feature-selection-save-objects" id="toc-sec-seq-feature-selection-save-objects" class="nav-link" data-scroll-target="#sec-seq-feature-selection-save-objects"><span class="header-section-number">8.4</span> Save objects for later chapters</a></li>
   <li>
-<a href="#spatially-variable-genes-svgs" id="toc-spatially-variable-genes-svgs" class="nav-link" data-scroll-target="#spatially-variable-genes-svgs"><span class="header-section-number">8.4</span> Spatially variable genes (SVGs)</a>
+<a href="#spatially-variable-genes-svgs" id="toc-spatially-variable-genes-svgs" class="nav-link" data-scroll-target="#spatially-variable-genes-svgs"><span class="header-section-number">8.5</span> Spatially variable genes (SVGs)</a>
   <ul class="collapse">
-<li><a href="#nnsvg" id="toc-nnsvg" class="nav-link" data-scroll-target="#nnsvg"><span class="header-section-number">8.4.1</span> nnSVG</a></li>
-  <li><a href="#downstream-analyses" id="toc-downstream-analyses" class="nav-link" data-scroll-target="#downstream-analyses"><span class="header-section-number">8.4.2</span> Downstream analyses</a></li>
+<li><a href="#nnsvg" id="toc-nnsvg" class="nav-link" data-scroll-target="#nnsvg"><span class="header-section-number">8.5.1</span> nnSVG</a></li>
+  <li><a href="#downstream-analyses" id="toc-downstream-analyses" class="nav-link" data-scroll-target="#downstream-analyses"><span class="header-section-number">8.5.2</span> Downstream analyses</a></li>
   </ul>
 </li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/seq-analysis-steps.html">Sequencing-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/seq-feature-selection.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Feature selection</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/seq-overview.html">Sequencing-based platforms</a></li><li class="breadcrumb-item"><a href="../pages/seq-feature-selection.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Feature selection</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title"><span id="sec-seq-feature-selection" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Feature selection</span></span></h1>
 </div>
 
@@ -366,19 +373,19 @@ div.csl-indent {
   
 
 
-</header><section id="overview" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="overview">
-<span class="header-section-number">8.1</span> Overview</h2>
+</header><section id="introduction" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="introduction">
+<span class="header-section-number">8.1</span> Introduction</h2>
 <p>Here we apply feature selection methods to identify highly variable genes (HVGs) or spatially variable genes (SVGs), which can then be investigated individually or used as the input for further downstream analyses such as clustering.</p>
-</section><section id="load-data-from-previous-steps" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="load-data-from-previous-steps">
-<span class="header-section-number">8.2</span> Load data from previous steps</h2>
-<p>We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in <a href="seq-analysis-steps.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
+</section><section id="load-previously-saved-data" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="load-previously-saved-data">
+<span class="header-section-number">8.2</span> Load previously saved data</h2>
+<p>We start by loading the previously saved data object(s) (see <span class="quarto-unresolved-ref">?sec-seq-normalization-save-object</span>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/drighelli/SpatialExperiment">SpatialExperiment</a></span><span class="op">)</span></span>
 <span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"spe_logcounts.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="highly-variable-genes-hvgs" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="highly-variable-genes-hvgs">
 <span class="header-section-number">8.3</span> Highly variable genes (HVGs)</h2>
-<p>We use methods from <code>scran</code> <span class="citation" data-cites="Lun2016">(<a href="#ref-Lun2016" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span> to identify a set of top highly variable genes (HVGs), which can be used to define major cell types. These methods were originally developed for single-cell RNA sequencing (scRNA-seq) data, so here we are making the assumption that spots can be treated as equivalent to cells.</p>
+<p>We use methods from <code>scran</code> <span class="citation" data-cites="Lun2016">(<a href="#ref-Lun2016" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span> to identify a set of top highly variable genes (HVGs), which can be used to define major cell types. These methods were originally developed for single-cell RNA-seq data, so here we are making the assumption that spots can be treated as equivalent to cells.</p>
 <p>Note that HVGs are defined based only on molecular features (i.e.&nbsp;gene expression), and do not take any spatial information into account. If the biologically meaningful spatial information in this dataset mainly reflects spatial distributions of cell types, then relying on HVGs for downstream analyses may be sufficient. However, many datasets contain further spatial structure that is not captured in this way, which may be investigated using spatially-aware methods such as identifying spatially variable genes (SVGs).</p>
 <p>To identify HVGs, we first remove mitochondrial genes, since these are very highly expressed in this dataset and are not of main biological interest.</p>
 <div class="cell" data-layout-align="center">
@@ -422,8 +429,16 @@ div.csl-indent {
 <pre class="code_output"><code>##  [1] 1438</code></pre>
 </div>
 </div>
-</section><section id="spatially-variable-genes-svgs" class="level2" data-number="8.4"><h2 data-number="8.4" class="anchored" data-anchor-id="spatially-variable-genes-svgs">
-<span class="header-section-number">8.4</span> Spatially variable genes (SVGs)</h2>
+</section><section id="sec-seq-feature-selection-save-objects" class="level2" data-number="8.4"><h2 data-number="8.4" class="anchored" data-anchor-id="sec-seq-feature-selection-save-objects">
+<span class="header-section-number">8.4</span> Save objects for later chapters</h2>
+<p>We also save the object(s) in <code>.rds</code> format for re-use within later chapters to speed up the build time of the book.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># save object(s)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">spe</span>, file <span class="op">=</span> <span class="st">"spe_hvgs.rds"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">top_hvgs</span>, file <span class="op">=</span> <span class="st">"top_hvgs.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="spatially-variable-genes-svgs" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="spatially-variable-genes-svgs">
+<span class="header-section-number">8.5</span> Spatially variable genes (SVGs)</h2>
 <p>Alternatively, we can apply methods to identify spatially variable genes (SVGs) instead of HVGs. Here, we define SVGs as any genes with spatially correlated patterns of expression across the tissue area.</p>
 <p>Several methods to identify SVGs in ST data have recently been developed, which each have various methodological and computational tradeoffs. These include:</p>
 <ul>
@@ -433,15 +448,15 @@ div.csl-indent {
 <li><p><strong>SpatialDE</strong>: available as a Python package from <a href="https://github.com/Teichlab/SpatialDE">GitHub</a> and described by <span class="citation" data-cites="Svensson2018">Svensson, Teichmann, and Stegle (<a href="#ref-Svensson2018" role="doc-biblioref">2018</a>)</span></p></li>
 </ul>
 <p>Alternatively, standard statistical metrics such as <a href="https://en.wikipedia.org/wiki/Moran%27s_I">Moran’s I</a> statistic or <a href="https://en.wikipedia.org/wiki/Geary%27s_C">Geary’s C</a> statistic may also be used to rank genes by their observed spatial autocorrelation. However, the methods above tend to be more sensitive, since they have been developed for the specific properties of ST data.</p>
-<section id="nnsvg" class="level3" data-number="8.4.1"><h3 data-number="8.4.1" class="anchored" data-anchor-id="nnsvg">
-<span class="header-section-number">8.4.1</span> nnSVG</h3>
+<section id="nnsvg" class="level3" data-number="8.5.1"><h3 data-number="8.5.1" class="anchored" data-anchor-id="nnsvg">
+<span class="header-section-number">8.5.1</span> nnSVG</h3>
 <p>Here, we demonstrate a short example showing how to identify a set of top SVGs using <a href="https://bioconductor.org/packages/nnSVG">nnSVG</a> <span class="citation" data-cites="Weber2023">(<a href="#ref-Weber2023" role="doc-biblioref">Weber et al. 2023</a>)</span>. This method is available in Bioconductor and can be easily integrated into Bioconductor-based workflows.</p>
 <p>In this example, we run nnSVG using a small subset of the dataset for faster runtime. We select a subset by subsampling on the set of spots and including stringent filtering for low-expressed genes. A full analysis using all spots for this dataset and default filtering parameters for Visium data from human brain tissue takes around 45 minutes for one Visium sample on a standard laptop.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/nnSVG">nnSVG</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/nnSVG">nnSVG</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># subsample spots for faster runtime in this example</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># subsample spots for faster runtime in this example</span></span>
 <span><span class="co"># note: skip this step in full analysis</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
@@ -466,16 +481,16 @@ div.csl-indent {
 <div class="cell-output cell-output-stderr">
 <pre><code>##  removed 33353 out of 33525 genes due to low expression</code></pre>
 </div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># re-calculate logcounts after filtering</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># re-calculate logcounts after filtering</span></span>
 <span><span class="va">spe_nnSVG</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scuttle/man/logNormCounts.html">logNormCounts</a></span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># run nnSVG</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># run nnSVG</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">spe_nnSVG</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/nnSVG/man/nnSVG.html">nnSVG</a></span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># investigate results</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># investigate results</span></span>
 <span></span>
 <span><span class="co"># show results</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -488,9 +503,9 @@ div.csl-indent {
 ##  ENSG00000162545 ENSG00000162545     CAMK2N1 Gene Expression        FALSE
 ##                    sigma.sq    tau.sq       phi    loglik   runtime      mean
 ##                   &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-##  ENSG00000074800 0.00840777  0.518011  15.82454  -109.808     0.015   1.75820
-##  ENSG00000171603 0.43102027  0.298698  18.12310  -123.212     0.019   2.07433
-##  ENSG00000162545 0.15373440  0.547736   2.38046  -119.576     0.014   2.63576
+##  ENSG00000074800 0.00840777  0.518011  15.82454  -109.808     0.020   1.75820
+##  ENSG00000171603 0.43102027  0.298698  18.12310  -123.212     0.020   2.07433
+##  ENSG00000162545 0.15373440  0.547736   2.38046  -119.576     0.015   2.63576
 ##                        var     spcov   prop_sv loglik_lm   LR_stat      rank
 ##                  &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
 ##  ENSG00000074800  0.530929 0.0521523 0.0159716  -109.735 -0.145454       167
@@ -502,14 +517,14 @@ div.csl-indent {
 ##  ENSG00000171603 0.0408845 0.0817690
 ##  ENSG00000162545 0.0152302 0.0374227</code></pre>
 </div>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># number of significant SVGs</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># number of significant SVGs</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">$</span><span class="va">padj</span> <span class="op">&lt;=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  
 ##  FALSE  TRUE 
 ##     96    76</code></pre>
 </div>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># show results for top n SVGs</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># show results for top n SVGs</span></span>
 <span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">$</span><span class="va">rank</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>, <span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  DataFrame with 6 rows and 18 columns
@@ -524,11 +539,11 @@ div.csl-indent {
 ##                   sigma.sq    tau.sq       phi    loglik   runtime      mean
 ##                  &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
 ##  ENSG00000197971   3.92430  0.175336   0.93014  -118.372     0.019   3.78073
-##  ENSG00000123560   3.23544  0.461590   1.03983  -140.269     0.016   2.86143
+##  ENSG00000123560   3.23544  0.461590   1.03983  -140.269     0.017   2.86143
 ##  ENSG00000109846   1.89968  0.281795   1.88555  -126.692     0.015   1.86058
 ##  ENSG00000173786   2.28793  0.402524   1.02675  -129.206     0.015   1.79558
 ##  ENSG00000131095   2.23709  0.461297   2.49083  -149.004     0.016   1.94543
-##  ENSG00000160307   1.24179  0.155737   5.76279  -129.722     0.013   1.82695
+##  ENSG00000160307   1.24179  0.155737   5.76279  -129.722     0.014   1.82695
 ##                        var     spcov   prop_sv loglik_lm   LR_stat      rank
 ##                  &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
 ##  ENSG00000197971   2.76535  0.523969  0.957231  -192.250  147.7556         1
@@ -546,14 +561,14 @@ div.csl-indent {
 ##  ENSG00000131095 0.00000e+00 0.00000e+00
 ##  ENSG00000160307 3.75255e-14 1.07573e-12</code></pre>
 </div>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># identify top-ranked SVG</span></span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># identify top-ranked SVG</span></span>
 <span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">$</span><span class="va">gene_name</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">$</span><span class="va">rank</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  [1] "MBP"</code></pre>
 </div>
 </div>
-</section><section id="downstream-analyses" class="level3" data-number="8.4.2"><h3 data-number="8.4.2" class="anchored" data-anchor-id="downstream-analyses">
-<span class="header-section-number">8.4.2</span> Downstream analyses</h3>
+</section><section id="downstream-analyses" class="level3" data-number="8.5.2"><h3 data-number="8.5.2" class="anchored" data-anchor-id="downstream-analyses">
+<span class="header-section-number">8.5.2</span> Downstream analyses</h3>
 <p>The set of top SVGs from nnSVG may then be investigated further, e.g.&nbsp;by plotting the spatial expression of several top genes and by comparing the list of top genes with known gene sets associated with biological processes of interest in the dataset. The set of top SVGs may also be used as the input for further downstream analyses such as spatially-aware clustering to define spatial domains (see <a href="seq-clustering.html" class="quarto-xref"><span>Chapter 10</span></a>).</p>
 </section></section><section id="references" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
 
