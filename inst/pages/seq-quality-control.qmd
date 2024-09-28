@@ -1,7 +1,6 @@
 # Quality control {#sec-seq-quality-control}
 
-
-## Overview
+## Introduction
 
 Quality control (QC) procedures at the spot level aim to remove low-quality spots before further analysis. Low-quality spots can occur due to problems during library preparation or other experimental procedures. Examples include large proportions of dead cells due to cell damage during library preparation, and low mRNA capture efficiency due to inefficient reverse transcription or PCR amplification.
 
@@ -9,7 +8,7 @@ These spots are usually removed prior to further analysis, since otherwise they 
 
 Low-quality spots can be identified according to several characteristics, including:
 
-- library size (i.e. total UMI counts per spot)
+- library size (i.e. total unique molecular identifier (UMI) counts per spot)
 
 - number of expressed features (i.e. number of genes with non-zero UMI counts per spot)
 
@@ -22,16 +21,14 @@ Low library size or low number of expressed features can indicate poor mRNA capt
 The first three characteristics listed above are also used for QC in scRNA-seq data. However, the expected distributions for high-quality spots are different (compared to high-quality cells in scRNA-seq), since spots may contain zero, one, or multiple cells.
 
 
+## Load previously saved data
 
-## Load data from previous steps
-
-We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-seq-analysis-steps.
+We start by loading the previously saved data object(s) (see @sec-seq-load-data-save-objects).
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)
 spe <- readRDS("spe_load.rds")
 ```
-
 
 
 ## Plot data
@@ -48,7 +45,6 @@ library(ggspavis)
 # plot spatial coordinates (spots)
 plotSpots(spe)
 ```
-
 
 
 ## Calculate QC metrics
@@ -79,7 +75,6 @@ rowData(spe)$gene_name[is_mito]
 spe <- addPerCellQC(spe, subsets = list(mito = is_mito))
 head(colData(spe))
 ```
-
 
 
 ## Selecting thresholds
@@ -141,10 +136,10 @@ plotSpotQC(spe, plot_type = "spot",
            annotate = "qc_lib_size_2000")
 ```
 
-For reference, here are the ground truth (manually annotated) cortical layers in this dataset.
+For reference, here are the reference (manually annotated) cortical layers in this dataset.
 
 ```{r, fig.height=3.5}
-# plot ground truth (manually annotated) layers
+# plot reference (manually annotated) layers
 plotSpots(spe, annotate = "ground_truth", 
           pal = "libd_layer_colors")
 ```
@@ -315,7 +310,6 @@ dim(spe)
 ```
 
 
-
 ## Zero-cell and single-cell spots
 
 A particular characteristic of Visium data is that spots can contain zero, one, or multiple cells.
@@ -338,12 +332,21 @@ Only 6% of spots contain a single cell. If we restricted the analysis to these s
 Removing the spots containing zero cells (2% of spots) would also be problematic, since these spots can also contain biologically meaningful information. For example, in this brain dataset, the regions between cell bodies consists of neuropil (dense networks of axons and dendrites). In our paper [@Maynard2021], we explore the information contained in these neuropil spots.
 
 
-
 ## Quality control at gene level
 
 The sections above consider quality control at the spot level. In some datasets, it may also be appropriate to apply quality control procedures or filtering at the gene level. For example, certain genes may be biologically irrelevant for downstream analyses.
 
 However, here we make a distinction between quality control and feature selection. Removing biologically uninteresting genes (such as mitochondrial genes) may also be considered as part of feature selection, since there is no underlying experimental procedure that has failed. Therefore, we will discuss gene-level filtering in the @sec-seq-feature-selection chapter.
+
+
+## Save objects for later chapters {#sec-seq-quality-control-save-objects}
+
+We also save the object(s) in `.rds` format for re-use within later chapters to speed up the build time of the book.
+
+```{r}
+# save object(s)
+saveRDS(spe, file = "spe_qc.rds")
+```
 
 
 ## References {.unnumbered}

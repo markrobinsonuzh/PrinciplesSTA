@@ -1,7 +1,6 @@
 # Workflow: spatialLIBD {#sec-workflow-spatiallibd}
 
-
-## Overview
+## Introduction
 
 In the previous workflow, @sec-seq-workflow-human-dlpfc, you practiced some of the basics with a portion of the postmortem human brain dataset @Maynard2021. The goal of this workflow is to learn what steps you need to carry out in order to create an interactive website to visualize this type of data. For this, we'll use the [`spatialLIBD`](http://bioconductor.org/packages/spatialLIBD) Bioconductor package @Pardo2022.
 

@@ -1,6 +1,6 @@
 # Introduction {#sec-bkg-introduction}
 
-## Overview
+## Introduction
 
 This book provides interactive examples and discussion on key principles of computational analysis workflows for spatial transcriptomics data using [Bioconductor](http://bioconductor.org/) in R. The chapters describe individual analysis steps and extended workflows, including runnable examples with R code and datasets.
 

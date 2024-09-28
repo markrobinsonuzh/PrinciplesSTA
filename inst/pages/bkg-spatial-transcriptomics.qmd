@@ -1,6 +1,6 @@
 # Spatial transcriptomics {#sec-bkg-spatial-transcriptomics}
 
-## Overview
+## Introduction
 
 Spatial transcriptomics (or spatially-resolved transcriptomics) refers to a set of recently developed technological platforms that enable the measurement of up to transcriptome-scale gene expression at spatial resolution within tissue sections. Spatial transcriptomics was named the [Method of the Year 2020](https://doi.org/10.1038/s41592-020-01042-x) by the journal *Nature Methods*, and has become widely applied in a range of biological contexts.
 

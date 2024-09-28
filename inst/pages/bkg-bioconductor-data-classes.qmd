@@ -1,6 +1,6 @@
 # Bioconductor data classes {#sec-bkg-bioconductor-data-classes}
 
-## Overview
+## Introduction
 
 Bioconductor provides several data classes for storing and manipulating spatial transcriptomics datasets. By relying on these consistent data structures, we can easily connect methods and packages developed by different research groups to build analysis workflows that include the latest state-of-the-art methods.
 

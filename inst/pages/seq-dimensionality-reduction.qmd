@@ -1,22 +1,19 @@
 # Dimensionality reduction {#sec-seq-dimensionality-reduction}
 
-
-## Overview
+## Introduction
 
 In this chapter, we apply dimensionality reduction methods to visualize the data and to generate inputs for further downstream analyses.
 
 
+## Load previously saved data
 
-## Load data from previous steps
-
-We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-seq-analysis-steps.
+We start by loading the previously saved data object(s) (see @sec-seq-feature-selection-save-objects).
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)
 spe <- readRDS("spe_hvgs.rds")
 top_hvgs <- readRDS("top_hvgs.rds")
 ```
-
 
 
 ## Principal component analysis (PCA)
@@ -41,7 +38,6 @@ dim(reducedDim(spe, "PCA"))
 ```
 
 
-
 ## Uniform Manifold Approximation and Projection (UMAP)
 
 We also run UMAP on the set of top 50 PCs and retain the top 2 UMAP components, which will be used for visualization purposes.
@@ -58,6 +54,15 @@ dim(reducedDim(spe, "UMAP"))
 colnames(reducedDim(spe, "UMAP")) <- paste0("UMAP", 1:2)
 ```
 
+
+## Save objects for later chapters {#sec-seq-dimensionality-reduction-save-objects}
+
+We also save the object(s) in `.rds` format for re-use within later chapters to speed up the build time of the book.
+
+```{r}
+# save object(s)
+saveRDS(spe, file = "spe_reduceddims.rds")
+```
 
 
 ## Visualizations
