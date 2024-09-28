@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Preamble – PrinciplesSTA</title>
+<title>Preamble – Principles of Spatial Transcriptomics Analysis with Bioconductor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,23 +118,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">PrinciplesSTA</a> 
-        <div class="sidebar-tools-main">
-    <div class="dropdown">
-      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-git"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-<li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/lmweber/PrinciplesSTA/">
-            Source Code
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://lmweber.github.io/PrinciplesSTA/devel/">
-            Browse version `devel`
-            </a>
-          </li>
-      </ul>
-</div>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -203,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/seq-load-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Load sequencing-based data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Load data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -292,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/img-load-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Load imaging-based data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Load data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -336,8 +319,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
 <li><a href="#docker-image" id="toc-docker-image" class="nav-link active" data-scroll-target="#docker-image">Docker image</a></li>
   <li><a href="#rstudio-server" id="toc-rstudio-server" class="nav-link" data-scroll-target="#rstudio-server">RStudio Server</a></li>
-  <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session info</a></li>
   <li><a href="#biocbook" id="toc-biocbook" class="nav-link" data-scroll-target="#biocbook">BiocBook</a></li>
+  <li><a href="#session-info" id="toc-session-info" class="nav-link" data-scroll-target="#session-info">Session info</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -356,17 +339,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p><strong>Package:</strong> PrinciplesSTA<br><strong>Compiled:</strong> 2024-09-27<br><strong>Package version:</strong> 0.99.0<br><strong>R version:</strong> <b style="color:red;">R version 4.4.1 (2024-06-14)</b><br><strong>BioC version:</strong> <b style="color:red;">3.20</b><br><strong>License:</strong> CC BY 4.0<br></p>
+</header><p><strong>Package:</strong> PrinciplesSTA<br><strong>Compiled:</strong> 2024-09-28<br><strong>Package version:</strong> 0.99.0<br><strong>R version:</strong> R version 4.4.1 (2024-06-14)<br><strong>Bioconductor version:</strong> 3.20<br><strong>License:</strong> CC BY 4.0<br></p>
 <section id="docker-image" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="docker-image">Docker image</h2>
 <p>A <code>Docker</code> image built from this repository is available here:</p>
-<p>👉 <a href="https://ghcr.io/lmweber/principlessta">ghcr.io/lmweber/principlessta</a> 🐳</p>
+<p><a href="https://ghcr.io/lmweber/principlessta">ghcr.io/lmweber/principlessta</a></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Get started now 🎉
+Get started now
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -396,31 +379,9 @@ Get started now 🎉
 </div>
 </div>
 <p>The initiated RStudio Server instance will be available at <a href="https://localhost:8787">https://localhost:8787</a>.</p>
-<!-- 
-# System dependencies and conda 
-
-A pre-configured `micromamba` environment called `BiocBook` is available 
-once the Docker image is loaded. It provides all the softwares listed in 
-`requirements.yml`. 
-
-
-
-
-
-
-::: {.cell layout-align="center" filename='bash'}
-
-```{.sh .cell-code}
-docker run -it ghcr.io/lmweber/principlessta:devel bash
-micromamba activate BiocBook
-```
-:::
-
-
-
-
-
--->
+</section><section id="biocbook" class="level2"><h2 class="anchored" data-anchor-id="biocbook">BiocBook</h2>
+<p>This book is built using the <a href="https://github.com/js2264/BiocBook">BiocBook</a> package, developed by <a href="https://jserizay.com/">Jacques Serizay</a> for building Quarto books with Bioconductor.</p>
+<p>More details on how to build a book using BiocBook can be found in the <a href="https://jserizay.com/BiocBookDemo/devel/">BiocBook book</a>.</p>
 </section><section id="session-info" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="session-info">Session info</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -450,7 +411,7 @@ Click to expand
 ##   collate  C
 ##   ctype    en_US.UTF-8
 ##   tz       Etc/UTC
-##   date     2024-09-27
+##   date     2024-09-28
 ##   pandoc   3.4 @ /usr/bin/ (via rmarkdown)
 ##  
 ##  ─ Packages ────────────────────────────────────────────────────────────────
@@ -623,7 +584,7 @@ Click to expand
 ##   praise                 1.0.0     2015-08-11 [2] RSPM (R 4.4.0)
 ##   preprocessCore         1.67.1    2024-09-26 [2] Bioconductor 3.20 (R 4.4.1)
 ##   prettyunits            1.2.0     2023-09-24 [2] RSPM (R 4.4.0)
-##   PrinciplesSTA          0.99.0    2024-09-27 [1] Bioconductor
+##   PrinciplesSTA          0.99.0    2024-09-28 [1] Bioconductor
 ##   prismatic              1.1.2     2024-04-10 [2] RSPM (R 4.4.0)
 ##   processx               3.8.4     2024-03-16 [2] RSPM (R 4.4.0)
 ##   profvis                0.4.0     2024-09-20 [2] RSPM (R 4.4.0)
@@ -724,7 +685,7 @@ Click to expand
 ##   zip                    2.3.1     2024-01-27 [2] RSPM (R 4.4.0)
 ##   zlibbioc               1.51.1    2024-06-05 [2] Bioconductor 3.20 (R 4.4.0)
 ##  
-##   [1] /tmp/RtmpOvdljA/Rinst8c4f2fa96c
+##   [1] /tmp/Rtmp68ymOP/Rinst8c3bb54f87
 ##   [2] /usr/local/lib/R/site-library
 ##   [3] /usr/local/lib/R/library
 ##  
@@ -734,8 +695,6 @@ Click to expand
 </div>
 </div>
 </div>
-</section><section id="biocbook" class="level2"><h2 class="anchored" data-anchor-id="biocbook">BiocBook</h2>
-<p>The book is built using the <a href="https://github.com/js2264/BiocBook">BiocBook</a> package, developed by <a href="https://jserizay.com/">Jacques Serizay</a> for building Quarto books with Bioconductor. For more details on building a book with BiocBook, see the <a href="https://jserizay.com/BiocBookDemo/devel/">BiocBook book</a>.</p>
 
 
 </section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

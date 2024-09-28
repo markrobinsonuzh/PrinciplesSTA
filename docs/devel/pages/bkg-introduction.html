@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – PrinciplesSTA</title>
+<title>1&nbsp; Introduction – Principles of Spatial Transcriptomics Analysis with Bioconductor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,23 +118,6 @@ div.csl-indent {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">PrinciplesSTA</a> 
-        <div class="sidebar-tools-main">
-    <div class="dropdown">
-      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-git"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://github.com/lmweber/PrinciplesSTA/">
-            Source Code
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://lmweber.github.io/PrinciplesSTA/devel/">
-            Browse version `devel`
-            </a>
-          </li>
-      </ul>
-    </div>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -203,7 +186,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/seq-load-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Load sequencing-based data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Load data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -292,7 +275,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/img-load-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Load imaging-based data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Load data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -338,10 +321,10 @@ div.csl-indent {
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span class="header-section-number">1.1</span> Overview</a></li>
   <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents"><span class="header-section-number">1.2</span> Contents</a></li>
-  <li><a href="#scope-and-who-this-book-is-for" id="toc-scope-and-who-this-book-is-for" class="nav-link" data-scroll-target="#scope-and-who-this-book-is-for"><span class="header-section-number">1.3</span> Scope and who this book is for</a></li>
+  <li><a href="#sec-bkg-scope" id="toc-sec-bkg-scope" class="nav-link" data-scroll-target="#sec-bkg-scope"><span class="header-section-number">1.3</span> Scope and who this book is for</a></li>
   <li><a href="#bioconductor" id="toc-bioconductor" class="nav-link" data-scroll-target="#bioconductor"><span class="header-section-number">1.4</span> Bioconductor</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="header-section-number">1.5</span> Additional resources</a></li>
-  <li><a href="#contributions" id="toc-contributions" class="nav-link" data-scroll-target="#contributions"><span class="header-section-number">1.6</span> Contributions</a></li>
+  <li><a href="#additional-introductory-resources" id="toc-additional-introductory-resources" class="nav-link" data-scroll-target="#additional-introductory-resources"><span class="header-section-number">1.5</span> Additional introductory resources</a></li>
+  <li><a href="#feedback-and-contributions" id="toc-feedback-and-contributions" class="nav-link" data-scroll-target="#feedback-and-contributions"><span class="header-section-number">1.6</span> Feedback and contributions</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -370,7 +353,7 @@ div.csl-indent {
 
 <section id="overview" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">1.1</span> Overview</h2>
-<p>This book provides discussion and interactive examples on computational analysis workflows for spatial transcriptomics data, using the <a href="http://bioconductor.org/">Bioconductor</a> framework within R.</p>
+<p>This book provides interactive examples and discussion on the key principles of computational analysis workflows for spatial transcriptomics data, using <a href="http://bioconductor.org/">Bioconductor</a> in R. The chapters cover individual analysis steps and longer workflows, with included examples consisting of runnable R code and datasets.</p>
 </section>
 <section id="contents" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="contents"><span class="header-section-number">1.2</span> Contents</h2>
@@ -382,33 +365,32 @@ div.csl-indent {
 <li><p><strong>Appendix:</strong> related resources, acknowledgments</p></li>
 </ul>
 </section>
-<section id="scope-and-who-this-book-is-for" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="scope-and-who-this-book-is-for"><span class="header-section-number">1.3</span> Scope and who this book is for</h2>
-<p>The aim of this book is to demonstrate computational analysis workflows for spatial transcriptomics data through interactive examples and discussion using R code and example datasets. We assume some familiarity with R programming and an understanding of the types of biological questions that single-cell and spatial transcriptomics can be used to answer. Previous experience with Bioconductor is not required. By working through the examples in this book, readers will be able to adapt or extend the example workflows to analyze their own data.</p>
-<p>In general, we focus on downstream analysis methods, which start with a gene expression count table and spatial coordinates as the main inputs. Preprocessing procedures to generate gene expression count tables are covered in other resources (e.g.&nbsp;our related book <a href="https://lmweber.org/Visium-data-preprocessing/">Visium Data Preprocessing</a> for data from the 10x Genomics Visium platform) and tutorials provided by the manufacturers of the technological platforms. For molecule-based platforms, we will usually use data that has been aggregated to the cell level.</p>
-<p>For analysis steps where a number of different methods are available, we will showcase examples of methods that we have found to work well and are computationally scalable, with a preference for methods available through Bioconductor.</p>
-<p>All methods used in this book are available through Bioconductor or CRAN (in R) or PyPI (in Python) to ensure installability and long-term maintenance. We also mention a number of additional methods that are available as packages from GitHub, but these are not run within the code examples.</p>
+<section id="sec-bkg-scope" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-bkg-scope"><span class="header-section-number">1.3</span> Scope and who this book is for</h2>
+<p>The aim of this book is to demonstrate the key principles of computational analysis workflows for spatial transcriptomics data through interactive examples and discussion using R code and example datasets. We assume some familiarity with R programming and an understanding of the types of biological questions that single-cell and spatial transcriptomics can be used to answer. Previous experience with Bioconductor is not required.</p>
+<p>The book focuses on downstream analyses, which start with a spot-level or cell-level gene expression count table and spatial coordinates as the main inputs. Preprocessing procedures to generate these inputs from the raw data for the various technological platforms are described in other resources (e.g.&nbsp;in our related book <a href="https://lmweber.org/Visium-data-preprocessing/">Visium Data Preprocessing</a> for the 10x Genomics Visium platform) and tutorials provided by the platform manufacturers.</p>
+<p>For most analysis steps, a number of methods are available to choose from. In general, we will showcase methods that we have found to work well and are computationally scalable, with a preference for methods available through Bioconductor. The book is not intended to provide a comprehensive listing of all available methods.</p>
+<p>In the code examples, we will only include methods that are available through Bioconductor or CRAN (in R) or PyPI (in Python). This restriction helps ensure long-term stability and maintainability, enables regular testing via the Bioconductor build system, and makes it easier to adapt the examples to integrate new methods or build extended Bioconductor-based workflows. Some methods that are only available from GitHub or other sources will also be mentioned in the text.</p>
 </section>
 <section id="bioconductor" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="bioconductor"><span class="header-section-number">1.4</span> Bioconductor</h2>
-<p><a href="http://bioconductor.org/">Bioconductor</a> is an ‘open source and open development’ project providing a cohesive and flexible framework for rigorous and reproducible analyses of high-throughput genomic data in R <span class="citation" data-cites="Huber2015">(<a href="#ref-Huber2015" role="doc-biblioref">Huber et al. 2015</a>)</span>. Bioconductor provides access to more than 2,000 contributed R packages, as well as infrastructure maintained by the Bioconductor Core Team, providing a rich analysis environment for users.</p>
-<p>A key strength of the Bioconductor framework is the modularity and open development philosophy. R packages are contributed by numerous research groups around the world, with the Bioconductor Core Team coordinating the overall project and maintaining infrastructure, build testing, and development guidelines. Contributed packages use consistent data structures, enabling users to connect packages developed by different groups to build analysis workflows that include the latest state-of-the-art methods. Bioconductor packages also include comprehensive documentation, including long-form tutorials or package vignettes.</p>
+<p><a href="https://bioconductor.org/">Bioconductor</a> is an ‘open source and open development’ project providing a cohesive and flexible framework for rigorous and reproducible analyses of high-throughput genomic data in R <span class="citation" data-cites="Huber2015">(<a href="#ref-Huber2015" role="doc-biblioref">Huber et al. 2015</a>)</span>. Bioconductor provides access to more than 2000 contributed R packages, as well as infrastructure maintained by the Bioconductor Core Team, providing a rich analysis environment for users.</p>
+<p>A key strength of the Bioconductor framework is the modularity and open development philosophy. Packages are contributed by research groups around the world, with the Bioconductor Core Team coordinating the overall project and maintaining infrastructure, build testing, and development guidelines. Contributed packages use consistent data structures, enabling users to easily connect packages developed by different research groups to build analysis workflows that include the latest state-of-the-art methods. Bioconductor packages also include comprehensive documentation, including long-form tutorials and package vignettes.</p>
 </section>
-<section id="additional-resources" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">1.5</span> Additional resources</h2>
-<p>For readers who are new to R and Bioconductor, additional useful resources include:</p>
+<section id="additional-introductory-resources" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="additional-introductory-resources"><span class="header-section-number">1.5</span> Additional introductory resources</h2>
+<p>For readers who are new to R and/or Bioconductor, additional useful resources include:</p>
 <ul>
-<li><p>The <a href="https://bioconductor.org/books/release/OSCA/">Orchestrating Single-Cell Analysis with Bioconductor (OSCA)</a> online book <span class="citation" data-cites="Amezquita2020">(<a href="#ref-Amezquita2020" role="doc-biblioref">Amezquita et al. 2020</a>)</span>, which contains comprehensive materials on analysis workflows for non-spatial single-cell data as well as further introductory materials on R and Bioconductor.</p></li>
+<li><p>The <a href="https://bioconductor.org/books/release/OSCA/">Orchestrating Single-Cell Analysis with Bioconductor (OSCA)</a> online book <span class="citation" data-cites="Amezquita2020">(<a href="#ref-Amezquita2020" role="doc-biblioref">Amezquita et al. 2020</a>)</span>, which contains comprehensive materials on analysis workflows for non-spatial single-cell data, as well as further introductory materials on R and Bioconductor.</p></li>
 <li><p>The <a href="https://r4ds.had.co.nz/">R for Data Science</a> online book provides an excellent introduction to R.</p></li>
 <li><p><a href="https://datacarpentry.org/">Data Carpentry</a> and <a href="https://software-carpentry.org/">Software Carpentry</a> provide online lesson materials on R programming, the Unix shell, and version control.</p></li>
 <li><p>The R/Bioconductor Data Science Team at the Lieber Institute for Brain Development has a <a href="https://lcolladotor.github.io/bioc_team_ds/rbioconductor-data-science-bootcamps.html">detailed guide</a> of free resources and videos to learn more about R and Bioconductor, as well as <a href="https://www.youtube.com/c/LeonardoColladoTorres/playlists">YouTube videos</a>, including some on the basics of Bioconductor and infrastructure for storing gene expression data.</p></li>
-<li><p>The <a href="https://lmweber.org/Visium-data-preprocessing/">Visium Data Preprocessing</a> online book provides details on data preprocessing procedures for spatial transcriptomics data from the 10x Genomics Visium platform.</p></li>
 </ul>
 </section>
-<section id="contributions" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="contributions"><span class="header-section-number">1.6</span> Contributions</h2>
-<p>We welcome suggestions for updates and additions to the book. Suggestions may be provided as <a href="https://github.com/lmweber/PrinciplesSTA/issues">GitHub issues</a> for further discussion with the maintainers.</p>
-<p>Note that all methods to be run within code examples must be available as either R packages from Bioconductor or CRAN, or Python packages from PyPI. This restriction provides readers with guarantees regarding installability, long-term availability, maintenance, and compatibility. Packages that are only available from GitHub or other repositories may be discussed within the text, but will not be included in the code examples. In general, our philosophy is to showcase examples of analysis methods that we have found to work well, are computationally scalable, user-friendly, and which can be integrated into existing Bioconductor-based workflows.</p>
+<section id="feedback-and-contributions" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="feedback-and-contributions"><span class="header-section-number">1.6</span> Feedback and contributions</h2>
+<p>We welcome feedback, suggestions, and contributions from readers in the research community. These may be provided as <a href="https://github.com/lmweber/PrinciplesSTA">GitHub</a> issues for further discussion with the developers.</p>
+<p>Note that all methods used within code examples must be available as packages from either Bioconductor or CRAN (in R) or PyPI (in Python) (see <a href="#sec-bkg-scope" class="quarto-xref"><span>Section 1.3</span></a>).</p>
 </section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
