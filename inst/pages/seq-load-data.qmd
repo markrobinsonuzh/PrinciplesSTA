@@ -1,4 +1,4 @@
-# Load sequencing-based data {#sec-seq-load-data}
+# Load data {#sec-seq-load-data}
 
 ## Overview
 

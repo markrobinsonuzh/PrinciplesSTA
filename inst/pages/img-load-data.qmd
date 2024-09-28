@@ -1,4 +1,4 @@
-# Load imaging-based data {#sec-img-load-data}
+# Load data {#sec-img-load-data}
 
 ## Overview
 
