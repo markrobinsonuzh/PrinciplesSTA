@@ -1,0 +1,30 @@
+# Acknowledgments {#sec-apx-acknowledgments}
+
+## Authors
+
+The main developers of the book are:
+
+- [Lukas M. Weber](https://lmweber.org/), Boston University, Boston, USA
+- [Helena L. Crowell](https://helenalc.github.io/), National Center for Genomic Analysis (CNAG), Barcelona, Spain
+- [Leonardo Collado-Torres](https://lcolladotor.github.io/), Lieber Institute for Brain Development, Baltimore, USA
+- [Stephanie C. Hicks](https://www.stephaniehicks.com/), Johns Hopkins University, Baltimore, USA
+
+
+## Feedback and contributions
+
+We are grateful for feedback, suggestions, and contributions received from readers in the broader research community. Feedback may be provided as [GitHub](https://github.com/lmweber/PrinciplesSTA) issues.
+
+
+## Additional acknowledgments
+
+This book is inspired by the [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://bioconductor.org/books/release/OSCA/) book [@Amezquita2020] on analysis workflows for non-spatial single-cell data using R and Bioconductor.
+
+We are especially grateful to the [Bioconductor](https://bioconductor.org/) community and the [Bioconductor Core Team](https://www.bioconductor.org/about/core-team/).
+
+
+## BiocBook
+
+This book is built using the [BiocBook](https://github.com/js2264/BiocBook) package, developed by [Jacques Serizay](https://jserizay.com/) for building Quarto books with Bioconductor. More details on BiocBook can be found in the [BiocBook book](https://jserizay.com/BiocBookDemo/devel/).
+
+
+## References {.unnumbered}

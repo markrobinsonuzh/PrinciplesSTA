@@ -1,9 +1,9 @@
-Package: BestPracticesST
-Title: Best Practices for Spatial Transcriptomics Analysis with Bioconductor
-Description: This package contains source code and materials for the 'Best 
-    Practices for Spatial Transcriptomics Analysis with Bioconductor' online 
+Package: PrinciplesSTA
+Title: Principles of Spatial Transcriptomics Analysis with Bioconductor
+Description: This package contains source code and materials for the 
+    'Principles of Spatial Transcriptomics Analysis with Bioconductor' online 
     book. The book contains examples of analysis steps and workflows 
-    demonstrating best practices for spatial transcriptomics analyses using the 
+    demonstrating principles of spatial transcriptomics analyses using the 
     Bioconductor framework in R. The examples include R code and downloadable 
     datasets.
 Version: 0.99.0
@@ -21,8 +21,8 @@ Authors@R:
              role = c("aut"), 
              email = "shicks19@jhu.edu", 
              comment = c(ORCID = "0000-0002-7858-0231")))
-URL: https://github.com/lmweber/BestPracticesST
-BugReports: https://github.com/lmweber/BestPracticesST
+URL: https://github.com/lmweber/PrinciplesSTA
+BugReports: https://github.com/lmweber/PrinciplesSTA
 biocViews: 
     Book, 
     Spatial, 

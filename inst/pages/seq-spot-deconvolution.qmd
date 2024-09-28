@@ -1,8 +1,8 @@
-# Spot deconvolution {#sec-spot-deconvolution}
+# Spot deconvolution {#sec-seq-spot-deconvolution}
 
 ## Overview
 
-Spot-level ST data (e.g. from the 10x Genomics Visium platform) can contain zero, one, or multiple cells per spot, depending on the spatial resolution of the platform and the tissue cell density. This characteristic of the data affects several steps in analysis workflows, including quality control (@sec-quality-control) and clustering (@sec-clustering).
+Spot-level ST data (e.g. from the 10x Genomics Visium platform) can contain zero, one, or multiple cells per spot, depending on the spatial resolution of the platform and the tissue cell density. This characteristic of the data affects several steps in analysis workflows, including quality control (@sec-seq-quality-control) and clustering (@sec-seq-clustering).
 
 Note that this is also a characteristic of ST data that is distinct from single-cell RNA sequencing data, so here we cannot easily apply existing methods from single-cell workflows.
 
@@ -13,7 +13,7 @@ In this section, we will demonstrate methods to deconvolve cell types per spot.
 
 ## Load data from previous steps
 
-We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-analysis-steps.
+We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-seq-analysis-steps.
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)

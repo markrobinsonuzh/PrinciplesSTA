@@ -1,4 +1,4 @@
-# Spatial co-localization {#sec-spatial-co-localization}
+# Spatial co-localization {#sec-seq-spatial-co-localization}
 
 
 ## Overview
@@ -10,7 +10,7 @@ For these analyses, we will use a different dataset that provides single-cell sp
 
 ## Load data from previous steps
 
-We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-analysis-steps.
+We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-seq-analysis-steps.
 <!--
 ```{r, message=FALSE, results='hide'}
 

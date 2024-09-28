@@ -1,4 +1,4 @@
-# Feature selection {#sec-feature-selection}
+# Feature selection {#sec-seq-feature-selection}
 
 
 ## Overview
@@ -9,7 +9,7 @@ Here we apply feature selection methods to identify highly variable genes (HVGs)
 
 ## Load data from previous steps
 
-We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-analysis-steps.
+We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-seq-analysis-steps.
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)
@@ -129,7 +129,7 @@ rowData(spe_nnSVG)$gene_name[which(rowData(spe_nnSVG)$rank == 1)]
 
 ### Downstream analyses
 
-The set of top SVGs from nnSVG may then be investigated further, e.g. by plotting the spatial expression of several top genes and by comparing the list of top genes with known gene sets associated with biological processes of interest in the dataset. The set of top SVGs may also be used as the input for further downstream analyses such as spatially-aware clustering to define spatial domains (see @sec-clustering).
+The set of top SVGs from nnSVG may then be investigated further, e.g. by plotting the spatial expression of several top genes and by comparing the list of top genes with known gene sets associated with biological processes of interest in the dataset. The set of top SVGs may also be used as the input for further downstream analyses such as spatially-aware clustering to define spatial domains (see @sec-seq-clustering).
 
 
 ## References {.unnumbered}

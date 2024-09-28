@@ -1,4 +1,4 @@
-# Spatial transcriptomics {#sec-spatial-transcriptomics}
+# Spatial transcriptomics {#sec-bkg-spatial-transcriptomics}
 
 ## Overview
 
@@ -33,7 +33,7 @@ Histology images generated from hematoxylin and eosin (H&E) staining can be used
 The 10x Genomics Visium platform is based on the original technological implementation developed by @Stahl2016.
 
 ```{r, echo = FALSE, out.width = "75%", fig.cap = "Schematic illustrating the 10x Genomics Visium platform. Source: [10x Genomics Visium](https://www.10xgenomics.com/spatial-transcriptomics/)"}
-knitr::include_graphics("https://raw.githubusercontent.com/lmweber/BestPracticesST-resources/main/images/Visium.png")
+knitr::include_graphics("https://raw.githubusercontent.com/lmweber/PrinciplesSTA-resources/main/images/Visium.png")
 ```
 
 

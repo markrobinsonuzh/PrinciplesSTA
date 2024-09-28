@@ -1,7 +1,7 @@
-# Workflows for sequencing-based data {#sec-workflows-sequencing-based}
+# Workflows for sequencing-based data {#sec-seq-workflows}
 
 The following chapters contain examples of extended analysis workflows for data from sequencing-based platforms.
 
 Each chapter uses a specific example dataset and a selected set of analysis methods. The workflows have been selected to showcase certain types of analyses or datasets from specific technological platforms. Each workflow includes some discussion on the analyses and methods used, and interactive R code examples.
 
-For more details on the individual analysis steps, see the chapters in the previous part (@sec-analysis-steps).
+For more details on the individual analysis steps, see the chapters in the previous part (@sec-seq-analysis-steps).

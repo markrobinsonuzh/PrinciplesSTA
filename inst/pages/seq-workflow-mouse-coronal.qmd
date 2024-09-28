@@ -1,4 +1,4 @@
-# Workflow: Mouse coronal {#sec-mouse-coronal-workflow}
+# Workflow: Mouse coronal {#sec-seq-workflow-mouse-coronal}
 
 
 ## Overview
