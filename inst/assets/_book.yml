@@ -26,8 +26,15 @@ book:
         - pages/workflow-spatialibd.qmd
     - part: "Imaging-based platforms"
       chapters:
-        - pages/load-imaging-based-data.qmd
-        - pages/workflows-imaging-based.qmd
+        - pages/img-introduction.qmd
+        - pages/img-quality-control.qmd
+        - pages/img-clustering.qmd
+        - pages/img-neighbors.qmd
+        - pages/img-spat-stat.qmd
+        - pages/img-cell-comm.qmd
+        - pages/img-sub-cellular.qmd
+        #- pages/load-imaging-based-data.qmd
+        #- pages/workflows-imaging-based.qmd
   appendices:
     - pages/related-resources.qmd
     - pages/acknowledgments.qmd

@@ -1,0 +1,6 @@
+# Spatial statistics
+
+- `r BiocStyle::Githubpkg("mjemons/spatialFDA")`
+- `r BiocStyle::Githubpkg("sgunz/sosta")`
+
+## References {.unnumbered}
