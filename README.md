@@ -43,4 +43,4 @@ Image files are stored separately in the [PrinciplesSTA-resources](https://githu
 
 ## BiocBook
 
-The book is built using the [BiocBook](https://github.com/js2264/BiocBook) package, developed by [Jacques Serizay](https://jserizay.com/) for building Quarto books with Bioconductor. For more details on building a book with BiocBook, see the [BiocBook book](https://jserizay.com/BiocBookDemo/devel/).
+This book is built using the [BiocBook](https://github.com/js2264/BiocBook) package, developed by [Jacques Serizay](https://jserizay.com/) for building Quarto books with Bioconductor. More details on BiocBook can be found in the [BiocBook book](https://jserizay.com/BiocBookDemo/devel/).
