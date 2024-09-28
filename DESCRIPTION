@@ -32,18 +32,25 @@ biocViews:
 Depends:
     R (>= 4.3)
 Imports:
-    SpatialExperiment, 
-    STexampleData, 
-    scater, 
-    scran, 
-    ggspavis, 
-    nnSVG, 
-    pheatmap, 
-    spatialLIBD, 
+    dplyr, 
     igraph, 
     BiocFileCache, 
+    ExperimentHub, 
+    ggplot2, 
+    ggspavis, 
+    lobstr,
+    nnSVG, 
+    patchwork, 
+    pheatmap, 
+    RANN, 
     rtracklayer, 
-    lobstr
+    scater, 
+    scran, 
+    SpatialExperiment, 
+    STexampleData, 
+    spatialLIBD,
+    tidyr,
+    zoo
 Suggests:
     BiocManager, 
     BiocVersion, 
