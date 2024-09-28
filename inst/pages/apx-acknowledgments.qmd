@@ -2,7 +2,7 @@
 
 ## Authors
 
-The main developers of the book are:
+The main developers of this book are:
 
 - [Lukas M. Weber](https://lmweber.org/), Boston University, Boston, USA
 - [Helena L. Crowell](https://helenalc.github.io/), National Center for Genomic Analysis (CNAG), Barcelona, Spain
@@ -12,14 +12,14 @@ The main developers of the book are:
 
 ## Feedback and contributions
 
-We are grateful for feedback, suggestions, and contributions received from readers in the broader research community. Feedback may be provided as [GitHub](https://github.com/lmweber/PrinciplesSTA) issues.
+We are grateful for feedback, suggestions, and contributions from readers in the research community. These may be provided as [GitHub](https://github.com/lmweber/PrinciplesSTA) issues (see @sec-bkg-introduction-feedback).
 
 
 ## Additional acknowledgments
 
-This book is inspired by the [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://bioconductor.org/books/release/OSCA/) book [@Amezquita2020] on analysis workflows for non-spatial single-cell data using R and Bioconductor.
+- This book is inspired by the [Orchestrating Single-Cell Analysis with Bioconductor (OSCA)](https://bioconductor.org/books/release/OSCA/) book [@Amezquita2020] on analysis workflows for non-spatial single-cell data using R and Bioconductor.
 
-We are especially grateful to the [Bioconductor](https://bioconductor.org/) community and the [Bioconductor Core Team](https://www.bioconductor.org/about/core-team/).
+- We are especially grateful to the [Bioconductor](https://bioconductor.org/) community and the [Bioconductor Core Team](https://www.bioconductor.org/about/core-team/).
 
 
 ## BiocBook

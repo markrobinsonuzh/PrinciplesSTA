@@ -29,8 +29,8 @@ book:
         - pages/img-load-data.qmd
         - pages/img-workflows.qmd
   appendices:
-    - pages/apx-related-resources.qmd
     - pages/apx-acknowledgments.qmd
+    - pages/apx-related-resources.qmd
   cover-image: assets/cover.png
   favicon: assets/favicon.png
   sidebar: 
