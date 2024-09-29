@@ -1,9 +1,8 @@
 # Clustering {#sec-seq-clustering}
 
+## Introduction
 
-## Overview
-
-In ST data, we can apply clustering algorithms to identify 'spatial domains', which represent spatially defined regions consisting of relatively consistent gene expression profiles. For example, spatial domains may consist of regions containing cells from a single cell type or a consistent mixture of cell types.
+In ST data, we can apply clustering algorithms to identify spatial domains, which represent spatially defined regions consisting of relatively consistent gene expression profiles. For example, spatial domains may consist of regions containing cells from a single cell type or a consistent mixture of cell types.
 
 Several alternative approaches exist for these analyses. For example, we can apply standard clustering algorithms from single-cell workflows to identify cell types without taking any spatial information into account, and then analyze the spatial distributions of these cell types. Alternatively, we can use spatially-aware clustering algorithms that directly take the spatial coordinates of the measurements into account. For larger datasets, there may also be important computational tradeoffs between the various approaches.
 
@@ -12,17 +11,15 @@ It is also important to keep in mind that when we use clustering to define cell 
 Once we have identified spatial domains, these can then be further investigated in additional downstream analyses.
 
 
+## Load previously saved data
 
-## Load data from previous steps
-
-We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-seq-analysis-steps.
+We start by loading the previously saved data object(s) (see @sec-seq-normalization-save-objects and @sec-seq-dimensionality-reduction-save-objects).
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)
 spe <- readRDS("spe_reduceddims.rds")
 spe_full <- readRDS("spe_logcounts.rds")
 ```
-
 
 
 ## Non-spatial clustering
@@ -49,7 +46,6 @@ table(clus)
 # store cluster labels in column 'label' in colData
 colLabels(spe) <- factor(clus)
 ```
-
 
 Visualize the clusters by plotting in (i) spatial (x-y) coordinates on the tissue slide, and (ii) reduced dimension space (PCA or UMAP). We use plotting functions from the [ggspavis](https://bioconductor.org/packages/ggspavis) package.
 
@@ -82,12 +78,22 @@ plotDimRed(spe, plot_type = "UMAP",
 ```
 
 
+## Save objects for later chapters {#sec-seq-clustering-save-objects}
+
+We also save the object(s) in `.rds` format for re-use within later chapters to speed up the build time of the book.
+
+```{r}
+# save object(s)
+saveRDS(spe, file = "spe_clustering.rds")
+```
+
 
 ## Spatially-aware clustering
 
 The example above shows that non-spatial clustering can capture some spatial relationships in ST data, primarily if these are due to spatially distributed cell types and where the cell types can be identified from their gene expression profiles alone. However, this does not directly make use of the spatial information contained in the measurements.
 
-In many ST datasets, we can uncover further structure by performing analyses that directly take spatial information into account. Below, we demonstrate examples of these types of analyses, which we refer to as 'spatially-aware clustering'.
+In many ST datasets, we can uncover further structure by performing analyses that directly take spatial information into account. Below, we demonstrate examples of these types of analyses, which we refer to as 
+"spatially-aware clustering".
 
 
 ### Clustering using SVGs
@@ -126,7 +132,6 @@ spe_nnSVG <- logNormCounts(spe_nnSVG)
 set.seed(123)
 spe_nnSVG <- nnSVG(spe_nnSVG)
 ```
-
 
 Now that we have run nnSVG, we can select at set of top SVGs (instead of HVGs), and use these as the input for the subsequent clustering steps.
 
@@ -180,7 +185,7 @@ Examples of spatially-aware clustering algorithms include:
 
 - **BayesSpace**: available as an R package from [Bioconductor](https://bioconductor.org/packages/BayesSpace) and described by @Zhao2021
 
-- **BANKSY**: available as an R package from Bioconductor [version 3.9 onwards](https://bioconductor.org/packages/devel/bioc/html/Banksy.html) and described by @Singhal2024
+- **BANKSY**: available as an R package from [Bioconductor](https://bioconductor.org/packages/Banksy) and described by @Singhal2024
 
 - **SpaGCN**: available as a Python package from [GitHub](https://github.com/jianhuupenn/SpaGCN) and described by @Hu2021
 

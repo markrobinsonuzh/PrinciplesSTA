@@ -26,14 +26,12 @@ intro <- tryCatch(
 
 ## Docker image {-}
 
-A `Docker` image built from this repository is available here:
-
-[ghcr.io/lmweber/principlessta](https://ghcr.io/lmweber/principlessta)
+A `Docker` image built from this repository is available here: [ghcr.io/lmweber/principlessta](https://ghcr.io/lmweber/principlessta)
 
 ::: {.callout-tip icon='true'}
 ## Get started now
 
-You can get access to all the packages used in this book in < 1 minute, using this command in a terminal:
+You can get access to all the packages used in this book in <1 minute, using this command in a terminal:
 
 ```{sh "docker", filename="bash"}
 #| eval: false
@@ -56,7 +54,7 @@ docker run \
     ghcr.io/lmweber/principlessta:devel
 ```
 
-The initiated RStudio Server instance will be available at [https://localhost:8787](https://localhost:8787).
+The initiated RStudio Server instance will be available at: [https://localhost:8787](https://localhost:8787)
 
 
 ## BiocBook

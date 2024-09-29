@@ -1,23 +1,21 @@
 # Load data {#sec-seq-load-data}
 
-## Overview
+## Introduction
 
-In the following chapters, we apply analysis methods to spatial transcriptomics datasets from sequencing-based platforms, which are formatted as `SpatialExperiment` objects or objects from other Bioconductor data classes (see @sec-bkg-bioconductor-data-classes).
+The following chapters provide examples demonstrating methods for individual analysis steps for spatial transcriptomics data from sequencing-based platforms.
 
-Here, we load a 10x Genomics Visium dataset that will be used in several of the following chapters.
+In these chapters, we assume the datasets are formatted as `SpatialExperiment` objects (see @sec-bkg-bioconductor-data-classes).
 
-This dataset has previously been preprocessed using data preprocessing procedures with tools outside R and saved in `SpatialExperiment` format. For more details on data preprocessing procedures for the 10x Genomics Visium platform, see the related online book [Visium Data Preprocessing](https://lmweber.org/Visium-data-preprocessing/).
-
-This dataset is available for download in `SpatialExperiment` format from the [STexampleData](https://bioconductor.org/packages/STexampleData) Bioconductor package.
+Here, we load a 10x Genomics Visium dataset that will be used in several of the following chapters. This dataset has previously been preprocessed using data preprocessing procedures with tools outside R and saved in `SpatialExperiment` format. (For more details on data preprocessing procedures for the Visium platform, see the related online book [Visium Data Preprocessing](https://lmweber.org/Visium-data-preprocessing/), also listed in @sec-apx-related-resources-data-preprocessing.) This dataset is available for download in `SpatialExperiment` format from the [STexampleData](https://bioconductor.org/packages/STexampleData) Bioconductor package.
 
 
 ## Dataset
 
-This dataset consists of one sample (Visium capture area) from one donor, consisting of postmortem human brain tissue from the dorsolateral prefrontal cortex (DLPFC) brain region, measured with the 10x Genomics Visium platform. The dataset is described in the original publication by @Maynard2021.
+This dataset consists of one sample (Visium capture area) from one donor, consisting of postmortem human brain tissue from the dorsolateral prefrontal cortex (DLPFC) brain region, measured with the 10x Genomics Visium platform. The dataset is described in @Maynard2021.
 
 More details on the dataset are also included in @sec-seq-workflow-human-dlpfc.
 
-<!-- To do: move additional details on dataset here (from DLPFC workflow chapter) -->
+<!-- To do: additional details on dataset here (from DLPFC workflow chapter) -->
 
 
 ## Load data
@@ -27,9 +25,21 @@ Download and load the dataset in `SpatialExperiment` format from the [STexampleD
 ```{r, message=FALSE}
 library(SpatialExperiment)
 library(STexampleData)
+```
 
+```{r}
 # load object
 spe <- Visium_humanDLPFC()
+```
+
+
+## Save objects for later chapters {#sec-seq-load-data-save-objects}
+
+We also save the object(s) in `.rds` format for re-use within later chapters to speed up the build time of the book.
+
+```{r}
+# save object(s)
+saveRDS(spe, file = "spe_load.rds")
 ```
 
 
@@ -37,7 +47,7 @@ spe <- Visium_humanDLPFC()
 
 Check the structure of the `SpatialExperiment` object. For more details on the `SpatialExperiment` structure, see @sec-bkg-bioconductor-data-classes.
 
-```{r, message=FALSE}
+```{r}
 # check object
 spe
 
@@ -69,7 +79,7 @@ Here, we provide a short example with an empty dataset.
 
 For more details, including how to load raw data from the 10x Genomics Space Ranger output files to build an object, or how to add image data to the object, see the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) documentation.
 
-```{r, message=FALSE}
+```{r}
 # create data
 n_genes <- 200
 n_spots <- 100

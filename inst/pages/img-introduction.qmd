@@ -11,7 +11,7 @@ Aligning spots along the image z-stack then allows to identify individual target
 knitr::include_graphics("https://moffittlab.github.io/img/MERFISH%20Introduction-01.png")
 ```
 
-::: {.callout-note title="high-plex barcoding" collapse="true"}
+::: {.callout-note collapse="true" title="high-plex barcoding"}
 1,000-plex CosMx, for example, employs 64-bit barcodes (4 immunofluorescent reports over 16 cycles of imaging-bleaching) with a Hamming weight and distance of 4 (i.e., every target is 'on' in 4 rounds and 'off' in 12 rounds; each barcode differs from all others by 4 bits as to minimize RNA decoding errors).
 Combinatorially, a 64-bit barcoding scheme is sufficient to encode a much larger number of targets, namely, ~20,000 protein-coding genes.
 :::
@@ -22,7 +22,7 @@ Commercially available panels can typically include three types of barcodes:
 - **Negative probes** serve to quantify non-specific binding.
 - **System controls** serve to quantify spot calling errors.
 
-::: {.callout-note title="non-RNA targets" collapse="true"}
+::: {.callout-note collapse="true" title="non-RNA targets"}
 Modeled after synthetic sequences from the External RNA Controls Consortium (ERCC), **negative probes** contain hybridization regions that are not complementary to the genome or transcriptome of the organism under study; their detection thus corresponds to non-specific ISH probe hybridization events (e.g., in 'sticky' regions of the tissue). 
 
 Depending on the barcoding scheme (number of bits, Hamming weight/distance), a number of barcodes will be left unoccupied; these **system controls** (also referred to as blank or false codes) serve to quantify misidentification of reporter readout.

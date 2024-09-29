@@ -1,15 +1,13 @@
 # Feature selection {#sec-seq-feature-selection}
 
-
-## Overview
+## Introduction
 
 Here we apply feature selection methods to identify highly variable genes (HVGs) or spatially variable genes (SVGs), which can then be investigated individually or used as the input for further downstream analyses such as clustering.
 
 
+## Load previously saved data
 
-## Load data from previous steps
-
-We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-seq-analysis-steps.
+We start by loading the previously saved data object(s) (see @sec-seq-normalization-save-objects).
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)
@@ -17,10 +15,9 @@ spe <- readRDS("spe_logcounts.rds")
 ```
 
 
-
 ## Highly variable genes (HVGs)
 
-We use methods from `scran` [@Lun2016] to identify a set of top highly variable genes (HVGs), which can be used to define major cell types. These methods were originally developed for single-cell RNA sequencing (scRNA-seq) data, so here we are making the assumption that spots can be treated as equivalent to cells.
+We use methods from `scran` [@Lun2016] to identify a set of top highly variable genes (HVGs), which can be used to define major cell types. These methods were originally developed for single-cell RNA-seq data, so here we are making the assumption that spots can be treated as equivalent to cells.
 
 Note that HVGs are defined based only on molecular features (i.e. gene expression), and do not take any spatial information into account. If the biologically meaningful spatial information in this dataset mainly reflects spatial distributions of cell types, then relying on HVGs for downstream analyses may be sufficient. However, many datasets contain further spatial structure that is not captured in this way, which may be investigated using spatially-aware methods such as identifying spatially variable genes (SVGs).
 
@@ -35,7 +32,6 @@ table(is_mito)
 spe <- spe[!is_mito, ]
 dim(spe)
 ```
-
 
 Then, we apply methods from `scran`. This gives us a list of HVGs, which can be used for further downstream analyses. The parameter `prop` defines how many HVGs we want. For example `prop = 0.1` returns the top 10% of genes.
 
@@ -56,6 +52,16 @@ top_hvgs <- getTopHVGs(dec, prop = 0.1)
 length(top_hvgs)
 ```
 
+
+## Save objects for later chapters {#sec-seq-feature-selection-save-objects}
+
+We also save the object(s) in `.rds` format for re-use within later chapters to speed up the build time of the book.
+
+```{r}
+# save object(s)
+saveRDS(spe, file = "spe_hvgs.rds")
+saveRDS(top_hvgs, file = "top_hvgs.rds")
+```
 
 
 ## Spatially variable genes (SVGs)

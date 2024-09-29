@@ -6,7 +6,7 @@
 
 ## Overview
 
-This repository contains source files for the 'Principles of Spatial Transcriptomics Analysis with Bioconductor' book.
+This repository contains source files for the "Principles of Spatial Transcriptomics Analysis with Bioconductor" book.
 
 
 ## Link to book

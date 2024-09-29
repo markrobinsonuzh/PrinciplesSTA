@@ -1,11 +1,11 @@
 Package: PrinciplesSTA
 Title: Principles of Spatial Transcriptomics Analysis with Bioconductor
-Description: This package contains source code and materials for the 
-    'Principles of Spatial Transcriptomics Analysis with Bioconductor' online 
-    book. The book contains examples of analysis steps and workflows 
-    demonstrating principles of spatial transcriptomics analyses using the 
-    Bioconductor framework in R. The examples include R code and downloadable 
-    datasets.
+Description: This package contains source files for the "Principles of Spatial 
+    Transcriptomics Analysis with Bioconductor" online book. This book provides 
+    interactive examples and discussion on key principles of computational 
+    analysis workflows for spatial transcriptomics data using Bioconductor in 
+    R. The book contains chapters describing individual analysis steps as well 
+    as extended workflows, each with examples including R code and datasets.
 Version: 0.99.0
 Date: `r date()`
 Authors@R: 
@@ -29,20 +29,24 @@ biocViews:
     SingleCell, 
     Transcriptomics, 
     GeneExpression
-Depends:
+Depends: 
     R (>= 4.3)
 Imports:
+    Banksy,
     dplyr, 
     igraph, 
     BiocFileCache, 
     ExperimentHub, 
     ggplot2, 
     ggspavis, 
+    hoodscanR,
+    imcRtools, 
     lobstr,
     nnSVG, 
     patchwork, 
     pheatmap, 
-    RANN, 
+    RANN,
+    RColorBrewer,
     rtracklayer, 
     scater, 
     scran, 
@@ -51,13 +55,13 @@ Imports:
     spatialLIBD,
     tidyr,
     zoo
-Suggests:
+Suggests: 
     BiocManager, 
     BiocVersion, 
     BiocStyle, 
-    glue,
-    sessioninfo,
-    knitr 
+    glue, 
+    sessioninfo, 
+    knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 BiocType: Book

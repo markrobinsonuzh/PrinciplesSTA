@@ -1,26 +1,29 @@
 # Spatial co-localization {#sec-seq-spatial-co-localization}
 
-
-## Overview
+## Introduction
 
 In this chapter, we will show examples of analyses to investigate spatial co-localization of cell types.
 
 For these analyses, we will use a different dataset that provides single-cell spatial resolution, e.g. from the 10x Genomics Xenium platform.
 
 
-## Load data from previous steps
+## Load previously saved data
 
-We start by loading the data object(s) saved after running the analysis steps from the previous chapters. Code to re-run the previous steps is shown in condensed form in @sec-seq-analysis-steps.
-<!--
+We start by loading the previously saved data object(s) (see @sec-seq-clustering-save-objects).
+
 ```{r, message=FALSE, results='hide'}
-
+library(SpatialExperiment)
+spe <- readRDS("spe_clustering.rds")
 ```
--->
 
 
-## Spatial co-localization of cell types within a single sample
+## Spatial co-localization of cell types
 
-We will use the [spicyR](https://bioconductor.org/packages/spicyR) Bioconductor package [@Canete2022] for the following examples.
+Methods available from Bioconductor for this type of analysis include:
+
+- [hoodscanR](https://bioconductor.org/packages/hoodscanR) [@Liu2024]
+
+- [spicyR](https://bioconductor.org/packages/spicyR) [@Canete2022]
 
 
 <!--
