@@ -1,4 +1,6 @@
 /.quarto/
 docs/
-pages/*.html
+*_cache/
+pages/*_cache/
+pages/*_files/
 pages/*.rds

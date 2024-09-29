@@ -4,7 +4,7 @@ knitr:
     comment: "## " 
     background: "#F7F7F7"
     class.output: "code_output"
-    cache: false
+    cache: true
     fig.align: "center"
     python.reticulate: false
     R.options:
