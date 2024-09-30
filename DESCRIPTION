@@ -31,19 +31,30 @@ biocViews:
     GeneExpression
 Depends: 
     R (>= 4.3)
-Imports: 
-    SpatialExperiment, 
-    STexampleData, 
-    scater, 
-    scran, 
-    ggspavis, 
-    nnSVG, 
-    pheatmap, 
-    spatialLIBD, 
+Imports:
+    Banksy,
+    dplyr, 
     igraph, 
     BiocFileCache, 
+    ExperimentHub, 
+    ggplot2, 
+    ggspavis, 
+    hoodscanR,
+    imcRtools, 
+    lobstr,
+    nnSVG, 
+    patchwork, 
+    pheatmap, 
+    RANN,
+    RColorBrewer,
     rtracklayer, 
-    lobstr
+    scater, 
+    scran, 
+    SpatialExperiment, 
+    STexampleData, 
+    spatialLIBD,
+    tidyr,
+    zoo
 Suggests: 
     BiocManager, 
     BiocVersion, 

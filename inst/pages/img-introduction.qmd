@@ -1,0 +1,60 @@
+# Introduction
+
+Imaging-based ST assays have gone from resolving 100s to 1000s of features.
+Their commercialization by Vizgen, NanoString, and 10x Genomics has made these data increasingly popular. 
+In general, imaging-based ST platforms rely on multiplexed error-robust fluorescence *in situ* hybridization (FISH), as originally proposed by @Moffitt2016-MERFISH.
+Briefly, targets are preassigned a barcode of (multi-color) 'on' and (no-color) 'off' bits, whereas barcodes are optimized to differ from each other by some bits as to minimize readout errors.
+After iterative imaging-bleaching, individual reporter binding events are identified computationally (spot calling).
+Aligning spots along the image z-stack then allows to identify individual targets based on a predefined barcoding scheme.
+
+```{r echo=FALSE, out.width="100%", fig.lab="test", fig.cap="**Schematic of barcoded FISH** RNA targets are preassigned a sequence (= barcode) of 'on' and 'off' rounds. In each imaging round, a subset of targets is bound by a complementary probe, which is linked to a fluorescent reporter. After multiple rounds of imaging and stripping, images are decoded computationally to call targets. [*source: https://moffittlab.github.io*]"}
+knitr::include_graphics("https://moffittlab.github.io/img/MERFISH%20Introduction-01.png")
+```
+
+::: {.callout-note collapse="true" title="high-plex barcoding"}
+1,000-plex CosMx, for example, employs 64-bit barcodes (4 immunofluorescent reports over 16 cycles of imaging-bleaching) with a Hamming weight and distance of 4 (i.e., every target is 'on' in 4 rounds and 'off' in 12 rounds; each barcode differs from all others by 4 bits as to minimize RNA decoding errors).
+Combinatorially, a 64-bit barcoding scheme is sufficient to encode a much larger number of targets, namely, ~20,000 protein-coding genes.
+:::
+
+Commercially available panels can typically include three types of barcodes:
+
+- **RNA targets** determine the 'plexity' of the panel.
+- **Negative probes** serve to quantify non-specific binding.
+- **System controls** serve to quantify spot calling errors.
+
+::: {.callout-note collapse="true" title="non-RNA targets"}
+Modeled after synthetic sequences from the External RNA Controls Consortium (ERCC), **negative probes** contain hybridization regions that are not complementary to the genome or transcriptome of the organism under study; their detection thus corresponds to non-specific ISH probe hybridization events (e.g., in 'sticky' regions of the tissue). 
+
+Depending on the barcoding scheme (number of bits, Hamming weight/distance), a number of barcodes will be left unoccupied; these **system controls** (also referred to as blank or false codes) serve to quantify misidentification of reporter readout.
+:::
+
+## Platforms
+
+### Xenium (10x Genomics)
+
+Xenium employ rolling circle amplification (RCA) to boost fluorescent signals from reporter-binding events, thereby improving overall spot calling sensitivity.
+
+Early [panels](https://www.10xgenomics.com/products/xenium-panels) were low-plex (100s of targets) while allowing for flexible (and relatively affordable) customization; more recently, a 5,000-plex panel has become available.
+
+### CosMx (NanoString)
+
+Unlike Xenium, CosMx [@He2022-CosMx] does not rely on RCA.
+As a result, CosMx tends to be less sensitive than Xenium (albeit higher-plex at present).
+
+Furthermore, segmentation is performed separately for each FOV (without stitching).
+This results in a variety of technical artefacts, such as fractured and possibly duplicated cells near FOV borders.
+
+The platform currently supports universal 1,000- and 6,000-plex [panels](https://nanostring.com/products/cosmx-spatial-molecular-imager/cosmx-rna-assays), as well as 1,000-plex panels tailored to human immuno-oncology and mouse neuronal tissue; a whole-transcriptome (~18,000-plex) panel is underway.
+
+### MERSCOPE (Vizgen)
+
+## Resources
+
+- Commercially available datasets
+  - [Xenium (10x Genomics)](https://www.10xgenomics.com/datasets)
+  - [CosMx (NanoString)](https://nanostring.com/products/cosmx-spatial-molecular-imager/ffpe-dataset/)
+  - [MERSCOPE (Vizgen)](https://vizgen.com/data-release-program)
+- Platform-specific methods
+  - [CosMx analysis](https://nanostring-biostats.github.io/CosMx-Analysis-Scratch-Space)
+  
+## References {.unnumbered}
