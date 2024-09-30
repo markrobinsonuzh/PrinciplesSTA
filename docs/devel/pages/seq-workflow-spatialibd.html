@@ -601,7 +601,7 @@ div.csl-indent {
 <span><span class="va">time_prereqs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">time_prereqs</span> <span class="op">-</span> <span class="va">time_start</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="code_output"><code>##  Time difference of 1.48156 mins</code></pre>
+<pre class="code_output"><code>##  Time difference of 1.533753 mins</code></pre>
 </div>
 </div>
 </section><section id="prepare-for-spatiallibd" class="level2" data-number="17.4"><h2 data-number="17.4" class="anchored" data-anchor-id="prepare-for-spatiallibd">
@@ -635,7 +635,7 @@ div.csl-indent {
 <span><span class="va">gtf_cache</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##                                                                      BFC1 
-##  "/root/.cache/R/BiocFileCache/6ad17758d82_gencode.v32.annotation.gtf.gz"</code></pre>
+##  "/root/.cache/R/BiocFileCache/6ad7d9583e3_gencode.v32.annotation.gtf.gz"</code></pre>
 </div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Import into R (takes ~1 min)</span></span>
 <span><span class="va">gtf</span> <span class="op">&lt;-</span> <span class="fu">rtracklayer</span><span class="fu">::</span><span class="fu">import</span><span class="op">(</span><span class="va">gtf_cache</span><span class="op">)</span></span>
@@ -811,10 +811,10 @@ div.csl-indent {
 <span><span class="co">## How long this code took to run</span></span>
 <span><span class="va">time_end</span> <span class="op">-</span> <span class="va">time_prereqs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="code_output"><code>##  Time difference of 34.9074 secs</code></pre>
+<pre class="code_output"><code>##  Time difference of 34.32697 secs</code></pre>
 </div>
 </div>
-<p>Creating our final <code>spe</code> object took 2.0633500178655 to run. So you might want to save this object for later use.</p>
+<p>Creating our final <code>spe</code> object took 2.1058692852656 to run. So you might want to save this object for later use.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">spe</span>, file <span class="op">=</span> <span class="st">"spe_workflow_Visium_spatialLIBD.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1100,7 +1100,7 @@ div.csl-indent {
 ##   collate  C
 ##   ctype    en_US.UTF-8
 ##   tz       Etc/UTC
-##   date     2024-09-28
+##   date     2024-09-29
 ##   pandoc   3.4 @ /usr/bin/ (via rmarkdown)
 ##  
 ##  ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -1259,7 +1259,7 @@ div.csl-indent {
 ##   yaml                   2.3.10    2024-07-26 [2] RSPM (R 4.4.0)
 ##   zlibbioc               1.51.1    2024-06-05 [2] Bioconductor 3.20 (R 4.4.0)
 ##  
-##   [1] /tmp/Rtmpw8BP3r/Rinst8c3c80efe
+##   [1] /tmp/RtmpAWkfCW/Rinst8c9ed4df6
 ##   [2] /usr/local/lib/R/site-library
 ##   [3] /usr/local/lib/R/library
 ##  
