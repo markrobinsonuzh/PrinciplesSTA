@@ -1,4 +1,4 @@
-# Code summary: Analysis steps {#sec-seq-code-summary-analysis-steps}
+# Code summary: Analysis steps {#sec-seq-code-summary}
 
 This chapter contains a condensed summary of the code from the previous analysis steps. This can be used as a reference or to re-run earlier steps in an analysis workflow. Note that the code in this chapter is not run.
 
