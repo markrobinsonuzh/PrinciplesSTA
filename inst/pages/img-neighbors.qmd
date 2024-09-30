@@ -20,124 +20,6 @@ theme_xy <- list(
         panel.background=element_rect(fill="black")))
 ```
 
-## Spatial contexts
-
-Spatial niche analysis aims at identifying regions of homogeneous composition by grouping cells based on their microenvironment.
-To this end, methods such as `r BiocStyle::Biocpkg("imcRtools")` [@Windhager2023-imcRtools] rely on a $k$-nearest-neighbor ($k$NN) graph (based on Euclidean cell-to-cell distances), and clustering cells using common clustering algorithms (according to their neighborhood's subpopulation frequencies).
-
-Here, we demonstrate how to identify spatial contexts based on $k$-means clustering on cluster frequencies among (Euclidean) $k$NNs.
-We recommend readers consult `imcRtools`' documentation for a much wider range of visualizations and downstream analyses in this context.
-
-```{r imcRtools-calc, message=FALSE}
-library(imcRtools)
-# construct kNN-graph based on Euclidean distances
-sqe <- buildSpatialGraph(spe, 
-    coords=spatialCoordsNames(spe),
-    img_id="sample_id", type="knn", k=10)
-# compute cluster frequencies among each cell's kNNs
-sqe <- aggregateNeighbors(sqe, 
-    colPairName="knn_interaction_graph", 
-    aggregate_by="metadata", count_by="k")
-# view composition of 1st cell's kNNs
-unlist(sqe$aggregatedNeighbors[1, ]) 
-# cluster cells by neighborhood compositions
-ctx <- kmeans(sqe$aggregatedNeighbors, centers=5)
-table(sqe$ctx <- factor(ctx$cluster))
-```
-
-Let's quickly view the subpopulation composition of each spatial context:
-
-```{r imcRtools-show}
-df <- data.frame(spatialCoords(sqe), colData(sqe))
-round(100*with(df, prop.table(table(k, ctx), 2)), 2)
-```
-
-Secondly, let's visualize the obtained spatial contexts in space:
-
-```{r imcRtools-plot, fig.width=9, fig.height=3, fig.cap="Tissue plot with cells colored by cluster (left) and spatial context (right) based on $k$-means clustering of cluster frequencies among each cell's (Euclidean) $k$NNs."}
-#| code-fold: true
-pal_k <- brewer.pal(nlevels(df$k), "Paired")
-pal_c <- c("blue", "cyan", "gold", "magenta", "maroon")
-ggplot(df, aes(x_centroid, y_centroid, col=k)) + 
-    scale_color_manual(values=pal_k) +
-ggplot(df, aes(x_centroid, y_centroid, col=ctx)) + 
-    scale_color_manual(values=pal_c) +
-plot_layout(nrow=1) &
-    geom_point(shape=16, size=0) &
-    guides(col=guide_legend(override.aes=list(size=2))) &
-    theme_xy & theme(legend.key.size=unit(0.5, "lines"))
-```
-
-## Co-localization
-
-`r BiocStyle::Biocpkg("hoodscanR")` [@Liu2024-hoodscanR] also relies on a (Euclidean) $k$NN graph to estimate the probability of each cell associating with its NNs.
-The resulting $\text{#cells}\times\text{#clusters}$ probability matrix can, in turn, be used to assess co-occurrence of subpopulations. 
-
-```{r hoodscanR-calc, message=FALSE}
-library(hoodscanR)
-sqe <- readHoodData(spe, anno_col="k")
-nbs <- findNearCells(sqe, k=100)    
-mtx <- scanHoods(nbs$distance)      
-grp <- mergeByGroup(mtx, nbs$cells) 
-sqe <- mergeHoodSpe(sqe, grp)        
-```
-
-To perform neighborhood co-localization analysis, `plotColocal()` computes the Pearson correlation on the probability distribution of each cell.
-Here, **high/low values indicate attraction/repulsion** between clusters:
-
-```{r hoodscanR-plot-corr, message=FALSE, fig.width=3.5, fig.height=3}
-library(pheatmap)
-cor <- plotColocal(sqe, pm_cols=colnames(grp), return_matrix=TRUE)
-pal <- colorRampPalette(rev(hcl.colors(9, "Roma")))(100)
-pheatmap(cor, 
-    cellwidth=15, cellheight=15, 
-    treeheight_row=5, treeheight_col=5,
-    col=pal, breaks=seq(-1, 1, length=100))
-```
-
-::: {.callout-note title="measuring local mixing" collapse="true"}
-
-Downstream, `calcMetrics()` can be used to calculate cell-level [entropy](https://en.wikipedia.org/wiki/entropy_(information_theory)) and [perplexity](https://en.wikipedia.org/wiki/perplexity),
-which both measure the mixing of cellular neighborhoods.
-Here, **low/high values indicate heterogeneity/homogeneity** of a cell's local neighborhood:
-
-```{r hoodscanR-calc-mets}
-sqe <- calcMetrics(sqe, pm_cols=colnames(grp))
-```
-
-```{r hoodscanR-plot-mets-xy, fig.width=8, fig.height=3, fig.cap="Tissue plots with cells colored by entropy and perplexity, z-scaled across cells (capped at 2 SDs)."}
-#| code-fold: true
-df <- data.frame(colData(sqe), k=spe$k, spatialCoords(spe))
-vs <- c("perplexity", "entropy")
-fd <- df |>
-    mutate(across(all_of(vs), scale)) |>
-    pivot_longer(all_of(vs)) |>
-    # threshold at 2 SDs for clearer visualization
-    mutate(value=case_when(abs(value) > 2 ~ sign(value)*2, TRUE ~ value))
-ggplot(fd, aes(x_centroid, y_centroid, col=value)) +
-    facet_grid(~name) + geom_point(shape=16, size=0) + 
-    theme_xy + theme(legend.key.size=unit(0.5, "lines")) +
-    scale_color_gradient2("z-scaled\nvalue", low="cyan", mid="navy", high="magenta") 
-```
-
-Stratifying these values by subpopulation, we can observe that clusters forming distinct aggregates in space are lowest in entropy/perplexity (i.e., the most homogeneous locally):
-
-```{r hoodscanR-plot-mets-k, fig.width=7, fig.height=2.5, fig.cap="Boxplot of entropy and perplexity, stratified by cluster assignment and z-scaled across cells (capped at 2 SDs)."}
-#| code-fold: true
-ggplot(fd, aes(k, value, fill=k)) +
-    facet_wrap(~name) + 
-    scale_fill_manual(values=pal_k) + 
-    geom_boxplot(outlier.stroke=0, key_glyph="point") +
-    scale_y_continuous("z-scaled value", limits=c(-2, 2)) +
-    guides(fill=guide_legend(override.aes=list(shape=21, size=2))) +
-    theme_bw() + theme(
-        axis.title.x=element_blank(),
-        panel.grid.minor=element_blank(),
-        legend.key.size=unit(0.5, "lines"))
-```
-
-:::
-
 ## Nearest neighbors
 
 Custom spatial analyses may rely on identifying nearest neighbors (NNs) of cells.
@@ -216,6 +98,124 @@ ns <- nn2(
     k=k <- ceiling(2*.k), 
     searchtype="radius", r=r)
 max(rowSums(ns$nn.idx > 0)) < k
+```
+
+:::
+
+## Spatial contexts
+
+Spatial niche analysis aims at identifying regions of homogeneous composition by grouping cells based on their microenvironment.
+To this end, methods such as `r BiocStyle::Biocpkg("imcRtools")` [@Windhager2023-imcRtools] rely on a $k$-nearest-neighbor ($k$NN) graph (based on Euclidean cell-to-cell distances), and clustering cells using common clustering algorithms (according to their neighborhood's subpopulation frequencies).
+
+Here, we demonstrate how to identify spatial contexts based on $k$-means clustering on cluster frequencies among (Euclidean) $k$NNs.
+We recommend readers consult `imcRtools`' documentation for a much wider range of visualizations and downstream analyses in this context.
+
+```{r imcRtools-calc, message=FALSE}
+library(imcRtools)
+# construct kNN-graph based on Euclidean distances
+sqe <- buildSpatialGraph(spe, 
+    coords=spatialCoordsNames(spe),
+    img_id="sample_id", type="knn", k=10)
+# compute cluster frequencies among each cell's kNNs
+sqe <- aggregateNeighbors(sqe, 
+    colPairName="knn_interaction_graph", 
+    aggregate_by="metadata", count_by="k")
+# view composition of 1st cell's kNNs
+unlist(sqe$aggregatedNeighbors[1, ]) 
+# cluster cells by neighborhood compositions
+ctx <- kmeans(sqe$aggregatedNeighbors, centers=5)
+table(sqe$ctx <- factor(ctx$cluster))
+```
+
+Let's quickly view the subpopulation composition of each spatial context:
+
+```{r imcRtools-show}
+df <- data.frame(spatialCoords(sqe), colData(sqe))
+round(100*with(df, prop.table(table(k, ctx), 2)), 2)
+```
+
+Secondly, let's visualize the obtained spatial contexts in space:
+
+```{r imcRtools-plot, fig.width=9, fig.height=3, fig.cap="Tissue plot with cells colored by cluster (left) and spatial context (right) based on $k$-means clustering of cluster frequencies among each cell's (Euclidean) $k$NNs."}
+#| code-fold: true
+pal_k <- brewer.pal(nlevels(df$k), "Paired")
+pal_c <- c("blue", "cyan", "gold", "magenta", "maroon")
+ggplot(df, aes(x_centroid, y_centroid, col=k)) + 
+    scale_color_manual(values=pal_k) +
+ggplot(df, aes(x_centroid, y_centroid, col=ctx)) + 
+    scale_color_manual(values=pal_c) +
+plot_layout(nrow=1) &
+    geom_point(shape=16, size=0) &
+    guides(col=guide_legend(override.aes=list(size=2))) &
+    theme_xy & theme(legend.key.size=unit(0.5, "lines"))
+```
+
+## Co-localization
+
+`r BiocStyle::Biocpkg("hoodscanR")` [@Liu2024-hoodscanR] also relies on a (Euclidean) $k$NN graph to estimate the probability of each cell associating with its NNs.
+The resulting probability matrix (rows=cells, columns=NNs) can, in turn, be used to assess co-occurrence of subpopulations. 
+
+```{r hoodscanR-calc, message=FALSE}
+library(hoodscanR)
+sqe <- readHoodData(spe, anno_col="k")
+nbs <- findNearCells(sqe, k=100)
+mtx <- scanHoods(nbs$distance)      
+grp <- mergeByGroup(mtx, nbs$cells) 
+sqe <- mergeHoodSpe(sqe, grp)       
+```
+
+To perform neighborhood co-localization analysis, `plotColocal()` computes the Pearson correlation of probability distribution between cells.
+Here, **high/low values indicate attraction/repulsion** between clusters:
+
+```{r hoodscanR-plot-corr, message=FALSE, fig.width=3.5, fig.height=3}
+library(pheatmap)
+cor <- plotColocal(sqe, pm_cols=colnames(grp), return_matrix=TRUE)
+pal <- colorRampPalette(rev(hcl.colors(9, "Roma")))(100)
+pheatmap(cor, 
+    cellwidth=15, cellheight=15, 
+    treeheight_row=5, treeheight_col=5,
+    col=pal, breaks=seq(-1, 1, length=100))
+```
+
+::: {.callout-note title="measuring local mixing" collapse="true"}
+
+Downstream, `calcMetrics()` can be used to calculate cell-level [entropy](https://en.wikipedia.org/wiki/entropy_(information_theory)) and [perplexity](https://en.wikipedia.org/wiki/perplexity),
+which both measure the mixing of cellular neighborhoods.
+Here, **low/high values indicate heterogeneity/homogeneity** of a cell's local neighborhood:
+
+```{r hoodscanR-calc-mets}
+sqe <- calcMetrics(sqe, pm_cols=colnames(grp))
+```
+
+```{r hoodscanR-plot-mets-xy, fig.width=8, fig.height=3, fig.cap="Tissue plots with cells colored by entropy and perplexity, z-scaled across cells (capped at 2 SDs)."}
+#| code-fold: true
+df <- data.frame(colData(sqe), k=spe$k, spatialCoords(spe))
+vs <- c("perplexity", "entropy")
+fd <- df |>
+    mutate(across(all_of(vs), scale)) |>
+    pivot_longer(all_of(vs)) |>
+    # threshold at 2 SDs for clearer visualization
+    mutate(value=case_when(abs(value) > 2 ~ sign(value)*2, TRUE ~ value))
+ggplot(fd, aes(x_centroid, y_centroid, col=value)) +
+    facet_grid(~name) + geom_point(shape=16, size=0) + 
+    theme_xy + theme(legend.key.size=unit(0.5, "lines")) +
+    scale_color_gradient2("z-scaled\nvalue", low="cyan", mid="navy", high="magenta") 
+```
+
+Stratifying these values by subpopulation, we can observe that clusters forming distinct aggregates in space are lowest in entropy/perplexity (i.e., the most homogeneous locally):
+
+```{r hoodscanR-plot-mets-k, fig.width=7, fig.height=2.5, fig.cap="Boxplot of entropy and perplexity, stratified by cluster assignment and z-scaled across cells (capped at 2 SDs)."}
+#| code-fold: true
+ggplot(fd, aes(k, value, fill=k)) +
+    facet_wrap(~name) + 
+    scale_fill_manual(values=pal_k) + 
+    geom_boxplot(outlier.stroke=0, key_glyph="point") +
+    scale_y_continuous("z-scaled value", limits=c(-2, 2)) +
+    guides(fill=guide_legend(override.aes=list(shape=21, size=2))) +
+    theme_bw() + theme(
+        axis.title.x=element_blank(),
+        panel.grid.minor=element_blank(),
+        legend.key.size=unit(0.5, "lines"))
 ```
 
 :::

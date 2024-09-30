@@ -6,10 +6,8 @@
 ## Dependencies
 
 ```{r deps, message=FALSE, warning=FALSE}
-library(zoo)
 library(dplyr)
 library(tidyr)
-library(scater)
 library(ggplot2)
 library(patchwork)
 library(SpatialExperiment)
@@ -19,7 +17,7 @@ library(SpatialExperiment)
 
 For the majority of analyses demonstrated here, we will use 313-plex Xenium data (10x Genomics) on a human breast cancer biopsy section [@Janesick2023], available through the `r BiocStyle::Biocpkg("STexampleData")` package as part of Bioconductor's `r BiocStyle::Biocpkg("ExperimentHub")`:
 
-```{r load-data, message=FALSE}
+```{r load-data, message=FALSE, warning=FALSE}
 # TODO: with Bioc 3.20, load using 'STexampleData' 
 library(ExperimentHub)
 eh <- ExperimentHub()
@@ -34,6 +32,7 @@ plot(spatialCoords(spe), cex=0.1, pch=16, asp=1, axes=FALSE, xlab="", ylab="")
 ### Exploratory
 
 ```{r calc-qc}
+library(scater)
 spe <- addPerCellQCMetrics(spe, use.altexps=TRUE)
 df <- data.frame(colData(spe), spatialCoords(spe))
 ```
@@ -95,12 +94,11 @@ Considering the spatial organization of cells falling above/below 1 count per $\
 
 ```{r plot-qc-2d-two, fig.width=4, fig.height=3}
 #| code-fold: true
-df$foo <- df$total_counts/df$cell_area > 1
-ggplot(df, aes(x_centroid, y_centroid, col=foo)) +
-    geom_point(shape=19, stroke=0, size=0.1, show.legend=FALSE) +
-    scale_color_manual(values=c("grey", "blue")) +
-    coord_equal(expand=FALSE) + theme_void() 
-    
+hl <- df$total_counts/df$cell_area > 1
+df$hl <- c("grey", "blue")[hl + 1]
+ggplot(df, aes(x_centroid, y_centroid, col=hl)) +
+    geom_point(shape=19, stroke=0, size=0.2, show.legend=FALSE) +
+    scale_color_identity() + coord_equal(expand=FALSE) + theme_void() 
 ```
 
 ### Filtering
@@ -166,7 +164,7 @@ xy <- spatialCoordsNames(spe)
 df <- data.frame(colData(spe), spatialCoords(spe))
 fd <- df |> group_by(fov) |> summarise(across(xy, median))
 ggplot(df, aes(x, y, col=factor(fov))) +
-    geom_point(shape=16, stroke=0, size=0.1) +
+    geom_point(shape=16, stroke=0, size=0.2) +
     geom_text(aes(label=fov), fd, col="black", size=2) +
     coord_equal(expand=FALSE) + theme_void() + theme(legend.position="none")
 ```
@@ -238,8 +236,11 @@ Next, let us visualize total RNA counts against distance to FOV borders, setting
 df <- data.frame(colData(spe), spatialCoords(spe), d)
 fd <- df |> pivot_longer(colnames(d), values_to="d")
 mu <- fd |>
-    group_by(name) |> arrange(d) |> 
-    mutate(across(c(d, sum), rollmean, k=100, align="right", fill=NA))
+    group_by(name) |>
+    arrange(d) |>
+    mutate(
+        across(c(d, sum), 
+        zoo::rollmean, k=100, align="right", fill=NA))
 ggplot(fd, aes(d, sum)) + facet_grid(~name) +
     geom_point(shape=16, size=0.4, alpha=0.2, col="navy") +
     geom_line(data=mu, col="blue", linewidth=0.4) +
@@ -264,7 +265,7 @@ mean(ex <- rowAnys(d < r))
 ```{r cosmx-plot-ex, fig.width=3, fig.height=2, fig.cap="Tissue plot with cells that lie too close to FOV borders highlighted in color."}
 #| code-fold: true
 ggplot(df, aes(x, y, col=ex)) +
-    geom_point(shape=16, stroke=0) +
+    geom_point(shape=16, stroke=0, size=0.2) +
     scale_color_manual(values=c("grey", "blue")) +
     coord_equal(expand=FALSE) + theme_void() + theme(legend.position="none")
 ```
