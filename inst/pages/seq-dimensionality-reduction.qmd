@@ -11,8 +11,8 @@ We start by loading the previously saved data object(s) (see @sec-seq-feature-se
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)
-spe <- readRDS("spe_hvgs.rds")
-top_hvgs <- readRDS("top_hvgs.rds")
+spe <- readRDS("seq-spe_hvgs.rds")
+top_hvgs <- readRDS("seq-top_hvgs.rds")
 ```
 
 
@@ -61,7 +61,7 @@ We also save the object(s) in `.rds` format for re-use within later chapters to 
 
 ```{r}
 # save object(s)
-saveRDS(spe, file = "spe_reduceddims.rds")
+saveRDS(spe, file = "seq-spe_reduceddims.rds")
 ```
 
 

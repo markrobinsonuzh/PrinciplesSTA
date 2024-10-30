@@ -11,7 +11,7 @@ We start by loading the previously saved data object(s) (see @sec-seq-clustering
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)
-spe <- readRDS("spe_clustering.rds")
+spe <- readRDS("seq-spe_clustering.rds")
 ```
 
 

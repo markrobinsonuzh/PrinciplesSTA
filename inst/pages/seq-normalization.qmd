@@ -11,7 +11,7 @@ We start by loading the previously saved data object(s) (see @sec-seq-quality-co
 
 ```{r, message=FALSE, results='hide'}
 library(SpatialExperiment)
-spe <- readRDS("spe_qc.rds")
+spe <- readRDS("seq-spe_qc.rds")
 ```
 
 
@@ -48,7 +48,7 @@ We also save the object(s) in `.rds` format for re-use within later chapters to 
 
 ```{r}
 # save object(s)
-saveRDS(spe, file = "spe_logcounts.rds")
+saveRDS(spe, file = "seq-spe_logcounts.rds")
 ```
 
 
