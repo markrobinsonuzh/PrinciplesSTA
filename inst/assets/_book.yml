@@ -34,6 +34,9 @@ book:
         - pages/img-spat-stat.qmd
         - pages/img-cell-comm.qmd
         - pages/img-sub-cellular.qmd
+    - part: "Cross-platform analyses"
+      chapters:
+        - pages/crs-introduction.qmd
   appendices:
     - pages/apx-acknowledgments.qmd
     - pages/apx-related-resources.qmd
