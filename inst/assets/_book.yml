@@ -17,7 +17,7 @@ book:
         - pages/seq-clustering.qmd
         - pages/seq-spot-deconvolution.qmd
         - pages/seq-spatial-co-localization.qmd
-        - pages/seq-differential-expression.qmd
+        - pages/seq-marker-genes.qmd
         - pages/seq-workflow-human-dlpfc.qmd
         - pages/seq-workflow-spatialibd.qmd
     - part: "Imaging-based platforms"

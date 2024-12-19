@@ -1,4 +1,4 @@
-# Differential expression {#sec-seq-differential-expression}
+# Marker genes {#sec-seq-marker-genes}
 
 ## Introduction
 

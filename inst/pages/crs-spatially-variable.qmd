@@ -1,0 +1,6 @@
+# Spatially variable genes
+
+<!-- To do: move spatially variable genes material here (from sequencing-based section) -->
+
+
+## References {.unnumbered}
