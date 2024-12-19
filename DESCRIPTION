@@ -61,7 +61,9 @@ Suggests:
     BiocStyle, 
     glue, 
     sessioninfo, 
-    knitr
+    knitr,
+    downlit,
+    xml2
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 BiocType: Book
