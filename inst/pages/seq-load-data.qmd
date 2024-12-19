@@ -39,6 +39,8 @@ We also save the object(s) in `.rds` format for re-use within later chapters to 
 
 ```{r}
 # save object(s)
+# temporary fix until STexampleData objects fixed in Bioc 3.20
+imgData(spe) <- NULL
 saveRDS(spe, file = "seq-spe_load.rds")
 ```
 
