@@ -24,6 +24,21 @@ bb <- BiocBook(".")
 publish(bb, message = "commit message")
 ```
 
+You may need to first install the set of packages:
+
+```
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("BiocParallel","SingleCellExperiment",
+                     "reticulate","zellkonverter","BiocFileCache",
+                     "STexampleData","SpatialExperiment","igraph",
+                     "lobstr","rtracklayer","scater","scran",
+                     "spatialLIBD","Banksy","RANN","RColorBrewer",
+                     "hoodscanR","igraph","imcRtools","ExperimentHub",
+                     "STexampleData","ggplot2","dplyr","nnSVG",
+                     "patchwork","pheatmap","tidyr","ggspavis",
+                     "scran","scater","SpatialExperiment")
+```
 
 ## For developers: preview locally
 
