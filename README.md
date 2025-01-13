@@ -60,3 +60,8 @@ Image files are stored separately in the [PrinciplesSTA-resources](https://githu
 ## BiocBook
 
 The [BiocBook](https://github.com/js2264/BiocBook) package was developed by [Jacques Serizay](https://jserizay.com/) for building Quarto books with Bioconductor. More details on BiocBook can be found in the [BiocBook book](https://jserizay.com/BiocBookDemo/devel/).
+
+
+## Hackathon Jan 2025
+
+For our hackathon in January 2025, see details in the [Project](https://github.com/users/lmweber/projects/1).
