@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - devel
-      - sandbox
       - RELEASE_**
 
 jobs:
