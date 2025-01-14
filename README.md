@@ -52,28 +52,25 @@ publish(bb, message = "commit message")
 ```
 
 
-## Image files
-
-Image files are stored separately in the [PrinciplesSTA-resources](https://github.com/lmweber/PrinciplesSTA-resources) repository and linked within chapters using URLs, in order to keep the size of the main repository smaller. Please use this repository for image files in pull requests.
-
-
 ## BiocBook
 
 The [BiocBook](https://github.com/js2264/BiocBook) package was developed by [Jacques Serizay](https://jserizay.com/) for building Quarto books with Bioconductor. More details on BiocBook can be found in the [BiocBook book](https://jserizay.com/BiocBookDemo/devel/).
 
 
-## Hackathon Jan 2025
+## Instructions for Hackathon Jan 2025
 
 For our hackathon in January 2025, see details in the [Project](https://github.com/users/lmweber/projects/1).
 
 Some key points to keep in mind when preparing material:
 - use `sandbox` branch from GitHub
+- synchronize / pull updates from `sandbox` before getting started
 - use the chapter `.qmd` template and save `.qmd` files in `/inst/pages/`
 - prefix any `.rds` output files with `seq-` / `img-` / `crs-`
+- save any image files in `/inst/images/` and please keep image file sizes small (<100 KB)
 
 In each analysis / method chapter, we aim to include the following:
 - mention any relevant benchmark papers
 - demonstrate 1-2 key methods available in Bioconductor
-- mention other important methods in text (but keep concise)
+- (optional) mention other important methods in text (but keep concise)
 
 Workflow chapters are longer and demonstrate a comprehensive workflow for a given data type / technological platform.
