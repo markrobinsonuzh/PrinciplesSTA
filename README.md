@@ -61,16 +61,18 @@ The [BiocBook](https://github.com/js2264/BiocBook) package was developed by [Jac
 
 For our hackathon in January 2025, see details in the [Project](https://github.com/users/lmweber/projects/1).
 
-Some key points to keep in mind when preparing material:
+Some additional key points to keep in mind when preparing material:
 - use `sandbox` branch from GitHub
-- synchronize / pull updates from `sandbox` before getting started
-- use the chapter `.qmd` template and save `.qmd` files in `/inst/pages/`
-- prefix any `.rds` output files with `seq-` / `img-` / `crs-`
-- save any image files in `/inst/images/` and please keep image file sizes small (<100 KB)
+- synchronize / pull updates from `sandbox` before getting started to minimize merge conflicts
+- use the chapter `.qmd` template (saved in `inst/template.qmd`) and save `.qmd` files in `/inst/pages/`
+- prefix any generated `.rds` output files with `seq-` / `img-` / `crs-`
+- please keep file sizes in all commits small (e.g. commit only `.qmd` / code files, possibly include small image files if absolutely needed, do not include `.rds` data files in commits)
+- save any necessary image files in `/inst/images/` and please keep image file sizes small (<100 KB) (or use a URL to an external image file instead)
 
 In each analysis / method chapter, we aim to include the following:
+- brief background and overview
 - mention any relevant benchmark papers
-- demonstrate 1-2 key methods available in Bioconductor
-- (optional) mention other important methods in text (but keep concise)
+- demonstrate 1-2 key methods available in Bioconductor using code examples
+- (optional) mention any other important methods in text (but keep concise)
 
-Workflow chapters are longer and demonstrate a comprehensive workflow for a given data type / technological platform.
+Workflow chapters are longer and are intended to demonstrate a comprehensive workflow for a given data type / technological platform.
