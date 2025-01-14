@@ -65,3 +65,15 @@ The [BiocBook](https://github.com/js2264/BiocBook) package was developed by [Jac
 ## Hackathon Jan 2025
 
 For our hackathon in January 2025, see details in the [Project](https://github.com/users/lmweber/projects/1).
+
+Some key points to keep in mind when preparing material:
+- use `sandbox` branch from GitHub
+- use the chapter `.qmd` template and save `.qmd` files in `/inst/pages/`
+- prefix any `.rds` output files with `seq-` / `img-` / `-crs`
+
+In each method chapter, we aim to include the following:
+- mention any relevant benchmark papers
+- demonstrate 1-2 key methods available in Bioconductor
+- mention other important methods in text
+
+Workflow chapters are longer and demonstrate a comprehensive workflow for a given data type / technological platform.
