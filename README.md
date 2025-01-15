@@ -24,11 +24,10 @@ bb <- BiocBook(".")
 preview(bb)
 ```
 
-You may also need to first install the set of dependency packages:
+You may also need to first manually install the dependency packages listed in `DESCRIPTION`, e.g.:
 
 ```
-if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
+install.packages("BiocManager")
 BiocManager::install("BiocParallel","SingleCellExperiment",
                      "reticulate","zellkonverter","BiocFileCache",
                      "STexampleData","SpatialExperiment","igraph",
