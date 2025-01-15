@@ -28,7 +28,7 @@ You may also need to first manually install the dependency packages listed in `D
 
 ```
 install.packages("BiocManager")
-BiocManager::install("BiocParallel","SingleCellExperiment",
+BiocManager::install(c("BiocParallel","SingleCellExperiment",
                      "reticulate","zellkonverter","BiocFileCache",
                      "STexampleData","SpatialExperiment","igraph",
                      "lobstr","rtracklayer","scater","scran",
@@ -36,7 +36,7 @@ BiocManager::install("BiocParallel","SingleCellExperiment",
                      "hoodscanR","igraph","imcRtools","ExperimentHub",
                      "STexampleData","ggplot2","dplyr","nnSVG",
                      "patchwork","pheatmap","tidyr","ggspavis",
-                     "scran","scater","SpatialExperiment")
+                     "scran","scater","SpatialExperiment"))
 ```
 
 
