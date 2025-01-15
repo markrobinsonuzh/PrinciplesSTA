@@ -63,7 +63,7 @@ For our hackathon in January 2025, see details in the [Project](https://github.c
 Some additional key points to keep in mind when preparing material:
 - use `sandbox` branch from GitHub
 - synchronize / pull updates from `sandbox` before getting started to minimize merge conflicts
-- use the chapter `.qmd` template (saved in `inst/template.qmd`) and save `.qmd` files in `/inst/pages/`
+- use the chapter `.qmd` template (saved in `inst/template.qmd` or [here](https://hackmd.io/@pzQuMLXvRmKJyMcPvKCLvg/SJ2HCv5Ukl)) and save `.qmd` files in `/inst/pages/`
 - prefix any generated `.rds` output files with `seq-` / `img-` / `crs-`
 - please keep file sizes in all commits small (e.g. commit only `.qmd` / code files, possibly include small image files if absolutely needed, do not include `.rds` data files in commits)
 - save any necessary image files in `/inst/images/` and please keep image file sizes small (<100 KB) (or use a URL to an external image file instead)
