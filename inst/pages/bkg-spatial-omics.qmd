@@ -72,7 +72,7 @@ The [NanoString CosMx platform](https://nanostring.com/products/cosmx-spatial-mo
 
 ## Imaging-based proteomics platforms
 
-Imaging-based proteomics, or more commonly called multiplexed imaging, represent a broad array of detection technologies, the vast majority of which are antibody-based. [@Semba2024] categorizes these antibody-based technologies into either "single-shot" (e.g., imaging mass cytometry, IMC) or "multicycle" (e.g., Lunaphore) imaging approaches. Single-shot refers to the set of, for example, heavy metal ions (representation protein presence), resulting from a laser ablation of an pre-stained sample. Multi-cycle approaches refer to sets of antibodies that are sequentially stained and stripped, with an imaging step in between at each cycle.
+Imaging-based proteomics, or more commonly called multiplexed imaging, represent a broad array of detection technologies, the vast majority of which are antibody-based. @Semba2024 categorize these antibody-based technologies into either "single-shot" (e.g., imaging mass cytometry, IMC) or "multicycle" (e.g., Lunaphore) imaging approaches. Single-shot refers to the set of, for example, heavy metal ions (representation protein presence), resulting from a laser ablation of an pre-stained sample. Multi-cycle approaches refer to sets of antibodies that are sequentially stained and stripped, with an imaging step in between at each cycle.
 
 ### IMC, MIBIscope, and Phenocycler
 
