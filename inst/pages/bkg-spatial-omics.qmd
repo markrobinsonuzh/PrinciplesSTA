@@ -21,35 +21,7 @@ The advantage of sequencing is that typically the features represent an untarget
 Depending on the platform, the spatial measurement locations are often referred to as "spots" or "beads". In this book, we will generally use the terminology "spots".
 
 
-### 10x Genomics Visium
-
-The [10x Genomics Visium](https://www.10xgenomics.com/products/spatial-gene-expression) platform measures transcriptome-scale gene expression at a hexagonal grid of spatial locations (referred to as spots) on a tissue capture area on a slide. Either fresh-frozen or formalin-fixed paraffin-embedded (FFPE) tissue may be used. Each spot contains millions of spatially-barcoded capture oligonucleotides, which bind to mRNAs from the tissue. A cDNA library is then generated for sequencing, which includes the spatial barcodes, allowing reads to be mapped back to their spatial locations.
-
-The array dimensions are 6.5 x 6.5 mm, with around 5000 barcoded spots. Spots are 55 µm in diameter and spaced 100 µm center-to-center in a hexagonal grid arrangement. The number of cells overlapping with each spot depends on the tissue cell density, e.g. around 0-10 for human brain tissue or ~50 for mouse brain tissue. Each Visium slide contains four tissue capture areas. The following figure provides an illustration.
-
-Histology images generated from hematoxylin and eosin (H&E) staining can be used to identify anatomical and cell morphological features for each sample, including the number of cells per spot.
-
-An earlier version of the platform was developed by @Stahl2016, which was subsequently improved and commercialized as the 10x Genomics Visium platform.
-
-```{r, echo = FALSE, out.width = "75%", fig.cap = "Schematic illustrating the 10x Genomics Visium platform. Source: [10x Genomics Visium](https://www.10xgenomics.com/spatial-transcriptomics/)"}
-knitr::include_graphics("../images/Visium.png")
-```
-
-
-### 10x Genomics Visium HD
-
-The [10x Genomics Visium HD](https://www.10xgenomics.com/products/visium-hd-spatial-gene-expression) platform provides higher spatial resolution. Capture area dimensions are 6.5 x 6.5 mm, with a continuous "lawn" of capture oligonucleotides arranged into a grid of 2 x 2 µm barcoded squares, which can be aggregated into 8 x 8 µm and 16 x 16 µm bins for downstream analyses. There are no gaps between the grid squares, and there are two capture areas per slide. The high spatial resolution of the barcoded squares provide near-single-cell resolution, while the use of sequencing provides transcriptome-scale gene coverage.
-
-A preprint describing the platform and its application to human colorectal cancer samples is available from 10x Genomics [@Oliveira2024].
-
-### Curio Seeker
-
-The [Curio Seeker](https://curiobioscience.com/product/) platform is a commercially available implementation and extension of the Slide-seqV2 platform originally developed by @Stickels2021.
-
-The Curio Seeker platform captures mRNA molecules at a set of randomly placed spatial measurement locations (referred to as "beads") on a tissue slide (referred to as a "tile") at high spatial resolution. The tile dimensions are 3 mm x 3 mm, and the spatial resolution consists of tightly packed 10 µm diameter beads.
-
-
-## Imaging-based transcriptomics platforms
+## Imaging-based platforms
 
 Imaging-based platforms (also referred to as molecule-based platforms) identify the spatial locations of individual RNA molecules by sequential in situ hybridization (ISH) or in situ sequencing (ISS), for targeted panels of up to hundreds or thousands of genes. Since transcripts are individually identified, datasets arrive at sub-cellular spatial resolution.
 
@@ -57,33 +29,13 @@ Image segmentation is used to identify the boundaries of individual cells or nuc
 
 The selection of targeted sets of biologically informative genes for an experiment, referred to as panel design, is a key consideration during experimental design [@Baran2023, @Kuemmerle2024, @Zhang2024-panel]. Several commercially available options for targeted gene sets suitable for certain biological contexts are available.
 
-### 10x Genomics Xenium
+## Other variants of spatial omics data
 
-Details on the 10x Genomics Xenium platform are available from [10x Genomics](https://www.10xgenomics.com/platforms/xenium). Xenium gives an imageable area of 12mm x 24 mm, although slightly less to avoid fiducial markers. Several pre-designed panels are available, including a "Pan Tissue and Pathways" for both mouse and human, which both include over 5000 genes and there is a possibility to custom design an additional 100 genes. More focused panels are available for human brain, lung, colon and breast tissue as well as cancer immunological subpopulations; for mouse, focused brain and multi-tissue panels are available.
-
-
-### Vizgen MERSCOPE
-
-The [Vizgen MERSCOPE platform](https://vizgen.com/products/), among the fluorescence-based targeted spatial transcriptomics platforms, allows the highest resolution (≤20 nm), while also providing a high capacity for multiplexing, with (customizable) panels containing up to 1000 genes, and an imageable area of 1 cm^2^. MERSCOPE was recently shown to be amongst the most sensitive in a recent head-to-head comparison [@Hartman2024] using mouse brain tissue.
-
-### NanoString CosMx
-
-The [NanoString CosMx platform](https://nanostring.com/products/cosmx-spatial-molecular-imager/) gives an imageable area of 15x20 mm and allows up to 6000 RNAs (and now up to 68 proteins) to be assayed in a spatial context. Their human "discovery" 6000 gene panel is currently being expanded to the full-transcriptome (>18,000 targets), which should become available in 2025. Other more targeted panels are available, including a 1000-gene "Universal Cell Characterization", a focused 100-gene immuno-oncology panel or a 1000-gene mouse neuroscience panel. In addition, custom panels are available in either an add-on (up to 50 genes) or standalone (up to 300 genes) format. (Antibody-based) Protein panels are currently available for human immuno-oncology and mouse neuroscience contexts.
-
-## Imaging-based proteomics platforms
-
-Imaging-based proteomics, or more commonly called multiplexed imaging, represent a broad array of detection technologies, the vast majority of which are antibody-based. @Semba2024 categorize these antibody-based technologies into either "single-shot" (e.g., imaging mass cytometry, IMC) or "multicycle" (e.g., Lunaphore) imaging approaches. Single-shot refers to the set of, for example, heavy metal ions (representation protein presence), resulting from a laser ablation of an pre-stained sample. Multi-cycle approaches refer to sets of antibodies that are sequentially stained and stripped, with an imaging step in between at each cycle.
-
-### IMC, MIBIscope, and Phenocycler
-
-Although technology variants are available, we mention a few specific approaches here. The two dominant single-shot spatial proteomics platforms are IMC and MIBIscope, with maximum pixel (or shot) resolution of 0.4 µm and 1 µm, respectively [@Semba2024]. Each platform can measure upwards of 40 channels (proteins).
-
-
-## Other variations on spatial omics data
+Imaging-based proteomics, or more commonly called multiplexed imaging, represent a broad array of spatial detection technologies, the vast majority of which are antibody-based. @Semba2024 categorize these antibody-based technologies into either "single-shot" (e.g., imaging mass cytometry, IMC) or "multicycle" (e.g., Lunaphore) imaging approaches. Single-shot refers to the set of, for example, heavy metal ions (representation protein presence), resulting from a laser ablation of an pre-stained sample. Multi-cycle approaches refer to sets of antibodies that are sequentially stained and stripped, with an imaging step in between at each cycle. Although technology variants are available, we mention a few specific approaches here. The two dominant single-shot spatial proteomics platforms are IMC and MIBIscope, with maximum pixel (or shot) resolution of 0.4 µm and 1 µm, respectively [@Semba2024]. Each platform can measure upwards of 40 channels (proteins).
 
 Although the focus of the data analyses in this book will be primarily on gene and protein expression measurements in a spatial context, it is worth mentioning other modalities or data structures that are adjacent or emerging. We will not directly have data examples in the book, but some of the steps discussed in the chapters here may have applications to these other contexts.
 
-Tissues are three-dimensional entities that are represented as 2D slices for many of the analyses conducted here. However, there will be various emerging datasets that have measurements made along a third dimension [@Schott2024, @Vickovic2022], whether it's directly measured (e.g., 3D imaging) or indirectly reconstructed from multiple per-slice measurements [@Schott2025]. In some cases, the analyses from this book with either still apply, or be applied successively on multiple slices.
+Tissues are three-dimensional entities that are represented as 2D slices for many of the analyses conducted here. However, there will be various emerging datasets that have measurements made along a third dimension [@Schott2024; @Vickovic2022], whether it's directly measured (e.g., 3D imaging) or indirectly reconstructed from multiple per-slice measurements [@Schott2025]. In some cases, the analyses from this book with either still apply, or be applied successively on multiple slices.
 
 Multi-omics datasets (e.g., RNA expression + protein expression, RNA expression + chomatin accessibility) that are collected in a spatial context are now emerging (e.g., [@Liu2023; @Zhang2023]). Epigenomic modalities, in particular, may require alternative preprocessing steps, but some of the analyses mentioned in the chapters here  could be reused (e.g., clustering given a low-dimensional embedding) or adapted.
 
