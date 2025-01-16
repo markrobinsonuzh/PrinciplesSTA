@@ -55,7 +55,7 @@ Imaging-based platforms (also referred to as molecule-based platforms) identify 
 
 Image segmentation is used to identify the boundaries of individual cells or nuclei, and assign RNA molecules to cells or nuclei during preprocessing. Segmentation into cells is challenging, especially due to overlapping cells (i.e., cells have 3-dimensional organization and the plane that a tissue slice represents may have material from multiple cells at a given x/y location). After segmentation, gene counts can be aggregated to the cell-level, or analyses may be performed directly at the molecule level. Cell-level analyses may re-use methods developed for spot-level spatial transcriptomics data or single-cell data.
 
-The selection of targeted sets of biologically informative genes for an experiment, referred to as panel design, is a key consideration during experimental design [@Baran2023, @Kuemmerle2024, @Zhang2024]. Several commercially available options for targeted gene sets suitable for certain biological contexts are available.
+The selection of targeted sets of biologically informative genes for an experiment, referred to as panel design, is a key consideration during experimental design [@Baran2023, @Kuemmerle2024, @Zhang2024-panel]. Several commercially available options for targeted gene sets suitable for certain biological contexts are available.
 
 ### 10x Genomics Xenium
 
@@ -64,30 +64,29 @@ Details on the 10x Genomics Xenium platform are available from [10x Genomics](ht
 
 ### Vizgen MERSCOPE
 
-Details on the Vizgen MERSCOPE platform are available from [Vizgen](https://vizgen.com/products/).
-
+The [Vizgen MERSCOPE platform](https://vizgen.com/products/), among the fluorescence-based targeted spatial transcriptomics platforms, allows the highest resolution (≤20 nm), while also providing a high capacity for multiplexing, with (customizable) panels containing up to 1000 genes, and an imageable area of 1 cm^2^. MERSCOPE was recently shown to be amongst the most sensitive in a recent head-to-head comparison [@Hartman2024] using mouse brain tissue.
 
 ### NanoString CosMx
 
-Details on the NanoString CosMx platform are available from [NanoString](https://nanostring.com/products/cosmx-spatial-molecular-imager/).
+The [NanoString CosMx platform](https://nanostring.com/products/cosmx-spatial-molecular-imager/) gives an imageable area of 15x20 mm and allows up to 6000 RNAs (and now up to 68 proteins) to be assayed in a spatial context. Their human "discovery" 6000 gene panel is currently being expanded to the full-transcriptome (>18,000 targets), which should become available in 2025. Other more targeted panels are available, including a 1000-gene "Universal Cell Characterization", a focused 100-gene immuno-oncology panel or a 1000-gene mouse neuroscience panel. In addition, custom panels are available in either an add-on (up to 50 genes) or standalone (up to 300 genes) format. (Antibody-based) Protein panels are currently available for human immuno-oncology and mouse neuroscience contexts.
 
 ## Imaging-based proteomics platforms
 
-### IMC, MIBI
+Imaging-based proteomics, or more commonly called multiplexed imaging, represent a broad array of detection technologies, the vast majority of which are antibody-based. [@Semba2024] categorizes these antibody-based technologies into either "single-shot" (e.g., imaging mass cytometry, IMC) or "multicycle" (e.g., Lunaphore) imaging approaches. Single-shot refers to the set of, for example, heavy metal ions (representation protein presence), resulting from a laser ablation of an pre-stained sample. Multi-cycle approaches refer to sets of antibodies that are sequentially stained and stripped, with an imaging step in between at each cycle.
 
-### Codex and multiplex IMF
+### IMC, MIBIscope, and Phenocycler
 
-
-
-
-## Other platforms
-
-Although the focus of the data analyses in this book will be primarily of gene and protein expression in a spatial context, it is worth mentioning some other modalities that . we will not directly
-
-IMS
-spatial CITE-seq
-spatial epigenomics
+Although technology variants are available, we mention a few specific approaches here. The two dominant single-shot spatial proteomics platforms are IMC and MIBIscope, with maximum pixel (or shot) resolution of 0.4 µm and 1 µm, respectively [@Semba2024]. Each platform can measure upwards of 40 channels (proteins).
 
 
+## Other variations on spatial omics data
+
+Although the focus of the data analyses in this book will be primarily on gene and protein expression measurements in a spatial context, it is worth mentioning other modalities or data structures that are adjacent or emerging. We will not directly have data examples in the book, but some of the steps discussed in the chapters here may have applications to these other contexts.
+
+Tissues are three-dimensional entities that are represented as 2D slices for many of the analyses conducted here. However, there will be various emerging datasets that have measurements made along a third dimension [@Schott2024, @Vickovic2022], whether it's directly measured (e.g., 3D imaging) or indirectly reconstructed from multiple per-slice measurements [@Schott2025]. In some cases, the analyses from this book with either still apply, or be applied successively on multiple slices.
+
+Multi-omics datasets (e.g., RNA expression + protein expression, RNA expression + chomatin accessibility) that are collected in a spatial context are now emerging (e.g., [@Liu2023; @Zhang2023]). Epigenomic modalities, in particular, may require alternative preprocessing steps, but some of the analyses mentioned in the chapters here  could be reused (e.g., clustering given a low-dimensional embedding) or adapted.
+
+Another emerging modality within a spatial context is the measurement of metabolites, lipids or proteins via mass spectrometry imaging (MSI), such as MALDI-MSI [@Zhang2024-msi]; these assays are sometimes known as imaging mass spectrometry. MSI typically involves coating tissues with a matrix layer that promotes the ionization of analytes of interest (e.g., glycans; [@Palomino2024]). Integration of MSI with other spatial modalities (e.g., to reveal cell types)  may be required.
 
 ## References {.unnumbered}
