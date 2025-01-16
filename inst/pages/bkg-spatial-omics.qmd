@@ -4,20 +4,20 @@
 
 Spatial omics (or spatially-resolved omics) data refers to a set of recently-developed technologies that enable molecular measurements with spatial resolution. Spatial transcriptomics was named the **Method of the Year 2020** [@method-of-year-2020] and spatial proteomics was highlighted as **Method of the Year 2024** @method-of-year-2024 by the journal *Nature Methods*, and each has become widely applied in a range of biological contexts. In general, there are now a wide variety of modalities that can be measured (e.g., antibody-based protein expression, gene expression, chromatin accessibility, histone modificatons), with diverse measurement streams (e.g., imaging, mass spectrometry, high-throughput sequencing), all of which give molecular measurements in a spatial context for a given appropriately-handled segment of tissue.
 
-Platforms differ drasticallly in terms of the experimental procedures used (sequence or ion counts versus fluorescence intensities), the feature space (10s of proteins in imaging mass cytometry to full transcriptome in Visium / Visium HD to genome wide assessments of chromatin accessibility), and spatial resolution (e.g., single-cell resolution or multiple cells per measurement location). In general, that also means there are tradeoffs between the number of features, spatial resolution, and sensitivity of the assays.
+Platforms differ drasticallly in terms of the experimental procedures used (sequence or ion counts versus fluorescence intensities), the feature space (10s of proteins in imaging mass cytometry to full transcriptome in Visium / Visium HD to genome wide assessments of chromatin accessibility), and spatial resolution (e.g., single-cell resolution or multiple cells per measurement location). In general, that also means there are tradeoffs between the number of features, spatial resolution, and sensitivity of the assays. For our purposes here,
 
 Platforms may be broadly grouped into "sequencing-based" and "imaging-based" technologies; some of the latter can be further classified into "molecule-based" or not; the main platforms are described in more detail below. Sequencing-based platforms tend to provide higher gene coverage (e.g., full-transcriptome), while imaging-based platforms tend to provide higher spatial resolution (e.g., single-cell or even subcellular resolution).
 
 In this book, we focus on commercially available platforms, since these are the most widely used and accessible, but the data representations are often similar for other related platforms. The main sections of the book are split into two parts for sequencing-based and imaging-based platforms, since several of the analysis techniques are specific to these types of data.
 
-In the subsections below, we give a brief overview of some commercially available platforms. For more in-depth background, several recent reviews are available, [@Bressan2023; @Moses2022; @Tian2022; @Lundberg2019; @Gulati2024; @Paul2021; @Mund2022], covering available platforms, analysis methods, outstanding challenges, and additional topics.
+In the subsections below, we give a brief overview of some commercially available platforms. For more in-depth background, several recent reviews are available [@Bressan2023; @Moses2022; @Tian2022; @Lundberg2019; @Gulati2024; @Paul2021; @Mund2022; @Palla2022; @Moffitt2022; @Rao2021; @Cheng2023], covering available platforms, analysis methods, outstanding challenges, and additional topics.
 
 
 ## Sequencing-based platforms
 
-Sequencing-based platforms capture DNA fragments (which could represent gene expression, DNA binding, antibody tags, etc.) at a set of spatial measurement locations for a tissue section placed on a slide. The spatial location is tagged via a unique barcode for each measurement location, and reads are perhaps summarized (e.g., counts) according to genes or bins.
+Sequencing-based platforms capture DNA fragments (which could represent gene expression, DNA binding, antibody-conjugated tags, etc.) at a set of spatial measurement locations for a tissue section placed on a slide. The spatial location is tagged via a unique barcode for each measurement location, and reads are perhaps summarized (e.g., counts) according to genes or bins.
 
-The advantage of sequencing is that typically the features represent an untargeted set of molecular entities, thus not requiring panel selection and optimization. In reality, some spatial assays still require panels (e.g., spatial variants of CITE-seq; [@Liu2023]) and assays often use genome-wide panels, and cannot always be applied to non-model organisms. Spatial resolution varies between platforms, and depends on the size and spacing between the spatial measurement locations. Depending on the spatial resolution and tissue cell density in a given biological samples, each spatial measurement location may contain zero, one, or multiple cells.
+The advantage of sequencing is that typically the features represent an untargeted set of molecular entities, thus not requiring panel selection and optimization. In reality, some spatial assays still require panels (e.g., spatial variants of CITE-seq; [@Liu2023]) and assays, such as Visium and Visium HD, use genome-wide gene capture panels, and thus cannot always be applied to non-model organisms. Spatial resolution varies between platforms, and depends on the size and spacing between the spatial measurement locations. Depending on the spatial resolution and tissue cell density in a given biological samples, each spatial measurement location may contain zero, one, or multiple cells.
 Depending on the platform, the spatial measurement locations are often referred to as "spots" or "beads". In this book, we will generally use the terminology "spots".
 
 
@@ -38,10 +38,9 @@ knitr::include_graphics("../images/Visium.png")
 
 ### 10x Genomics Visium HD
 
-The [10x Genomics Visium HD](https://www.10xgenomics.com/products/visium-hd-spatial-gene-expression) platform provides higher spatial resolution. Capture area dimensions are 6.5 x 6.5 mm, with a continuous "lawn" of capture oligonucleotides arranged into a grid of 2 x 2 µm barcoded squares, which are also aggregated into 8 x 8 µm and 16 x 16 µm bins for downstream analyses. There are no gaps between the grid squares, and there are two capture areas per slide. The high spatial resolution of the barcoded squares provide near-single-cell resolution, while the use of sequencing provides transcriptome-scale gene coverage.
+The [10x Genomics Visium HD](https://www.10xgenomics.com/products/visium-hd-spatial-gene-expression) platform provides higher spatial resolution. Capture area dimensions are 6.5 x 6.5 mm, with a continuous "lawn" of capture oligonucleotides arranged into a grid of 2 x 2 µm barcoded squares, which can be aggregated into 8 x 8 µm and 16 x 16 µm bins for downstream analyses. There are no gaps between the grid squares, and there are two capture areas per slide. The high spatial resolution of the barcoded squares provide near-single-cell resolution, while the use of sequencing provides transcriptome-scale gene coverage.
 
 A preprint describing the platform and its application to human colorectal cancer samples is available from 10x Genomics [@Oliveira2024].
-
 
 ### Curio Seeker
 
@@ -50,18 +49,17 @@ The [Curio Seeker](https://curiobioscience.com/product/) platform is a commercia
 The Curio Seeker platform captures mRNA molecules at a set of randomly placed spatial measurement locations (referred to as "beads") on a tissue slide (referred to as a "tile") at high spatial resolution. The tile dimensions are 3 mm x 3 mm, and the spatial resolution consists of tightly packed 10 µm diameter beads.
 
 
-## Imaging-based platforms
+## Imaging-based transcriptomics platforms
 
-Imaging-based platforms (also referred to as molecule-based platforms) identify the spatial locations of individual RNA molecules by sequential in situ hybridization (ISH) or in situ sequencing (ISS), for targeted sets of up to hundreds or thousands of genes, at single-cell or sub-cellular spatial resolution.
+Imaging-based platforms (also referred to as molecule-based platforms) identify the spatial locations of individual RNA molecules by sequential in situ hybridization (ISH) or in situ sequencing (ISS), for targeted panels of up to hundreds or thousands of genes. Since transcripts are individually identified, datasets arrive at sub-cellular spatial resolution.
 
-Image segmentation is used to identify the boundaries of individual cells or nuclei, and assign RNA molecules to cells or nuclei during preprocessing. For downstream analyses, gene counts may be aggregated to the cell level, or analyses may be performed directly at the molecule level. Cell-level analyses may re-use methods developed for spot-level spatial transcriptomics data or single-cell data.
+Image segmentation is used to identify the boundaries of individual cells or nuclei, and assign RNA molecules to cells or nuclei during preprocessing. Segmentation into cells is challenging, especially due to overlapping cells (i.e., cells have 3-dimensional organization and the plane that a tissue slice represents may have material from multiple cells at a given x/y location). After segmentation, gene counts can be aggregated to the cell-level, or analyses may be performed directly at the molecule level. Cell-level analyses may re-use methods developed for spot-level spatial transcriptomics data or single-cell data.
 
-The selection of targeted sets of biologically informative genes for an experiment, referred to as panel design, is a key consideration during experimental design. Several commercially available options for targeted gene sets suitable for certain biological systems are available.
-
+The selection of targeted sets of biologically informative genes for an experiment, referred to as panel design, is a key consideration during experimental design [@Baran2023, @Kuemmerle2024, @Zhang2024]. Several commercially available options for targeted gene sets suitable for certain biological contexts are available.
 
 ### 10x Genomics Xenium
 
-Details on the 10x Genomics Xenium platform are available from [10x Genomics](https://www.10xgenomics.com/platforms/xenium).
+Details on the 10x Genomics Xenium platform are available from [10x Genomics](https://www.10xgenomics.com/platforms/xenium). Xenium gives an imageable area of 12mm x 24 mm, although slightly less to avoid fiducial markers. Several pre-designed panels are available, including a "Pan Tissue and Pathways" for both mouse and human, which both include over 5000 genes and there is a possibility to custom design an additional 100 genes. More focused panels are available for human brain, lung, colon and breast tissue as well as cancer immunological subpopulations; for mouse, focused brain and multi-tissue panels are available.
 
 
 ### Vizgen MERSCOPE
@@ -72,6 +70,24 @@ Details on the Vizgen MERSCOPE platform are available from [Vizgen](https://vizg
 ### NanoString CosMx
 
 Details on the NanoString CosMx platform are available from [NanoString](https://nanostring.com/products/cosmx-spatial-molecular-imager/).
+
+## Imaging-based proteomics platforms
+
+### IMC, MIBI
+
+### Codex and multiplex IMF
+
+
+
+
+## Other platforms
+
+Although the focus of the data analyses in this book will be primarily of gene and protein expression in a spatial context, it is worth mentioning some other modalities that . we will not directly
+
+IMS
+spatial CITE-seq
+spatial epigenomics
+
 
 
 ## References {.unnumbered}
