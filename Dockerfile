@@ -1,5 +1,6 @@
 ARG BIOC_VERSION
-FROM bioconductor/bioconductor_docker:${BIOC_VERSION}
+FROM bioconductor/bioconductor_docker:devel
+# FROM bioconductor/bioconductor_docker:${BIOC_VERSION}
 COPY . /opt/pkg
 
 # Install book package 
