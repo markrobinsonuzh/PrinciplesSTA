@@ -128,20 +128,20 @@ spe_nnSVG <- logNormCounts(spe_nnSVG)
 ```
 
 ```{r}
-# run nnSVG
-set.seed(123)
-spe_nnSVG <- nnSVG(spe_nnSVG)
+# # run nnSVG
+# set.seed(123)
+# spe_nnSVG <- nnSVG(spe_nnSVG)
 ```
 
 Now that we have run nnSVG, we can select at set of top SVGs (instead of HVGs), and use these as the input for the subsequent clustering steps.
 
 ```{r}
-# select top SVGs
-# note: using small subset in this example
-# use larger set (e.g. top 1000 genes) in full analysis
-n_top <- 50
-ix_top <- order(rowData(spe_nnSVG)$rank)[1:n]
-top_svgs <- rowData(spe_nnSVG)[ix_top, "gene_id"]
+# # select top SVGs
+# # note: using small subset in this example
+# # use larger set (e.g. top 1000 genes) in full analysis
+# n_top <- 50
+# ix_top <- order(rowData(spe_nnSVG)$rank)[1:n]
+# top_svgs <- rowData(spe_nnSVG)[ix_top, "gene_id"]
 ```
 
 ```{r, message=FALSE}
@@ -150,25 +150,25 @@ library(scran)
 ```
 
 ```{r}
-# dimensionality reduction
-# compute PCA
-# note: using small number of components in this example
-# use larger number (e.g. ncomponents = 50) in full analysis
-set.seed(123)
-spe_nnSVG <- runPCA(spe_nnSVG, ncomponents = 10, subset_row = top_svgs)
+# # dimensionality reduction
+# # compute PCA
+# # note: using small number of components in this example
+# # use larger number (e.g. ncomponents = 50) in full analysis
+# set.seed(123)
+# spe_nnSVG <- runPCA(spe_nnSVG, ncomponents = 10, subset_row = top_svgs)
 ```
 
 ```{r}
-# graph-based clustering
-set.seed(123)
-k <- 10
-g <- buildSNNGraph(spe_nnSVG, k = k, use.dimred = "PCA")
-g_walk <- igraph::cluster_walktrap(g)
-clus <- g_walk$membership
-table(clus)
-
-# store cluster labels in column 'label' in colData
-colLabels(spe_nnSVG) <- factor(clus)
+# # graph-based clustering
+# set.seed(123)
+# k <- 10
+# g <- buildSNNGraph(spe_nnSVG, k = k, use.dimred = "PCA")
+# g_walk <- igraph::cluster_walktrap(g)
+# clus <- g_walk$membership
+# table(clus)
+# 
+# # store cluster labels in column 'label' in colData
+# colLabels(spe_nnSVG) <- factor(clus)
 ```
 
 
