@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>10&nbsp; Clustering – Principles of Spatial Transcriptomics Analysis with Bioconductor</title>
+<title>10&nbsp; Clustering – Orchestrating Spatial Transcriptomics Analysis with Bioconductor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -137,7 +137,7 @@ div.csl-indent {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">PrinciplesSTA</a> 
+      <a href="../">OSTA</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -513,46 +513,42 @@ div.csl-indent {
 <span><span class="va">spe_nnSVG</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scuttle/man/logNormCounts.html">logNormCounts</a></span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># run nnSVG</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">spe_nnSVG</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/nnSVG/man/nnSVG.html">nnSVG</a></span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># # run nnSVG</span></span>
+<span><span class="co"># set.seed(123)</span></span>
+<span><span class="co"># spe_nnSVG &lt;- nnSVG(spe_nnSVG)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now that we have run nnSVG, we can select at set of top SVGs (instead of HVGs), and use these as the input for the subsequent clustering steps.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># select top SVGs</span></span>
-<span><span class="co"># note: using small subset in this example</span></span>
-<span><span class="co"># use larger set (e.g. top 1000 genes) in full analysis</span></span>
-<span><span class="va">n_top</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
-<span><span class="va">ix_top</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">$</span><span class="va">rank</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">]</span></span>
-<span><span class="va">top_svgs</span> <span class="op">&lt;-</span> <span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">[</span><span class="va">ix_top</span>, <span class="st">"gene_id"</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># # select top SVGs</span></span>
+<span><span class="co"># # note: using small subset in this example</span></span>
+<span><span class="co"># # use larger set (e.g. top 1000 genes) in full analysis</span></span>
+<span><span class="co"># n_top &lt;- 50</span></span>
+<span><span class="co"># ix_top &lt;- order(rowData(spe_nnSVG)$rank)[1:n]</span></span>
+<span><span class="co"># top_svgs &lt;- rowData(spe_nnSVG)[ix_top, "gene_id"]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://bioconductor.org/packages/scater/">scater</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MarioniLab/scran/">scran</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># dimensionality reduction</span></span>
-<span><span class="co"># compute PCA</span></span>
-<span><span class="co"># note: using small number of components in this example</span></span>
-<span><span class="co"># use larger number (e.g. ncomponents = 50) in full analysis</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">spe_nnSVG</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocSingular/man/runPCA.html">runPCA</a></span><span class="op">(</span><span class="va">spe_nnSVG</span>, ncomponents <span class="op">=</span> <span class="fl">10</span>, subset_row <span class="op">=</span> <span class="va">top_svgs</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># # dimensionality reduction</span></span>
+<span><span class="co"># # compute PCA</span></span>
+<span><span class="co"># # note: using small number of components in this example</span></span>
+<span><span class="co"># # use larger number (e.g. ncomponents = 50) in full analysis</span></span>
+<span><span class="co"># set.seed(123)</span></span>
+<span><span class="co"># spe_nnSVG &lt;- runPCA(spe_nnSVG, ncomponents = 10, subset_row = top_svgs)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># graph-based clustering</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scran/man/buildSNNGraph.html">buildSNNGraph</a></span><span class="op">(</span><span class="va">spe_nnSVG</span>, k <span class="op">=</span> <span class="va">k</span>, use.dimred <span class="op">=</span> <span class="st">"PCA"</span><span class="op">)</span></span>
-<span><span class="va">g_walk</span> <span class="op">&lt;-</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/cluster_walktrap.html">cluster_walktrap</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span></span>
-<span><span class="va">clus</span> <span class="op">&lt;-</span> <span class="va">g_walk</span><span class="op">$</span><span class="va">membership</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">clus</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre class="code_output"><code>##  clus
-##   1  2  3  4  5 
-##   6  6 53 24 11</code></pre>
-</div>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># store cluster labels in column 'label' in colData</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/colLabels.html">colLabels</a></span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clus</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># # graph-based clustering</span></span>
+<span><span class="co"># set.seed(123)</span></span>
+<span><span class="co"># k &lt;- 10</span></span>
+<span><span class="co"># g &lt;- buildSNNGraph(spe_nnSVG, k = k, use.dimred = "PCA")</span></span>
+<span><span class="co"># g_walk &lt;- igraph::cluster_walktrap(g)</span></span>
+<span><span class="co"># clus &lt;- g_walk$membership</span></span>
+<span><span class="co"># table(clus)</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># # store cluster labels in column 'label' in colData</span></span>
+<span><span class="co"># colLabels(spe_nnSVG) &lt;- factor(clus)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="clustering-using-concatenated-features" class="level3" data-number="10.5.2"><h3 data-number="10.5.2" class="anchored" data-anchor-id="clustering-using-concatenated-features">
 <span class="header-section-number">10.5.2</span> Clustering using concatenated features</h3>

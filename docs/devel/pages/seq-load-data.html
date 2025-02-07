@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>5&nbsp; Load data – Principles of Spatial Transcriptomics Analysis with Bioconductor</title>
+<title>5&nbsp; Load data – Orchestrating Spatial Transcriptomics Analysis with Bioconductor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -137,7 +137,7 @@ div.csl-indent {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">PrinciplesSTA</a> 
+      <a href="../">OSTA</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -400,19 +400,21 @@ div.csl-indent {
 <div class="cell-output cell-output-stderr">
 <pre><code>##  loading from cache</code></pre>
 </div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># temporary fix</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">imgData</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="sec-seq-load-data-save-objects" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="sec-seq-load-data-save-objects">
 <span class="header-section-number">5.4</span> Save objects for later chapters</h2>
 <p>We also save the object(s) in <code>.rds</code> format for re-use within later chapters to speed up the build time of the book.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># save object(s)</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># save object(s)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">spe</span>, file <span class="op">=</span> <span class="st">"spe_load.rds"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="spatialexperiment-object" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="spatialexperiment-object">
 <span class="header-section-number">5.5</span> SpatialExperiment object</h2>
 <p>Check the structure of the <code>SpatialExperiment</code> object. For more details on the <code>SpatialExperiment</code> structure, see <a href="bkg-bioconductor-data-classes.html" class="quarto-xref"><span>Chapter 3</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># check object</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># check object</span></span>
 <span><span class="va">spe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  class: SpatialExperiment 
@@ -429,19 +431,19 @@ div.csl-indent {
 ##  mainExpName: NULL
 ##  altExpNames(0):
 ##  spatialCoords names(2) : pxl_col_in_fullres pxl_row_in_fullres
-##  imgData names(4): sample_id image_id data scaleFactor</code></pre>
+##  imgData names(0):</code></pre>
 </div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># number of genes (rows) and spots (columns)</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># number of genes (rows) and spots (columns)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  [1] 33538  4992</code></pre>
 </div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># names of 'assays'</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># names of 'assays'</span></span>
 <span><span class="fu">assayNames</span><span class="op">(</span><span class="va">spe</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  [1] "counts"</code></pre>
 </div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># row (gene) data</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># row (gene) data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  DataFrame with 6 rows and 3 columns
@@ -454,7 +456,7 @@ div.csl-indent {
 ##  ENSG00000239945 ENSG00000239945  AL627309.3 Gene Expression
 ##  ENSG00000239906 ENSG00000239906  AL627309.2 Gene Expression</code></pre>
 </div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># column (spot) data</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># column (spot) data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu">colData</span><span class="op">(</span><span class="va">spe</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  DataFrame with 6 rows and 8 columns
@@ -475,7 +477,7 @@ div.csl-indent {
 ##  AAACAGAGCGACTCCT-1        94       Layer3      Layer3          2
 ##  AAACAGCTTTCAGAAG-1         9       Layer5      Layer5          4</code></pre>
 </div>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># spatial coordinates</span></span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># spatial coordinates</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##                     pxl_col_in_fullres pxl_row_in_fullres
@@ -486,14 +488,10 @@ div.csl-indent {
 ##  AAACAGAGCGACTCCT-1               9271               4151
 ##  AAACAGCTTTCAGAAG-1               3393               7583</code></pre>
 </div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># image data</span></span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># image data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">imgData</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre class="code_output"><code>##  DataFrame with 2 rows and 4 columns
-##        sample_id    image_id   data scaleFactor
-##      &lt;character&gt; &lt;character&gt; &lt;list&gt;   &lt;numeric&gt;
-##  1 sample_151673      lowres   ####   0.0450045
-##  2 sample_151673       hires   ####   0.1500150</code></pre>
+<pre class="code_output"><code>##  DataFrame with 0 rows and 0 columns</code></pre>
 </div>
 </div>
 </section><section id="build-object" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="build-object">
@@ -502,7 +500,7 @@ div.csl-indent {
 <p>Here, we provide a short example with an empty dataset.</p>
 <p>For more details, including how to load raw data from the 10x Genomics Space Ranger output files to build an object, or how to add image data to the object, see the <a href="https://bioconductor.org/packages/SpatialExperiment">SpatialExperiment</a> documentation.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># create data</span></span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># create data</span></span>
 <span><span class="va">n_genes</span> <span class="op">&lt;-</span> <span class="fl">200</span></span>
 <span><span class="va">n_spots</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span></span>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>16&nbsp; Workflow: Mouse coronal – Principles of Spatial Transcriptomics Analysis with Bioconductor</title>
+<title>16&nbsp; Workflow: Mouse coronal – Orchestrating Spatial Transcriptomics Analysis with Bioconductor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -137,7 +137,7 @@ div.csl-indent {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">PrinciplesSTA</a> 
+      <a href="../">OSTA</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -465,12 +465,12 @@ div.csl-indent {
 ##  AAACAATCTACTAGCA-1 AAACAATCTACTAGCA-1    sample01         1         3
 ##  AAACACCAATAACTGC-1 AAACACCAATAACTGC-1    sample01         1        59
 ##                     array_col       sum  detected subsets_mito_sum
-##                     &lt;integer&gt; &lt;numeric&gt; &lt;numeric&gt;        &lt;numeric&gt;
+##                     &lt;integer&gt; &lt;numeric&gt; &lt;integer&gt;        &lt;numeric&gt;
 ##  AAACAAGTATCTCCCA-1       102     20935      5230             4036
 ##  AAACAATCTACTAGCA-1        43     14789      3646             3419
 ##  AAACACCAATAACTGC-1        19     34646      6272             5068
 ##                     subsets_mito_detected subsets_mito_percent     total
-##                                 &lt;numeric&gt;            &lt;numeric&gt; &lt;numeric&gt;
+##                                 &lt;integer&gt;            &lt;numeric&gt; &lt;numeric&gt;
 ##  AAACAAGTATCTCCCA-1                    13              19.2787     20935
 ##  AAACAATCTACTAGCA-1                    13              23.1185     14789
 ##  AAACACCAATAACTGC-1                    13              14.6280     34646</code></pre>
@@ -628,126 +628,52 @@ div.csl-indent {
 <p>Alternatively, run <a href="https://bioconductor.org/packages/nnSVG">nnSVG</a> <span class="citation" data-cites="Weber2023">(<a href="#ref-Weber2023" role="doc-biblioref">Weber et al. 2023</a>)</span> to identify a set of top spatially variable genes (SVGs) instead of HVGs.</p>
 <p>Here, we run nnSVG using a small subset of the dataset for faster runtime. We select a subset of the data by subsampling on the set of spots and including stringent filtering for low-expressed genes. For a full analysis, we recommend running <code>nnSVG</code> on all spots and using alternative filtering parameters (for Visium data from mouse brain tissue), which takes around 45 minutes for one Visium slide on a standard laptop using multiple cores.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/nnSVG">nnSVG</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># library(nnSVG)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># subsample spots</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">ix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>, <span class="va">n</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">spe_nnSVG</span> <span class="op">&lt;-</span> <span class="va">spe</span><span class="op">[</span>, <span class="va">ix</span><span class="op">]</span></span>
-<span></span>
-<span><span class="co"># filter low-expressed and mitochondrial genes</span></span>
-<span><span class="co"># using very stringent filtering parameters for faster runtime in this example</span></span>
-<span><span class="co"># note: for a full analysis, use alternative filtering parameters (e.g. defaults)</span></span>
-<span><span class="va">spe_nnSVG</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/nnSVG/man/filter_genes.html">filter_genes</a></span><span class="op">(</span></span>
-<span>  <span class="va">spe_nnSVG</span>, filter_genes_ncounts <span class="op">=</span> <span class="fl">50</span>, filter_genes_pcspots <span class="op">=</span> <span class="fl">5</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>##  Gene filtering: removing mitochondrial genes</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>##  removed 0 mitochondrial genes</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>##  Gene filtering: retaining genes with at least 50 counts in at least 5% (n = 5) of spatial locations</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>##  removed 32074 out of 32272 genes due to low expression</code></pre>
-</div>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># re-calculate logcounts after filtering</span></span>
-<span><span class="co"># using library size factors</span></span>
-<span><span class="va">spe_nnSVG</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scuttle/man/logNormCounts.html">logNormCounts</a></span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># run nnSVG</span></span>
-<span><span class="co"># using a single core for compatibility on build system</span></span>
-<span><span class="co"># note: for a full analysis, use multiple cores</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">spe_nnSVG</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/nnSVG/man/nnSVG.html">nnSVG</a></span><span class="op">(</span><span class="va">spe_nnSVG</span>, n_threads <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># investigate results</span></span>
-<span></span>
-<span><span class="co"># show results</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre class="code_output"><code>##  DataFrame with 3 rows and 18 columns
-##                                gene_id   gene_name    feature_type
-##                            &lt;character&gt; &lt;character&gt;     &lt;character&gt;
-##  ENSMUSG00000061518 ENSMUSG00000061518       Cox5b Gene Expression
-##  ENSMUSG00000073702 ENSMUSG00000073702       Rpl31 Gene Expression
-##  ENSMUSG00000046330 ENSMUSG00000046330      Rpl37a Gene Expression
-##                     subsets_mito  sigma.sq    tau.sq       phi    loglik
-##                        &lt;logical&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-##  ENSMUSG00000061518        FALSE 0.0210665 0.1202984  13.53194  -43.6472
-##  ENSMUSG00000073702        FALSE 0.0688871 0.0860842   5.84110  -40.3003
-##  ENSMUSG00000046330        FALSE 0.0549986 0.1133114   6.47579  -48.2811
-##                       runtime      mean       var     spcov   prop_sv
-##                     &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-##  ENSMUSG00000061518     0.024   4.98425  0.142977 0.0291204  0.149022
-##  ENSMUSG00000073702     0.012   4.83432  0.143616 0.0542917  0.444515
-##  ENSMUSG00000046330     0.014   5.35620  0.166734 0.0437844  0.326770
-##                     loglik_lm   LR_stat      rank      pval      padj
-##                     &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-##  ENSMUSG00000061518  -44.1377  0.981135       184 0.6122789 0.6588653
-##  ENSMUSG00000073702  -44.3607  8.120691       147 0.0172431 0.0232254
-##  ENSMUSG00000046330  -51.8235  7.084636       151 0.0289462 0.0379559</code></pre>
-</div>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># number of significant SVGs</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">$</span><span class="va">padj</span> <span class="op">&lt;=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre class="code_output"><code>##  
-##  FALSE  TRUE 
-##     46   152</code></pre>
-</div>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># show results for top n SVGs</span></span>
-<span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">$</span><span class="va">rank</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>, <span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre class="code_output"><code>##  DataFrame with 6 rows and 18 columns
-##                                gene_id   gene_name    feature_type
-##                            &lt;character&gt; &lt;character&gt;     &lt;character&gt;
-##  ENSMUSG00000046447 ENSMUSG00000046447     Camk2n1 Gene Expression
-##  ENSMUSG00000053310 ENSMUSG00000053310        Nrgn Gene Expression
-##  ENSMUSG00000018593 ENSMUSG00000018593       Sparc Gene Expression
-##  ENSMUSG00000032532 ENSMUSG00000032532         Cck Gene Expression
-##  ENSMUSG00000070570 ENSMUSG00000070570     Slc17a7 Gene Expression
-##  ENSMUSG00000024617 ENSMUSG00000024617      Camk2a Gene Expression
-##                     subsets_mito  sigma.sq      tau.sq       phi    loglik
-##                        &lt;logical&gt; &lt;numeric&gt;   &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-##  ENSMUSG00000046447        FALSE   1.88342 6.28372e-02   2.05206   -99.021
-##  ENSMUSG00000053310        FALSE   3.17506 2.47772e-01   3.26420  -151.225
-##  ENSMUSG00000018593        FALSE   2.04163 7.63186e-02   3.68722  -124.793
-##  ENSMUSG00000032532        FALSE   2.98145 2.98145e-08   5.07869  -147.464
-##  ENSMUSG00000070570        FALSE   2.64081 3.20107e-01   4.15601  -155.620
-##  ENSMUSG00000024617        FALSE   1.41249 9.79965e-02   3.74573  -113.269
-##                       runtime      mean       var     spcov   prop_sv
-##                     &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-##  ENSMUSG00000046447     0.017   5.35338   1.50820  0.256357  0.967714
-##  ENSMUSG00000053310     0.018   4.85871   3.71912  0.366737  0.927612
-##  ENSMUSG00000018593     0.019   3.61331   1.87664  0.395442  0.963966
-##  ENSMUSG00000032532     0.016   4.19282   2.72400  0.411820  1.000000
-##  ENSMUSG00000070570     0.015   3.62933   3.00604  0.447757  0.891889
-##  ENSMUSG00000024617     0.021   4.11652   1.17870  0.288711  0.935123
-##                     loglik_lm   LR_stat      rank        pval        padj
-##                     &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;   &lt;numeric&gt;   &lt;numeric&gt;
-##  ENSMUSG00000046447  -161.937  125.8321         1 0.00000e+00 0.00000e+00
-##  ENSMUSG00000053310  -207.066  111.6804         2 0.00000e+00 0.00000e+00
-##  ENSMUSG00000018593  -172.866   96.1453         3 0.00000e+00 0.00000e+00
-##  ENSMUSG00000032532  -191.496   88.0644         4 0.00000e+00 0.00000e+00
-##  ENSMUSG00000070570  -196.423   81.6050         5 0.00000e+00 0.00000e+00
-##  ENSMUSG00000024617  -149.612   72.6864         6 1.11022e-16 3.66374e-15</code></pre>
-</div>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># identify top-ranked SVG</span></span>
-<span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">$</span><span class="va">gene_name</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">spe_nnSVG</span><span class="op">)</span><span class="op">$</span><span class="va">rank</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre class="code_output"><code>##  [1] "Camk2n1"</code></pre>
-</div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># # subsample spots</span></span>
+<span><span class="co"># n &lt;- 100</span></span>
+<span><span class="co"># set.seed(123)</span></span>
+<span><span class="co"># ix &lt;- sample(seq_len(n), n)</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># spe_nnSVG &lt;- spe[, ix]</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># # filter low-expressed and mitochondrial genes</span></span>
+<span><span class="co"># # using very stringent filtering parameters for faster runtime in this example</span></span>
+<span><span class="co"># # note: for a full analysis, use alternative filtering parameters (e.g. defaults)</span></span>
+<span><span class="co"># spe_nnSVG &lt;- filter_genes(</span></span>
+<span><span class="co">#   spe_nnSVG, filter_genes_ncounts = 50, filter_genes_pcspots = 5</span></span>
+<span><span class="co"># )</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># # re-calculate logcounts after filtering</span></span>
+<span><span class="co"># # using library size factors</span></span>
+<span><span class="co"># spe_nnSVG &lt;- logNormCounts(spe_nnSVG)</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># # run nnSVG</span></span>
+<span><span class="co"># # using a single core for compatibility on build system</span></span>
+<span><span class="co"># # note: for a full analysis, use multiple cores</span></span>
+<span><span class="co"># set.seed(123)</span></span>
+<span><span class="co"># spe_nnSVG &lt;- nnSVG(spe_nnSVG, n_threads = 1)</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># # investigate results</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># # show results</span></span>
+<span><span class="co"># head(rowData(spe_nnSVG), 3)</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># # number of significant SVGs</span></span>
+<span><span class="co"># table(rowData(spe_nnSVG)$padj &lt;= 0.05)</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># # show results for top n SVGs</span></span>
+<span><span class="co"># rowData(spe_nnSVG)[order(rowData(spe_nnSVG)$rank)[1:6], ]</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># # identify top-ranked SVG</span></span>
+<span><span class="co"># rowData(spe_nnSVG)$gene_name[which(rowData(spe_nnSVG)$rank == 1)]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="dimensionality-reduction" class="level2" data-number="16.9"><h2 data-number="16.9" class="anchored" data-anchor-id="dimensionality-reduction">
 <span class="header-section-number">16.9</span> Dimensionality reduction</h2>
 <p>Run principal component analysis (PCA) on the set of top HVGs using <code>scater</code> <span class="citation" data-cites="McCarthy2017">(<a href="#ref-McCarthy2017" role="doc-biblioref">McCarthy et al. 2017</a>)</span>, and retain the top 50 principal components (PCs) for downstream analyses. Also run UMAP on the top 50 PCs, and retain the top 2 UMAP components for visualization purposes.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># compute PCA</span></span>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># compute PCA</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocSingular/man/runPCA.html">runPCA</a></span><span class="op">(</span><span class="va">spe</span>, subset_row <span class="op">=</span> <span class="va">top_hvgs</span><span class="op">)</span></span>
 <span></span>
@@ -755,13 +681,13 @@ div.csl-indent {
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  [1] "PCA"</code></pre>
 </div>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html">reducedDim</a></span><span class="op">(</span><span class="va">spe</span>, <span class="st">"PCA"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html">reducedDim</a></span><span class="op">(</span><span class="va">spe</span>, <span class="st">"PCA"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  [1] 2683   50</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># compute UMAP on top 50 PCs</span></span>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># compute UMAP on top 50 PCs</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/runUMAP.html">runUMAP</a></span><span class="op">(</span><span class="va">spe</span>, dimred <span class="op">=</span> <span class="st">"PCA"</span><span class="op">)</span></span>
 <span></span>
@@ -769,18 +695,18 @@ div.csl-indent {
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  [1] "PCA"  "UMAP"</code></pre>
 </div>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html">reducedDim</a></span><span class="op">(</span><span class="va">spe</span>, <span class="st">"UMAP"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html">reducedDim</a></span><span class="op">(</span><span class="va">spe</span>, <span class="st">"UMAP"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code_output"><code>##  [1] 2683    2</code></pre>
 </div>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># update column names for easier plotting</span></span>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># update column names for easier plotting</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html">reducedDim</a></span><span class="op">(</span><span class="va">spe</span>, <span class="st">"UMAP"</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"UMAP"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="clustering" class="level2" data-number="16.10"><h2 data-number="16.10" class="anchored" data-anchor-id="clustering">
 <span class="header-section-number">16.10</span> Clustering</h2>
 <p>Perform clustering to define cell types. We apply graph-based clustering using the Walktrap method implemented in <code>scran</code> <span class="citation" data-cites="Lun2016">(<a href="#ref-Lun2016" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span>, applied to the top 50 PCs calculated on the set of top HVGs.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># graph-based clustering</span></span>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># graph-based clustering</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scran/man/buildSNNGraph.html">buildSNNGraph</a></span><span class="op">(</span><span class="va">spe</span>, k <span class="op">=</span> <span class="va">k</span>, use.dimred <span class="op">=</span> <span class="st">"PCA"</span><span class="op">)</span></span>
@@ -794,12 +720,12 @@ div.csl-indent {
 ##   20 
 ##   31</code></pre>
 </div>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># store cluster labels in column 'label' in colData</span></span>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># store cluster labels in column 'label' in colData</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/colLabels.html">colLabels</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clus</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Visualize the clusters by plotting in (i) spatial (x-y) coordinates on the tissue slide, and (ii) UMAP dimensions.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># define custom color palette</span></span>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># define custom color palette</span></span>
 <span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unname.html">unname</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html">palette.colors</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Polychrome 36"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># plot clusters in spatial x-y coordinates</span></span>
@@ -813,7 +739,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot clusters in UMAP dimensions</span></span>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot clusters in UMAP dimensions</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotDimRed.html">plotDimRed</a></span><span class="op">(</span><span class="va">spe</span>, plot_type <span class="op">=</span> <span class="st">"UMAP"</span>, </span>
 <span>           annotate <span class="op">=</span> <span class="st">"label"</span>, pal <span class="op">=</span> <span class="va">colors</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -827,7 +753,7 @@ div.csl-indent {
 <span class="header-section-number">16.11</span> Differential expression</h2>
 <p>Identify marker genes by testing for differential gene expression between clusters, using the binomial test implemented in <code>findMarkers</code> in <code>scran</code> <span class="citation" data-cites="Lun2016">(<a href="#ref-Lun2016" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># set gene names as row names for easier plotting</span></span>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># set gene names as row names for easier plotting</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">rowData</span><span class="op">(</span><span class="va">spe</span><span class="op">)</span><span class="op">$</span><span class="va">gene_name</span></span>
 <span></span>
 <span><span class="co"># test for marker genes</span></span>
@@ -841,10 +767,10 @@ div.csl-indent {
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">pheatmap</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">pheatmap</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot log-fold changes for one cluster over all other clusters</span></span>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot log-fold changes for one cluster over all other clusters</span></span>
 <span><span class="co"># selecting cluster 5</span></span>
 <span><span class="va">interesting</span> <span class="op">&lt;-</span> <span class="va">markers</span><span class="op">[[</span><span class="fl">5</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="va">best_set</span> <span class="op">&lt;-</span> <span class="va">interesting</span><span class="op">[</span><span class="va">interesting</span><span class="op">$</span><span class="va">Top</span> <span class="op">&lt;=</span> <span class="fl">5</span>, <span class="op">]</span></span>
@@ -859,7 +785,7 @@ div.csl-indent {
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot log-transformed normalized expression of top genes for one cluster</span></span>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot log-transformed normalized expression of top genes for one cluster</span></span>
 <span><span class="va">top_genes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">interesting</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotExpression.html">plotExpression</a></span><span class="op">(</span><span class="va">spe</span>, x <span class="op">=</span> <span class="st">"label"</span>, features <span class="op">=</span> <span class="va">top_genes</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
